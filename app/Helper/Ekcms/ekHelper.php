@@ -73,7 +73,7 @@ class ekHelper
           $check = self::hasPermission($submodule['route']);
         }
       } catch (\Exception $e) {
-          dd('$e');
+          dd($e);
       }
     }
     return $check;
