@@ -2,12 +2,11 @@
 
 use App\Model\Config as conf;
 
-class ekHelper{
-    public static function prefix(){
+    function prefix(){
         return Config::get('constants.PREFIX');
     }
 
-    public static function getCmsConfig($label){
+    function getCmsConfig($label){
         $value = "";
         $data = conf::where('label', $label)->first();
         if(!isset($data) || $data == null){
@@ -16,4 +15,3 @@ class ekHelper{
         return $value;
         
     }
-}
