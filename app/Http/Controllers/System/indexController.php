@@ -10,7 +10,6 @@ class indexController extends ResourceController
 {
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -20,6 +19,7 @@ class indexController extends ResourceController
      */
     public function index(Request $request, $id="")
     {
+        // dd(ekHelper::hasPermission('/backend/users'));
         $data['breadcrumbs'] = $this->breadcrumbForIndex();
         return $this->renderView('index', $data);
     }
