@@ -29,7 +29,7 @@ return  [
     'modules' => [
         [
             'name' => 'Dashboard',
-            'icon'=> `<i class='fa fa-home'></i>`,
+            'icon'=> "<i class='fa fa-home'></i>",
             'hasSubmodules' => false,
             'route' => '/home'
         ]
