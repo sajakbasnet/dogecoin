@@ -1,11 +1,11 @@
-<header class="header-navbar" style="background-color: {{ getCmsConfig('cms theme color') }}">
+<header class="header-navbar" style="background-color: {{ \ekHelper::getCmsConfig('cms theme color') }}">
   <div class="container-fluid">
     <div class="header-content clearfix">
       <div class="header-left clearfix pull-left">
         <h1 class="pull-left logo-tag">
           <a href="{{route('home')}}">
-            <img src="{{asset('uploads/config/')}}/{{ getCmsConfig('cms logo')}}" alt="" height="20">
-            <span>{{getCmsConfig('cms title')}}</span>
+            <img src="{{asset('uploads/config/')}}/{{ \ekHelper::getCmsConfig('cms logo')}}" alt="" height="20">
+            <span>{{\ekHelper::getCmsConfig('cms title')}}</span>
           </a>
         </h1>
       </div>

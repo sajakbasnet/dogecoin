@@ -101,7 +101,7 @@ class ResourceController extends Controller
   {
     return [
       "title" => 'Dashboard',
-      "link" =>  '/' .prefix(). '/home',
+      "link" =>  '/' . ekHelper::prefix() . '/home',
     ];
   }
 
@@ -163,7 +163,7 @@ class ResourceController extends Controller
    */
   public function indexUrl()
   {
-    return '/'.prefix().'/' . $this->moduleName();
+    return '/' . ekHelper::prefix() . '/' . $this->moduleName();
   }
 
   /**
