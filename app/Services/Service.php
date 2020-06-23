@@ -18,7 +18,7 @@ class Service
 
     // get all data 
 
-    public function getAllData($data)
+    public function getAllData($data, $pagination=true)
     {
         $query = $this->query();
         return $query->paginate(Config::get('constants.PAGINATION'));

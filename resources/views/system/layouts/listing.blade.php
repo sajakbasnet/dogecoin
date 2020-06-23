@@ -43,7 +43,7 @@
                                             @yield('table-heading')
                                         </thead>
                                         <tbody>
-                                            @if($items->isEmpty())
+                                            @if($items['items']->isEmpty())
                                             <tr>
                                                 <td colspan="100%" class="text-center">No data available</td>
                                             </tr>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace App\Http\Controllers\system;
 
 use App\Http\Controllers\Controller;
 use App\Services\Service;
@@ -188,7 +188,6 @@ class ResourceController extends Controller
    */
   public function index(Request $request, $id = "")
   {
-    // const view = ctx.view.presenter('pagination')
     $data['items'] = $this->service->indexPageData($request);
     $data['breadcrumbs'] = $this->breadcrumbForIndex();
     $this->setModuleId($id);
