@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 define("PREFIX", Config::get('constants.PREFIX'));
+define("PAGINATE", Config::get('constants.PAGINATE'));
 include('backend.php');
 include('frontend.php');
 

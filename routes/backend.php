@@ -19,8 +19,8 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX], function () {
 
     Route::group(['middleware' => ['auth', 'permission']], function () {
         Route::get('/home', 'indexController@index')->name('home');
-        Route::get('/users', function(){
-            dd('users');
-        });
+        Route::resource('/roles', 'user\RoleController');
+        Route::resource('/users', 'user\UserController');
+
     });
 });

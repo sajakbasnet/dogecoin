@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class ResourceController extends Controller
 {
-  public function __construct(Service $service)
+  public function __construct($service)
   {
     $this->service = $service;
   }
@@ -101,7 +101,7 @@ class ResourceController extends Controller
   {
     return [
       "title" => 'Dashboard',
-      "link" =>  '/'.PREFIX.'/home',
+      "link" =>  '/' . PREFIX . '/home',
     ];
   }
 
@@ -139,13 +139,12 @@ class ResourceController extends Controller
    */
   public function breadcrumbForForm($title)
   {
-    return [
-      $this->breadcrumbForIndex(false),
+    return array_merge($this->breadcrumbForIndex(false), [
       [
         "title" => $title,
         "active" =>  true,
-      ],
-    ];
+      ]
+    ]);
   }
 
   public function getUrl()
@@ -163,7 +162,7 @@ class ResourceController extends Controller
    */
   public function indexUrl()
   {
-    return '/'.PREFIX.$this->moduleName();
+    return '/' . PREFIX . '/' . $this->moduleName();
   }
 
   /**
@@ -190,7 +189,7 @@ class ResourceController extends Controller
   public function index(Request $request, $id = "")
   {
     // const view = ctx.view.presenter('pagination')
-    $data['data'] = $this->service->indexPageData($request);
+    $data['items'] = $this->service->indexPageData($request);
     $data['breadcrumbs'] = $this->breadcrumbForIndex();
     $this->setModuleId($id);
     return $this->renderView('index', $data);

@@ -3,7 +3,7 @@
 namespace App\Services;
 use Config;
 
-abstract class Service
+class Service
 {
     /**
      * Stores the model used for service
@@ -18,7 +18,7 @@ abstract class Service
 
     // get all data 
 
-    public function getAllData()
+    public function getAllData($data)
     {
         $query = $this->query();
         return $query->paginate(Config::get('constants.PAGINATION'));

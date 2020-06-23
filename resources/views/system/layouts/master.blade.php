@@ -11,9 +11,7 @@
   <div class="page-contents clearfix">
     <div class="inner-content-fluid">
       <div class="custom-container-fluid">
-
         @include('system.partials.breadcrumb')
-
         @yield('content')
       </div>
     </div>
