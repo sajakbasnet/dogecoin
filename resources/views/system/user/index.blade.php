@@ -1,30 +1,6 @@
 @extends('system.layouts.listing')
 
 @section('header')
-{{--@component('system.components.search-form', action = indexUrl)
-    @slot('inputs')
-      @!component('system.components.form.form-inline-group', input = {
-      name: 'keyword',
-      label: 'Search Keyword',
-      default: request.input('keyword'),
-      }, globalLocale=globalLocale)
-
-      @component('system.components.form.form-inline-group', input = {
-      name: 'role',
-      label: 'Role',
-      }, globalLocale=globalLocale)
-        @slot('input')
-          @!component('system.components.form.input-select', input = {
-          name: 'role',
-          placeholder: 'Select Role',
-          options: roles,
-          default: request.input('role'),
-          }, globalLocale=globalLocale)
-        @endslot
-      @endcomponent
-    @endslot
-  @endcomponent--}}
-
 <x-system.search-form :action="$indexUrl">
     <x-slot name="inputs">
         <x-system.form.form-inline-group :input="['name' => 'keyword', 'label' => 'Search keyword', 'default' => Request::get('keyword')]" />

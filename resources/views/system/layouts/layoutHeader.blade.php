@@ -12,4 +12,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://kit.fontawesome.com/f0dad6a07d.js" crossorigin="anonymous"></script>
 <link href="{{ asset('compiledCssAndJs/css/system.css')}}" rel="stylesheet" media="screen">
+<link href="{{ asset('toast/jquery.toast.min.css')}}" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

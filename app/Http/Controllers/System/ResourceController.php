@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\system;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\system\userRequest;
 use App\Services\Service;
 use ekHelper;
 use Illuminate\Http\Request;
@@ -201,7 +202,7 @@ class ResourceController extends Controller
    */
   public function create(Request $request, $id = "")
   {
-    $data['data'] = $this->service->createPageData($request);
+    $data['items'] = $this->service->createPageData($request);
     $this->setModuleId($id);
     $data['breadcrumbs'] = $this->breadcrumbForForm('Create');
     return $this->renderView('form', $data);
@@ -211,45 +212,43 @@ class ResourceController extends Controller
    * Create/save a new resource.
    * POST resources
    */
-  public function store($data)
+  public function store(userRequest $request)
   {
-    $store = $this->service->store($data);
+    $store = $this->service->store($request);
     $this->setModuleId($store->id);
-    return redirect($this->getUrl())->withErrors(['alert-success' => 'Successfully created.']);
+    return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
   }
 
   /**
    * Render a form to update an existing resource.
    * GET resources/:id/edit
    */
-  //   async edit(context) {
-  //     const data = await this.service.editPageData(context)
-  //     this.setModuleId(context)
-  //     return this.renderView(context.view, 'form', {
-  //       ...data,
-  //       breadcrumbs: this.breadcrumbForForm('Edit'),
-  //     })
-  //   }
+  public function edit($id)
+  {
+    $data['items'] = $this->service->editPageData($id);
+    $this->setModuleId($id);
+    $data['breadcrumbs'] = $this->breadcrumbForForm('Edit');
+    return $this->renderView('form', $data);
+  }
 
   /**
    * Update resource details.
    * PUT or PATCH resources/:id
    */
-  //   async update(context) {
-  //     await this.service.update(context)
-  //     context.session.withErrors({ 'success': 'Successfully updated.' })
-  //     this.setModuleId(context)
-  //     return context.response.redirect(this.getUrl())
-  //   }
+    public function update(Request $request, $id) {
+      $this->service->update($id, $request);
+      $this->setModuleId($id);
+      return redirect($this->getUrl())->withErrors(['success'=>'Successfully updated.']);
+    }
 
   /**
    * Delete a resource with id.
    * DELETE resources/:id
    */
-  // async destroy(context) {
-  //   await this.service.delete(context)
-  //   context.session.withErrors({ 'success': 'Successfully deleted.' })
-  //   this.setModuleId(context)
-  //   return context.response.redirect(this.getUrl())
-  // }
+  public function destroy($id)
+  {
+    $this->service->delete($id);
+    $this->setModuleId($id);
+    return redirect($this->getUrl())->withErrors(['success' => 'Successfully deleted.']);
+  }
 }

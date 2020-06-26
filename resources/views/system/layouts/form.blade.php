@@ -26,19 +26,22 @@
                         </div>
                     </div><!-- ends page-head -->
 
-                    {{--<div class="content-display clearfix">
+                    <div class="content-display clearfix">
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 @include('system.partials.message')
-                                <form method="post" action="{{ $indexUrl }}/{{ item ? item.id+'?_method=PUT' : '' }}" enctype="multipart/form-data">
+                                <form method="post" action="{{ $indexUrl }}{{isset($items['item']) ? '/'.$items['item']->id : ''}}" enctype="multipart/form-data">
                                     @csrf
+                                    @if(isset($items['item']))
+                                    @method('PUT')
+                                    @endif
                                     @yield('inputs')
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
                                             <button type="submit" class="btn btn-primary">
-                                                {{ trans(item ? 'Update' : 'Create') }}
+                                                {{ !isset($items['item']) ? trans('Create') : trans('Update')}}
                                             </button>
-                                            <a href="{{ indexUrl }}" class="btn btn-secondary">
+                                            <a href="{{ $indexUrl }}" class="btn btn-secondary">
                                                 {{ trans('Cancel') }}
                                             </a>
                                         </div>
@@ -46,7 +49,7 @@
                                 </form>
                             </div>
                         </div><!-- panel -->
-                    </div>--}}<!-- ends content-display -->
+                    </div><!-- ends content-display -->
                 </div>
             </div><!-- ends custom-container-fluid -->
         </div><!-- ends page-contents -->

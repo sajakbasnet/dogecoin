@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\system\user;
 
 use App\Http\Controllers\System\ResourceController;
+use App\Http\Requests\system\userRequest as customRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+
 
 class UserController extends ResourceController
 {

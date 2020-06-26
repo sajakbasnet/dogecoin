@@ -33,9 +33,9 @@ class Service
 
     //store single record
 
-    public function store($data)
+    public function store($request)
     {
-        return $this->model->create($data);
+        return $this->model->create($request->except('_token'));
     }
 
     // store bulk records
@@ -49,9 +49,9 @@ class Service
 
     public function update($id, $data)
     {
-        $update = $this->model->itemByIdentifier($id);
-        $update->fill($data)->save();
-        return $update;
+        $data = $data->except('_token');
+        $update = $this->itemByIdentifier($id);
+        return $update->fill($data)->save();
     }
 
     //delete a record
