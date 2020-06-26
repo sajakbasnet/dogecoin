@@ -4,3 +4,5 @@ value="{{$input['default'] ?? ''}}" id="{{$input['id'] ?? $input['name']}}" plac
 @if(isset($input['helpText']))
   <small class="form-text text-muted">{{ trans($input['helpText']) ?? '' }}</small>
 @endif
+@if(isset($input['error']))<div class="invalid-feedback">{{ trans($input['error']) }}</div>@endif
+

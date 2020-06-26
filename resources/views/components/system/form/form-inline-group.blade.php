@@ -3,7 +3,6 @@
   @if(isset($inputs))
   {{$inputs}}
   @else
-  @include('components.system.form.input-normal')
+  <x-system.form.input-normal :input="$input"/>
   @endif
-  {{--{{ elIf('<div class="invalid-feedback">$self</div>', input.error, input.error) }}--}}
 </div>

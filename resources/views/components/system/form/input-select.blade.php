@@ -9,7 +9,7 @@ class="form-control {{ (isset($input['error']) && $input['error'] !== "") ? 'is-
     @endforeach
     @endif
 </select>
-@if(isset($input['error']))<div class="invalid-feedback">{{ trans($input['error']) }}</div>@endif
 @if(isset($input['helpText']))
 <small class="form-text text-muted">{{ trans($input['helpText']) ?? '' }}</small>
 @endif
+@if(isset($input['error']))<div class="invalid-feedback">{{ trans($input['error']) }}</div>@endif

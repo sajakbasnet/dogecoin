@@ -1,6 +1,6 @@
 @extends('system.layouts.form')
 @section('inputs')
-<x-system.form.form-group :input="[ 'name' => 'name', 'label'=> 'Name', 'required' => true, 'default' => $items['item']->name ?? old('name'), 'error' => $errors->first('name')]" />
+<x-system.form.form-group :input="[ 'name' => 'name', 'label'=> 'Name', 'required' => true, 'default' => $items['item']->name ?? old('name'), 'error' => $errors->first('name'), 'helpText' => 'tesing help text']" />
 <x-system.form.form-group :input="[ 'name' => 'username', 'label'=> 'Username', 'required' => true, 'default' => $items['item']->username ?? old('username'), 'error' => $errors->first('username')]" />
 <x-system.form.form-group :input="[ 'name' => 'email', 'label'=> 'Email', 'required' => true, 'default' => $items['item']->email ?? old('email'), 'error' => $errors->first('email')]" />
 <x-system.form.form-group :input="[ 'name' => 'role_id', 'label'=> 'Role', 'required' => true]">

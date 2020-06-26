@@ -6,11 +6,7 @@
         @if(isset($inputs))
         {{$inputs}}
         @else
-        <x-system.form.input-normal :input="array_merge($input, ['helpText' => false])"/>
+        <x-system.form.input-normal :input="$input"/>
         @endif
-        @if(isset($input['helpText']))
-        <small class="form-text text-muted">{{ trans($input['helpText']) ?? '' }}</small>
-        @endif
-        @if(isset($input['error']))<div class="invalid-feedback">{{ trans($input['error']) }}</div>@endif
     </div>
 </div>
