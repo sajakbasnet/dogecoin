@@ -5,7 +5,7 @@
 <x-system.form.form-group :input="[ 'name' => 'email', 'label'=> 'Email', 'required' => true, 'default' => $items['item']->email ?? old('email'), 'error' => $errors->first('email')]" />
 <x-system.form.form-group :input="[ 'name' => 'role_id', 'label'=> 'Role', 'required' => true]">
   <x-slot name="inputs">
-    <x-system.form.input-select :input="[ 'name' => 'role_id', 'label'=> 'Role', 'required' => true, 'default' => $items['item']->role_id ?? old('role_id') , 'options' => $items['roles'], 'placeholder' => 'Select role', 'error' => $errors->first('role_id')]" />
+    <x-system.form.input-select :input="[ 'name' => 'role_id', 'label'=> 'Role', 'required' => true, 'default' => $items['item']->role_id ?? old('role_id') , 'options' => $items['roles'],'disabled'=>(isset($items['item']) && $items['item']->id == 1) ? true : '', 'placeholder' => 'Select role', 'error' => $errors->first('role_id')]" />
   </x-slot>
 </x-system.form.form-group>
 

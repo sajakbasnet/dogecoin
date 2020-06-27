@@ -2,6 +2,7 @@
 
 namespace App\Services;
 use Config;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Service
 {
@@ -29,6 +30,12 @@ class Service
     public function find($id)
     {
         return $this->model->find($id);
+    }
+
+    public function findByEmail($email){
+        $data = $this->model->where('email', $email)->first();
+        if(!isset($data)) throw new ModelNotFoundException;
+        return $data;
     }
 
     //store single record

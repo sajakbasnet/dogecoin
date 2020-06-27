@@ -66,6 +66,9 @@ class Handler extends ExceptionHandler
         if($exception instanceof NotDeletableException){
             return redirect()->back()->withErrors(['alert-danger' => 'The Record is not deletable.']);
         }
+        if($exception instanceof RoleNotChangeableException){
+            return redirect()->back()->withErrors(['alert-danger' => 'This role cannot be changed.']);
+        }
         return parent::render($request, $exception);
     }
 }

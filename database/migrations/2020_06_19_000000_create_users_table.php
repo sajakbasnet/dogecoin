@@ -20,8 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique()->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->string('token')->nullable();
             $table->bigInteger('role_id')->unsigned();
             $table->rememberToken();
+            
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->timestamps();
         });

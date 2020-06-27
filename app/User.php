@@ -6,6 +6,7 @@ use App\Model\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Config;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username', 'role_id'
+        'name', 'email', 'password','username', 'role_id', 'token'
     ];
 
     /**
@@ -41,4 +42,15 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }
+
+    public function getPasswordSetResetLink($check = false){
+        $title = 'Reset Password';
+        $key = 'reset-password';
+        if($check) {
+          $title = 'Set Password';
+          $key = 'set-password';
+        }
+        return "<a href=".Config::get('constants.URL')."/".Config::get('constants.PREFIX')."/".$key."/".$this->email."/".$this->token.">".$title."</a>";
+      }
+    
 }

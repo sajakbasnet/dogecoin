@@ -14,6 +14,6 @@ return [
             "version" => 2
         ]
     ],
-    "FROM_MAIL" => env('FROM_EMAIL', 'info@ekbana.com'),
+    "FROM_MAIL" => env('MAIL_FROM_ADDRESS', 'info@ekbana.com'),
     "FROM_NAME" => env('FROM_NAME', 'Ekbana'),
 ];

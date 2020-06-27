@@ -4,8 +4,7 @@
     <div class="login-inner-wrapper">
         <div class="login-sec">
             <h1 style="color: #292961;">{{trans('Forgot Password')}}</h1>
-            {{--@include('system.partials.errors')
-             @include('system.partials.message')--}}
+             @include('system.partials.message')
             <div class="login-form">
                 <form method="post" action="{{route('post.forgot.password')}}">
                     @csrf
@@ -15,6 +14,9 @@
                             <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
                         </div>
                     </div>
+                    @error('email')
+                    <p class="invalid-text text-danger">{{trans($message)}}</p>
+                    @enderror
                     <div class="form-group">
                         <button type="submit" class="btn login-btn btn-block" style="background-color: #292961;">{{trans('Submit')}}</button>
                     </div>

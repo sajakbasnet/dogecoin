@@ -1,5 +1,5 @@
 <select name="{{ $input['name'] ?? '' }}" id="{{ $input['id'] ?? $input['name'] ?? ''}}" 
-class="form-control {{ (isset($input['error']) && $input['error'] !== "") ? 'is-invalid' : '' }}" {{ isset($input['disabled']) ? 'disabled' : '' }} {{ isset($input['multiple']) ? 'multiple' : '' }}>
+class="form-control {{ (isset($input['error']) && $input['error'] !== "") ? 'is-invalid' : '' }}" {{ (isset($input['disabled']) && $input['disabled'] !== "") ? 'disabled' : '' }} {{ isset($input['multiple']) ? 'multiple' : '' }}>
     @if(isset($input['placeholder']))
     <option value="">{{ trans($input['placeholder']) }}</option>
     @endif

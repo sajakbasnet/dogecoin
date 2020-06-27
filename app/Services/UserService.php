@@ -3,9 +3,11 @@
 namespace App\Services;
 
 use App\Exceptions\NotDeletableException;
-use App\Http\Requests\system\userRequest;
+use App\Exceptions\RoleNotChangeableException;
 use App\Model\Role;
 use App\User;
+use ekHelper;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Hash;
 
 class UserService extends Service
@@ -28,7 +30,8 @@ class UserService extends Service
         if ($pagination) return $query->orderBy('id', 'DESC')->with('role')->paginate(PAGINATE);
         return $query->orderBy('id', 'DESC')->with('role')->get();
     }
-    public function getRoles(){
+    public function getRoles()
+    {
         return $this->role->orderBy('name', 'ASC')->get();
     }
 
@@ -47,7 +50,8 @@ class UserService extends Service
         ];
     }
 
-    public function store($request){
+    public function store($request)
+    {
         $data = $request->except('_token');
         $data['password'] = isset($data['password']) ? Hash::make($data['password']) : null;
         return $this->model->create($data);
@@ -62,9 +66,33 @@ class UserService extends Service
         ];
     }
 
-    public function delete($data){
-        if($data == 1) throw new NotDeletableException();
+    public function update($id, $request)
+    {
+        $data = $request->except('_token');
+        $user = $this->itemByIdentifier($id);
+        if(isset($request->role_id) && ($user->id == 1 && $request->role_id != 1))throw new RoleNotChangeableException;
+        return $user->update($data);
+    }
+
+    public function delete($data)
+    {
+        if ($data == 1) throw new NotDeletableException();
         $user = $this->itemByIdentifier($data);
         return $user->delete();
+    }
+
+    public function generateToken($length){
+        $token = ekHelper::generateToken($length);
+        $check = $this->model->where('token', $token)->exists();
+        if($check){
+            $token = ekHelper::generateToken($length);
+        }
+        return $token;
+    }
+
+    public function findByEmailAndToken($email, $token){
+        $user = $this->model->where('email', $email)->where('token', $token)->first();
+        if(!isset($user)) throw new ModelNotFoundException;
+        return $user;
     }
 }

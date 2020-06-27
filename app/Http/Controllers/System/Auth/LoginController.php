@@ -44,6 +44,6 @@ class LoginController extends Controller
     {
         $this->guard()->logout();
         $request->session()->invalidate();
-        return redirect(PREFIX.'/home')->withErrors(['alert-success' => 'Successfully logged out!']);
+        return redirect(PREFIX.'/login')->withErrors(['alert-success' => 'Successfully logged out!']);
     }
 }

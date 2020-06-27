@@ -20,6 +20,10 @@ class ekHelper
         return $value;
     }
 
+    public static function generateToken($length){
+        return bin2hex(openssl_random_pseudo_bytes($length));
+    }
+
     public static function hasPermission($url, $method = 'get')
     {
         $method = strtolower($method);
