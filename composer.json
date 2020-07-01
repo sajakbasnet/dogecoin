@@ -43,7 +43,8 @@
             "database/factories"
         ],
         "files": [
-            "app/Helper/Ekcms/ekHelper.php"
+            "app/Helper/Ekcms/ekHelper.php",
+            "app/Helper/Ekcms/globalHelper.php"
         ]
     },
     "autoload-dev": {

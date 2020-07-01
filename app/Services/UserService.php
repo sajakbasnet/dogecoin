@@ -93,10 +93,10 @@ class UserService extends Service
 
     public function generateToken($length)
     {
-        $token = ekHelper::generateToken($length);
+        $token = generateToken($length);
         $check = $this->model->where('token', $token)->exists();
         if ($check) {
-            $token = ekHelper::generateToken($length);
+            $token = generateToken($length);
         }
         return $token;
     }

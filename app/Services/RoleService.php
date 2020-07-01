@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\NotDeletableException;
 use App\Model\Role;
 use Config;
 
@@ -48,4 +49,26 @@ class RoleService extends Service
         $data['permissions'] = $this->mapPermission($request->permissions);
         return $this->model->create($data);
     }
+    public function editPageData($id)
+    {
+        $role = $this->itemByIdentifier($id);
+        return [
+            'item' => $role
+        ];
+    }
+    public function update($id, $data)
+    {
+        $role = $this->itemByIdentifier($id);
+        $data = $data->except('_token');
+        $data['permissions'] = $this->mapPermission($data['permissions']);
+        return $role->update($data);
+    }
+
+    public function delete($id)
+    {
+        $role = $this->itemByIdentifier($id);
+        if($role->users->count() > 0) throw new NotDeletableException('The role is associated to the users.');
+        return $role->delete();
+    }
+
 }

@@ -2,7 +2,7 @@
   <div class="inner-navbar clearfix">
     <ul class="ul-sidebar" id="accordion">
       @foreach($modules as $module)
-      @if(\ekHelper::hasPermissionOnModule($module) && \ekHelper::showInSideBar($module['showInSideBar'] ?? true))
+      @if(\ekHelper::hasPermissionOnModule($module) && showInSideBar($module['showInSideBar'] ?? true))
       @if($module['hasSubmodules'])
       <li class="panel">
         <a data-toggle="collapse" data-parent="#accordion" href="#sidenav{{$loop->index}}" class="arw collapsed">
