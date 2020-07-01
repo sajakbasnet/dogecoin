@@ -87,4 +87,9 @@ class ekHelper
     {
         return $check;
     }
+
+    public static function modules(){
+        $modules = Config::get('cmsConfig.modules');
+        return $modules;
+    }
 }

@@ -26,7 +26,7 @@ class userRequest extends FormRequest
     {
         $data = [
             'name' => 'required',
-            'username' => 'required',
+            'username' => 'required|unique:users,username,' . $request->user,
             'email' => 'required|email|unique:users,email,' . $request->user,
             'role_id' => 'required'
         ];

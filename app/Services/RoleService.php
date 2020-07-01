@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Model\Role;
+use Config;
 
 class RoleService extends Service
 {
@@ -11,6 +12,21 @@ class RoleService extends Service
         $this->model = $role;
     }
 
+    public function mapPermission($permissions)
+    {
+        $mappedPermissions = [];
+        foreach ($permissions as $permission) {
+            $decoded = json_decode($permission);
+            if(is_array($decoded)){
+                foreach($decoded as $per){
+                    array_push($mappedPermissions, $per);
+                }
+            }else{
+                array_push($mappedPermissions, $decoded);  
+            }
+        }
+        return $mappedPermissions;
+    }
     public function getAllData($data, $pagination = true)
     {
         $query = $this->query();
@@ -25,5 +41,11 @@ class RoleService extends Service
     public function indexPageData($data)
     {
         return ['items' => $this->getAllData($data)];
+    }
+    public function store($request)
+    {
+        $data = $request->except('_token');
+        $data['permissions'] = $this->mapPermission($request->permissions);
+        return $this->model->create($data);
     }
 }

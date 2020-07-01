@@ -127,9 +127,9 @@ return  [
                             ]
                         ],
                         [
-                            "name" => 'Delete Users',
+                            "name" => 'Delete Roles',
                             "route" => [
-                                "url" => '/users/*',
+                                "url" => '/roles/*',
                                 "method" => 'delete'
                             ],
                         ]

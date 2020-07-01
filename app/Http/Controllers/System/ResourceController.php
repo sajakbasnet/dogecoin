@@ -3,12 +3,7 @@
 namespace App\Http\Controllers\system;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\system\userRequest;
-use App\Services\Service;
-use ekHelper;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\View\View;
 
 class ResourceController extends Controller
 {
@@ -212,12 +207,12 @@ class ResourceController extends Controller
    * Create/save a new resource.
    * POST resources
    */
-  public function store(userRequest $request)
-  {
-    $store = $this->service->store($request);
-    $this->setModuleId($store->id);
-    return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
-  }
+  // public function store($request)
+  // {
+  //   $store = $this->service->store($request);
+  //   $this->setModuleId($store->id);
+  //   return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
+  // }
 
   /**
    * Render a form to update an existing resource.
@@ -235,11 +230,11 @@ class ResourceController extends Controller
    * Update resource details.
    * PUT or PATCH resources/:id
    */
-    public function update(userRequest $request, $id) {
-      $this->service->update($id, $request);
-      $this->setModuleId($id);
-      return redirect($this->getUrl())->withErrors(['success'=>'Successfully updated.']);
-    }
+    // public function update($request, $id="") {
+    //   $this->service->update($id, $request);
+    //   $this->setModuleId($id);
+    //   return redirect($this->getUrl())->withErrors(['success'=>'Successfully updated.']);
+    // }
 
   /**
    * Delete a resource with id.

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\UserCreated;
 use App\Exceptions\NotDeletableException;
 use App\Exceptions\RoleNotChangeableException;
 use App\Mail\system\AccountCreatedEmail;
@@ -56,16 +57,13 @@ class UserService extends Service
     public function store($request)
     {
         $data = $request->except('_token');
-        if ($request->set_password_status == 1) {
+        if ($request->set_password_status == '1') {
             $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
         }
         $user = $this->model->create($data);
-        if ($request->set_password_status == 0) {
-            $user->update(['token' => $this->generateToken(24)]);
-            Mail::to($user->email)->send(new PasswordSetEmail($user));
-        } else {
-            Mail::to($user->email)->send(new AccountCreatedEmail($user));
-        }
+        event(new UserCreated($user));
         return $user;
     }
 
