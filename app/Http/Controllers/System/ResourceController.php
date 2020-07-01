@@ -235,7 +235,7 @@ class ResourceController extends Controller
    * Update resource details.
    * PUT or PATCH resources/:id
    */
-    public function update(Request $request, $id) {
+    public function update(userRequest $request, $id) {
       $this->service->update($id, $request);
       $this->setModuleId($id);
       return redirect($this->getUrl())->withErrors(['success'=>'Successfully updated.']);

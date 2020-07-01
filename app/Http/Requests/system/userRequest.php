@@ -3,6 +3,7 @@
 namespace App\Http\Requests\system;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class userRequest extends FormRequest
 {
@@ -21,15 +22,21 @@ class userRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
-        return [
+        $data = [
             'name' => 'required',
             'username' => 'required',
-            'email' => 'required|email',
-            'role_id' => 'required',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required'
+            'email' => 'required|email|unique:users,email,' . $request->user,
+            'role_id' => 'required'
         ];
+
+        if ($request->set_password_status == 1) {
+            $data = array_merge($data, [
+                'password' => 'required|confirmed',
+                'password_confirmation' => 'required'
+            ]);
+        }
+        return $data;
     }
 }

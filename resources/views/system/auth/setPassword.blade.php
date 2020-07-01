@@ -5,7 +5,7 @@
         <div class="login-sec">
             <h1 style="color: #292961;">{{trans($title)}}</h1>
             <div class="login-form">
-                <form method="post" action="{{route('post.reset.password')}}">
+                <form method="post" action="{{url(PREFIX.'/set-password')}}">
                     @csrf
                     <input type="hidden" name="token" value="{{$token}}">
                     <div class="form-group login-group">

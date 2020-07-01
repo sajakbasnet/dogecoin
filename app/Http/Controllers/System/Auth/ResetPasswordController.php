@@ -47,11 +47,11 @@ class ResetPasswordController extends Controller
 
     public function handleSetResetPassword(setResetRequest $request)
     {
-        $this->resetPassword($request);
+        $this->setResetPassword($request);
         return redirect(PREFIX . '/login')->withErrors(['alert-success' => 'Password has been successfully set.']);
     }
 
-    public function resetPassword($request){
+    public function setResetPassword($request){
         $user = $this->service->findByEmailAndToken($request->email, $request->token);
         return $user->update([
             'password' => Hash::make($request->password),

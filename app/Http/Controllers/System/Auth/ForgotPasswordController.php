@@ -37,11 +37,11 @@ class ForgotPasswordController extends Controller
     public function handleForgotPassword(Request $request)
     {
         $request->validate(['email' => 'required|email']);
-        $this->sendPasswrodResetLink($request->email);
+        $this->sendPasswordResetLink($request->email);
         return back()->withErrors(['alert-success' => "Password reset link has been sent to your email."]);
     }
 
-    public function sendPasswrodResetLink($email){
+    public function sendPasswordResetLink($email){
         $user = $this->user->findByEmail($email);
         $user->update([
             'token' => $this->user->generateToken(24)

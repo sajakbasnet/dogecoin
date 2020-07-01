@@ -4,11 +4,14 @@ namespace App\Services;
 
 use App\Exceptions\NotDeletableException;
 use App\Exceptions\RoleNotChangeableException;
+use App\Mail\system\AccountCreatedEmail;
+use App\Mail\system\PasswordSetEmail;
 use App\Model\Role;
 use App\User;
 use ekHelper;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserService extends Service
 {
@@ -53,8 +56,17 @@ class UserService extends Service
     public function store($request)
     {
         $data = $request->except('_token');
-        $data['password'] = isset($data['password']) ? Hash::make($data['password']) : null;
-        return $this->model->create($data);
+        if ($request->set_password_status == 1) {
+            $data['password'] = Hash::make($data['password']);
+        }
+        $user = $this->model->create($data);
+        if ($request->set_password_status == 0) {
+            $user->update(['token' => $this->generateToken(24)]);
+            Mail::to($user->email)->send(new PasswordSetEmail($user));
+        } else {
+            Mail::to($user->email)->send(new AccountCreatedEmail($user));
+        }
+        return $user;
     }
 
     public function editPageData($data)
@@ -70,7 +82,7 @@ class UserService extends Service
     {
         $data = $request->except('_token');
         $user = $this->itemByIdentifier($id);
-        if(isset($request->role_id) && ($user->id == 1 && $request->role_id != 1))throw new RoleNotChangeableException;
+        if (isset($request->role_id) && ($user->id == 1 && $request->role_id != 1)) throw new RoleNotChangeableException;
         return $user->update($data);
     }
 
@@ -81,18 +93,20 @@ class UserService extends Service
         return $user->delete();
     }
 
-    public function generateToken($length){
+    public function generateToken($length)
+    {
         $token = ekHelper::generateToken($length);
         $check = $this->model->where('token', $token)->exists();
-        if($check){
+        if ($check) {
             $token = ekHelper::generateToken($length);
         }
         return $token;
     }
 
-    public function findByEmailAndToken($email, $token){
+    public function findByEmailAndToken($email, $token)
+    {
         $user = $this->model->where('email', $email)->where('token', $token)->first();
-        if(!isset($user)) throw new ModelNotFoundException;
+        if (!isset($user)) throw new ModelNotFoundException;
         return $user;
     }
 }
