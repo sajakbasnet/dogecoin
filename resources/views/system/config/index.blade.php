@@ -71,7 +71,7 @@
                                                 </div>
                                             </div>
                                             @else
-                                            <input type='{{$item->type}}' placeholder='Value' name='value' value="{{$item->value}}" onchange="submit()" class='form-control'>
+                                            <input type='{{$item->type}}' placeholder='Value' name='value' value="{{$item->value}}" onchange="submit()" class='form-control {{ $item->isColorPicker($item->id) ? 'jscolor {hash:true}' : '' }}'>
                                             @endif
                                         </form>
                                         @endif
