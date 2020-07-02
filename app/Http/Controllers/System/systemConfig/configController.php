@@ -4,8 +4,8 @@ namespace App\Http\Controllers\system\systemConfig;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\system\ResourceController;
+use App\Http\Requests\system\ConfigRequest;
 use App\Services\ConfigService;
-use Illuminate\Http\Request;
 
 class configController extends ResourceController
 {
@@ -21,17 +21,17 @@ class configController extends ResourceController
         return 'system.config';
     }
 
-    // public function store(userRequest $request)
-    // {
-    //     $store = $this->service->store($request);
-    //     $this->setModuleId($store->id);
-    //     return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
-    // }
+    public function store(ConfigRequest $request)
+    {
+        $store = $this->service->store($request);
+        $this->setModuleId($store->id);
+        return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
+    }
 
-    // public function update(userRequest $request, $id)
-    // {
-    //     $this->service->update($id, $request);
-    //     $this->setModuleId($id);
-    //     return redirect($this->getUrl())->withErrors(['success' => 'Successfully updated.']);
-    // }
+    public function update(ConfigRequest $request, $id)
+    {
+        $this->service->update($id, $request);
+        $this->setModuleId($id);
+        return redirect($this->getUrl())->withErrors(['success' => 'Successfully updated.']);
+    }
 }

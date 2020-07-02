@@ -5,7 +5,7 @@ class="form-control {{ (isset($input['error']) && $input['error'] !== "") ? 'is-
     @endif
     @if(isset($input['options']))
     @foreach($input['options'] as $option)
-    <option value="{{ $option->id }}" {{ $input['default'] == $option->id ? 'selected' : '' }}>{{ $option->name }}</option>
+    <option value="{{ $option['key'] }}" {{ $input['default'] == $option['key'] ? 'selected' : '' }}>{{ $option['value'] }}</option>
     @endforeach
     @endif
 </select>

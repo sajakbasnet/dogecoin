@@ -26,3 +26,7 @@ function modules(){
     $modules = Config::get('cmsConfig.modules');
     return $modules;
 }
+
+function configTypes(){
+    return ['file', 'text', 'textarea', 'number'];
+}

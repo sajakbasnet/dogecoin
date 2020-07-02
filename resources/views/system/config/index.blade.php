@@ -90,92 +90,38 @@
                 </div>
             </div><!-- panel -->
 
-            {{--@if(hasPermission(url, 'post'))
-          <div class="panel panel-default">
-            <div class="panel-heading no-bdr">
-              <form method="post" class="form-inline" action="{{ indexUrl }}" enctype="multipart/form-data">
-            {{ csrfField() }}
-            @!component('system.components.form.form-inline-group', input = {
-            name: 'label',
-            label: 'Label',
-            default: old('label'),
-            required: true,
-            error: getErrorFor('label'),
-            }, globalLocale=globalLocale)
+            @if(\ekHelper::hasPermission($indexUrl, 'post'))
+            <div class="panel panel-default">
+                <div class="panel-heading no-bdr">
+                    <form method="post" class="form-inline" action="{{ $indexUrl }}" enctype="multipart/form-data">
+                        @csrf
+                        <x-system.form.form-inline-group :input="['name' => 'label', 'label' => 'Label', 'default' => old('label'), 'required' => true, 'error' => $errors->first('label')]" />
+                        <x-system.form.form-inline-group :input="['name' => 'type', 'label' => 'Type']">
+                            <x-slot name="inputs">
+                                <x-system.form.input-select :input="['name'=>'type', 'label'=>'Type', 'placeholder' => 'Select Type', 'default' => old('type'), 'options' => $items['types'], 'error'=>$errors->first('type')]" />
+                            </x-slot>
+                        </x-system.form.form-inline-group>
 
-            @component('system.components.form.form-inline-group', input = {name: 'type', label: 'Type'}, globalLocale=globalLocale)
-            @slot('input')
-            @!component('system.components.form.input-select', input = {
-            name: 'type',
-            label: 'Type',
-            placeholder: 'Select Type',
-            default: old('type'),
-            options: types,
-            error: getErrorFor('type'),
-            }, globalLocale=globalLocale)
-            @endslot
-            @endcomponent
-
-            <div id="dynamic-field-wrapper" class="d-none">
-                @!component('system.components.form.form-inline-group', input = {
-                name: 'value',
-                id: 'text-value',
-                label: 'Value',
-                groupId: 'text-type',
-                required: true,
-                default: old('value'),
-                }, globalLocale=globalLocale)
-
-                @!component('system.components.form.form-inline-group', input = {
-                name: 'value',
-                id: 'number-value',
-                label: 'Value',
-                type: 'number',
-                groupId: 'number-type',
-                required: true,
-                default: old('value'),
-                }, globalLocale=globalLocale)
-
-                @component('system.components.form.form-inline-group', input = {
-                name: 'value',
-                label: 'Value',
-                groupId: 'textarea-type',
-                }, globalLocale=globalLocale)
-                @slot('input')
-                @!component('system.components.form.textarea', input = {
-                name: 'value',
-                id: 'textarea-value',
-                label: 'Value',
-                rows: 2,
-                required: true,
-                default: old('value'),
-                }, globalLocale=globalLocale)
-                @endslot
-                @endcomponent
-
-                @component('system.components.form.form-inline-group', input = {
-                name: 'value',
-                label: 'Select File',
-                groupId: 'file-type',
-                }, globalLocale=globalLocale)
-                @slot('input')
-                @!component('system.components.form.input-file', input = {
-                name: 'value',
-                id: 'file-value',
-                label: 'Select Image',
-                accept: 'image/*',
-                required: true,
-                }, globalLocale=globalLocale)
-                @endslot
-                @endcomponent
+                        <div id="dynamic-field-wrapper" class="d-none">
+                            <x-system.form.form-inline-group :input="['name'=>'value', 'id' => 'text-value', 'label' => 'Value', 'groupId' => 'text-type', 'required' => true, 'default' => old('value'), 'error' => $errors->first('value')]" />
+                            <x-system.form.form-inline-group :input="['name'=>'value', 'id' => 'number-value', 'label' => 'Value', 'groupId' => 'number-type', 'type'=>'number', 'required' => true, 'default' => old('value'), 'error' => $errors->first('value')]" />
+                            <x-system.form.form-inline-group :input="['name'=>'value', 'label' => 'Select file', 'groupId' => 'file-type']">
+                                <x-slot name="inputs">
+                                    <x-system.form.input-file :input="['name' => 'value', 'id' => 'file-value', 'label' => 'Select Image', 'accept' => 'image/*', 'required' => true, 'error' => $errors->first('value')]" />
+                                </x-slot>
+                            </x-system.form.form-inline-group>
+                            <x-system.form.form-inline-group :input="['name'=>'value', 'label' => 'Value', 'groupId' => 'textarea-type']">
+                                <x-slot name="inputs">
+                                    <x-system.form.text-area :input="['name' => 'value', 'id' => 'textarea-value', 'label' => 'Value', 'rows' => 2, 'required' => true, 'default' => old('value'), 'error' => $errors->first('value')]" />
+                                </x-slot>
+                            </x-system.form.form-inline-group>
+                        </div>
+                        <button class="btn btn-primary" type="submit">{{trans('Save')}}</button>
+                    </form>
+                </div>
             </div>
-
-            <button class="btn btn-primary" type="submit">{{trans('Save')}}</button>
-            </form>
-        </div>
-    </div>
-    @endif--}}
-</div><!-- ends custom-container-fluid -->
-</div><!-- ends inner-content-fluid -->
+            @endif
+        </div><!-- ends custom-container-fluid -->
+    </div><!-- ends inner-content-fluid -->
 </div>
 @endsection
