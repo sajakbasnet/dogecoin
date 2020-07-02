@@ -25,5 +25,6 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX], function () {
         Route::get('/home', 'indexController@index')->name('home');
         Route::resource('/roles', 'user\RoleController');
         Route::resource('/users', 'user\UserController');
+        Route::resource('/configs', 'systemConfig\configController');
     });
 });

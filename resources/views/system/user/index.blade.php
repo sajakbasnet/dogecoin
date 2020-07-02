@@ -1,5 +1,4 @@
 @extends('system.layouts.listing')
-
 @section('header')
 <x-system.search-form :action="$indexUrl">
     <x-slot name="inputs">

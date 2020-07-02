@@ -137,5 +137,48 @@ return  [
                 ],
             ]
         ],
+        [
+            "name" => 'System configs',
+            "icon" => "<i class='fa fa-cogs' aria-hidden='true'></i>",
+            "hasSubmodules" => true,
+            "submodules" => [
+                [
+                    "name" => 'Configs',
+                    "icon" => '<i class="fa fa-cog" aria-hidden="true"></i>',
+                    "route" => '/configs',
+                    "hasSubmodules" => false,
+                    "permissions" => [
+                      [
+                        "name" => 'View Configs',
+                        "route" => [
+                          "url" => '/configs',
+                          "method" => 'get'
+                        ]
+                      ],
+                      [
+                        "name" => 'Create Config',
+                        "route" => [
+                          "url" => '/configs',
+                          "method" => 'post'
+                        ]
+                      ],
+                      [
+                        "name" => 'Edit Config',
+                        "route" => [
+                          "url" => '/configs/*',
+                          "method" => 'put'
+                        ]
+                      ],
+                      [
+                        "name" => 'Delete Config',
+                        "route" => [
+                          "url" => '/configs/*',
+                          "method" => 'delete'
+                        ]
+                      ]
+                    ]
+                  ]
+            ]
+        ],
     ]
 ];
