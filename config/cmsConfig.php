@@ -138,6 +138,49 @@ return  [
             ]
         ],
         [
+            "name" => 'Language Management',
+            "hasSubmodules" => true,
+            "icon" => "<i class='fa fa-language' aria-hidden='true'></i>",
+            "submodules" => [
+              [
+                "name" => 'Languages',
+                "icon" => "<i class='fa fa-language' aria-hidden='true'></i>",
+                "hasSubmodules" => false,
+                "route" => '/languages',
+                "permissions" => [
+                  [
+                    "name" => 'View Languages',
+                    "route" => [
+                      "url" => '/languages',
+                      "method" => 'get'
+                    ]
+                  ],
+                  [
+                    "name" => 'Create Languages',
+                    "route" => [
+                      [
+                        "url" => '/languages/create',
+                        "method" => 'get'
+                      ],
+                      [
+                        "url" => '/languages',
+                        "method" => 'post'
+                      ],
+                    ]
+                  ],
+                  [
+                    "name" => 'Delete Languages',
+                    "route" =>  [
+                      "url" => '/languages/*',
+                      "method" => 'delete'
+                    ],
+                  ]
+                ]
+              ],
+             
+            ]
+          ],
+        [
             "name" => 'System configs',
             "icon" => "<i class='fa fa-cogs' aria-hidden='true'></i>",
             "hasSubmodules" => true,

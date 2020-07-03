@@ -1,5 +1,6 @@
 <?php
 use App\Model\Config as conf;
+use GuzzleHttp\Client;
 
 function authUser(){
     return Auth::user();
@@ -29,4 +30,29 @@ function modules(){
 
 function configTypes(){
     return ['file', 'text', 'textarea', 'number'];
+}
+
+function getCountries()
+{
+    $http = new Client();
+    $response = $http->get('https://restcountries.eu/rest/v2/all');
+    $countries = (\GuzzleHttp\json_decode($response->getBody()->getContents()));
+    return transformCountries($countries);
+}
+
+function transformCountries($countries)
+{
+    $transformedCountries = [];
+    foreach($countries as $key=>$value){
+        $transformedCountries[$key]['name'] = $value->name;
+        $transformedCountries[$key]['alpha_code'] = $value->alpha2Code;
+        $transformedCountries[$key]['alpha_code_3'] = $value->alpha3Code;
+        $transformedCountries[$key]['native_name'] = $value->nativeName;
+        $transformedCountries[$key]['alternate_spellings'] = json_encode($value->altSpellings);
+        $transformedCountries[$key]['calling_codes'] = json_encode($value->callingCodes);
+        $transformedCountries[$key]['currencies'] = json_encode($value->currencies);
+        $transformedCountries[$key]['languages'] = json_encode($value->languages);
+        $transformedCountries[$key]['flag'] = $value->flag;
+    }
+  return $transformedCountries;
 }
