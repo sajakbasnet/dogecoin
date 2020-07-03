@@ -16,8 +16,8 @@
 @endsection
 
 @section('table-data')
-@php $a=$items['items']->perPage() * ($items['items']->currentPage()-1); @endphp
-@foreach($items['items'] as $item)
+@php $a=$items->perPage() * ($items->currentPage()-1); @endphp
+@foreach($items as $item)
 @php $a++ @endphp
 <tr>
   <td>{{$a}}</td>

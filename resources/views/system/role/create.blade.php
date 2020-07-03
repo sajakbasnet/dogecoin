@@ -1,7 +1,4 @@
 @if($module['name'] !== 'Dashboard')
-    @error('permissions')
-    <p class="text-danger">{{trans($message)}}</p>
-    @enderror
   <h4>{{$module['name']}}</h4>
   @if($module['hasSubmodules'])
     @foreach($module['submodules'] as $submodule)

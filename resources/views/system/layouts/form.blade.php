@@ -30,16 +30,16 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 @include('system.partials.message')
-                                <form method="post" action="{{ $indexUrl }}{{isset($items['item']) ? '/'.$items['item']->id : ''}}" enctype="multipart/form-data">
+                                <form method="post" action="{{ $indexUrl }}{{isset($item) ? '/'.$item->id : ''}}" enctype="multipart/form-data">
                                     @csrf
-                                    @if(isset($items['item']))
+                                    @if(isset($item))
                                     @method('PUT')
                                     @endif
                                     @yield('inputs')
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
                                             <button type="submit" class="btn btn-primary">
-                                                {{ !isset($items['item']) ? trans('Create') : trans('Update')}}
+                                                {{ !isset($item) ? trans('Create') : trans('Update')}}
                                             </button>
                                             <a href="{{ $indexUrl }}" class="btn btn-secondary">
                                                 {{ trans('Cancel') }}

@@ -41,8 +41,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $a=$items['items']->perPage() * ($items['items']->currentPage()-1); @endphp
-                                @foreach($items['items'] as $item)
+                                @php $a=$items->perPage() * ($items->currentPage()-1); @endphp
+                                @forelse($items as $item)
                                 @php $a++; @endphp
                                 <tr>
                                     <td>{{$a}}</td>
@@ -82,7 +82,11 @@
                                         @endif
                                     </td>
                                 </tr>
-                                @endforeach
+                                @empty
+                                <tr>
+                                    <td colspan="100%" class="text-center">{{trans('No data available')}}</td>
+                                </tr>
+                                @endforelse
                             </tbody>
                         </table>
                         @include('system.partials.pagination')
@@ -98,7 +102,7 @@
                         <x-system.form.form-inline-group :input="['name' => 'label', 'label' => 'Label', 'default' => old('label'), 'required' => true, 'error' => $errors->first('label')]" />
                         <x-system.form.form-inline-group :input="['name' => 'type', 'label' => 'Type']">
                             <x-slot name="inputs">
-                                <x-system.form.input-select :input="['name'=>'type', 'label'=>'Type', 'placeholder' => 'Select Type', 'default' => old('type'), 'options' => $items['types'], 'error'=>$errors->first('type')]" />
+                                <x-system.form.input-select :input="['name'=>'type', 'label'=>'Type', 'placeholder' => 'Select Type', 'default' => old('type'), 'options' => $types, 'error'=>$errors->first('type')]" />
                             </x-slot>
                         </x-system.form.form-inline-group>
 

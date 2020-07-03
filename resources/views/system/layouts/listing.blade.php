@@ -38,14 +38,14 @@
                             <div class="panel-box">
                                 @include('system.partials.message')
                                 <div class="table-responsive mt-3">
-                                    <table class="table table-striped">
+                                    <table class="table table-striped table-bordered">
                                         <thead>
                                             @yield('table-heading')
                                         </thead>
                                         <tbody>
-                                            @if($items['items']->isEmpty())
+                                            @if($items->isEmpty())
                                             <tr>
-                                                <td colspan="100%" class="text-center">No data available</td>
+                                                <td colspan="100%" class="text-center">{{trans('No data available')}}</td>
                                             </tr>
                                             @else
                                             @yield('table-data')

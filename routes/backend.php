@@ -23,8 +23,8 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX], function () {
 
     Route::group(['middleware' => ['auth', 'permission']], function () {
         Route::get('/home', 'indexController@index')->name('home');
-        Route::resource('/roles', 'user\RoleController');
-        Route::resource('/users', 'user\UserController');
-        Route::resource('/configs', 'systemConfig\configController');
+        Route::resource('/roles', 'user\RoleController', ['except' => ['show']]);
+        Route::resource('/users', 'user\UserController', ['except' => ['show']]);
+        Route::resource('/configs', 'systemConfig\configController', ['except' => ['show']]);
     });
 });

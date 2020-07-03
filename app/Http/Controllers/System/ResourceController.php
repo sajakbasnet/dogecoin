@@ -184,7 +184,7 @@ class ResourceController extends Controller
    */
   public function index(Request $request, $id = "")
   {
-    $data['items'] = $this->service->indexPageData($request);
+    $data = $this->service->indexPageData($request);
     $data['breadcrumbs'] = $this->breadcrumbForIndex();
     $this->setModuleId($id);
     return $this->renderView('index', $data);
@@ -197,7 +197,7 @@ class ResourceController extends Controller
    */
   public function create(Request $request, $id = "")
   {
-    $data['items'] = $this->service->createPageData($request);
+    $data = $this->service->createPageData($request);
     $this->setModuleId($id);
     $data['breadcrumbs'] = $this->breadcrumbForForm('Create');
     return $this->renderView('form', $data);
@@ -220,7 +220,7 @@ class ResourceController extends Controller
    */
   public function edit($id)
   {
-    $data['items'] = $this->service->editPageData($id);
+    $data = $this->service->editPageData($id);
     $this->setModuleId($id);
     $data['breadcrumbs'] = $this->breadcrumbForForm('Edit');
     return $this->renderView('form', $data);

@@ -1,15 +1,15 @@
 @extends('system.layouts.form')
 @section('inputs')
-<x-system.form.form-group :input="[ 'name' => 'name', 'label'=> 'Name', 'required' => true, 'default' => $items['item']->name ?? old('name'), 'error' => $errors->first('name'), 'helpText' => 'tesing help text']" />
-<x-system.form.form-group :input="[ 'name' => 'username', 'label'=> 'Username', 'required' => true, 'default' => $items['item']->username ?? old('username'), 'error' => $errors->first('username')]" />
-<x-system.form.form-group :input="[ 'name' => 'email', 'label'=> 'Email', 'required' => true, 'default' => $items['item']->email ?? old('email'), 'error' => $errors->first('email')]" />
+<x-system.form.form-group :input="[ 'name' => 'name', 'label'=> 'Name', 'required' => true, 'default' => $item->name ?? old('name'), 'error' => $errors->first('name'), 'helpText' => 'tesing help text']" />
+<x-system.form.form-group :input="[ 'name' => 'username', 'label'=> 'Username', 'required' => true, 'default' => $item->username ?? old('username'), 'error' => $errors->first('username')]" />
+<x-system.form.form-group :input="[ 'name' => 'email', 'label'=> 'Email', 'required' => true, 'default' => $item->email ?? old('email'), 'error' => $errors->first('email')]" />
 <x-system.form.form-group :input="[ 'name' => 'role_id', 'label'=> 'Role', 'required' => true]">
   <x-slot name="inputs">
-    <x-system.form.input-select :input="[ 'name' => 'role_id', 'label'=> 'Role', 'required' => true, 'default' => $items['item']->role_id ?? old('role_id') , 'options' => $items['roles'], 'placeholder' => 'Select role', 'error' => $errors->first('role_id')]" />
+    <x-system.form.input-select :input="[ 'name' => 'role_id', 'label'=> 'Role', 'required' => true, 'default' => $item->role_id ?? old('role_id') , 'options' => $roles, 'placeholder' => 'Select role', 'error' => $errors->first('role_id')]" />
   </x-slot>
 </x-system.form.form-group>
 
-@if(!isset($items['item']))
+@if(!isset($item))
 <x-system.form.form-group :input="[ 'name' => 'set_password_status', 'label'=> 'Set Password ?', 'required' => true]">
   <x-slot name="inputs">
     <x-system.form.input-radio :input="[ 'name' => 'set_password_status', 'label'=> 'Set Password', 'required' => true, 
