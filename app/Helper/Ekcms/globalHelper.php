@@ -1,8 +1,10 @@
 <?php
+
 use App\Model\Config as conf;
 use GuzzleHttp\Client;
 
-function authUser(){
+function authUser()
+{
     return Auth::user();
 }
 function getCmsConfig($label)
@@ -14,21 +16,24 @@ function getCmsConfig($label)
     } else $value = $data->value;
     return $value;
 }
-function generateToken($length){
+function generateToken($length)
+{
     return bin2hex(openssl_random_pseudo_bytes($length));
 }
 
 function showInSideBar($check)
-    {
-        return $check;
-    }
+{
+    return $check;
+}
 
-function modules(){
+function modules()
+{
     $modules = Config::get('cmsConfig.modules');
     return $modules;
 }
 
-function configTypes(){
+function configTypes()
+{
     return ['file', 'text', 'textarea', 'number'];
 }
 
@@ -43,7 +48,7 @@ function getCountries()
 function transformCountries($countries)
 {
     $transformedCountries = [];
-    foreach($countries as $key=>$value){
+    foreach ($countries as $key => $value) {
         $transformedCountries[$key]['name'] = $value->name;
         $transformedCountries[$key]['alpha_code'] = $value->alpha2Code;
         $transformedCountries[$key]['alpha_code_3'] = $value->alpha3Code;
@@ -54,5 +59,28 @@ function transformCountries($countries)
         $transformedCountries[$key]['languages'] = json_encode($value->languages);
         $transformedCountries[$key]['flag'] = $value->flag;
     }
-  return $transformedCountries;
+    return $transformedCountries;
+}
+
+function isPermissionSelected($permission, $permissions)
+{
+    $permission = json_decode($permission);
+    $permissions = json_decode($permissions);
+    $check = false;
+    if (!is_array($permission)) {
+        if ($permissions != null) {
+            $exists = in_array($permission, $permissions);
+            if ($exists) $check = true;
+        }
+    } else {
+        $temCheck = false;
+        if ($permissions != null) {
+            foreach ($permission as $perm) {
+                $exists = in_array($perm, $permissions);
+                if ($exists) $temCheck = true;
+            }
+        }
+        $check = $temCheck;
+    }
+    return $check;
 }

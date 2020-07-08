@@ -6,6 +6,9 @@
     @foreach($submodule['permissions'] as $permission)
     <label class="checkbox-inline">
       <input class="permission" type="checkbox" value="{{json_encode($permission['route'], JSON_UNESCAPED_SLASHES)}}" name="permissions[]"
+      @if(isPermissionSelected(json_encode($permission['route'], JSON_UNESCAPED_SLASHES), json_encode($item->permissions, JSON_UNESCAPED_SLASHES)))
+             checked
+             @endif
       @if(in_array(json_encode($permission['route'], JSON_UNESCAPED_SLASHES), old('permissions',[])))
              checked
         @endif> {{$permission['name']}}

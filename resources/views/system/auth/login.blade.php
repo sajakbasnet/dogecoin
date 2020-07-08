@@ -8,7 +8,7 @@
         <div class="login-form">
           <form method="post" action="{{route('login')}}">
             @csrf
-            <div class="form-group login-group">
+            <div class="form-group login-group  @error('email') has-error @enderror">
               <div class="input-group">
                 <input type="email" name="email" class="form-control" placeholder="Email">
                 <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
@@ -18,7 +18,7 @@
                 <p class="invalid-text text-danger">{{trans($message)}}</p>
               @enderror
             </div>
-            <div class="form-group login-group">
+            <div class="form-group login-group @error('password') has-error @enderror">
               <div class="input-group">
                 <input type="Password" name="password" class="form-control" placeholder="Password">
                 <div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></div>
