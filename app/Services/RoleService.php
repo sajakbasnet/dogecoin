@@ -10,7 +10,7 @@ class RoleService extends Service
 {
     public function __construct(Role $role)
     {
-        $this->model = $role;
+        parent::__construct($role);
     }
 
     public function mapPermission($permissions)

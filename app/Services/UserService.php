@@ -18,7 +18,7 @@ class UserService extends Service
 {
     public function __construct(User $user, Role $role)
     {
-        $this->model = $user;
+        parent::__construct($user);
         $this->role = $role;
     }
 

@@ -13,7 +13,7 @@ class ConfigService extends Service
 
     public function __construct(Config $config)
     {
-        $this->model = $config;
+        parent::__construct($config);
     }
 
     public function getAllData($data, $pagination = true)

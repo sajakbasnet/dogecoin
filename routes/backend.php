@@ -21,10 +21,17 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX], function () {
     Route::get('/', 'Auth\LoginController@showLoginForm');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-    Route::group(['middleware' => ['auth', 'permission']], function () {
+    Route::group(['middleware' => ['auth', 'antitwofa']], function () {
+        Route::get('/login/verify', 'Auth\LoginController@showVerifyPage');
+        Route::post('/login/verify', 'Auth\LoginController@verify')->name('post.login.verify');
+        Route::get('/login/send-again', 'Auth\LoginController@sendAgain')->name('login.send.again');
+    });
+
+    Route::group(['middleware' => ['auth', 'permission', 'twofa']], function () {
         Route::get('/home', 'indexController@index')->name('home');
         Route::resource('/roles', 'user\RoleController', ['except' => ['show']]);
         Route::resource('/users', 'user\UserController', ['except' => ['show']]);
+        Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show']]);
         Route::resource('/configs', 'systemConfig\configController', ['except' => ['show']]);
     });
 });
