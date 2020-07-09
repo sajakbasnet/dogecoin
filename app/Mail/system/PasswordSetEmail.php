@@ -17,9 +17,10 @@ class PasswordSetEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($data, $encryptedToken)
     {
         $this->user = $data;
+        $this->token = $encryptedToken;
     }
 
     /**
@@ -31,7 +32,7 @@ class PasswordSetEmail extends Mailable
     {
         $content = $this->parseEmailTemplate([
             '%user_name%' => $this->user->name,
-            '%password_set_link%' => $this->user->getPasswordSetResetLink(true)
+            '%password_set_link%' => $this->user->getPasswordSetResetLink(true, $this->token)
         ], 'PasswordSetLinkEmail');
         return $this->view('system.mail.index', compact('content'));
     }

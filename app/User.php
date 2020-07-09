@@ -43,14 +43,14 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 
-    public function getPasswordSetResetLink($check = false){
+    public function getPasswordSetResetLink($check = false, $token){
         $title = 'Reset Password';
         $key = 'reset-password';
         if($check) {
           $title = 'Set Password';
           $key = 'set-password';
         }
-        return "<a href=".Config::get('constants.URL')."/".Config::get('constants.PREFIX')."/".$key."/".$this->email."/".$this->token.">".$title."</a>";
+        return "<a href=".Config::get('constants.URL')."/".Config::get('constants.PREFIX')."/".$key."/".$this->email."/".$token.">".$title."</a>";
       }
     
 }

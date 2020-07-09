@@ -69,6 +69,9 @@ class Handler extends ExceptionHandler
         if($exception instanceof RoleNotChangeableException){
             return redirect()->back()->withErrors(['alert-danger' => 'This role cannot be changed.']);
         }
+        if($exception instanceof EncryptedPayloadException){
+            return redirect()->back()->withErrors(['alert-danger' => 'Invalid encrypted data']);
+        }
         return parent::render($request, $exception);
     }
 }

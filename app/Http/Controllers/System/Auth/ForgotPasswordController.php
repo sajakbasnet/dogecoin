@@ -43,11 +43,11 @@ class ForgotPasswordController extends Controller
 
     public function sendPasswordResetLink($email){
         $user = $this->user->findByEmail($email);
+        $token = $this->user->generateToken(24);
+        $encryptedToken = encrypt($token);
         $user->update([
-            'token' => $this->user->generateToken(24)
+            'token' => $token
         ]);
-        $user = $this->user->findByEmail($email);
-        Mail::to('prmshzk@gmail.com')->send(new PasswordResetEmail($user));
-
+        Mail::to($user->email)->send(new PasswordResetEmail($user, $encryptedToken));
     }
 }

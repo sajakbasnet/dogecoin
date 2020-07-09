@@ -32,8 +32,10 @@ class RegisteredEmail
     {
         $user = $event->user;
           if (!isset($user->password)) {
-            $user->update(['token' => $this->service->generateToken(24)]);
-            Mail::to($user->email)->send(new PasswordSetEmail($user));
+            $token = $this->service->generateToken(24);
+            $encryptedToken = encrypt($token);
+            $user->update(['token' => $token]);
+            Mail::to($user->email)->send(new PasswordSetEmail($user, $encryptedToken));
         } else {
             Mail::to($user->email)->send(new AccountCreatedEmail($user));
         }

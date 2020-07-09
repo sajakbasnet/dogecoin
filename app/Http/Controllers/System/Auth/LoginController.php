@@ -101,7 +101,7 @@ class LoginController extends Controller
             session()->forget('verification_code');
             $verification_code = \Str::random(4);
             session()->put('verification_code', $verification_code);
-            Mail::to('prmshzk@gmail.com')->send(new TwoFAEmail(authUser()));
+            Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
         }
         return $request->wantsJson()
             ? new Response('', 204)
@@ -119,7 +119,7 @@ class LoginController extends Controller
         $verification_code = \Str::random(4);
         session()->forget('verification_code');
         session()->put('verification_code', $verification_code);
-        Mail::to('prmshzk@gmail.com')->send(new TwoFAEmail(authUser()));
+        Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
         return back()->withErrors(['alert-success' => 'Verification code sent to your email.']);
     }
 

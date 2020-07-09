@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Events\UserCreated;
+use App\Exceptions\EncryptedPayloadException;
+use App\Exceptions\InvalidPayloadException;
 use App\Exceptions\NotDeletableException;
 use App\Exceptions\RoleNotChangeableException;
 use App\Mail\system\AccountCreatedEmail;
@@ -109,7 +111,13 @@ class UserService extends Service
 
     public function findByEmailAndToken($email, $token)
     {
-        $user = $this->model->where('email', $email)->where('token', $token)->first();
+        try{
+            $decryptedToken = decrypt($token);
+        }
+        catch(\Exception $e){
+            throw new EncryptedPayloadException();
+        }
+        $user = $this->model->where('email', $email)->where('token', $decryptedToken)->first();
         if (!isset($user)) throw new ModelNotFoundException;
         return $user;
     }
