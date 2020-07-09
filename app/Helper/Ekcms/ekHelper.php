@@ -27,6 +27,7 @@ class ekHelper
         $permissionIgnoredUrls = Config::get('cmsConfig.permissionGrantedbyDefaultRoutes');
 
         $check = false;
+
         foreach ($permissionIgnoredUrls as $piurl) {
             if (\Str::is($piurl['url'], $url) && $piurl['method'] == $method) {
                 $check = true;
@@ -38,28 +39,35 @@ class ekHelper
             return false;
         }
 
-        // $index = this.role.permissions.findIndex(permission => {
-        //     let urlPattern = pathToRegexp(permission.url, [])
-        //     return urlPattern.test(url) && permission.method == method
-        //   })
-        //   if(index != -1) return true
-        //   return false
+        $permissions = session()->get('role')->permissions;
+
+        foreach ($permissions as $piurl) {
+            if (\Str::is($piurl['url'], $url) && $piurl['method'] == $method) {
+                $check = true;
+            }
+        }
+        if ($check) return true;
+        return false;
+
     }
 
     public static function hasPermissionOnModule($module)
     {
-    $check = false;
-    if(!$module['hasSubmodules']) {
-      $check = self::hasPermission($module['route']);
-    } else {
-      try {
-        foreach($module['submodules'] as $submodule) {
-          $check = self::hasPermission($submodule['route']);
+        $check = false;
+        if (!$module['hasSubmodules']) {
+            $check = self::hasPermission($module['route']);
+        } else {
+            try {
+                foreach ($module['submodules'] as $submodule) {
+                    $check = self::hasPermission($submodule['route']);
+                    if($check == true){
+                    break;
+                    }
+                }
+            } catch (\Exception $e) {
+                return false;
+            }
         }
-      } catch (\Exception $e) {
-          dd($e);
-      }
-    }
-    return $check;
+        return $check;
     }
 }

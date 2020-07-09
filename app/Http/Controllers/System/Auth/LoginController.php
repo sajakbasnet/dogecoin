@@ -73,6 +73,7 @@ class LoginController extends Controller
 
         if ($this->attemptLogin($request)) {
 
+            session()->put('role', authUser()->role);
             return $this->sendLoginResponse($request);
         }
 
@@ -135,6 +136,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->guard()->logout();
+        session()->forget('role');
         $request->session()->invalidate();
         return redirect(PREFIX . '/login')->withErrors(['alert-success' => 'Successfully logged out!']);
     }

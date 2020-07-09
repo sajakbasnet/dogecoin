@@ -52,7 +52,7 @@
                                         @if($item->isFile($item->type))
                                         <img src="{{ asset('uploads/config/'.$item->value) }}" class="img-thumbnail mr-2" alt="{{$item->value}}" style="max-width:100px;">
                                         @else
-                                        {{item.value}}
+                                        {{$item->value}}
                                         @endif
                                         @else
                                         <form method="post" action="{{$indexUrl}}/{{$item->id}}" id="form{{$item->id}}" enctype="multipart/form-data">
