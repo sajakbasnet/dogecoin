@@ -4,8 +4,8 @@ class="form-control {{ (isset($input['error']) && $input['error'] !== "") ? 'is-
     <option value="">{{ trans($input['placeholder']) }}</option>
     @endif
     @if(isset($input['options']))
-    @foreach($input['options'] as $option)
-    <option value="{{ $option['key'] }}" {{ $input['default'] == $option['key'] ? 'selected' : '' }}>{{ $option['value'] }}</option>
+    @foreach($input['options'] as $key=>$value)
+    <option value="{{ $key }}" {{ $input['default'] == $key ? 'selected' : '' }}>{{ $value }}</option>
     @endforeach
     @endif
 </select>

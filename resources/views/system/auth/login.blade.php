@@ -10,7 +10,7 @@
             @csrf
             <div class="form-group login-group  @error('email') has-error @enderror">
               <div class="input-group">
-                <input type="email" name="email" class="form-control" placeholder="Email">
+                <input type="text" name="email" class="form-control" placeholder="Email">
                 <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
 
               </div>

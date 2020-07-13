@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\Config as conf;
+use App\Model\Language;
 use GuzzleHttp\Client;
 
 function authUser()
@@ -84,3 +85,4 @@ function isPermissionSelected($permission, $permissions)
     }
     return $check;
 }
+

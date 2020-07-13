@@ -30,10 +30,9 @@ class ConfigService extends Service
     //config type key value pair
     public function configTypeOptions()
     {
-        $mapped = [];
-        foreach (configTypes() as $key => $config) {
-            $mapped[$key]['key'] = $config;
-            $mapped[$key]['value'] = ucfirst($config);
+        $mapped = array();
+        foreach (configTypes() as $config) {
+            $mapped[$config] = ucfirst($config);
         }
         return $mapped;
     }

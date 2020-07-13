@@ -38,11 +38,10 @@ class UserService extends Service
     }
     public function getRoles()
     {
-        $mapped = [];
+        $mapped = array();
         $roles = $this->role->orderBy('name', 'ASC')->get();
-        foreach($roles as $key=>$role){
-            $mapped[$key]['key'] = $role->id;
-            $mapped[$key]['value'] = $role->name;
+        foreach($roles as $role){
+           $mapped [$role->id] = $role->name;
         }
         return $mapped;
     }

@@ -70,8 +70,9 @@ class LoginController extends Controller
 
             return $this->sendLockoutResponse($request);
         }
+        $user = $this->loginType($request);
 
-        if ($this->attemptLogin($request)) {
+        if (Auth::attempt($user)) {
 
             session()->put('role', authUser()->role);
             return $this->sendLoginResponse($request);
@@ -80,6 +81,21 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+    public function loginType(Request $request)
+    {
+        $login_type = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL)
+            ? 'email'
+            : 'username';
+
+        $request->merge([
+            $login_type => $request->input('email')
+        ]);
+        $user = array(
+            $login_type => $request->get($login_type),
+            'password' => $request->get('password'),
+        );
+        return $user;
     }
     /**
      * Send the response after the user was authenticated.

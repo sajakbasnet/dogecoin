@@ -7,7 +7,7 @@ Route::get('/', function () {
 Route::get(PREFIX, function () {
     return redirect('/' . PREFIX . '/login');
 });
-Route::group(['namespace' => 'system', 'prefix' => PREFIX], function () {
+Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['language']], function () {
 
     Route::get('/login', 'Auth\LoginController@showLoginForm');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
@@ -30,6 +30,7 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX], function () {
         Route::get('/home', 'indexController@index')->name('home');
         Route::resource('/roles', 'user\RoleController', ['except' => ['show']]);
         Route::resource('/users', 'user\UserController', ['except' => ['show']]);
+        Route::resource('/languages', 'language\LanguageController', ['except' => ['show', 'edit', 'update']]);
         Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show']]);
         Route::resource('/configs', 'systemConfig\configController', ['except' => ['show']]);
     });

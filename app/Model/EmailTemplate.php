@@ -13,4 +13,10 @@ class EmailTemplate extends Model
     public function emailTranslations(){
         return $this->hasMany(EmailTemplateTranslation::class, 'email_template_id', 'id');
     }
+
+    public function getContentByLanguage($language_code, $key=null){
+        $translations = $this->emailTranslations->where('language_code', $language_code)->first();
+        if(isset($translations)) return $translations->$key;
+        else return null;
+    }
 }

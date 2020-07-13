@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'permission' => \App\Http\Middleware\Permission::class,
         'twofa' => \App\Http\Middleware\TWOFA::class,
-        'antitwofa' => \App\Http\Middleware\antiTwoFA::class
+        'antitwofa' => \App\Http\Middleware\antiTwoFA::class,
+        'language' =>  \App\Http\Middleware\Language::class
     ];
 }
