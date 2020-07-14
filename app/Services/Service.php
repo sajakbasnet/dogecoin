@@ -19,10 +19,18 @@ class Service
 
     // get all data 
 
-    public function getAllData($data, $pagination=true)
+    public function getAllData($data, $selectedColumns=[], $pagination=true)
     {
         $query = $this->query();
-        return $query->paginate(Config::get('constants.PAGINATION'));
+        if(count($selectedColumns) > 0){
+            $query->select($selectedColumns);
+        }
+        if($pagination){
+            return $query->paginate(Config::get('constants.PAGINATION'));
+        }else{
+            return $query->get();
+        }
+        
     }
 
     // find model by its identifier

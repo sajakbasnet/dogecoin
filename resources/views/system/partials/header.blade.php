@@ -14,15 +14,15 @@
         <ul class="nav nav-pills">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="localeDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{--{{globalLocale}}--}}
+              {{$globalLocale}}
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="localeDropDown">
-              {{--@each(lang in globalLanguages)
-              <a href="/{{prefix}}/languages/set-language?lang={{lang.language_code}}" class="dropdown-item"
-              onclick="setLang(event, '{{lang.language_code}}')">
-              {{lang.name}}
+              @foreach($globalLanguages as $lang)
+              <a href="{{'/'.PREFIX.'/languages/set-language?lang='.$lang->language_code}}" class="dropdown-item"
+              onclick="setLang(event, '{{$lang->language_code}}')">
+              {{$lang->name}} ({{$lang->language_code}})
               </a>
-              @endeach--}}
+              @endforeach
             </div>
           </li>
 

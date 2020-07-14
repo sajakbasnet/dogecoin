@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\system;
 
+use App\Rules\system\checkCountryExist;
 use Illuminate\Foundation\Http\FormRequest;
 
 class languageRequest extends FormRequest
@@ -13,7 +14,7 @@ class languageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,18 @@ class languageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'country_id' => ['required', new checkCountryExist],
+            'language_code' => 'required|unique:languages,language_code',
+            'group' => 'required|in:backend,frontend'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'country_id.required' => 'The country field is required.',
+            'language_code.required' => 'The language field is required.',
+            'language_code.unique' => 'The selected language already exists.',
+
         ];
     }
 }

@@ -20,5 +20,10 @@ class LanguageController extends ResourceController
     {
         return 'system.language';
     }
+
+    public function setLanguage(Request $request){
+        session()->put('lang', $request->lang);
+        return back(); 
+     }
 }
 

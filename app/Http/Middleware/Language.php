@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use App\Services\LanguageService;
 use Closure;
 use Illuminate\Support\Facades\View;
+use Config;
+use Cookie;
 
 class Language
 {
@@ -21,6 +23,12 @@ class Language
     }
     public function handle($request, Closure $next)
     {
+        $locale = Config::get('constants.DEFAULT_LOCALE');
+        if(session()->get('lang') !== null){
+            $locale = session()->get('lang');
+        }
+        View::share('globalLocale', $locale);
+
         $languages = $this->languageService->getBackendLanguages();
         View::share('globalLanguages', $languages);
         

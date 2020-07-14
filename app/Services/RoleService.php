@@ -28,12 +28,15 @@ class RoleService extends Service
         }
         return $mappedPermissions;
     }
-    public function getAllData($data, $pagination = true)
+    public function getAllData($data, $selectedColumns=[], $pagination = true)
     {
         $query = $this->query();
 
         if (isset($data->keyword) && $data->keyword !== null) {
             $query->where('name', 'LIKE', '%' . $data->keyword . '%');
+        }
+        if(count($selectedColumns) > 0){
+            $query->select($selectedColumns);
         }
         if ($pagination) return $query->orderBy('id', 'DESC')->with('users')->paginate(PAGINATE);
         return $query->orderBy('id', 'DESC')->with('users')->get();

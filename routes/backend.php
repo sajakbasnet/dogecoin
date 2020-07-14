@@ -29,9 +29,15 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
     Route::group(['middleware' => ['auth', 'permission', 'twofa']], function () {
         Route::get('/home', 'indexController@index')->name('home');
         Route::resource('/roles', 'user\RoleController', ['except' => ['show']]);
+
         Route::resource('/users', 'user\UserController', ['except' => ['show']]);
+
         Route::resource('/languages', 'language\LanguageController', ['except' => ['show', 'edit', 'update']]);
+        Route::get('/languages/set-language', 'language\LanguageController@setLanguage');
+        Route::get('/country-language/{country_id}', 'countryLanguage\countryLanguageController@getLanguages');
+
         Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show']]);
+        
         Route::resource('/configs', 'systemConfig\configController', ['except' => ['show']]);
     });
 });

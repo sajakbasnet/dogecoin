@@ -16,12 +16,15 @@ class ConfigService extends Service
         parent::__construct($config);
     }
 
-    public function getAllData($data, $pagination = true)
+    public function getAllData($data, $selectedColumns =[],$pagination = true)
     {
         $query = $this->query();
 
         if (isset($data->keyword) && $data->keyword !== null) {
             $query->where('label', 'LIKE', '%' . $data->keyword . '%');
+        }
+        if(count($selectedColumns) > 0){
+            $query->select($selectedColumns);
         }
         if ($pagination) return $query->orderBy('id', 'ASC')->paginate(PAGINATE);
         return $query->orderBy('id', 'ASC')->get();

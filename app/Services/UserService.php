@@ -24,7 +24,7 @@ class UserService extends Service
         $this->role = $role;
     }
 
-    public function getAllData($data, $pagination = true)
+    public function getAllData($data, $selectedColumns=[], $pagination = true)
     {
         $query = $this->query();
         if (isset($data->keyword) && $data->keyword !== null) {
@@ -32,6 +32,9 @@ class UserService extends Service
         }
         if (isset($data->role) && $data->role !== null) {
             $query->where('role_id', $data->role);
+        }
+        if(count($selectedColumns) > 0){
+            $query->select($selectedColumns);
         }
         if ($pagination) return $query->orderBy('id', 'DESC')->with('role')->paginate(PAGINATE);
         return $query->orderBy('id', 'DESC')->with('role')->get();
