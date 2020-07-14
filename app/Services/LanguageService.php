@@ -42,15 +42,6 @@ class LanguageService extends Service
         ];
     }
 
-    public function defaultLanguageGroups()
-    {
-        return
-            [
-                'backend' => 'Backend',
-                'frontend' => 'Frontend',
-            ];
-    }
-
     public function createPageData($data)
     {
         $countries = $this->countryService->getAllData($data, ['id', 'name', 'languages', 'flag'], false);
@@ -83,7 +74,15 @@ class LanguageService extends Service
             if ($language->isDefault()) throw new NotDeletableException();
             return $language->delete();
     }
-
+    
+    public function defaultLanguageGroups()
+    {
+        return
+            [
+                'backend' => 'Backend',
+                'frontend' => 'Frontend',
+            ];
+    }
     public function getBackendLanguages()
     {
         return $this->model->where('group', 'backend')->get();

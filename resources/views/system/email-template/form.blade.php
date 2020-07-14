@@ -21,7 +21,7 @@
         </x-system.form.form-group>
         <x-system.form.form-group :input="['label' => 'Template', 'required' => true,'error' => $errors->first('multilingual.'.$loop->index.'.template')]">
             <x-slot name="inputs">
-                <x-system.form.text-area :input="['name'=>'multilingual['.$loop->index.'][template]', 'label' => 'Template','default' => isset($item) ? $item->getContentByLanguage($lang->language_code, 'template') : old('multilingual['.$loop->index.'][template]'), 'error' => $errors->first('multilingual.'.$loop->index.'.template')]" />
+                <x-system.form.text-area :input="['name'=>'multilingual['.$loop->index.'][template]', 'label' => 'Template', 'editor' => true,'rows'=>10, 'default' => isset($item) ? $item->getContentByLanguage($lang->language_code, 'template') : old('multilingual['.$loop->index.'][template]'), 'error' => $errors->first('multilingual.'.$loop->index.'.template')]" />
             </x-slot>
         </x-system.form.form-group>
     </div>
@@ -38,4 +38,5 @@
         $('#tabControls0tab').tab('show')
     }
 </script>
+@include('system.layouts.editor')
 @endsection

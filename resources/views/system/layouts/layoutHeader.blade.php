@@ -14,3 +14,4 @@
 <link href="{{ asset('compiledCssAndJs/css/system.css')}}" rel="stylesheet" media="screen">
 <link href="{{ asset('toast/jquery.toast.min.css')}}" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/41jra8qtzk5rtwn670i465mbqefbgip8s5j4ut0sfyagfkzp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
