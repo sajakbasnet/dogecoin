@@ -3,7 +3,7 @@
 <div class="login-wrapper">
     <div class="login-inner-wrapper">
         <div class="login-sec">
-            <h1 style="color: #292961;">{{trans('Forgot Password')}}</h1>
+            <h1 style="color:{{getCmsConfig('cms theme color')}}">{{trans('Forgot Password')}}</h1>
              @include('system.partials.message')
             <div class="login-form">
                 <form method="post" action="{{route('post.forgot.password')}}">
@@ -18,7 +18,7 @@
                     <p class="invalid-text text-danger">{{trans($message)}}</p>
                     @enderror
                     <div class="form-group">
-                        <button type="submit" class="btn login-btn btn-block" style="background-color: #292961;">{{trans('Submit')}}</button>
+                        <button type="submit" class="btn login-btn btn-block" style="background-color:{{getCmsConfig('cms theme color')}}">{{trans('Submit')}}</button>
                     </div>
                 </form>
             </div><!-- ends login-form -->

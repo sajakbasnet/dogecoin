@@ -3,7 +3,7 @@
 <div class="login-wrapper">
     <div class="login-inner-wrapper">
         <div class="login-sec">
-            <h1 style="color: #292961;">{{trans($title)}}</h1>
+            <h1 style="color:{{getCmsConfig('cms theme color')}}">{{trans($title)}}</h1>
             <div class="login-form">
                 <form method="post" action="{{url(PREFIX.'/set-password')}}">
                     @csrf
@@ -36,7 +36,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn login-btn btn-block" style="background-color: #292961;">{{trans($title)}}</button>
+                        <button type="submit" class="btn login-btn btn-block" style="background-color: {{getCmsConfig('cms theme color')}}">{{trans($title)}}</button>
                     </div>
                 </form>
             </div><!-- ends login-form -->
