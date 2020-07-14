@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\NotDeletableException;
 use App\Model\Country;
 use App\Model\Language;
 
@@ -75,6 +76,12 @@ class LanguageService extends Service
             'language_code' => $language_code,
             'group' => $request->get('group')
         ]);
+    }
+
+    public function delete($id){
+            $language = $this->itemByIdentifier($id);
+            if ($language->isDefault()) throw new NotDeletableException();
+            return $language->delete();
     }
 
     public function getBackendLanguages()

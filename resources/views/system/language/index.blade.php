@@ -32,7 +32,7 @@
         <span class="badge {{$item->group === 'backend' ? 'badge-primary' : 'badge-info'}}">{{$item->group}}</span>
     </td>
     <td>
-        @if(!$item->isDefault($item->language_code) && \ekHelper::hasPermission($indexUrl.'/'.$item->id, 'delete'))
+        @if(!$item->isDefault() && \ekHelper::hasPermission($indexUrl.'/'.$item->id, 'delete'))
         @include('system.partials.deleteButton')
         @endif
     </td>

@@ -10,9 +10,9 @@ class Language extends Model
         'name', 'language_code', 'group'
     ];
 
-    public function isDefault($language_code)
+    public function isDefault()
     {
-        if(in_array($language_code, ['en', 'ja'])) return true;
+        if(in_array($this->language_code, ['en', 'ja'])) return true;
         else return false;
     }
 }
