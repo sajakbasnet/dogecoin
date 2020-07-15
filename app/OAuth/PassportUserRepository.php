@@ -9,6 +9,7 @@ use League\OAuth2\Server\Entities\ClientEntityInterface;
 use League\OAuth2\Server\Entities\UserEntityInterface;
 use League\OAuth2\Server\Repositories\UserRepositoryInterface;
 use RuntimeException;
+use Config;
 
 class PassportUserRepository implements UserRepositoryInterface
 {
@@ -35,35 +36,39 @@ class PassportUserRepository implements UserRepositoryInterface
      */
     public function getUserEntityByUserCredentials($username, $password, $grantType, ClientEntityInterface $clientEntity)
     {
-        $guard = config('auth.passport.guard'); // obtain current guard name from config
-        $provider = config('auth.guards.'.$guard.'.provider');
-        $userProvider = app('auth')->createUserProvider($provider);
+        $guard = 'frontend-api'; // obtain current guard name from config
+        $provider = Config::get('auth.guards.'.$guard.'.provider');
         
-        if ($userProvider instanceof EloquentUserProvider &&
-            method_exists($model = $userProvider->getModel(), 'findForPassport')) {
+
+        if (is_null($model = config('auth.providers.'.$provider.'.model'))) {
+            throw new RuntimeException('Unable to determine authentication model from configuration.');
+        }
+
+        if (method_exists($model, 'findAndValidateForPassport')) {
+            $user = (new $model)->findAndValidateForPassport($username, $password);
+
+            if (! $user) {
+                return;
+            }
+
+            return new User($user->getAuthIdentifier());
+        }
+
+        if (method_exists($model, 'findForPassport')) {
             $user = (new $model)->findForPassport($username);
         } else {
-            $user = $userProvider->retrieveById($username);
+            $user = (new $model)->where('email', $username)->first();
         }
 
-        if (!$user) {
+        if (! $user) {
+            return;
+        } elseif (method_exists($user, 'validateForPassportPasswordGrant')) {
+            if (! $user->validateForPassportPasswordGrant($password)) {
+                return;
+            }
+        } elseif (! $this->hasher->check($password, $user->getAuthPassword())) {
             return;
         }
-
-        if (method_exists($user, 'validateForPassportPasswordGrant')) {
-            if (!$user->validateForPassportPasswordGrant($password)) {
-                return;
-            }
-        } else {
-            if (!$userProvider->validateCredentials($user, ['password' => $password])) {
-                return;
-            }
-        }
-
-        if ($user instanceof UserEntityInterface) {
-            return $user;
-        }
-
         return new User($user->getAuthIdentifier());
     }
 }

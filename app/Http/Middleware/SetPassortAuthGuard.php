@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Config;
 
 class SetPassortAuthGuard
 {
@@ -15,7 +16,7 @@ class SetPassortAuthGuard
      */
     public function handle($request, Closure $next, $guard = 'api')
     {
-        app('config')->set('auth.passport.guard', $guard);
+        Config::set('auth.passport.guard', $guard);
         return $next($request);
     }
 }

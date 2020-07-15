@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'frontend-api' => [
+            'driver' => 'passport',
+            'provider' => 'frontend_users',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -69,6 +74,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'frontend_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\FrontendUser::class,
         ],
 
         // 'users' => [

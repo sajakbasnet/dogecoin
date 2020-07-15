@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'twofa' => \App\Http\Middleware\TWOFA::class,
         'antitwofa' => \App\Http\Middleware\antiTwoFA::class,
         'language' =>  \App\Http\Middleware\Language::class,
+        'passport' => \App\Http\Middleware\SetPassortAuthGuard::class
     ];
 }

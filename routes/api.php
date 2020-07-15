@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['namespace' => 'frontend', 'prefix' => 'v1'], function () {
+Route::group(['namespace' => 'frontend', 'prefix' => 'v1',  'middleware' => ['passport:frontend-api']], function () {
     Route::post('/login', 'auth\LoginController@login');
+});
+
+Route::group(['namespace' => 'frontend', 'prefix' => 'v1',  'middleware' => ['auth:api']], function(){
+    Route::get('/user', function(){
+        dd(Auth::user());
+    });
 });
