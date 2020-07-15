@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EmailTemplateSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(LanguageSeeder::class);
+        $this->call(FrontendUserSeeder::class);
     }
 }

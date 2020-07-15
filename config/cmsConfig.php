@@ -12,7 +12,7 @@ return  [
       "method" => 'get'
     ],
     [
-      "url" => '/languages/set-language',
+      "url" => '/languages/set-language/*',
       "method" => 'get'
     ],
     [

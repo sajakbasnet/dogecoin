@@ -18,8 +18,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="localeDropDown">
               @foreach($globalLanguages as $lang)
-              <a href="{{'/'.PREFIX.'/languages/set-language?lang='.$lang->language_code}}" class="dropdown-item"
-              onclick="setLang(event, '{{$lang->language_code}}')">
+              <a href="{{route('set.lang', $lang->language_code)}}" class="dropdown-item">
               {{$lang->name}} ({{$lang->language_code}})
               </a>
               @endforeach
@@ -50,12 +49,4 @@
       </div>
     </div>
   </div>
-  <script>
-    function setLang(event, lang) {
-      event.preventDefault()
-      document.cookie = 'username=;'
-      document.cookie = 'lang=' + lang
-      window.location.href = event.target.getAttribute('href')
-    }
-  </script>
 </header>

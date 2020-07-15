@@ -66,6 +66,6 @@ class Kernel extends HttpKernel
         'permission' => \App\Http\Middleware\Permission::class,
         'twofa' => \App\Http\Middleware\TWOFA::class,
         'antitwofa' => \App\Http\Middleware\antiTwoFA::class,
-        'language' =>  \App\Http\Middleware\Language::class
+        'language' =>  \App\Http\Middleware\Language::class,
     ];
 }

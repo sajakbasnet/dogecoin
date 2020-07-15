@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\system\ResourceController;
 use App\Services\LanguageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class LanguageController extends ResourceController
 {
-    public function __construct(LanguageService $languageService){
+    public function __construct(LanguageService $languageService)
+    {
         parent::__construct($languageService, 'App\Http\Requests\system\languageRequest');
     }
-    public function moduleName(){
+    public function moduleName()
+    {
         return 'languages';
     }
 
@@ -21,9 +24,11 @@ class LanguageController extends ResourceController
         return 'system.language';
     }
 
-    public function setLanguage(Request $request){
-        session()->put('lang', $request->lang);
-        return back(); 
-     }
+    public function setLanguage($lang)
+    {
+        Cookie::queue(Cookie::forget('lang'));
+        Cookie::queue(Cookie::make('lang', $lang));
+        session()->put('lang', $lang);
+        return back();
+    }
 }
-
