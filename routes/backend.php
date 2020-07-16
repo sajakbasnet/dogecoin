@@ -36,7 +36,7 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::get('/languages/set-language/{lang}', 'language\LanguageController@setLanguage')->name('set.lang');
         Route::get('/country-language/{country_id}', 'countryLanguage\countryLanguageController@getLanguages');
 
-        Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show', 'create', 'store']]);
+        Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show']]);
         
         Route::resource('/configs', 'systemConfig\configController', ['except' => ['show']]);
     });
