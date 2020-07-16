@@ -198,19 +198,6 @@ return  [
               ]
             ],
             [
-              "name" => 'Create Email Templates',
-              "route" => [
-                [
-                  "url" => '/email-templates/create',
-                  "method" => 'get'
-                ],
-                [
-                  "url" => '/email-templates',
-                  "method" => 'post'
-                ]
-              ]
-            ],
-            [
               "name" => 'Edit Email Templates',
               "route" => [
                 [

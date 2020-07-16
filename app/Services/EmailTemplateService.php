@@ -45,7 +45,7 @@ class EmailTemplateService extends Service
     {
         $emailTemplate = $this->itemByIdentifier($id);
         $emailTemplate->emailTranslations()->delete();
-        $emailTemplate = $this->model->update($this->parseRequest($request));
+        $emailTemplate = $emailTemplate->update($this->parseRequest($request));
         $emailTemplate = $this->itemByIdentifier($id);
         $emailTemplate->emailTranslations()->createMany($request->get('multilingual'));
         return $emailTemplate;
@@ -53,6 +53,6 @@ class EmailTemplateService extends Service
 
     public function parseRequest($request)
     {
-        return $request->only('title', 'code', 'from');
+        return $request->only('title', 'from');
     }
 }

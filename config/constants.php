@@ -15,6 +15,6 @@ return [
         ]
     ],
     "FROM_MAIL" => env('MAIL_FROM_ADDRESS', 'info@ekbana.com'),
-    "FROM_NAME" => env('FROM_NAME', 'Ekbana'),
+    "FROM_NAME" => env('MAIL_FROM_NAME', 'Ekbana'),
     'DEFAULT_LOCALE' => env('DEFAULT_LOCALE', 'en')
 ];

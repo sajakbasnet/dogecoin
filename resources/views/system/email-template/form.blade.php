@@ -1,7 +1,7 @@
 @extends('system.layouts.form')
 @section('inputs')
 <x-system.form.form-group :input="[ 'name' => 'title', 'label' => 'Title', 'required' => true, 'default' => $item->title ?? old('title'), 'error' => $errors->first('title')]" />
-<x-system.form.form-group :input="[ 'name' => 'code', 'label' => 'Code', 'required' => true, 'default' => $item->code ?? old('code'), 'error' => $errors->first('code')]" />
+<x-system.form.form-group :input="[ 'name' => 'code', 'label' => 'Code', 'required' => true, 'default' => $item->code ?? old('code'),'readonly'=>true, 'error' => $errors->first('code')]" />
 <x-system.form.form-group :input="[ 'name' => 'from', 'label' => 'From Email', 'required' => true, 'default' => $item->from ?? old('from'), 'error' => $errors->first('from')]" />
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     @foreach($globalLanguages as $lang)

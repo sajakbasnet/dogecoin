@@ -21,7 +21,7 @@ trait Mail
             }
             $message_body = $translation->template;
             $this->subject($translation->subject);
-            $this->from($message->from ?? Config::get('constants.FROM_MAIL'));
+            $this->from($message->from ?? Config::get('constants.FROM_MAIL'), Config::get('constants.FROM_NAME'));
             $content = str_replace($replace, $with, $message_body);
             return $content;
         }

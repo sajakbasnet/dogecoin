@@ -23,7 +23,7 @@
                                 </div><!-- ends head-title -->
                             </div>
                             <div class="col-6">
-                                @if(\ekHelper::hasPermission($indexUrl.'/create'))
+                                @if(\ekHelper::hasPermission($indexUrl.'/create') && routeExists($indexUrl.'/create'))
                                 <a class="btn btn-primary pull-right btn-sm" id="addNew" href="{{$indexUrl}}/create">
                                     <i class="fa fa-plus"></i> {{trans('Add New')}}
                                 </a>

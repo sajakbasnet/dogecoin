@@ -8,7 +8,7 @@
             <div class="login-form">
                 <form method="post" action="{{route('post.forgot.password')}}">
                     @csrf
-                    <div class="form-group login-group">
+                    <div class="form-group login-group @error('email') has-error @enderror">
                         <div class="input-group">
                             <input type="text" name="email" class="form-control" placeholder="Email" value="{{old('email')}}">
                             <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>

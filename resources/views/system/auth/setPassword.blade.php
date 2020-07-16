@@ -8,7 +8,7 @@
                 <form method="post" action="{{url(PREFIX.'/set-password')}}">
                     @csrf
                     <input type="hidden" name="token" value="{{$token}}">
-                    <div class="form-group login-group">
+                    <div class="form-group login-group @error('email') has-error @enderror">
                         <div class="input-group">
                             <input type="text" name="email" class="form-control" placeholder="Username" value="{{$email}}" readonly>
                             <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
@@ -17,7 +17,7 @@
                         <p class="invalid-text text-danger">{{trans($message)}}</p>
                         @enderror
                     </div>
-                    <div class="form-group login-group">
+                    <div class="form-group login-group @error('password') has-error @enderror">
                         <div class="input-group">
                             <input type="Password" name="password" class="form-control" placeholder="Password">
                             <div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -26,7 +26,7 @@
                         <p class="invalid-text text-danger">{{trans($message)}}</p>
                         @enderror
                     </div>
-                    <div class="form-group login-group">
+                    <div class="form-group login-group @error('password_confirmation') has-error @enderror">
                         <div class="input-group">
                             <input type="Password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
                             <div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></div>

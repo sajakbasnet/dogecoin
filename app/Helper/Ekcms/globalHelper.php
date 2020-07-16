@@ -3,6 +3,7 @@
 use App\Model\Config as conf;
 use App\Model\Language;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Route;
 
 function authUser()
 {
@@ -86,3 +87,17 @@ function isPermissionSelected($permission, $permissions)
     return $check;
 }
 
+function routeExists($route){
+    $slugs  = [];
+    $routes = Route::getRoutes();
+
+    foreach ($routes as $route)
+    {
+        $slugs[] = $route->uri();
+    }
+
+    if(in_array($route,array_unique($slugs)))
+        return true;
+    
+    else return false;
+}
