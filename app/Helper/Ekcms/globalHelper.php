@@ -87,17 +87,16 @@ function isPermissionSelected($permission, $permissions)
     return $check;
 }
 
-function routeExists($route){
+function routeExists($route)
+{
     $slugs  = [];
     $routes = Route::getRoutes();
 
-    foreach ($routes as $route)
-    {
-        $slugs[] = $route->uri();
+    foreach ($routes as $route) {
+        $slugs[] = '/' . $route->uri();
     }
-
-    if(in_array($route,array_unique($slugs)))
+    if (in_array('"/administrator/users/create"', array_unique($slugs)))
         return true;
-    
+
     else return false;
 }

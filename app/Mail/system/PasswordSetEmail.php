@@ -7,6 +7,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Cookie;
+
 
 class PasswordSetEmail extends Mailable
 {
@@ -21,6 +23,8 @@ class PasswordSetEmail extends Mailable
     {
         $this->user = $data;
         $this->token = $encryptedToken;
+        $this->locale = Cookie::get('lang');
+
     }
 
     /**
@@ -33,7 +37,7 @@ class PasswordSetEmail extends Mailable
         $content = $this->parseEmailTemplate([
             '%user_name%' => $this->user->name,
             '%password_set_link%' => $this->user->getPasswordSetResetLink(true, $this->token)
-        ], 'PasswordSetLinkEmail');
+        ], 'PasswordSetLinkEmail', $this->locale);
         return $this->view('system.mail.index', compact('content'));
     }
 }

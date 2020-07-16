@@ -16,7 +16,13 @@ class EmailTemplate extends Model
 
     public function getContentByLanguage($language_code, $key=null){
         $translations = $this->emailTranslations->where('language_code', $language_code)->first();
-        if(isset($translations)) return $translations->$key;
+        if(isset($translations)){
+            if($key != null){
+                return $translations->$key;
+            }else{
+                return $translations;
+            }
+        } 
         else return null;
     }
 }

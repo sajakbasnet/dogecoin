@@ -7,21 +7,24 @@ use Config;
 
 trait Mail
 {
-    public function parseEmailTemplate($data, $emailCode)
+    public function parseEmailTemplate($data, $emailCode, $locale="en")
     {
         $replace = [];
         $with = [];
 
         if (isset($data)) {
-            $message = EmailTemplate::where('code', $emailCode)->first();
-            $translation = $message->emailTranslations->where('language_code', 'en')->first();
+            $emailTemplate = EmailTemplate::where('code', $emailCode)->with('emailTranslations')->first();
+            $translation = $emailTemplate->getContentByLanguage($locale);
+            if($translation == null) {
+                $translation = $emailTemplate->getContentByLanguage('en');
+              }
             foreach ($data as $key => $value) {
                 array_push($replace, $key);
                 array_push($with, $value);
             }
             $message_body = $translation->template;
             $this->subject($translation->subject);
-            $this->from($message->from ?? Config::get('constants.FROM_MAIL'), Config::get('constants.FROM_NAME'));
+            $this->from($emailTemplate->from ?? Config::get('constants.FROM_MAIL'), Config::get('constants.FROM_NAME'));
             $content = str_replace($replace, $with, $message_body);
             return $content;
         }
