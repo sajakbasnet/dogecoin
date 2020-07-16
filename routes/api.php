@@ -27,3 +27,5 @@ Route::group(['namespace' => 'frontend', 'prefix' => 'v1',  'middleware' => ['au
         dd(Auth::user());
     });
 });
+
+Route::post('v1/test', 'frontend\TestController@store');
