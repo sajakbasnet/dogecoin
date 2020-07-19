@@ -18,8 +18,11 @@ return  [
     [
       "url" => '/miscellaneous/scrap',
       "method" => 'get'
+    ],
+    [
+      "url" => '/profile',
+      "method" => 'get'
     ]
-
   ],
 
   // All the routes are accessible by super user by default
@@ -137,48 +140,105 @@ return  [
       ]
     ],
     [
-        "name" => 'Language Management',
-        "hasSubmodules" => true,
-        "icon" => "<i class='fa fa-language' aria-hidden='true'></i>",
-        "submodules" => [
-          [
-            "name" => 'Languages',
-            "icon" => "<i class='fa fa-language' aria-hidden='true'></i>",
-            "hasSubmodules" => false,
-            "route" => '/languages',
-            "permissions" => [
-              [
-                "name" => 'View Languages',
-                "route" => [
-                  "url" => '/languages',
+      "name" => 'Language Management',
+      "hasSubmodules" => true,
+      "icon" => "<i class='fa fa-language' aria-hidden='true'></i>",
+      "submodules" => [
+        [
+          "name" => 'Languages',
+          "icon" => "<i class='fa fa-language' aria-hidden='true'></i>",
+          "hasSubmodules" => false,
+          "route" => '/languages',
+          "permissions" => [
+            [
+              "name" => 'View Languages',
+              "route" => [
+                "url" => '/languages',
+                "method" => 'get'
+              ]
+            ],
+            [
+              "name" => 'Create Languages',
+              "route" => [
+                [
+                  "url" => '/languages/create',
                   "method" => 'get'
-                ]
-              ],
-              [
-                "name" => 'Create Languages',
-                "route" => [
-                  [
-                    "url" => '/languages/create',
-                    "method" => 'get'
-                  ],
-                  [
-                    "url" => '/languages',
-                    "method" => 'post'
-                  ],
-                ]
-              ],
-              [
-                "name" => 'Delete Languages',
-                "route" =>  [
-                  "url" => '/languages/*',
-                  "method" => 'delete'
+                ],
+                [
+                  "url" => '/languages',
+                  "method" => 'post'
                 ],
               ]
+            ],
+            [
+              "name" => 'Delete Languages',
+              "route" =>  [
+                "url" => '/languages/*',
+                "method" => 'delete'
+              ],
             ]
-          ],
-
+          ]
+        ],
+        [
+          "name"=> 'Translations',
+          "icon"=> "<i class='fa fa-globe' aria-hidden='true'></i>",
+          "hasSubmodules"=> false,
+          "route"=> '/translations',
+          "permissions"=> [
+            [
+              "name"=> 'View Translations',
+              "route"=> [
+                "url"=> '/translations',
+                "method"=> 'get'
+              ]
+            ],
+            [
+              "name"=> 'Create Translations',
+              "route"=>  [
+                "url"=> '/translations',
+                "method"=> 'post'
+              ]
+            ],
+            [
+              "name"=> 'Edit Translations',
+              "route"=> [
+                  "url"=> '/translations/*',
+                  "method"=> 'put'
+                ]
+            ],
+            [
+              "name"=> 'Delete Translations',
+              "route"=> [
+                "url"=> '/translations/*',
+                "method"=> 'delete'
+              ]
+            ],
+            [
+              "name"=> 'Download Sample',
+              "route"=>  [
+                "url"=> '/translations/download-sample',
+                "method"=> 'get'
+              ],
+            ],
+            [
+              "name"=> 'Download Excel',
+              "route"=>  [
+                "url"=> '/translations/download/*',
+                "method"=> 'get'
+              ],
+            ],
+            [
+              "name"=> 'Upload Excel',
+              "route"=>  [
+                "url"=> '/translations/upload',
+                "method"=> 'post'
+              ],
+            ]
+          ]
         ]
-      ],
+
+      ]
+    ],
     [
       "name" => 'System configs',
       "icon" => "<i class='fa fa-cogs' aria-hidden='true'></i>",
@@ -256,6 +316,6 @@ return  [
           ]
         ]
       ]
-    ],
+    ]
   ]
 ];

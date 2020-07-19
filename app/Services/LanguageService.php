@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Exceptions\NotDeletableException;
-use App\Model\Country;
 use App\Model\Language;
 
 class LanguageService extends Service
@@ -30,8 +29,8 @@ class LanguageService extends Service
         if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
         }
-        if ($pagination) return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
-        return $query->orderBy('id', 'DESC')->get();
+        if ($pagination) return $query->orderBy('id', 'ASC')->paginate(PAGINATE);
+        return $query->orderBy('id', 'ASC')->get();
     }
 
     public function indexPageData($data)
@@ -69,12 +68,13 @@ class LanguageService extends Service
         ]);
     }
 
-    public function delete($id){
-            $language = $this->itemByIdentifier($id);
-            if ($language->isDefault()) throw new NotDeletableException();
-            return $language->delete();
+    public function delete($id)
+    {
+        $language = $this->itemByIdentifier($id);
+        if ($language->isDefault()) throw new NotDeletableException();
+        return $language->delete();
     }
-    
+
     public function defaultLanguageGroups()
     {
         return
@@ -83,6 +83,14 @@ class LanguageService extends Service
                 'frontend' => 'Frontend',
             ];
     }
+    public function getKeyValuePair($languages, $key = 'language_code', $value = 'name') {
+        $options = array();
+        forEach($languages as $language){
+            $options[$language[$key]] = $language[$value];
+        }
+        return $options;
+      }
+    
     public function getBackendLanguages()
     {
         return $this->model->where('group', 'backend')->get();

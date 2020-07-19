@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\system;
 
+use App\Rules\system\checkOldPassword;
 use Illuminate\Foundation\Http\FormRequest;
 
-class setResetRequest extends FormRequest
+class profileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +25,9 @@ class setResetRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
+            'old_password' => ['required', new checkOldPassword],
             'password' => 'required|confirmed|min:6',
-            'password_confirmation' => 'required',
+            'password_confirmation' => 'required'
         ];
     }
 }

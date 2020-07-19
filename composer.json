@@ -17,7 +17,8 @@
         "laravel/passport": "^9.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "league/fractal": "^0.19.2"
+        "league/fractal": "^0.19.2",
+        "spatie/laravel-translation-loader": "^2.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
@@ -47,7 +48,8 @@
         ],
         "files": [
             "app/Helper/Ekcms/ekHelper.php",
-            "app/Helper/Ekcms/globalHelper.php"
+            "app/Helper/Ekcms/globalHelper.php",
+            "app/Helper/Ekcms/translationhelper.php"
         ]
     },
     "autoload-dev": {

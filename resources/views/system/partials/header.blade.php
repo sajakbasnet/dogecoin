@@ -27,7 +27,7 @@
 
           <li class="nav-item dropdown header-user">
             <a class="nav-link dropdown-toggle" href="#" id="userDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img class="header-avatar js-lazy-loaded" src="{{asset('images/avatar.jpg')}}" width="23" height="23">
+              <img class="header-avatar js-lazy-loaded" src="{{asset('images/avatar.png')}}" width="23" height="23">
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDown">
               <div class="li-user dropdown-item">
@@ -35,8 +35,7 @@
                 <p>{{Auth::user()->username}}({{Auth::user()->role->name}})</p>
               </div>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+              <a class="dropdown-item" href="{{ route('profile') }}">
                 {{ trans('Profile') }}
               </a>
               <div class="dropdown-divider"></div>

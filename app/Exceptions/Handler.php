@@ -72,6 +72,9 @@ class Handler extends ExceptionHandler
         if($exception instanceof EncryptedPayloadException){
             return redirect()->back()->withErrors(['alert-danger' => 'Invalid encrypted data']);
         }
+        if($exception instanceof UnauthorizedException){
+            return redirect()->back()->withErrors(['alert-danger' => 'Unauthorized action performed.']);
+        }
         return parent::render($request, $exception);
     }
 }

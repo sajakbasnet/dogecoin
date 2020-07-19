@@ -33,7 +33,7 @@ class userRequest extends FormRequest
 
         if ($request->set_password_status == 1) {
             $data = array_merge($data, [
-                'password' => 'required|confirmed',
+                'password' => 'required|confirmed|min:6',
                 'password_confirmation' => 'required'
             ]);
         }

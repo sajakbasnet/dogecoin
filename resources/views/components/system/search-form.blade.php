@@ -3,7 +3,7 @@
     <div class="form-row align-items-center">
         {{$inputs}}
         <div class="form-row align-items-center">
-            <button class="btn btn-primary mb-2 ml-2" type="submit">{{trans('Search')}}</button>
+            <button class="btn btn-primary mb-2 ml-2" type="submit">{{translate('Search')}}</button>
         </div>
     </div>
 </form>

@@ -62,9 +62,9 @@ class Service
 
     //update record
 
-    public function update($id, $data)
+    public function update($id, $request)
     {
-        $data = $data->except('_token');
+        $data = $request->except('_token');
         $update = $this->itemByIdentifier($id);
         return $update->fill($data)->save();
     }

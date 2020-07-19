@@ -4,7 +4,7 @@ namespace App\Http\Requests\system;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class setResetRequest extends FormRequest
+class translationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class setResetRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required|confirmed|min:6',
-            'password_confirmation' => 'required',
+            'group' => 'in:backend,frontend'
         ];
     }
 }
