@@ -4,7 +4,7 @@ use App\Model\Language;
 use Illuminate\Support\Facades\Cache;
 use Spatie\TranslationLoader\LanguageLine;
 
-function translate($content, $group = "backend", $data=[])
+function translate($content, $data=[], $group = "backend")
 {
     $key = trim(strtolower($content));
     $check = LanguageLine::where('key', $key)->where('group', $group)->exists();

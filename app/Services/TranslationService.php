@@ -32,7 +32,6 @@ class TranslationService extends Service
     }
     public function indexPageData($data)
     {
-        // dd(trans('hello :name test', ['name'=>'pramesh karmacharya']));
         $languages = $this->languageService->getAllData($data->only('group'), ['name', 'language_code'], false);
         return [
             'items' => $this->getAllData($data),
