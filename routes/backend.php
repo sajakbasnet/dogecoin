@@ -40,8 +40,7 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::get('/languages/set-language/{lang}', 'language\LanguageController@setLanguage')->name('set.lang');
         Route::get('/country-language/{country_id}', 'countryLanguage\countryLanguageController@getLanguages');
 
-        Route::resource('/translations', 'language\TranslationController', ['except' => ['show', 'edit', 'update']]);
-
+        Route::resource('/translations', 'language\TranslationController', ['except' => ['show', 'edit', 'create']]);
 
         Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show']]);
         

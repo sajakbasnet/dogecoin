@@ -24,4 +24,20 @@ class TranslationController extends ResourceController
     {
         return 'system.translation';
     }
+
+    public function update($id)
+    {
+        $request = app()->make($this->request);
+        $data = $this->service->itemByIdentifier($id);
+        $currentTextArray = $data->text;
+        if(in_array($request->locale, array_keys($currentTextArray))){
+            unset($currentTextArray[$request->locale]);
+            $updatedTextArray = array_merge($currentTextArray, [$request->locale => $request->text]);
+            $data->update(['group'=>$request->group,'text' => $updatedTextArray]);
+        }else{
+            $updatedTextArray = array_merge($currentTextArray, [$request->locale => $request->text]);
+            $data->update(['group'=>$request->group,'text' => $updatedTextArray]);
+        }
+        return response()->json(["OK" => "OK"],200);
+    }
 }

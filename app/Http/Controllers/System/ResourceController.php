@@ -212,7 +212,7 @@ class ResourceController extends Controller
   {
     $request = app()->make($this->request);
     $store = $this->service->store($request);
-    $this->setModuleId($store->id);
+    $this->setModuleId($store->id??"");
     return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
   }
 
@@ -232,11 +232,11 @@ class ResourceController extends Controller
    * Update resource details.
    * PUT or PATCH resources/:id
    */
-    public function update($id="") {
+    public function update($id) {
       
       $request = app()->make($this->request);
       $this->service->update($id, $request);
-      $this->setModuleId($id);
+      $this->setModuleId($id??"");
       return redirect($this->getUrl())->withErrors(['success'=>'Successfully updated.']);
     }
 

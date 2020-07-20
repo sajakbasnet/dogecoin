@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Model\Language;
 use Spatie\TranslationLoader\LanguageLine;
 
 class TranslationService extends Service
@@ -42,26 +43,38 @@ class TranslationService extends Service
     public function store($request)
     {
         $key = strtolower($request->key);
-        $check = $this->model::where('key', $key)->first();
-        if (!isset($check)) {
-            return $this->model::create([
-                'group' => $request->group,
-                'key' => $key,
-                'text' => inserttext($key, $request->group),
-            ]);
-        }
-        return $check;
+        if($key !== ""){
+            $check = $this->model::where('key', $key)->where('group', $request->group)->first();
+            if (!isset($check)) {
+                return $this->model::create([
+                    'group' => $request->group,
+                    'key' => $key,
+                    'text' => $this->inserttext($key, $request->group),
+                ]);
+            }
+        }else return true;
     }
 
-
-
-    function inserttext($content, $group)
+    public function inserttext($content, $group)
     {
-        $languages = $this->languageService->where('group', $group)->orderBy('group', 'ASC')->pluck('language_code');
+        $languages = Language::where('group', $group)->orderBy('group', 'ASC')->pluck('language_code');
         $text = array();
         foreach ($languages as $language) {
             $text[$language] = $content;
         }
         return $text;
     }
+
+    public function update($id, $request)
+    {
+        
+    }
+
+    public function delete($id)
+    {
+        $item = $this->itemByIdentifier($id);
+        return $item->delete();
+    }
+
+
 }

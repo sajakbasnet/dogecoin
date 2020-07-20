@@ -3,6 +3,7 @@
 namespace App\Http\Requests\system;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class translationRequest extends FormRequest
 {
@@ -21,7 +22,7 @@ class translationRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
             'group' => 'in:backend,frontend'

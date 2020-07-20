@@ -6,7 +6,7 @@ use Spatie\TranslationLoader\LanguageLine;
 function translate($content, $group = "backend")
 {
     $key = strtolower($content);
-    $check = LanguageLine::where('key', $key)->exists();
+    $check = LanguageLine::where('key', $key)->where('group', $group)->exists();
     if ($check) {
         return trans($group . '.' . $key);
     } else {

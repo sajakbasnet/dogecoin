@@ -57,9 +57,7 @@
                                     <td>{{$item->key}}</td>
                                     <td>
                                         @if(\ekhelper::hasPermission($indexUrl.'/'.$item->id, 'put'))
-                                        <form action="">
-                                            <textarea name="text" class="form-control translation-content" rows="1">{{$item->text[Request::get('locale')] ?? $item->text['en']}}</textarea>
-                                        </form>
+                                            <textarea name="text" class="form-control translation-content" rows="1" data-href="{{url('/'.PREFIX.'/translations/'.$item->id)}}" data-group="{{Request::get('group') ?? 'backend'}}" data-locale="{{Request::get('locale') ?? 'en'}}">{{$item->text[Request::get('locale')] ?? $item->text['en']}}</textarea>
                                         @else
                                         {{$item->text[Request::get('locale')] ?? $item->text['en']}}
                                         @endif

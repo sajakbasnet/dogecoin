@@ -23,8 +23,11 @@ class LanguageService extends Service
         }
         if (isset($data->group) && $data->group !== null) {
             $query->where('group', $data->group);
-        } else {
+        } elseif(isset($data['group'])) {
+            $query->where('group', $data['group']);
+        }else{
             $query->where('group', 'backend');
+
         }
         if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);

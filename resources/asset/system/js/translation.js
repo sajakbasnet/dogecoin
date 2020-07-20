@@ -52,7 +52,6 @@ const languageSelector = (function () {
 
 const translation = (function () {
   const $content = $('.translation-content')
-  const csrfToken = getCSRFToken()
 
   const init = () => {
     registerEventListeners()
@@ -63,16 +62,21 @@ const translation = (function () {
   }
 
   const handleContentChange = function () {
-    updateText($(this).val(), $(this).data('href'))
+    const group = $(this).data('group');
+    const locale = $(this).data('locale');
+    updateText($(this).val(), $(this).data('href'), group, locale)
   }
 
-  const updateText = (value, url) => {
+  const updateText = (value, url, group, locale) => {
+    const $csrfToken = $('meta[name="csrf"]').attr('content');
     $.ajax({
       url,
-      type: 'POST',
+      type: 'PUT',
       data: {
         text: value,
-        _csrf: csrfToken,
+        group : group,
+        locale : locale,
+        _token: $csrfToken,
       },
       success: () => {
         $.toast({
