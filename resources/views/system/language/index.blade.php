@@ -14,10 +14,10 @@
 
 @section('table-heading')
 <tr>
-    <th>{{trans('S.N')}}</th>
-    <th>{{trans('Language')}}</th>
-    <th>{{trans('Group')}}</th>
-    <th>{{trans('Action')}}</th>
+    <th>{{translate('S.N')}}</th>
+    <th>{{translate('Language')}}</th>
+    <th>{{translate('Group')}}</th>
+    <th>{{translate('Action')}}</th>
 </tr>
 @endsection
 

@@ -10,10 +10,10 @@
 
 @section('table-heading')
 <tr>
-    <th>{{trans('S.N')}}</th>
-    <th>{{trans('Title')}}</th>
-    <th>{{trans('Code')}}</th>
-    <th>{{trans('Action')}}</th>
+    <th>{{translate('S.N')}}</th>
+    <th>{{translate('Title')}}</th>
+    <th>{{translate('Code')}}</th>
+    <th>{{translate('Action')}}</th>
 </tr>
 @endsection
 

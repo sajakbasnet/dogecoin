@@ -4,7 +4,7 @@
 <x-system.form.form-group :input="['name'=> 'permissions', 'label'=>'Permissions', 'required' => 'true']">
   <x-slot name="inputs">
     @error('permissions')
-    <p class="text-danger">{{trans($message)}}</p>
+    <p class="text-danger">{{translate($message)}}</p>
     @enderror
     @foreach(modules() as $module)
     @if(isset($item))

@@ -3,7 +3,7 @@
 <div class="login-wrapper">
     <div class="login-inner-wrapper">
         <div class="login-sec">
-            <h1 style="color:{{getCmsConfig('cms theme color')}}">{{trans($title)}}</h1>
+            <h1 style="color:{{getCmsConfig('cms theme color')}}">{{translate($title)}}</h1>
             <div class="login-form">
                 <form method="post" action="{{url(PREFIX.'/set-password')}}">
                     @csrf
@@ -14,7 +14,7 @@
                             <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
                         </div>
                         @error('email')
-                        <p class="invalid-text text-danger">{{trans($message)}}</p>
+                        <p class="invalid-text text-danger">{{translate($message)}}</p>
                         @enderror
                     </div>
                     <div class="form-group login-group @error('password') has-error @enderror">
@@ -23,7 +23,7 @@
                             <div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></div>
                         </div>
                         @error('password')
-                        <p class="invalid-text text-danger">{{trans($message)}}</p>
+                        <p class="invalid-text text-danger">{{translate($message)}}</p>
                         @enderror
                     </div>
                     <div class="form-group login-group @error('password_confirmation') has-error @enderror">
@@ -32,11 +32,11 @@
                             <div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></div>
                         </div>
                         @error('password_confirmation')
-                        <p class="invalid-text text-danger">{{trans($message)}}</p>
+                        <p class="invalid-text text-danger">{{translate($message)}}</p>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn login-btn btn-block" style="background-color: {{getCmsConfig('cms theme color')}}">{{trans($title)}}</button>
+                        <button type="submit" class="btn login-btn btn-block" style="background-color: {{getCmsConfig('cms theme color')}}">{{translate($title)}}</button>
                     </div>
                 </form>
             </div><!-- ends login-form -->

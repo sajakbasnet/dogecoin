@@ -3,7 +3,7 @@
 <div class="login-wrapper">
   <div class="login-inner-wrapper">
     <div class="login-sec">
-      <h1 style="color:{{ getCmsConfig('cms theme color')}}">{{trans('Login')}}</h1>
+      <h1 style="color:{{ getCmsConfig('cms theme color')}}">{{translate('Login')}}</h1>
       @include('system.partials.message')
       <div class="login-form">
         <form method="post" action="{{route('login')}}">
@@ -15,7 +15,7 @@
 
             </div>
             @error('email')
-            <p class="invalid-text text-danger">{{trans($message)}}</p>
+            <p class="invalid-text text-danger">{{translate($message)}}</p>
             @enderror
           </div>
           <div class="form-group login-group @error('password') has-error @enderror">
@@ -25,15 +25,15 @@
 
             </div>
             @error('password')
-            <p class="invalid-text text-danger">{{trans($message)}}</p>
+            <p class="invalid-text text-danger">{{translate($message)}}</p>
             @enderror
           </div>
           <h2>You are current using IP - <strong>{{Request::ip()}}</strong></h2>
           <div class="form-group">
-            <button type="submit" class="btn login-btn btn-block" style="background-color:{{getCmsConfig('cms theme color')}}">{{trans('Login')}}</button>
+            <button type="submit" class="btn login-btn btn-block" style="background-color:{{getCmsConfig('cms theme color')}}">{{translate('Login')}}</button>
           </div>
           <div class="form-group text-center">
-            <a href="{{route('forgot.password')}}">{{trans('Forgot Password ?')}}</a>
+            <a href="{{route('forgot.password')}}">{{translate('Forgot Password ?')}}</a>
           </div>
         </form>
       </div><!-- ends login-form -->

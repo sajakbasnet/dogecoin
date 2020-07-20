@@ -2,7 +2,7 @@
 class="form-control {{ (isset($input['error']) && $input['error'] !== "") ? 'is-invalid' : '' }}" {{ (isset($input['disabled']) && $input['disabled'] !== "") ? 'disabled' : '' }}
  {{ isset($input['multiple']) ? 'multiple' : '' }} data-prefix="{{PREFIX}}">
     @if(isset($input['placeholder']))
-    <option value="">{{ trans($input['placeholder']) }}</option>
+    <option value="">{{ translate($input['placeholder']) }}</option>
     @endif
     @if(isset($input['options']))
     @foreach($input['options'] as $key=>$value)
@@ -11,6 +11,6 @@ class="form-control {{ (isset($input['error']) && $input['error'] !== "") ? 'is-
     @endif
 </select>
 @if(isset($input['helpText']))
-<small class="form-text text-muted">{{ trans($input['helpText']) ?? '' }}</small>
+<small class="form-text text-muted">{{ translate($input['helpText']) ?? '' }}</small>
 @endif
-@if(isset($input['error']))<div class="invalid-feedback">{{ trans($input['error']) }}</div>@endif
+@if(isset($input['error']))<div class="invalid-feedback">{{ translate($input['error']) }}</div>@endif

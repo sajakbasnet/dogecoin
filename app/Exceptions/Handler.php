@@ -53,11 +53,11 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         if($exception instanceof PermissionDeniedException){
-            $title = trans('Permission Denied');
+            $title = translate('Permission Denied');
             return response()->view('system.errors.permissionDenied', ['title' => $title], 401);
         }
         if($exception instanceof NotFoundHttpException){
-            $title = trans('Not Found');
+            $title = translate('Not Found');
             return response()->view('system.errors.pageNotFound', ['title' => $title], 404);
         }
         if($exception instanceof ModelNotFoundException){

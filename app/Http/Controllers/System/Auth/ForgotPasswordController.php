@@ -30,7 +30,7 @@ class ForgotPasswordController extends Controller
     }
     public function showRequestForm()
     {
-        $title = trans('Forgot-password');
+        $title = translate('Forgot-password');
         return view('system.auth.forgotPassword', compact('title'));
     }
 

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xs-3">
                     <div class="head-title">
-                        <h4>{{ $title }}</h4>
+                        <h4>{{ translate($title) }}</h4>
                     </div><!-- ends head-title -->
                 </div>
             </div>
@@ -34,10 +34,10 @@
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="width: 5px;">{{trans('S.N')}}</th>
-                                    <th>{{trans('Label')}}</th>
-                                    <th>{{trans('Value')}}</th>
-                                    <th style="width: 15px;">{{trans('Action')}}</th>
+                                    <th style="width: 5px;">{{translate('S.N')}}</th>
+                                    <th>{{translate('Label')}}</th>
+                                    <th>{{translate('Value')}}</th>
+                                    <th style="width: 10%;">{{translate('Action')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,7 +66,7 @@
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" name="value" id="customFile{{$item->id}}" onchange="submit()" accept="image/*">
                                                     <label class="custom-file-label" for="customFile{{$item->id}}">
-                                                        {{ trans('Choose file') }}
+                                                        {{ translate('Choose file') }}
                                                     </label>
                                                 </div>
                                             </div>
@@ -84,7 +84,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="100%" class="text-center">{{trans('No data available')}}</td>
+                                    <td colspan="100%" class="text-center">{{translate('No data available')}}</td>
                                 </tr>
                                 @endforelse
                             </tbody>
@@ -120,7 +120,7 @@
                                 </x-slot>
                             </x-system.form.form-inline-group>
                         </div>
-                        <button class="btn btn-primary" type="submit">{{trans('Save')}}</button>
+                        <button class="btn btn-primary" type="submit">{{translate('Save')}}</button>
                     </form>
                 </div>
             </div>

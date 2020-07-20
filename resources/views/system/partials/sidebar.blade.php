@@ -6,7 +6,7 @@
       @if($module['hasSubmodules'])
       <li class="panel">
         <a data-toggle="collapse" data-parent="#accordion" href="#sidenav{{$loop->index}}" class="arw collapsed">
-          {!! $module['icon'] ?? ''!!}<span class="span-link">{{trans($module['name'])}}</span>
+          {!! $module['icon'] ?? ''!!}<span class="span-link">{{translate($module['name'])}}</span>
         </a>
         <ul id="sidenav{{$loop->index}}" class="collapse">
           <li><a href="#"></a></li>
@@ -14,7 +14,7 @@
           @if(\ekHelper::hasPermission($subModule['route'], 'get'))
           <li>
             <a href="/{{PREFIX.$subModule['route']}}">
-              {!! $subModule['icon'] ?? ''!!} <span class="span-link">{{trans($subModule['name'])}}</span>
+              {!! $subModule['icon'] ?? ''!!} <span class="span-link">{{translate($subModule['name'])}}</span>
             </a>
           </li>
           @endif
@@ -25,7 +25,7 @@
       <li>
         @if(\ekHelper::hasPermission($module['route'], 'get'))
         <a href="/{{PREFIX.$module['route']}}">
-          {!! $module['icon'] ?? ''!!}<span class="span-link">{{trans($module['name'])}}</span>
+          {!! $module['icon'] ?? ''!!}<span class="span-link">{{translate($module['name'])}}</span>
         </a>
         @endif
       </li>
@@ -34,7 +34,7 @@
       @endforeach
     </ul>
     <a class="toggle-button" role="button" title="Toggle sidebar" type="button">
-      <span>{{trans('Collapse Sidebar')}}</span>
+      <span>{{translate('Collapse Sidebar')}}</span>
     </a>
   </div><!-- ends inner-navbar -->
 </div><!-- ends nav-sidebar -->

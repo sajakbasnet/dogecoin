@@ -2,7 +2,7 @@
 @section('header')
 <x-system.search-form :action="$indexUrl">
     <x-slot name="inputs">
-        <x-system.form.form-inline-group :input="['name' => 'keyword', 'label' => 'Search keyword', 'default' => Request::get('keyword')]" />
+        <x-system.form.form-inline-group :input="['name' => 'keyword', 'label' => translate('Search keyword'), 'default' => Request::get('keyword')]" />
         <x-system.form.form-inline-group :input="['name' => 'role', 'label' => 'Role']">
             <x-slot name="inputs">
                 <x-system.form.input-select :input="['name' => 'role', 'placeholder' => 'Select role', 'options' => $roles, 'default' => Request::get('role')]"/>
@@ -14,10 +14,10 @@
 
 @section('table-heading')
 <tr>
-    <th>{{trans('S.N')}}</th>
-    <th>{{trans('Name')}}</th>
-    <th>{{trans('Role')}}</th>
-    <th>{{trans('Action')}}</th>
+    <th>{{translate('S.N')}}</th>
+    <th>{{translate('Name')}}</th>
+    <th>{{translate('Role')}}</th>
+    <th>{{translate('Action')}}</th>
 </tr>
 @endsection
 

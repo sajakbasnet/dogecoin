@@ -39,10 +39,10 @@
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
                                             <button type="submit" class="btn btn-primary">
-                                                {{ !isset($item) ? trans('Create') : trans('Update')}}
+                                                {{ !isset($item) ? translate('Create') : translate('Update')}}
                                             </button>
                                             <a href="{{ $indexUrl }}" class="btn btn-secondary">
-                                                {{ trans('Cancel') }}
+                                                {{ translate('Cancel') }}
                                             </a>
                                         </div>
                                     </div>

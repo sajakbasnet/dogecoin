@@ -1,8 +1,8 @@
 <input type="{{ $input['type'] ?? 'text' }}" class="form-control {{ (isset($input['error']) && $input['error'] !== "") ? 'is-invalid' : '' }} {{ isset($input['class']) ? $input['class'] : '' }}"
-value="{{$input['default'] ?? ''}}" id="{{$input['id'] ?? $input['name']}}" placeholder="{{ trans($input['placeholder'] ?? $input['label'] ?? '') }}" name="{{$input['name'] ?? ''}}"
+value="{{$input['default'] ?? ''}}" id="{{$input['id'] ?? $input['name']}}" placeholder="{{ translate($input['placeholder'] ?? $input['label'] ?? '') }}" name="{{$input['name'] ?? ''}}"
 {{isset($input['disabled']) ? 'disabled' : ''}} {{ isset($input['readonly']) ? 'readonly' : '' }} {{isset($input['min']) ? 'min='.$input['min'] : ''}}>
 @if(isset($input['helpText']))
-  <small class="form-text text-muted">{{ trans($input['helpText']) ?? '' }}</small>
+  <small class="form-text text-muted">{{ translate($input['helpText']) ?? '' }}</small>
 @endif
-@if(isset($input['error']))<div class="invalid-feedback">{{ trans($input['error']) }}</div>@endif
+@if(isset($input['error']))<div class="invalid-feedback">{{ translate($input['error']) }}</div>@endif
 

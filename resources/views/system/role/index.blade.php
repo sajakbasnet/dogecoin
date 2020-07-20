@@ -9,9 +9,9 @@
 
 @section('table-heading')
 <tr>
-  <th>{{trans('S.N')}}</th>
-  <th>{{trans('Name')}}</th>
-  <th>{{trans('Action')}}</th>
+  <th>{{translate('S.N')}}</th>
+  <th>{{translate('Name')}}</th>
+  <th>{{translate('Action')}}</th>
 </tr>
 @endsection
 

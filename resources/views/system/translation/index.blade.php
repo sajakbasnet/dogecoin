@@ -38,14 +38,14 @@
             </div>
             <div class="panel">
                 <div class="panel-box">
-                    <div class="table-responsive">
-                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <div class="table-responsive mt-3">
+                        <table id="example" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="width: 5px;">{{trans('S.N')}}</th>
+                                    <th style="width: 5px;">{{translate('S.N')}}</th>
                                     <th>{{translate('Item')}}</th>
                                     <th>{{translate('Text')}}</th>
-                                    <th style="width: 15px;">{{translate('Action')}}</th>
+                                    <th style="width: 10%;">{{translate('Action')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,7 +57,7 @@
                                     <td>{{$item->key}}</td>
                                     <td>
                                         @if(\ekhelper::hasPermission($indexUrl.'/'.$item->id, 'put'))
-                                            <textarea name="text" class="form-control translation-content" rows="1" data-href="{{url('/'.PREFIX.'/translations/'.$item->id)}}" data-group="{{Request::get('group') ?? 'backend'}}" data-locale="{{Request::get('locale') ?? 'en'}}">{{$item->text[Request::get('locale')] ?? $item->text['en']}}</textarea>
+                                        <textarea name="text" class="form-control translation-content" rows="1" data-href="{{url('/'.PREFIX.'/translations/'.$item->id)}}" data-group="{{Request::get('group') ?? 'backend'}}" data-locale="{{Request::get('locale') ?? 'en'}}">{{$item->text[Request::get('locale')] ?? $item->text['en']}}</textarea>
                                         @else
                                         {{$item->text[Request::get('locale')] ?? $item->text['en']}}
                                         @endif
@@ -88,7 +88,7 @@
                             @csrf
                             <input type="hidden" name="group" value="{{ Request::get('group') ?? 'backend' }}" />
                             <x-system.form.form-inline-group :input="['name' => 'key','label' => 'Item', 'required' => true]" />
-                            <button class="btn btn-primary" type="submit">{{trans('Save')}}</button>
+                            <button class="btn btn-primary" type="submit">{{translate('Save')}}</button>
                         </div>
                     </form>
                 </div>

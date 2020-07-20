@@ -97,8 +97,8 @@ class ResourceController extends Controller
   public static function breadcrumbBase()
   {
     return [
-      "title" => 'Dashboard',
-      "link" =>  '/' . PREFIX . '/home',
+      "title" => translate('dashboard'),
+      "link" =>  '/' . PREFIX . '/'.translate('home'),
     ];
   }
 

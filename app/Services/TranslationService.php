@@ -42,7 +42,7 @@ class TranslationService extends Service
 
     public function store($request)
     {
-        $key = strtolower($request->key);
+        $key = trim(strtolower($request->key));
         if($key !== ""){
             $check = $this->model::where('key', $key)->where('group', $request->group)->first();
             if (!isset($check)) {

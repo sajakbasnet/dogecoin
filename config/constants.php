@@ -4,7 +4,6 @@ return [
     "APP_DOMAIN" => env('APP_DOMAIN'),
     "APP_PROTOCOL" => env('APP_PROTOCOL', 'https'),
     "PREFIX" => env('PREFIX', 'system'),
-    "PAGINATION" => env('PAGINATION',  25),
     "TWOFA" => env('TWOFA', 1),
     "META" =>  ['meta' => [
         "copyright" => "Copyright 2020 E.K. Solutions Pvt. Ltd.",

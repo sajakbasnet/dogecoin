@@ -24,20 +24,20 @@
       <div class="modal-content">
         @csrf
         <div class="modal-header">
-          <h4 class="modal-title">{{trans('Confirm Delete')}}</h4>
+          <h4 class="modal-title">{{translate('Confirm Delete')}}</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          {{trans('Are you sure you want to delete?')}}
+          {{translate('Are you sure you want to delete?')}}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-            <i class="glyph-icon icon-close"></i> {{trans('Cancel')}}
+            <i class="glyph-icon icon-close"></i> {{translate('Cancel')}}
           </button>
           <button type="submit" class="btn btn-sm btn-danger" id="confirmDelete">
-            <i class="glyph-icon icon-trash"></i> {{trans('Delete')}}
+            <i class="glyph-icon icon-trash"></i> {{translate('Delete')}}
           </button>
         </div>
       </div>
