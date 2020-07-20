@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="head-title">
-                        <h4>{{ translate($title) }}</h4>
+                        <h4>{{translate($title)}}</h4>
                     </div><!-- ends head-title -->
                 </div>
             </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\system;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Spatie\TranslationLoader\LanguageLine;
 
 class ResourceController extends Controller
 {
@@ -97,7 +99,7 @@ class ResourceController extends Controller
   public static function breadcrumbBase()
   {
     return [
-      "title" => translate('dashboard'),
+      "title" => 'Dashboard',
       "link" =>  '/' . PREFIX . '/'.translate('home'),
     ];
   }
