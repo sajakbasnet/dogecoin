@@ -38,6 +38,14 @@ class TranslationController extends ResourceController
             $updatedTextArray = array_merge($currentTextArray, [$request->locale => $request->text]);
             $data->update(['group'=>$request->group,'text' => $updatedTextArray]);
         }
-        return response()->json(["OK" => "OK"],200);
+        return response()->json(["status" => "OK"],200);
+    }
+
+    public function downloadSample(){
+
+    }
+
+    public function downloadExcel(){
+        
     }
 }

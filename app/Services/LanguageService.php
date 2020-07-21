@@ -32,7 +32,7 @@ class LanguageService extends Service
         if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
         }
-        if ($pagination) return $query->orderBy('id', 'ASC')->paginate(2);
+        if ($pagination) return $query->orderBy('id', 'ASC')->paginate(PAGINATE);
         return $query->orderBy('id', 'ASC')->get();
     }
 

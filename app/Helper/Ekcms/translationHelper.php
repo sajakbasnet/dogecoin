@@ -2,23 +2,31 @@
 
 use App\Model\Language;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
 use Spatie\TranslationLoader\LanguageLine;
 
 function translate($content, $data=[], $group = "backend")
 {
     $key = trim(strtolower($content));
-    $check = LanguageLine::where('key', $key)->where('group', $group)->exists();
-    if ($check) {
-        return trans($group . '.' . $key, $data);
-    } else {
-        if ($key !== "") {
-            LanguageLine::create([
-                'group' => $group,
-                'key' => $key,
-                'text' => inserttext($content, $group),
-            ]);
+    $translations = array_keys(LanguageLine::getTranslationsForGroup(Cookie::get('lang') ?? 'en', $group));
+    if(!in_array($key, $translations)){
+        $check = LanguageLine::where('key', $key)->where('group', $group)->exists();
+        if ($check) {
+            return trans($group . '.' . $key, $data);
+        } else {
+            if ($key !== "") {
+                LanguageLine::create([
+                    'group' => $group,
+                    'key' => $key,
+                    'text' => inserttext($content, $group),
+                ]);
+            return $content;
+            }
         }
+    }else{
+        return trans($group . '.' . $key, $data);
     }
+    
     return $content;
 }
 

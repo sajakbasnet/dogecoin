@@ -230,7 +230,7 @@ return  [
             [
               "name"=> 'Upload Excel',
               "route"=>  [
-                "url"=> '/translations/upload',
+                "url"=> '/translations/upload/*',
                 "method"=> 'post'
               ],
             ]

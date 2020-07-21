@@ -9,6 +9,19 @@
                         <h4>{{translate($title)}}</h4>
                     </div><!-- ends head-title -->
                 </div>
+                <div class="col-sm-9">
+                    @if(\ekHelper::hasPermission($indexUrl.'/download-sample'))
+                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" href="{{$indexUrl.'/download-sample'}}" style="margin-right:3px">{{translate('Download Sample')}}</a>
+                    @endif
+                    @if(\ekHelper::hasPermission($indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))))
+                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" 
+                    href="{{$indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))}}" style="margin-right:3px; margin-left:3px">{{translate('Download excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
+                    @endif
+                    @if(\ekHelper::hasPermission($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')), 'post'))
+                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" href="{{$indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group'))}}"
+                    style="margin-right:3px; margin-left:3px">{{translate('Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
+                    @endif
+                </div>
             </div>
         </div>
         <div class="content-display clearfix">
@@ -31,11 +44,7 @@
                     </x-system.search-form>
                 </div>
             </div><!-- panel -->
-            <div class="panel">
-                <div class="panel-box">
-                    @include('system.partials.message')
-                </div>
-            </div>
+
             <div class="panel">
                 <div class="panel-box">
                     <div class="table-responsive mt-3">

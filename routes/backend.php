@@ -41,6 +41,9 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::get('/country-language/{country_id}', 'countryLanguage\countryLanguageController@getLanguages');
 
         Route::resource('/translations', 'language\TranslationController', ['except' => ['show', 'edit', 'create']]);
+        Route::get('/translations/download-sample', 'language\TranslationController@downloadSample');
+        Route::get('/translations/download/{group}', 'language\TranslationController@downloadExcel');
+        Route::post('/translations/upload/{group}', 'language\TranslationController@uploadExcel');
 
         Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show']]);
         
