@@ -67,7 +67,17 @@ class TranslationService extends Service
 
     public function update($id, $request)
     {
-        
+        $data = $this->itemByIdentifier($id);
+        $currentTextArray = $data->text;
+        if(in_array($request->locale, array_keys($currentTextArray))){
+            unset($currentTextArray[$request->locale]);
+            $updatedTextArray = array_merge($currentTextArray, [$request->locale => $request->text]);
+            $data->update(['group'=>$request->group,'text' => $updatedTextArray]);
+        }else{
+            $updatedTextArray = array_merge($currentTextArray, [$request->locale => $request->text]);
+            $data->update(['group'=>$request->group,'text' => $updatedTextArray]);
+        }
+        return $data;
     }
 
     public function delete($id)

@@ -14,12 +14,27 @@
                     <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" href="{{$indexUrl.'/download-sample'}}" style="margin-right:3px">{{translate('Download Sample')}}</a>
                     @endif
                     @if(\ekHelper::hasPermission($indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))))
-                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" 
-                    href="{{$indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))}}" style="margin-right:3px; margin-left:3px">{{translate('Download excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
+                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" href="{{$indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))}}" style="margin-right:3px; margin-left:3px">{{translate('Download excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
                     @endif
+
                     @if(\ekHelper::hasPermission($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')), 'post'))
-                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" href="{{$indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group'))}}"
-                    style="margin-right:3px; margin-left:3px">{{translate('Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
+                    <x-system.general-modal 
+                    :url="$indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group'))"
+                    :modalTitle="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" 
+                    :modalId="'uploadExcelModal'"
+                    :modalTriggerButton="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" 
+                    :buttonClass="(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend') ? 'btn-info' : 'btn-primary'"
+                    :submitButtonTitle="'Upload'">
+                    <x-slot name="body">
+                    @include('system.partials.errors')
+                    <div class="form-group">
+                        <label for="name" class="col-sm-3 control-label">{{trans('Excel File')}}</label>
+                        <div class="col-sm-6">
+                        <input type="file" name="excel_file" class="form-control" accept=".xlsx">
+                        </div>
+                    </div>
+                    </x-slot>
+                    </x-system.general-modal>
                     @endif
                 </div>
             </div>
@@ -44,6 +59,11 @@
                     </x-system.search-form>
                 </div>
             </div><!-- panel -->
+            <div class="panel">
+                <div class="panel-box">
+                    @include('system.partials.message')
+                </div>
+            </div>
 
             <div class="panel">
                 <div class="panel-box">
@@ -106,4 +126,12 @@
         </div><!-- ends custom-container-fluid -->
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    let error = `{{ $errors->first('excel_file')}}`
+    if(error !== ""){
+        $('#uploadExcelModal').modal('show')
+    }
+</script>
 @endsection

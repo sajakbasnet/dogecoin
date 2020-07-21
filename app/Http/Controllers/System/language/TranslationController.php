@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\system\language;
 
-use App\Http\Controllers\Controller;
+use App\Exports\TranslationExport;
 use App\Http\Controllers\system\ResourceController;
-use App\Http\Requests\system\translationRequest;
+use App\Http\Requests\system\uploadExcel;
+use App\Imports\TranslationImport;
 use App\Services\TranslationService;
 use Illuminate\Http\Request;
+use Spatie\TranslationLoader\LanguageLine;
 
 class TranslationController extends ResourceController
 {
@@ -28,24 +30,32 @@ class TranslationController extends ResourceController
     public function update($id)
     {
         $request = app()->make($this->request);
-        $data = $this->service->itemByIdentifier($id);
-        $currentTextArray = $data->text;
-        if(in_array($request->locale, array_keys($currentTextArray))){
-            unset($currentTextArray[$request->locale]);
-            $updatedTextArray = array_merge($currentTextArray, [$request->locale => $request->text]);
-            $data->update(['group'=>$request->group,'text' => $updatedTextArray]);
-        }else{
-            $updatedTextArray = array_merge($currentTextArray, [$request->locale => $request->text]);
-            $data->update(['group'=>$request->group,'text' => $updatedTextArray]);
-        }
+        $this->service->update($id, $request);
         return response()->json(["status" => "OK"],200);
     }
 
     public function downloadSample(){
-
+        $file_path = public_path('sampleTranslation/sample.xls');
+        return response()->download($file_path);
     }
 
-    public function downloadExcel(){
-        
+    public function downloadExcel(Request $request, $group){
+        return \Excel::download(new TranslationExport($group), 'sample.xls');
+    }
+
+
+
+
+
+
+    public function uploadExcel(uploadExcel $request){
+        $file = $request->excel_file;
+        $fileExtension = $file->getClientOriginalExtension();
+        if (!in_array($fileExtension, ['xlsx', 'xls'])) {
+			return back()->withErrors(['alert-danger' => 'The file type must be xls or xlsx!']);
+        }
+        $contents = \Excel::import(new TranslationImport, $file);
+        $uploadedData = $contents->toArray($contents, $file);
+        dd($uploadedData);
     }
 }
