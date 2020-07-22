@@ -61,11 +61,7 @@ class TranslationController extends ResourceController
         try {
             $contents = \Excel::import(new TranslationImport($group), $file);
             $uploadedData = $contents->toArray($contents, $file);
-
-            if($uploadedData[0][0][0] !== "key" || $uploadedData[0][0][0] !== "key"){
-                return back()->withErrors(['alert-danger' => 'Invalid file content']);
-            }
-
+            
             if (count($uploadedData[0]) <= 1) {
                 return back()->withErrors(['alert-danger' => 'The file does not contain any translation content']);
             }

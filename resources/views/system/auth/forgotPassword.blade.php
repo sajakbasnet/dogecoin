@@ -4,7 +4,7 @@
     <div class="login-inner-wrapper">
         <div class="login-sec">
             <h1 style="color:{{getCmsConfig('cms theme color')}}">{{translate('Forgot Password')}}</h1>
-             @include('system.partials.message')
+            @include('system.partials.message')
             <div class="login-form">
                 <form method="post" action="{{route('post.forgot.password')}}">
                     @csrf

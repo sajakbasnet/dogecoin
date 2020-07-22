@@ -12,13 +12,13 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
     Route::get('/login', 'Auth\LoginController@showLoginForm');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::get('forgot-password', 'Auth\ForgotPasswordController@showRequestForm')->name('forgot.password');
-    Route::post('forgot-password', 'Auth\ForgotPasswordController@handleForgotPassword')->name('post.forgot.password');
+    Route::post('forgot-password', 'Auth\ForgotPasswordController@handleForgotPassword')->name('post.forgot.password'); //->middleware('throttle:5,1');
     Route::get('/reset-password/{email}/{token}', 'Auth\ResetPasswordController@showSetResetForm')->name('reset.password');
     Route::post('/reset-password', 'Auth\ResetPasswordController@handleSetResetPassword');
     Route::get('/set-password/{email}/{token}', 'Auth\ResetPasswordController@showSetResetForm')->name('set.password');
     Route::post('/set-password', 'Auth\ResetPasswordController@handleSetResetPassword');
     Route::get('/', 'Auth\LoginController@showLoginForm');
-    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
     Route::group(['middleware' => ['auth', 'antitwofa']], function () {
         Route::get('/login/verify', 'Auth\LoginController@showVerifyPage');
