@@ -1,7 +1,7 @@
 @props(['url', 'modalTitle', 'modalId', 'buttonClass', 'submitButtonTitle', 'csrf', 'modalTriggerButton'])
 
 <button type="button" class="btn {{$buttonClass}} pull-right mb-2" data-toggle="modal" data-target="#{{$modalId}}">
-  {{$modalTriggerButton}}
+  {{translate($modalTriggerButton)}}
 </button>
 
 <!-- Modal -->
@@ -11,7 +11,7 @@
       <div class="modal-content">
         @csrf
         <div class="modal-header">
-          <h5 class="modal-title" id="{{ $modalId }}">{{trans($modalTitle)}}</h5>
+          <h5 class="modal-title" id="{{ $modalId }}">{{translate($modalTitle)}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -20,8 +20,8 @@
           {{$body}}
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('Close')}}</button>
-          <button type="submit" class="btn {{$buttonClass}}">{{trans($submitButtonTitle)}}</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">{{translate('Close')}}</button>
+          <button type="submit" class="btn {{$buttonClass}}">{{translate($submitButtonTitle)}}</button>
         </div>
       </div>
     </form>

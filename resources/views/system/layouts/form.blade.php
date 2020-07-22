@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-9">
                                 <div class="head-title">
-                                    <h4>{{ $title }}</h4>
+                                    <h4>{{ translate($title) }}</h4>
                                 </div><!-- ends head-title -->
                             </div>
                         </div>

@@ -5,11 +5,11 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Spatie\TranslationLoader\LanguageLine;
 
-function translate($content, $data=[], $group = "backend")
+function translate($content, $data = [], $group = "backend")
 {
-    $key = trim(strtolower($content));
+    $key = strtolower(trim($content));
     $translations = array_keys(LanguageLine::getTranslationsForGroup(Cookie::get('lang') ?? 'en', $group));
-    if(!in_array($key, $translations)){
+    if (!in_array($key, $translations)) {
         $check = LanguageLine::where('key', $key)->where('group', $group)->exists();
         if ($check) {
             return trans($group . '.' . $key, $data);
@@ -20,14 +20,12 @@ function translate($content, $data=[], $group = "backend")
                     'key' => $key,
                     'text' => inserttext($content, $group),
                 ]);
-            return $content;
+                return $content;
             }
         }
-    }else{
+    } else {
         return trans($group . '.' . $key, $data);
     }
-    
-    return $content;
 }
 
 function inserttext($content, $group)

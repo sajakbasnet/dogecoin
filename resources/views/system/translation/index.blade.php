@@ -28,7 +28,7 @@
                     <x-slot name="body">
                     @include('system.partials.errors')
                     <div class="form-group">
-                        <label for="name" class="col-sm-3 control-label">{{trans('Excel File')}}</label>
+                        <label for="name" class="col-sm-3 control-label">{{translate('Excel File')}}</label>
                         <div class="col-sm-6">
                         <input type="file" name="excel_file" class="form-control" accept=".xls">
                         </div>
