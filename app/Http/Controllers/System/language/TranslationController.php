@@ -6,6 +6,7 @@ use App\Exports\TranslationExport;
 use App\Http\Controllers\system\ResourceController;
 use App\Http\Requests\system\uploadExcel;
 use App\Imports\TranslationImport;
+use App\Model\Language;
 use App\Services\TranslationService;
 use Illuminate\Http\Request;
 use Spatie\TranslationLoader\LanguageLine;
@@ -31,28 +32,95 @@ class TranslationController extends ResourceController
     {
         $request = app()->make($this->request);
         $this->service->update($id, $request);
-        return response()->json(["status" => "OK"],200);
+        return response()->json(["status" => "OK"], 200);
     }
 
-    public function downloadSample(){
+    public function downloadSample()
+    {
         $file_path = public_path('sampleTranslation/sample.xls');
         return response()->download($file_path);
     }
 
-    public function downloadExcel(Request $request, $group){
-        if($group == "frontend") $filename = "frontend.xls";
+    public function downloadExcel(Request $request, $group)
+    {
+        if ($group == "frontend") $filename = "frontend.xls";
         else $filename = "backend.xls";
         return \Excel::download(new TranslationExport($group), $filename);
     }
 
-    public function uploadExcel(uploadExcel $request){
+    public function uploadExcel(uploadExcel $request, $group)
+    {
         $file = $request->excel_file;
         $fileExtension = $file->getClientOriginalExtension();
         if (!in_array($fileExtension, ['xlsx', 'xls'])) {
-			return back()->withErrors(['alert-danger' => 'The file type must be xls or xlsx!']);
+            return back()->withErrors(['alert-danger' => 'The file type must be xls or xlsx!']);
         }
-        $contents = \Excel::import(new TranslationImport, $file);
-        $uploadedData = $contents->toArray($contents, $file);
-        dd($uploadedData);
+        if (!in_array($group, ['frontend', 'backend'])) {
+            return back()->withErrors(['alert-danger' => 'Please select the valid group.']);
+        }
+        try {
+            $contents = \Excel::import(new TranslationImport($group), $file);
+            $uploadedData = $contents->toArray($contents, $file);
+
+            if($uploadedData[0][0][0] !== "key" || $uploadedData[0][0][0] !== "key"){
+                return back()->withErrors(['alert-danger' => 'Invalid file content']);
+            }
+
+            if (count($uploadedData[0]) <= 1) {
+                return back()->withErrors(['alert-danger' => 'The file does not contain any translation content']);
+            }
+            $heading = $this->removeSpacesHeading($uploadedData[0][0]);
+            $langShortCodes = Language::where('group', $group)->pluck('language_code')->toArray();
+            array_push($langShortCodes, 'key');
+
+            $checkValid = array_diff($heading, $langShortCodes);
+
+            if (count($checkValid) > 0) {
+                return back()->withErrors(['alert-danger' => 'Invalid translation content or the provided language may not be available.']);
+            }
+
+            unset($uploadedData[0][0]); // removing header content from file
+
+            $parsed = $this->parseUploadedData($uploadedData, $heading, $group);
+            if (count($parsed) > 0) LanguageLine::insert($parsed);
+
+            return back()->withErrors(['alert-success' => 'The translations successfully uploaded.']);
+        } catch (\Exception $e) {
+            return back()->withErrors(['alert-danger' => 'There was some problem in uploading translations.']);
+        }
+    }
+
+    public function removeSpacesHeading($heading)
+    {
+        $removed = array();
+        foreach ($heading as $key => $value) {
+            $removed[$key] = strtolower(trim($value));
+        }
+        return $removed;
+    }
+
+    public function parseUploadedData($data, $heading, $group)
+    {
+        $arrayT = array();
+        $words = LanguageLine::where('group', $group)->pluck('key')->toArray();
+
+        foreach ($data[0] as $key => $value) {
+            if (!in_array(strtolower($value[0]), $words)) {
+                $arrayT[$key]['key'] = $value[0];
+                $arrayT[$key]['group'] = $group;
+                $arrayT[$key]['text'] = $this->formatText($value, $heading);
+            }
+        }
+        return $arrayT;
+    }
+
+    public function formatText($data, $heading)
+    {
+        unset($data[0]); // removing key field
+        $arrayT = array();
+        foreach ($data as $key => $value) {
+            $arrayT[$heading[$key]] = $value;
+        }
+        return json_encode($arrayT);
     }
 }

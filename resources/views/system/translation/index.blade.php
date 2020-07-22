@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-3 control-label">{{trans('Excel File')}}</label>
                         <div class="col-sm-6">
-                        <input type="file" name="excel_file" class="form-control" accept=".xlsx">
+                        <input type="file" name="excel_file" class="form-control" accept=".xls">
                         </div>
                     </div>
                     </x-slot>
