@@ -44,6 +44,10 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 
+    public function userPasswords(){
+        return $this->hasMany(UserPassword::class, 'user_id', 'id');
+    }
+
     public function getPasswordSetResetLink($check = false, $token){
         $title = 'Reset Password';
         $key = 'reset-password';

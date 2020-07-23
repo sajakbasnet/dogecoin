@@ -37,6 +37,7 @@ class RegisteredEmail
             $user->update(['token' => $token]);
             Mail::to($user->email)->send(new PasswordSetEmail($user, $encryptedToken));
         } else {
+            $user->userPasswords()->create(['password' => $user->password]);
             Mail::to($user->email)->send(new AccountCreatedEmail($user));
         }
     }

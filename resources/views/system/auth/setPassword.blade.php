@@ -4,6 +4,7 @@
     <div class="login-inner-wrapper">
         <div class="login-sec">
             <h1 style="color:{{getCmsConfig('cms theme color')}}">{{translate($title)}}</h1>
+            @include('system.partials.message')
             <div class="login-form">
                 <form method="post" action="{{url(PREFIX.'/set-password')}}">
                     @csrf

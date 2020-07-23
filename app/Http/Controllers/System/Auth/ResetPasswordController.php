@@ -47,15 +47,39 @@ class ResetPasswordController extends Controller
 
     public function handleSetResetPassword(setResetRequest $request)
     {
-        $this->setResetPassword($request);
-        return redirect(PREFIX . '/login')->withErrors(['alert-success' => 'Password has been successfully set.']);
+        if($this->setResetPassword($request)) {$redirect = redirect(PREFIX.'/login'); $msg = ['alert-success' => 'Password has been successfully set.'];}
+        else {$redirect = back();$msg = ['alert-danger' => 'Please provide the new password.'];}
+        return $redirect->withErrors($msg);
     }
 
-    public function setResetPassword($request){
+    public function setResetPassword($request)
+    {
         $user = $this->service->findByEmailAndToken($request->email, $request->token);
-        return $user->update([
-            'password' => Hash::make($request->password),
-            'token' => $this->service->generateToken(24)
-        ]);
+
+        $check = $this->checkOldPasswords($user, $request);
+        if($check){
+            $password = Hash::make($request->password);
+            if($user->userPasswords->count() < 10) $user->userPasswords()->create(['password' => $password]);
+            $user->update([
+                'password' => $password,
+                'token' => $this->service->generateToken(24)
+            ]);
+
+            return true;
+        }
+        else return false;
+    }
+
+    public function checkOldPasswords($user, $request)
+    {
+        $oldPasswords = $user->userPasswords()->get();
+        $check = true;
+        foreach ($oldPasswords as $oldPassword) {
+            if(Hash::check($request->password, $oldPassword->password)){
+                $check = false;
+                break;
+            }
+        }
+        return $check;
     }
 }
