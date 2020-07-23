@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         'antitwofa' => \App\Http\Middleware\antiTwoFA::class,
         'language' =>  \App\Http\Middleware\Language::class,
         'passport' => \App\Http\Middleware\SetPassortAuthGuard::class,
-        'reset.password' => \App\Http\Middleware\CheckPasswordResetted::class
+        'reset.password' => \App\Http\Middleware\CheckPasswordResetted::class,
+        'customThrottle' => \App\Http\Middleware\customThrottleMiddleware::class
     ];
 }

@@ -12,7 +12,7 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
     Route::get('/login', 'Auth\LoginController@showLoginForm');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::get('forgot-password', 'Auth\ForgotPasswordController@showRequestForm')->name('forgot.password');
-    Route::post('forgot-password', 'Auth\ForgotPasswordController@handleForgotPassword')->name('post.forgot.password'); //->middleware('throttle:5,1');
+    Route::post('forgot-password', 'Auth\ForgotPasswordController@handleForgotPassword')->name('post.forgot.password');//->middleware('customThrottle:5,1');
     Route::get('/reset-password/{email}/{token}', 'Auth\ResetPasswordController@showSetResetForm')->name('reset.password');
     Route::post('/reset-password', 'Auth\ResetPasswordController@handleSetResetPassword');
     Route::get('/set-password/{email}/{token}', 'Auth\ResetPasswordController@showSetResetForm')->name('set.password');
@@ -38,8 +38,7 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
 
         Route::get('/profile', 'profile\ProfileController@index')->name('profile');
         Route::put('/profile/{id}', 'profile\ProfileController@update');
-
-
+        
         Route::resource('/languages', 'language\LanguageController', ['except' => ['show', 'edit', 'update']]);
         Route::get('/languages/set-language/{lang}', 'language\LanguageController@setLanguage')->name('set.lang');
         Route::get('/country-language/{country_id}', 'countryLanguage\countryLanguageController@getLanguages');
