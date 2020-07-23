@@ -17,9 +17,9 @@ class RegisteredEmail
      *
      * @return void
      */
-    public function __construct(UserService $service)
+    public function __construct()
     {
-        $this->service = $service;
+    
     }
 
     /**
@@ -32,9 +32,7 @@ class RegisteredEmail
     {
         $user = $event->user;
           if (!isset($user->password)) {
-            $token = $this->service->generateToken(24);
-            $encryptedToken = encrypt($token);
-            $user->update(['token' => $token]);
+            $encryptedToken = encrypt($event->token);
             Mail::to($user->email)->send(new PasswordSetEmail($user, $encryptedToken));
         } else {
             $user->userPasswords()->create(['password' => $user->password]);

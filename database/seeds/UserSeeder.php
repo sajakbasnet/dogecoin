@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'email'=>'admin@ekbana.info',
                 'username' => 'admin',
                 'password' => Hash::make('123admin@'),
+                'password_resetted' => 1,
                 'role_id' => 1,
             ]);
         }

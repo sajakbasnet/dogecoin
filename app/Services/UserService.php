@@ -72,8 +72,10 @@ class UserService extends Service
         } else {
             unset($data['password']);
         }
+        $token = $this->generateToken(24);
+        $data['token'] = $token;
         $user = $this->model->create($data);
-        event(new UserCreated($user));
+        event(new UserCreated($user, $token));
         return $user;
     }
 

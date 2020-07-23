@@ -26,7 +26,11 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::get('/login/send-again', 'Auth\LoginController@sendAgain')->name('login.send.again');
     });
 
-    Route::group(['middleware' => ['auth', 'permission', 'twofa']], function () {
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('change-password', 'user\UserController@changePassword')->name('change.password');
+    });
+
+    Route::group(['middleware' => ['auth', 'permission', 'twofa', 'reset.password']], function () {
         Route::get('/home', 'indexController@index')->name('home');
         Route::resource('/roles', 'user\RoleController', ['except' => ['show']]);
 

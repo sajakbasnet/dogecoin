@@ -62,6 +62,7 @@ class ResetPasswordController extends Controller
             if($user->userPasswords->count() < 10) $user->userPasswords()->create(['password' => $password]);
             $user->update([
                 'password' => $password,
+                'password_resetted' => 1,
                 'token' => $this->service->generateToken(24)
             ]);
 

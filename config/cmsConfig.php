@@ -22,6 +22,10 @@ return  [
     [
       "url" => '/profile',
       "method" => 'get'
+    ],
+    [
+      "url" => '/change-password',
+      "method" => 'get'
     ]
   ],
 
