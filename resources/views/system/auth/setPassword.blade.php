@@ -48,6 +48,11 @@
                     <div class="form-group">
                         <button type="submit" class="btn login-btn btn-block" style="background-color: {{getCmsConfig('cms theme color')}}">{{ isset($buttonText) ? translate($buttonText) : translate($title) }}</button>
                     </div>
+                    @if($routename == "change.password")
+                    <div class="form-group">
+                        <a href="{{route('logout')}}" class="btn login-btn btn-danger btn-block" style="padding-top: 13px;">{{translate('Cancel')}}</a>
+                    </div>
+                    @endif
                 </form>
             </div><!-- ends login-form -->
         </div><!-- ends login-sec -->

@@ -27,7 +27,7 @@
             <button type="submit" class="btn login-btn btn-block" style="background-color:{{getCmsConfig('cms theme color')}}">{{translate('Verify')}}</button>
           </div>
           <div class="form-group">
-            <a href="{{route('logout')}}" class="btn login-btn btn-danger btn-block">{{translate('Cancel')}}</a>
+            <a href="{{route('logout')}}" class="btn login-btn btn-danger btn-block" style="padding-top: 13px;">{{translate('Cancel')}}</a>
           </div>
           <div class="form-group">
             <h4>Didn't get email?</h4>
