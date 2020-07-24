@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-9">
             <div class="head-title">
-                <h4>Dashboard</h4>
+                <h4>{{translate('Dashboard')}}</h4>
             </div><!-- ends head-title -->
         </div>
     </div>
@@ -12,7 +12,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
         @include('system.partials.message')
-        Welcome to your dashboard
+        {{translate('Welcome to your dashboard')}}
         {{--@if(flashMessage('notification'))
   <span>{{ flashMessage('notification') }}</span>
         @endif--}}

@@ -24,7 +24,9 @@ function translate($content, $data = [], $group = "backend")
             }
         }
     } else {
-        return trans($group . '.' . $key, $data);
+        $trans = trans($group . '.' . $key, $data);
+        if($trans == "backend.".$key) return $content;
+        else return $trans;
     }
 }
 
