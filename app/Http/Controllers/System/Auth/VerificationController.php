@@ -3,40 +3,59 @@
 namespace App\Http\Controllers\system\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\VerifiesEmails;
+use App\Http\Requests\system\verifyLoginRequest;
+use App\Mail\system\TwoFAEmail;
+use App\Traits\CustomThrottleRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class VerificationController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Email Verification Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling email verification for any
-    | user that recently registered with the application. Emails may also
-    | be re-sent if the user didn't receive the original email message.
-    |
-    */
-
-    use VerifiesEmails;
-
-    /**
-     * Where to redirect users after verification.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    use CustomThrottleRequest;
+    public function showVerifyPage()
     {
-        $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
-        $this->middleware('throttle:6,1')->only('verify', 'resend');
+        return view('system.auth.verify');
+    }
+
+    public function sendAgain(Request $request)
+    {
+        if (
+            method_exists($this, 'hasTooManyAttempts') &&
+            $this->hasTooManyAttempts($request, $attempts = 3) // maximum attempts can be set by passing parameter $attempts=
+        ) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        $this->incrementAttempts($request, $minutes = 1); // maximum decay minute can be set by passing parameter $minutes=
+
+        $verification_code = \Str::random(4);
+        session()->forget('verification_code');
+        session()->put('verification_code', $verification_code);
+        Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
+        return back()->withErrors(['alert-success' => 'Verification code sent to your email.']);
+    }
+
+    public function verify(verifyLoginRequest $request)
+    {
+        if (
+            method_exists($this, 'hasTooManyAttempts') &&
+            $this->hasTooManyAttempts($request, $attempts = 3) // maximum attempts can be set by passing parameter $attempts=
+        ) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        $this->incrementAttempts($request, $minutes = 1); // maximum decay minute can be set by passing parameter $minutes=
+
+        $code = $request->code;
+        if (session()->get('verification_code') == $code) {
+            session()->put('request_verification_code', $code);
+            return redirect('/' . PREFIX . '/home');
+        } else {
+            return back()->withErrors(['alert-danger' => 'Incorrect Verification Code.']);
+        }
     }
 }

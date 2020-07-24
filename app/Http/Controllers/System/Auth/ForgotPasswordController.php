@@ -38,16 +38,20 @@ class ForgotPasswordController extends Controller
     public function handleForgotPassword(Request $request)
     {
         $request->validate(['email' => 'required|email']);
+
         if (
-            method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)
+            method_exists($this, 'hasTooManyAttempts') &&
+            $this->hasTooManyAttempts($request, $attempts = 4) // maximum attempts can be set by passing parameter $attempts=
         ) {
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);
         }
-        return back();
+
+        $this->incrementAttempts($request, $minutes = 1.5); // maximum decay minute can be set by passing parameter $minutes=
+
         $this->sendPasswordResetLink($request->email);
+
         return back()->withErrors(['alert-success' => "Password reset link has been sent to your email."]);
     }
 

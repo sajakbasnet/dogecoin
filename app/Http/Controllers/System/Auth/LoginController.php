@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\system\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\system\verifyLoginRequest;
 use App\Mail\system\TwoFAEmail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -123,31 +122,6 @@ class LoginController extends Controller
             : redirect()->intended($this->redirectPath());
     }
 
-
-    public function showVerifyPage()
-    {
-        return view('system.auth.verify');
-    }
-
-    public function sendAgain()
-    {
-        $verification_code = \Str::random(4);
-        session()->forget('verification_code');
-        session()->put('verification_code', $verification_code);
-        Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
-        return back()->withErrors(['alert-success' => 'Verification code sent to your email.']);
-    }
-
-    public function verify(verifyLoginRequest $request)
-    {
-        $code = $request->code;
-        if (session()->get('verification_code') == $code) {
-            session()->put('request_verification_code', $code);
-            return redirect('/' . PREFIX . '/home');
-        } else {
-            return back()->withErrors(['alert-danger' => 'Incorrect Verification Code.']);
-        }
-    }
     public function logout(Request $request)
     {
         $this->guard()->logout();

@@ -18,10 +18,23 @@ trait CustomThrottleRequest
      * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
-    protected function hasTooManyLoginAttempts(Request $request)
+    protected function hasTooManyAttempts(Request $request, $attempt = 5)
     {
         return $this->limiter()->tooManyAttempts(
-            $this->throttleKey($request), $this->maxAttempts()
+            $this->throttleKey($request), $this->maxAttempts($attempt)
+        );
+    }
+
+    /**
+     * Increment the login attempts for the user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function incrementAttempts(Request $request, $minutes = 1)
+    {
+        $this->limiter()->hit(
+            $this->throttleKey($request), $this->decayMinutes($minutes) * 60
         );
     }
 
@@ -35,17 +48,21 @@ trait CustomThrottleRequest
      */
     protected function sendLockoutResponse(Request $request)
     {
-
         $seconds = $this->limiter()->availableIn(
             $this->throttleKey($request)
         );
+        return back()->withErrors(['alert-danger' => 'To many attempts. Please try again after '.$seconds.' seconds']);
+    }
 
-        throw ValidationException::withMessages([
-            'test' => [Lang::get('auth.throttle', [
-                'seconds' => $seconds,
-                'minutes' => ceil($seconds / 60),
-            ])],
-        ])->status(Response::HTTP_TOO_MANY_REQUESTS);
+    /**
+     * Clear the login locks for the given user credentials.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function clearAttempts(Request $request)
+    {
+        $this->limiter()->clear($this->throttleKey($request));
     }
 
     /**
@@ -67,7 +84,8 @@ trait CustomThrottleRequest
      */
     protected function throttleKey(Request $request)
     {
-        return Str::lower($request->input('email')).'|'.$request->ip();
+        $key = $request->getRequestUri().$request->getMethod();
+        return Str::lower($key).'|'.$request->ip();
     }
 
     /**
@@ -85,9 +103,9 @@ trait CustomThrottleRequest
      *
      * @return int
      */
-    public function maxAttempts()
+    public function maxAttempts($attempt)
     {
-        return property_exists($this, 'maxAttempts') ? $this->maxAttempts : 2;
+        return $attempt;
     }
 
     /**
@@ -95,8 +113,8 @@ trait CustomThrottleRequest
      *
      * @return int
      */
-    public function decayMinutes()
+    public function decayMinutes($minutes)
     {
-        return property_exists($this, 'decayMinutes') ? $this->decayMinutes : 1;
+        return $minutes;
     }
 }

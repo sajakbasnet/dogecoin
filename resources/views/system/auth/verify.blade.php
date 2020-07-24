@@ -10,7 +10,7 @@
       <p>{{'We have sent you a verification code in your email.'}} <br> {{translate('Copy a 4-digit verification code and enter it below.')}}</p>
       @include('system.partials.message')
       <div class="login-form">
-        <form method="post" action="{{route('post.login.verify')}}">
+        <form method="post" action="{{route('verify.post')}}">
           @csrf
           <div class="form-group login-group">
             <div class="input-group  @error('code')
@@ -27,8 +27,11 @@
             <button type="submit" class="btn login-btn btn-block" style="background-color:{{getCmsConfig('cms theme color')}}">{{translate('Verify')}}</button>
           </div>
           <div class="form-group">
+            <a href="{{route('logout')}}" class="btn login-btn btn-danger btn-block">{{translate('Cancel')}}</a>
+          </div>
+          <div class="form-group">
             <h4>Didn't get email?</h4>
-            <a href="{{route('login.send.again')}}">{{translate('Send Again')}}</a>
+            <a href="{{route('verify.send.again')}}">{{translate('Send Again')}}</a>
           </div>
         </form>
       </div><!-- ends login-form -->

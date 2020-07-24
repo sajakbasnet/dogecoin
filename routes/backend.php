@@ -21,9 +21,9 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
     Route::group(['middleware' => ['auth', 'antitwofa']], function () {
-        Route::get('/login/verify', 'Auth\LoginController@showVerifyPage');
-        Route::post('/login/verify', 'Auth\LoginController@verify')->name('post.login.verify');
-        Route::get('/login/send-again', 'Auth\LoginController@sendAgain')->name('login.send.again');
+        Route::get('/login/verify', 'Auth\VerificationController@showVerifyPage');
+        Route::post('/login/verify', 'Auth\VerificationController@verify')->name('verify.post');
+        Route::get('/login/send-again', 'Auth\VerificationController@sendAgain')->name('verify.send.again');
     });
 
     Route::group(['middleware' => ['auth']], function () {
