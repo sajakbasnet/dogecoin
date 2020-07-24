@@ -5,6 +5,7 @@ namespace App\Http\Controllers\system\Auth;
 use App\Http\Controllers\Controller;
 use App\Mail\system\PasswordResetEmail;
 use App\Services\UserService;
+use App\Traits\CustomThrottleRequest;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -22,7 +23,7 @@ class ForgotPasswordController extends Controller
     |
     */
 
-    use SendsPasswordResetEmails;
+    use SendsPasswordResetEmails, CustomThrottleRequest;
 
     public function __construct(UserService $user){
         $this->user = $user;
@@ -37,6 +38,15 @@ class ForgotPasswordController extends Controller
     public function handleForgotPassword(Request $request)
     {
         $request->validate(['email' => 'required|email']);
+        if (
+            method_exists($this, 'hasTooManyLoginAttempts') &&
+            $this->hasTooManyLoginAttempts($request)
+        ) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+        return back();
         $this->sendPasswordResetLink($request->email);
         return back()->withErrors(['alert-success' => "Password reset link has been sent to your email."]);
     }

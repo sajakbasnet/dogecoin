@@ -5,7 +5,6 @@ namespace App\Http\Controllers\system\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\system\verifyLoginRequest;
 use App\Mail\system\TwoFAEmail;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

@@ -69,6 +69,5 @@ class Kernel extends HttpKernel
         'language' =>  \App\Http\Middleware\Language::class,
         'passport' => \App\Http\Middleware\SetPassortAuthGuard::class,
         'reset.password' => \App\Http\Middleware\CheckPasswordResetted::class,
-        'customThrottle' => \App\Http\Middleware\customThrottleMiddleware::class
     ];
 }
