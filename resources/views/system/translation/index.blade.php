@@ -10,14 +10,14 @@
                     </div><!-- ends head-title -->
                 </div>
                 <div class="col-sm-9">
-                    @if(\ekHelper::hasPermission($indexUrl.'/download-sample'))
+                    @if(hasPermission($indexUrl.'/download-sample'))
                     <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" href="{{$indexUrl.'/download-sample'}}" style="margin-right:3px">{{translate('Download Sample')}}</a>
                     @endif
-                    @if(\ekHelper::hasPermission($indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))))
+                    @if(hasPermission($indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))))
                     <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" href="{{$indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))}}" style="margin-right:3px; margin-left:3px">{{translate('Download excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
                     @endif
 
-                    @if(\ekHelper::hasPermission($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')), 'post'))
+                    @if(hasPermission($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')), 'post'))
                     <x-system.general-modal 
                     :url="$indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group'))"
                     :modalTitle="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" 
@@ -85,7 +85,7 @@
                                     <td>{{$a}}</td>
                                     <td>{{$item->key}}</td>
                                     <td>
-                                        @if(\ekhelper::hasPermission($indexUrl.'/'.$item->id, 'put'))
+                                        @if(hasPermission($indexUrl.'/'.$item->id, 'put'))
                                         <textarea name="text" class="form-control translation-content" rows="1" data-href="{{url('/'.PREFIX.'/translations/'.$item->id)}}" data-group="{{Request::get('group') ?? 'backend'}}" data-locale="{{Request::get('locale') ?? 'en'}}">{{$item->text[Request::get('locale')] ?? $item->text['en']}}</textarea>
                                         @else
                                         {{$item->text[Request::get('locale')] ?? $item->text['en']}}
@@ -93,7 +93,7 @@
 
                                     </td>
                                     <td>
-                                        @if(\ekHelper::hasPermission($indexUrl.'/'.$item->id, 'delete'))
+                                        @if(hasPermission($indexUrl.'/'.$item->id, 'delete'))
                                         @include('system.partials.deleteButton')
                                         @endif
                                     </td>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
             </div><!-- panel -->
-            @if(\ekHelper::hasPermission($indexUrl, 'post'))
+            @if(hasPermission($indexUrl, 'post'))
             <div class="panel panel-default">
                 <div class="panel-heading no-bdr">
                     <form method="post" action="{{$indexUrl}}">

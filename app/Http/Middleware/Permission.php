@@ -19,7 +19,7 @@ class Permission
         if (session()->get('role') == null ) {
             session()->put('role', authUser()->role);
         }
-        if (\ekHelper::hasPermission($request->url(), $request->method())) return $next($request);
+        if (hasPermission($request->url(), $request->method())) return $next($request);
         else throw new PermissionDeniedException();
     }
 }

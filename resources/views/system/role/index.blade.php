@@ -31,7 +31,7 @@
     @include('system.partials.deleteButton')
     @endif
 
-    @if(\ekHelper::hasPermission('/users'))
+    @if(hasPermission('/users'))
     <a href="/{{PREFIX}}/users?role={{$item->id}}" class="nonelink"><span class="span-icon">
         <i class="fa fa-users" aria-hidden="true"></i>{{ $item->users->count()}}</span>
     </a>

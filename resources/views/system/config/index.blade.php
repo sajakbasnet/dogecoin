@@ -48,7 +48,7 @@
                                     <td>{{$a}}</td>
                                     <td>{{$item->label}}</td>
                                     <td>
-                                        @if(!\ekHelper::hasPermission($indexUrl.'/'.$item->id, 'put'))
+                                        @if(hasPermission($indexUrl.'/'.$item->id, 'put'))
                                         @if($item->isFile($item->type))
                                         <img src="{{ asset('uploads/config/'.$item->value) }}" class="img-thumbnail mr-2" alt="{{$item->value}}" style="max-width:100px;">
                                         @else
@@ -77,7 +77,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if(\ekHelper::hasPermission($indexUrl.'/'.$item->id, 'delete') && ! $item->isDefault($item->id))
+                                        @if(hasPermission($indexUrl.'/'.$item->id, 'delete') && ! $item->isDefault($item->id))
                                         @include('system.partials.deleteButton')
                                         @endif
                                     </td>
@@ -94,7 +94,7 @@
                 </div>
             </div><!-- panel -->
 
-            @if(\ekHelper::hasPermission($indexUrl, 'post'))
+            @if(hasPermission($indexUrl, 'post'))
             <div class="panel panel-default">
                 <div class="panel-heading no-bdr">
                     <form method="post" class="form-inline" action="{{ $indexUrl }}" enctype="multipart/form-data">

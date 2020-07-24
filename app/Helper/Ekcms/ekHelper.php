@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 
-class ekHelper
-{
-    public static function hasPermission($url, $method = 'get')
+    function hasPermission($url, $method = 'get')
     {
         $method = strtolower($method);
         $splittedUrl = explode('/' . PREFIX, $url);
@@ -51,15 +49,15 @@ class ekHelper
 
     }
 
-    public static function hasPermissionOnModule($module)
+    function hasPermissionOnModule($module)
     {
         $check = false;
         if (!$module['hasSubmodules']) {
-            $check = self::hasPermission($module['route']);
+            $check = hasPermission($module['route']);
         } else {
             try {
                 foreach ($module['submodules'] as $submodule) {
-                    $check = self::hasPermission($submodule['route']);
+                    $check = hasPermission($submodule['route']);
                     if($check == true){
                     break;
                     }
@@ -70,4 +68,3 @@ class ekHelper
         }
         return $check;
     }
-}

@@ -2,7 +2,7 @@
   <div class="inner-navbar clearfix">
     <ul class="ul-sidebar" id="accordion">
       @foreach($modules as $module)
-      @if(\ekHelper::hasPermissionOnModule($module) && showInSideBar($module['showInSideBar'] ?? true))
+      @if(hasPermissionOnModule($module) && showInSideBar($module['showInSideBar'] ?? true))
       @if($module['hasSubmodules'])
       <li class="panel">
         <a data-toggle="collapse" data-parent="#accordion" href="#sidenav{{$loop->index}}" class="arw collapsed">
@@ -11,7 +11,7 @@
         <ul id="sidenav{{$loop->index}}" class="collapse">
           <li><a href="#"></a></li>
           @foreach($module['submodules'] as $subModule)
-          @if(\ekHelper::hasPermission($subModule['route'], 'get'))
+          @if(hasPermission($subModule['route'], 'get'))
           <li>
             <a href="/{{PREFIX.$subModule['route']}}">
               {!! $subModule['icon'] ?? ''!!} <span class="span-link">{{translate($subModule['name'])}}</span>
@@ -23,7 +23,7 @@
       </li>
       @else
       <li>
-        @if(\ekHelper::hasPermission($module['route'], 'get'))
+        @if(hasPermission($module['route'], 'get'))
         <a href="/{{PREFIX.$module['route']}}">
           {!! $module['icon'] ?? ''!!}<span class="span-link">{{translate($module['name'])}}</span>
         </a>
