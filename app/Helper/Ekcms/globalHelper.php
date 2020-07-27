@@ -100,3 +100,4 @@ function routeExists($route)
 
     else return false;
 }
+
