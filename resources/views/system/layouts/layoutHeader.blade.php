@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="msapplication-TileColor" content="#ffffff">
+<link href="{{ asset('images/eklogo.png') }}" rel="shortcut icon">
 <meta name="theme-color" content="#ffffff">
 <meta name="csrf" content="{{csrf_token()}}">
 

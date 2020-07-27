@@ -5,10 +5,7 @@ namespace App\Traits;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Cache\RateLimiter;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 
 trait CustomThrottleRequest
 {
