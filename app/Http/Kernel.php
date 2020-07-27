@@ -69,5 +69,10 @@ class Kernel extends HttpKernel
         'language' =>  \App\Http\Middleware\Language::class,
         'passport' => \App\Http\Middleware\SetPassortAuthGuard::class,
         'reset.password' => \App\Http\Middleware\CheckPasswordResetted::class,
+
+
+
+        //api middlewares
+        'lang' => \App\Http\Middleware\Frontend\Language::class,
     ];
 }

@@ -29,7 +29,7 @@
                     @endif
                     <div class="form-group login-group @error('password') has-error @enderror">
                         <div class="input-group">
-                            <input type="Password" name="password" class="form-control" placeholder="Password">
+                            <input type="Password" name="password" class="form-control" placeholder="{{translate('Password')}}">
                             <div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></div>
                         </div>
                         @error('password')
@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-group login-group @error('password_confirmation') has-error @enderror">
                         <div class="input-group">
-                            <input type="Password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
+                            <input type="Password" name="password_confirmation" class="form-control" placeholder="{{translate('Confirm Password')}}">
                             <div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></div>
                         </div>
                         @error('password_confirmation')

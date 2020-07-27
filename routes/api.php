@@ -28,4 +28,4 @@ Route::group(['namespace' => 'frontend', 'prefix' => 'v1',  'middleware' => ['au
     });
 });
 
-Route::post('v1/test', 'frontend\TestController@store');
+Route::post('v1/test', 'frontend\TestController@store')->middleware('lang');

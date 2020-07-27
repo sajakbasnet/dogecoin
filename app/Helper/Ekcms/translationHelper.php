@@ -19,19 +19,19 @@ function translate($content, $data = [], $group = "backend")
                 LanguageLine::create([
                     'group' => $group,
                     'key' => $key,
-                    'text' => inserttext($content, $group),
+                    'text' => insertText($content, $group),
                 ]);
                 return $content;
             }
         }
     } else {
         $trans = trans($group . '.' . $key, $data);
-        if($trans == "backend.".$key) return $content;
+        if ($trans == $group . "." . $key) return $content;
         else return $trans;
     }
 }
 
-function inserttext($content, $group)
+function insertText($content, $group)
 {
     $languages = Language::where('group', $group)->orderBy('group', 'ASC')->pluck('language_code');
     $text = array();
@@ -39,4 +39,9 @@ function inserttext($content, $group)
         $text[$language] = $content;
     }
     return $text;
+}
+
+function translateValidationErrorsOfApi($content, $data = [], $group = 'frontend')
+{
+    return translate($content, $data, $group);
 }

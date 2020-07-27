@@ -31,11 +31,11 @@ class FormRequest extends IlluminateFormRequest
 
       foreach ($value as $v) {
         if ($titleMessage == null) {
-          $jsonErrorMessage['title'] = $v;
+          $jsonErrorMessage['title'] = translateValidationErrorsOfApi($v);
         } else {
           $jsonErrorMessage['title'] = $titleMessage;
         }
-        $jsonErrorMessage['detail'] = $v;
+        $jsonErrorMessage['detail'] = translateValidationErrorsOfApi($v);;
         $jsonErrorMessage['source'] = [$pointer . '":' . '"'.$key];
         array_push($errorData, $jsonErrorMessage);
       }
