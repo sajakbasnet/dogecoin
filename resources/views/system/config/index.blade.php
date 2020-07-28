@@ -49,12 +49,6 @@
                                     <td>{{$item->label}}</td>
                                     <td>
                                         @if(hasPermission($indexUrl.'/'.$item->id, 'put'))
-                                        @if($item->isFile($item->type))
-                                        <img src="{{ asset('uploads/config/'.$item->value) }}" class="img-thumbnail mr-2" alt="{{$item->value}}" style="max-width:100px;">
-                                        @else
-                                        {{$item->value}}
-                                        @endif
-                                        @else
                                         <form method="post" action="{{$indexUrl}}/{{$item->id}}" id="form{{$item->id}}" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
@@ -74,6 +68,12 @@
                                             <input type='{{$item->type}}' placeholder='Value' name='value' value="{{$item->value}}" onchange="submit()" class='form-control {{ $item->isColorPicker($item->id) ? 'jscolor {hash:true}' : '' }}'>
                                             @endif
                                         </form>
+                                        @else
+                                            @if($item->isFile($item->type))
+                                            <img src="{{ asset('uploads/config/'.$item->value) }}" class="img-thumbnail mr-2" alt="{{$item->value}}" style="max-width:100px;">
+                                            @else
+                                            {{$item->value}}
+                                            @endif
                                         @endif
                                     </td>
                                     <td>
