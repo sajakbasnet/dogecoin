@@ -118,9 +118,7 @@ class LoginController extends Controller
             session()->put('verification_code', $verification_code);
             Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
         }
-        return $request->wantsJson()
-            ? new Response('', 204)
-            : redirect()->intended($this->redirectPath());
+        return redirect('/'.PREFIX.'/home');
     }
 
     public function logout(Request $request)
