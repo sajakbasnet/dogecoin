@@ -12,7 +12,12 @@ class UserController extends ResourceController
 {
     public function __construct(UserService $userService)
     {
-        parent::__construct($userService, 'App\Http\Requests\system\userRequest');
+        parent::__construct($userService);
+    }
+
+    public function validationRequest()
+    {
+        return 'App\Http\Requests\system\userRequest';
     }
 
     public function moduleName()

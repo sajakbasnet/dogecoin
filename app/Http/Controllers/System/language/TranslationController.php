@@ -15,9 +15,14 @@ class TranslationController extends ResourceController
 {
     public function __construct(TranslationService $translationService)
     {
-        parent::__construct($translationService, 'App\Http\Requests\system\translationRequest');
+        parent::__construct($translationService);
     }
 
+    public function validationRequest()
+    {
+        return 'App\Http\Requests\system\translationRequest';
+    }
+    
     public function moduleName()
     {
         return 'translations';

@@ -10,25 +10,27 @@ function translate($content, $data = [], $group = "backend")
     $key = strtolower(trim($content));
 
     $translations = array_keys(LanguageLine::getTranslationsForGroup(Cookie::get('lang') ?? 'en', $group));
-    if (!in_array($key, $translations)) {
-        $check = LanguageLine::where('key', $key)->where('group', $group)->exists();
-        if ($check) {
-            return trans($group . '.' . $key, $data);
-        } else {
-            if ($key !== "") {
-                LanguageLine::create([
-                    'group' => $group,
-                    'key' => $key,
-                    'text' => insertText($content, $group),
-                ]);
-                return $content;
+    if ($key !== "") {
+        if (!in_array($key, $translations)) {
+            $check = LanguageLine::where('key', $key)->where('group', $group)->exists();
+            if ($check) {
+                return trans($group . '.' . $key, $data);
+            } else {
+                if ($key !== "") {
+                    LanguageLine::create([
+                        'group' => $group,
+                        'key' => $key,
+                        'text' => insertText($content, $group),
+                    ]);
+                    return $content;
+                }
             }
+        } else {
+            $trans = trans($group . '.' . $key, $data);
+            if ($trans == $group . "." . $key) return $content;
+            else return $trans;
         }
-    } else {
-        $trans = trans($group.'.'.$key, $data);
-        if ($trans == $group.".".$key) return $content;
-        else return $trans;
-    }
+    } else return $key;
 }
 
 function insertText($content, $group)

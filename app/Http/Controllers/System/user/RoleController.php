@@ -9,9 +9,14 @@ class RoleController extends ResourceController
 {
     public function __construct(RoleService $roleService)
     {
-        parent::__construct($roleService, 'App\Http\Requests\system\roleRequest');
+        parent::__construct($roleService);
     }
 
+    public function validationRequest()
+    {
+        return 'App\Http\Requests\system\roleRequest';
+    }
+    
     public function moduleName()
     {
         return 'roles';

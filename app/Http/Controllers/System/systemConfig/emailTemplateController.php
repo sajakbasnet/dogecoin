@@ -11,8 +11,14 @@ use Illuminate\Http\Request;
 class emailTemplateController extends ResourceController
 {
     public function __construct(EmailTemplateService $emailtemplateService){
-       parent::__construct($emailtemplateService, 'App\Http\Requests\system\emailTemplateRequest');
+       parent::__construct($emailtemplateService);
     }
+
+    public function validationRequest()
+    {
+        return 'App\Http\Requests\system\emailTemplateRequest';
+    }
+    
     public function moduleName(){
         return 'email-templates';
     }

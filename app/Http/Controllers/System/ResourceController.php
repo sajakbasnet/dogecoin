@@ -9,10 +9,13 @@ use Spatie\TranslationLoader\LanguageLine;
 
 class ResourceController extends Controller
 {
-  public function __construct($service, $request)
+  public function __construct($service)
   {
     $this->service = $service;
-    $this->request = $request;
+  }
+
+  public function validationRequest(){
+    return '';
   }
 
   /**
@@ -212,7 +215,7 @@ class ResourceController extends Controller
    */
   public function store()
   {
-    $request = app()->make($this->request);
+    $request = app()->make($this->validationRequest());
     $store = $this->service->store($request);
     $this->setModuleId($store->id??"");
     return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
@@ -236,7 +239,7 @@ class ResourceController extends Controller
    */
     public function update($id) {
       
-      $request = app()->make($this->request);
+      $request = app()->make($this->validationRequest());
       $this->service->update($id, $request);
       $this->setModuleId($id??"");
       return redirect($this->getUrl())->withErrors(['success'=>'Successfully updated.']);

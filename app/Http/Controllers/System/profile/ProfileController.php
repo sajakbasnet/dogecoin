@@ -9,9 +9,14 @@ class ProfileController extends ResourceController
 {
     public function __construct(ProfileService $profileService)
     {
-        parent::__construct($profileService, 'App\Http\Requests\system\profileRequest');
+        parent::__construct($profileService);
     }
 
+    public function validationRequest()
+    {
+        return  'App\Http\Requests\system\profileRequest';
+    }
+    
     public function moduleName()
     {
         return 'profile';
