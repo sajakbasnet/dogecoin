@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 
     function hasPermission($url, $method = 'get')
     {
+        $role = session()->get('role');
         $method = strtolower($method);
         $splittedUrl = explode('/' . PREFIX, $url);
         if (count($splittedUrl) > 1) {
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
         } else {
             $url = $splittedUrl[0];
         }
-        if (authUser()->role->id == 1) {
+        if ($role->id == 1) {
             $permissionDeniedToSuperUserRoutes = Config::get('cmsConfig.permissionDeniedToSuperUserRoutes');
             $checkDeniedRoute = true;
             foreach ($permissionDeniedToSuperUserRoutes as $route) {
@@ -33,11 +34,12 @@ use Illuminate\Support\Facades\Auth;
         }
         if ($check) return true;
 
-        if (authUser()->role->permissions == null) {
+        $permissions = $role->permissions;
+
+        if ($permissions == null) {
             return false;
         }
 
-        $permissions = session()->get('role')->permissions;
 
         foreach ($permissions as $piurl) {
             if (\Str::is($piurl['url'], $url) && $piurl['method'] == $method) {
