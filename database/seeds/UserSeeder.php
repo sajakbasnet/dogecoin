@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         if(!isset($user)){
             User::create([
                 'name' => 'Admin',
-                'email'=>'admin@ekbana.info',
+                'email'=> Config::get('constants.ADMIN_DEFAULT_EMAIL'),
                 'username' => 'admin',
                 'password' => Hash::make('123admin@'),
                 'password_resetted' => 1,
