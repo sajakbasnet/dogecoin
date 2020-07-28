@@ -48,7 +48,8 @@ trait CustomThrottleRequest
         $seconds = $this->limiter()->availableIn(
             $this->throttleKey($request)
         );
-        return back()->withErrors(['alert-danger' => 'To many attempts. Please try again after '.$seconds.' seconds']);
+
+        return back()->withErrors(['alert-throttle' => translate('To many attempts. Please try again after seconds', ['seconds' => $seconds])]);
     }
 
     /**

@@ -28,7 +28,7 @@
             <p class="invalid-text text-danger">{{translate($message)}}</p>
             @enderror
           </div>
-          <h2>You are current using IP - <strong>{{Request::ip()}}</strong></h2>
+          <h2>{{translate('You are current using IP')}} - <strong>{{Request::ip()}}</strong></h2>
           <div class="form-group">
             <button type="submit" class="btn login-btn btn-block" style="background-color:{{getCmsConfig('cms theme color')}}">{{translate('Login')}}</button>
           </div>

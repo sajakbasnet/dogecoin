@@ -4,6 +4,7 @@ namespace App\Http\Controllers\system\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\system\TwoFAEmail;
+use App\Traits\CustomThrottleRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -24,7 +25,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, CustomThrottleRequest;
 
     /**
      * Where to redirect users after login.
@@ -61,8 +62,8 @@ class LoginController extends Controller
         $this->validateLogin($request);
 
         if (
-            method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)
+            method_exists($this, 'hasTooManyAttempts') &&
+            $this->hasTooManyAttempts($request, $attempt=2) // maximum attempts
         ) {
             $this->fireLockoutEvent($request);
 
@@ -76,7 +77,7 @@ class LoginController extends Controller
             return $this->sendLoginResponse($request);
         }
 
-        $this->incrementLoginAttempts($request);
+        $this->incrementAttempts($request, $decay=.2); // decay minutes
 
         return $this->sendFailedLoginResponse($request);
     }
@@ -105,7 +106,7 @@ class LoginController extends Controller
     {
         $request->session()->regenerate();
 
-        $this->clearLoginAttempts($request);
+        $this->clearAttempts($request);
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {
             return $response;

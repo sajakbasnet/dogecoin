@@ -28,4 +28,10 @@ class roleRequest extends FormRequest
             'permissions' => 'required',
         ];
     }
+     public function messages(){
+         return [
+             'name.required' => 'The role field is required.',
+             'permissions.required' => 'Please select the permissions.'
+         ];
+     }
 }
