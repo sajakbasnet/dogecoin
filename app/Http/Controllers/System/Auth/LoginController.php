@@ -63,7 +63,7 @@ class LoginController extends Controller
 
         if (
             method_exists($this, 'hasTooManyAttempts') &&
-            $this->hasTooManyAttempts($request, $attempt=2) // maximum attempts
+            $this->hasTooManyAttempts($request, $attempt=5) // maximum attempts
         ) {
             $this->fireLockoutEvent($request);
 
@@ -77,7 +77,7 @@ class LoginController extends Controller
             return $this->sendLoginResponse($request);
         }
 
-        $this->incrementAttempts($request, $decay=.2); // decay minutes
+        $this->incrementAttempts($request, $decay=1); // decay minutes
 
         return $this->sendFailedLoginResponse($request);
     }
