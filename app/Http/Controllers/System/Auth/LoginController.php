@@ -25,7 +25,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers, CustomThrottleRequest;
+    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -62,8 +62,8 @@ class LoginController extends Controller
         $this->validateLogin($request);
 
         if (
-            method_exists($this, 'hasTooManyAttempts') &&
-            $this->hasTooManyAttempts($request, $attempt=5) // maximum attempts
+            method_exists($this, 'hasTooManyLoginAttempts') &&
+            $this->hasTooManyLoginAttempts($request, $attempt=5) // maximum attempts
         ) {
             $this->fireLockoutEvent($request);
 
@@ -77,7 +77,7 @@ class LoginController extends Controller
             return $this->sendLoginResponse($request);
         }
 
-        $this->incrementAttempts($request, $decay=1); // decay minutes
+        $this->incrementLoginAttempts($request, $decay=1); // decay minutes
 
         return $this->sendFailedLoginResponse($request);
     }
@@ -106,7 +106,7 @@ class LoginController extends Controller
     {
         $request->session()->regenerate();
 
-        $this->clearAttempts($request);
+        $this->clearLoginAttempts($request);
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {
             return $response;
