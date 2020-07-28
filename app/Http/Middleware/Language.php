@@ -34,9 +34,7 @@ class Language
         app()->setlocale($locale);
         View::share('globalLocale', $locale);
 
-        $languages = $this->languageService->getBackendLanguages();
-        View::share('globalLanguages', $languages);
-
+     
         return $next($request);
     }
 }

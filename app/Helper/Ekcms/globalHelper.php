@@ -101,3 +101,7 @@ function routeExists($route)
     else return false;
 }
 
+function globalLanguages(){
+    $languages = Language::where('group', 'backend')->get();
+    return $languages;
+}

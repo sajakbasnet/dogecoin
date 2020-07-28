@@ -17,7 +17,7 @@
               {{$globalLocale}}
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="localeDropDown">
-              @foreach($globalLanguages as $lang)
+              @foreach(globalLanguages() as $lang)
               <a href="{{route('set.lang', $lang->language_code)}}" class="dropdown-item">
               {{$lang->name}} ({{$lang->language_code}})
               </a>

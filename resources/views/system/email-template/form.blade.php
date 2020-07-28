@@ -4,14 +4,14 @@
 <x-system.form.form-group :input="[ 'name' => 'code', 'label' => 'Code', 'required' => true, 'default' => $item->code ?? old('code'),'readonly'=>true, 'error' => $errors->first('code')]" />
 <x-system.form.form-group :input="[ 'name' => 'from', 'label' => 'From Email', 'required' => true, 'default' => $item->from ?? old('from'), 'error' => $errors->first('from')]" />
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-    @foreach($globalLanguages as $lang)
+    @foreach(globalLanguages() as $lang)
     <li class="nav-item">
         <a class="nav-link" id="tabControls{{$loop->index}}tab" data-toggle="tab" href="#tabControls{{$loop->index}}tabpane" role="tab" aria-controls="tabControls{{$loop->index}}tabpane">{{$lang->language_code}}</a>
     </li>
     @endforeach
 </ul>
 <div class="tab-content" id="myTabContent" style="padding-top:25px">
-    @foreach($globalLanguages as $lang)
+    @foreach(globalLanguages() as $lang)
     <div class="tab-pane fade" id="tabControls{{$loop->index}}tabpane" role="tabpanel" aria-labelledby="tabControls{{$loop->index}}tab">
         <input type="hidden" name="multilingual[{{$loop->index}}][language_code]" value="{{$lang->language_code}}">
         <x-system.form.form-group :input="['label' => 'Subject', 'required' => true,'error' => $errors->first('multilingual.'.$loop->index.'.subject')]">
