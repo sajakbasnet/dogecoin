@@ -107,7 +107,7 @@ class TranslationController extends ResourceController
 
         foreach ($data[0] as $key => $value) {
             if (!in_array(strtolower($value[0]), $words)) {
-                $arrayT[$key]['key'] = $value[0];
+                $arrayT[$key]['key'] = strtolower(trim(str_replace(".", "", $value[0])));
                 $arrayT[$key]['group'] = $group;
                 $arrayT[$key]['text'] = $this->formatText($value, $heading);
             }
