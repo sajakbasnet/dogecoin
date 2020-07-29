@@ -11,7 +11,7 @@
 <div id="page-title">
     <h2 style="display:inline-block">{{translate($title)}}</h2>
     <div class="right" style="float:right">
-        <a class="btn btn-success" href="{{URL::to(PREFIX.'/categories2/create')}}"><i class="glyph-icon icon-plus" style="margin-right:10px;"></i>{{translate('Add New')}}</a>
+        <a class="btn btn-primary btn-sm" href="{{URL::to(PREFIX.'/categories2/create')}}"> <i class="fa fa-plus"></i> {{translate('Add New')}}</a>
     </div>
 </div>
 @include('system.partials.message')
@@ -60,7 +60,7 @@
                         <td>{{$datum->name}}</td>
                         <td>{{$datum->attributes}}</td>
                         <td>
-                            <a class="btn btn-sm btn-info btn_glyph" href="{{URL::to(PREFIX.'/categories2/'.$datum->id.'/edit')}}"><i class="glyphicon glyphicon-edit"></i> {{translate('Edit')}}</a>
+                            <a class="btn btn-sm btn-primary btn_glyph" href="{{URL::to(PREFIX.'/categories2/'.$datum->id.'/edit')}}"><i class="glyphicon glyphicon-edit"></i> {{translate('Edit')}}</a>
                             <button type="button" class="btn btn-danger btn-sm btn-delete" data-toggle="modal" data-target="#confirmDeleteModal" data-href="{{url('/'.PREFIX.'/categories2/'.$datum->id)}}">
                                 {{ translate('Delete') }}
                             </button>

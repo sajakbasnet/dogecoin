@@ -1,6 +1,6 @@
 @props(['url', 'modalTitle', 'modalId', 'buttonClass', 'submitButtonTitle', 'csrf', 'modalTriggerButton'])
 
-<button type="button" class="btn {{$buttonClass}} pull-right mb-2" data-toggle="modal" data-target="#{{$modalId}}">
+<button type="button" class="btn {{$buttonClass}} pull-right mb-2 btn-sm" data-toggle="modal" data-target="#{{$modalId}}">
   {{translate($modalTriggerButton)}}
 </button>
 

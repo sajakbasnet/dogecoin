@@ -11,10 +11,10 @@
                 </div>
                 <div class="col-sm-9">
                     @if(hasPermission($indexUrl.'/download-sample'))
-                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" href="{{$indexUrl.'/download-sample'}}" style="margin-right:3px">{{translate('Download Sample')}}</a>
+                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right btn-sm" href="{{$indexUrl.'/download-sample'}}" style="margin-right:3px">{{translate('Download Sample')}}</a>
                     @endif
                     @if(hasPermission($indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))))
-                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right" href="{{$indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))}}" style="margin-right:3px; margin-left:3px">{{translate('Download excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
+                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right btn-sm" href="{{$indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))}}" style="margin-right:3px; margin-left:3px">{{translate('Download excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
                     @endif
 
                     @if(hasPermission($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')), 'post'))
