@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Model\Role;
+use App\Model\UserPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

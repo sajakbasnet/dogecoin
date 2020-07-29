@@ -25,6 +25,9 @@ class Service
         if(count($selectedColumns) > 0){
             $query->select($selectedColumns);
         }
+        if (isset($data->keyword) && $data->keyword !== null) {
+            $query->where('name', 'LIKE', '%' . $data->keyword . '%');
+        }
         if($pagination){
             return $query->paginate(Config::get('constants.PAGINATION'));
         }else{
@@ -88,6 +91,9 @@ class Service
 
     public function indexPageData($data)
     {
+        return [
+            'items' => $this->getAllData($data)
+        ];
     }
 
     // Data for create page
@@ -100,8 +106,9 @@ class Service
 
     public function editPageData($id)
     {
-        $item = $this->itemByIdentifier($id);
-        return $item;
+        return [
+            'item' => $this->itemByIdentifier($id)
+        ];
     }
 
     // get query for modal 

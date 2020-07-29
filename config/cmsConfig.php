@@ -184,58 +184,58 @@ return  [
           ]
         ],
         [
-          "name"=> 'Translations',
-          "icon"=> "<i class='fa fa-globe' aria-hidden='true'></i>",
-          "hasSubmodules"=> false,
-          "route"=> '/translations',
-          "permissions"=> [
+          "name" => 'Translations',
+          "icon" => "<i class='fa fa-globe' aria-hidden='true'></i>",
+          "hasSubmodules" => false,
+          "route" => '/translations',
+          "permissions" => [
             [
-              "name"=> 'View Translations',
-              "route"=> [
-                "url"=> '/translations',
-                "method"=> 'get'
+              "name" => 'View Translations',
+              "route" => [
+                "url" => '/translations',
+                "method" => 'get'
               ]
             ],
             [
-              "name"=> 'Create Translations',
-              "route"=>  [
-                "url"=> '/translations',
-                "method"=> 'post'
+              "name" => 'Create Translations',
+              "route" =>  [
+                "url" => '/translations',
+                "method" => 'post'
               ]
             ],
             [
-              "name"=> 'Edit Translations',
-              "route"=> [
-                  "url"=> '/translations/*',
-                  "method"=> 'put'
-                ]
-            ],
-            [
-              "name"=> 'Delete Translations',
-              "route"=> [
-                "url"=> '/translations/*',
-                "method"=> 'delete'
+              "name" => 'Edit Translations',
+              "route" => [
+                "url" => '/translations/*',
+                "method" => 'put'
               ]
             ],
             [
-              "name"=> 'Download Sample',
-              "route"=>  [
-                "url"=> '/translations/download-sample',
-                "method"=> 'get'
+              "name" => 'Delete Translations',
+              "route" => [
+                "url" => '/translations/*',
+                "method" => 'delete'
+              ]
+            ],
+            [
+              "name" => 'Download Sample',
+              "route" =>  [
+                "url" => '/translations/download-sample',
+                "method" => 'get'
               ],
             ],
             [
-              "name"=> 'Download Excel',
-              "route"=>  [
-                "url"=> '/translations/download/*',
-                "method"=> 'get'
+              "name" => 'Download Excel',
+              "route" =>  [
+                "url" => '/translations/download/*',
+                "method" => 'get'
               ],
             ],
             [
-              "name"=> 'Upload Excel',
-              "route"=>  [
-                "url"=> '/translations/upload/*',
-                "method"=> 'post'
+              "name" => 'Upload Excel',
+              "route" =>  [
+                "url" => '/translations/upload/*',
+                "method" => 'post'
               ],
             ]
           ]
@@ -320,6 +320,43 @@ return  [
           ]
         ]
       ]
-    ]
+    ],
+    [
+      'name' => 'Category Management',
+      'icon' => "<i class='fa fa-list'></i>",
+      'hasSubmodules' => false,
+      'route' => '/categories',
+      "permissions" => [
+        [
+          "name" => 'View Category',
+          "route" => [
+            "url" => '/categories',
+            "method" => 'get'
+          ]
+        ],
+        [
+          "name" => 'Create Category',
+          "route" => [
+            "url" => '/categories/create',
+            "method" => 'post'
+          ]
+        ],
+        [
+          "name" => 'Edit Category',
+          "route" => [
+            "url" => '/categories/*',
+            "method" => 'put'
+          ]
+        ],
+        [
+          "name" => 'Delete Category',
+          "route" => [
+            "url" => '/categories/*',
+            "method" => 'delete'
+          ]
+        ]
+      ]
+    ],
+
   ]
 ];

@@ -51,5 +51,7 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show']]);
         
         Route::resource('/configs', 'systemConfig\configController');
+
+        Route::resource('/categories', 'category\categoryController');
     });
 });
