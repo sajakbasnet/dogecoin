@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use Spatie\TranslationLoader\LanguageLine;
 
 Route::get('/', function () {
     return redirect('/' . PREFIX . '/login');
@@ -54,6 +55,10 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         
         Route::resource('/categories', 'category\categoryController', ['except' => ['show']]);
         Route::resource('/categories2', 'category2\categoryController2', ['except' => ['show']]);
+
+        Route::get('/clear-lang', function(){
+            LanguageLine::truncate();
+        });
 
     });
 });
