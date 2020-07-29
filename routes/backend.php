@@ -53,7 +53,7 @@ Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::resource('/configs', 'systemConfig\configController');
         
         Route::resource('/categories', 'category\categoryController', ['except' => ['show']]);
-        Route::resource('/categories2', 'category\categoryController', ['except' => ['show']]);
+        Route::resource('/categories2', 'category2\categoryController2', ['except' => ['show']]);
 
     });
 });

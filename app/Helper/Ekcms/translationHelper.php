@@ -7,9 +7,10 @@ use Spatie\TranslationLoader\LanguageLine;
 
 function translate($content, $data = [], $group = "backend")
 {
-    $key = strtolower(trim($content));
+    $key = strtolower(trim(str_replace(".", "", $content)));
 
     $translations = array_keys(LanguageLine::getTranslationsForGroup(Cookie::get('lang') ?? 'en', $group));
+
     if ($key !== "") {
         if (!in_array($key, $translations)) {
             $check = LanguageLine::where('key', $key)->where('group', $group)->exists();

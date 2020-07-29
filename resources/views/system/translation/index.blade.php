@@ -100,7 +100,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="4" class="text-center">{{translate('No Data Available.')}}</td>
+                                    <td colspan="4" class="text-center">{{translate('No Data Available')}}</td>
                                 </tr>
                                 @endforelse
                             </tbody>

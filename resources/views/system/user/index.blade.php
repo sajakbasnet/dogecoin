@@ -14,7 +14,7 @@
 
 @section('table-heading')
 <tr>
-    <th>{{translate('S.N')}}</th>
+    <th>{{translate("S.N")}}</th>
     <th>{{translate('Name')}}</th>
     <th>{{translate('Role')}}</th>
     <th>{{translate('Action')}}</th>

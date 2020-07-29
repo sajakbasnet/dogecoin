@@ -45,7 +45,7 @@
                                         <tbody>
                                             @if($items->isEmpty())
                                             <tr>
-                                                <td colspan="100%" class="text-center">{{translate('No data available.')}}</td>
+                                                <td colspan="100%" class="text-center">{{translate('No data available')}}</td>
                                             </tr>
                                             @else
                                             @yield('table-data')
