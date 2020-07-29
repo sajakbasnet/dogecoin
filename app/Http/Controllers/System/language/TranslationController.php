@@ -22,7 +22,7 @@ class TranslationController extends ResourceController
     {
         return 'App\Http\Requests\system\translationRequest';
     }
-    
+
     public function moduleName()
     {
         return 'translations';
@@ -66,7 +66,7 @@ class TranslationController extends ResourceController
         try {
             $contents = \Excel::import(new TranslationImport($group), $file);
             $uploadedData = $contents->toArray($contents, $file);
-            
+
             if (count($uploadedData[0]) <= 1) {
                 return back()->withErrors(['alert-danger' => 'The file does not contain any translation content']);
             }
@@ -82,8 +82,7 @@ class TranslationController extends ResourceController
 
             unset($uploadedData[0][0]); // removing header content from file
 
-            $parsed = $this->parseUploadedData($uploadedData, $heading, $group);
-            if (count($parsed) > 0) LanguageLine::insert($parsed);
+            $this->parseAndUploadData($uploadedData, $heading, $group);
 
             return back()->withErrors(['alert-success' => 'The translations successfully uploaded.']);
         } catch (\Exception $e) {
@@ -100,16 +99,24 @@ class TranslationController extends ResourceController
         return $removed;
     }
 
-    public function parseUploadedData($data, $heading, $group)
+    public function parseAndUploadData($data, $heading, $group)
     {
         $arrayT = array();
-        $words = LanguageLine::where('group', $group)->pluck('key')->toArray();
 
         foreach ($data[0] as $key => $value) {
-            if (!in_array(strtolower($value[0]), $words)) {
-                $arrayT[$key]['key'] = strtolower(trim(str_replace(".", "", $value[0])));
-                $arrayT[$key]['group'] = $group;
-                $arrayT[$key]['text'] = $this->formatText($value, $heading);
+            $word = strtolower(trim(str_replace(".", "", $value[0])));
+            $lang = LanguageLine::where('group', $group)->where('key', $word)->first();
+            $updated = $this->formatText($value, $heading);
+            if (isset($lang) || $lang !== null) {
+                $lang->update([
+                    'text' => $updated
+                ]);
+            } else {
+                LanguageLine::create([
+                    'key' => $word,
+                    'group' => $group,
+                    'text' => $updated
+                ]);
             }
         }
         return $arrayT;
@@ -122,6 +129,6 @@ class TranslationController extends ResourceController
         foreach ($data as $key => $value) {
             $arrayT[$heading[$key]] = $value;
         }
-        return json_encode($arrayT);
+        return $arrayT;
     }
 }
