@@ -18,10 +18,11 @@ class categoryController2 extends Controller
         $this->category = $category;
         $this->redirectUrl = url('/'.PREFIX.'/categories2');
     }
-    public function index()
+
+    public function index(Request $request)
     {
-        $data['title'] = 'Category';
-        $data['categories'] = $this->category->paginate(20);
+        $data['title'] = 'Categories';
+        $data['categories'] = $this->category->getAllData($request);
         return view('system.oldCategory.index', $data);
     }
 

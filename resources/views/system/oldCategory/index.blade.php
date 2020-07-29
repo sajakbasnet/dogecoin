@@ -15,7 +15,23 @@
     </div>
 </div>
 @include('system.partials.message')
+<div class="content-display clearfix">
+    <div class="panel panel-default">
+        <div class="panel-heading no-bdr">
+            <div class="row">
+                <div class="col-sm-6">
+                    {!!Form::open(['method'=>'GET','url'=>PREFIX.'/categories2', 'class'=>'form-inline'])!!}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="keyword" value="{{Request::get('keyword')}}" autocomplete="off">
+                        <button style="margin-left: 5px;" type="submit" class="btn btn-primary">{{translate('Search')}}</button>
+                    </div>
+                </div>
+                {!!Form::close() !!}
 
+            </div>
+        </div>
+    </div>
+</div><br>
 <div class="panel">
     <div class="panel-box">
         <div class="table-responsive">
