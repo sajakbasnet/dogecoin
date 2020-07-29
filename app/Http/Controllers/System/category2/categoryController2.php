@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\system\category2;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\system\categoryRequest;
 use App\Model\Category;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class categoryController2 extends Controller
      */
     public function __construct(Category $category){
         $this->category = $category;
+        $this->redirectUrl = url('/'.PREFIX.'/categories2');
     }
     public function index()
     {
@@ -30,7 +32,8 @@ class categoryController2 extends Controller
      */
     public function create()
     {
-        //
+        $data['title'] = 'Category';
+        return view('system.oldCategory.create', $data);
     }
 
     /**
@@ -39,9 +42,11 @@ class categoryController2 extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(categoryRequest $request)
     {
-        //
+        $data = $request->except('_token');
+        $this->category->create($data);
+        return redirect($this->redirectUrl)->withErrors(['alert-success' => 'Successfully created.']);
     }
 
     /**
@@ -63,7 +68,9 @@ class categoryController2 extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['category'] = $this->category->findOrFail($id);
+        $data['title'] = 'Category';
+        return view('system.oldCategory.edit', $data);
     }
 
     /**
@@ -73,9 +80,12 @@ class categoryController2 extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(categoryRequest $request, $id)
     {
-        //
+        $category = $this->category->findOrFail($id);
+        $data = $request->except('_token');
+        $category->update($data);
+        return redirect($this->redirectUrl)->withErrors(['alert-success' => 'Successfully updated.']);
     }
 
     /**
@@ -86,6 +96,8 @@ class categoryController2 extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = $this->category->findOrFail($id);
+        $category->delete();
+        return redirect($this->redirectUrl)->withErrors(['alert-success' => 'Successfully deleted.']);
     }
 }
