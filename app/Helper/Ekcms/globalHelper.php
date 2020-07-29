@@ -3,6 +3,7 @@
 use App\Model\Config as conf;
 use App\Model\Language;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 function authUser()
@@ -12,10 +13,22 @@ function authUser()
 function getCmsConfig($label)
 {
     $value = "";
-    $data = conf::where('label', $label)->first();
-    if (!isset($data) || $data == null) {
-        $value;
-    } else $value = $data->value;
+    if($label == "cms title"){
+        $con = 'title';
+    }
+    elseif($label == "cms logo"){
+        $con = 'logo';
+    }
+    else{
+        $con = 'color';
+    }
+    $data = Cookie::get($con);
+    if (isset($data) || $data !== null) {
+        $value = $data;
+    } else {
+        $data = conf::where('label', $label)->first()->value;
+        $value = $data;
+    }
     return $value;
 }
 function generateToken($length)
@@ -101,7 +114,15 @@ function routeExists($route)
     else return false;
 }
 
-function globalLanguages(){
+function globalLanguages()
+{
     $languages = Language::where('group', 'backend')->get();
     return $languages;
+}
+
+function setConfigCookie()
+{
+    Cookie::queue(Cookie::make('title', conf::where('label', 'cms title')->first()->value));
+    Cookie::queue(Cookie::make('logo', conf::where('label', 'cms logo')->first()->value));
+    Cookie::queue(Cookie::make('color', conf::where('label', 'cms theme color')->first()->value));
 }

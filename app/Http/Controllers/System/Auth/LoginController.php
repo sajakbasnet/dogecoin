@@ -4,6 +4,7 @@ namespace App\Http\Controllers\system\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\system\TwoFAEmail;
+use App\Model\Config as ModelConfig;
 use App\Traits\CustomThrottleRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -74,6 +75,7 @@ class LoginController extends Controller
         if (Auth::attempt($user)) {
 
             session()->put('role', authUser()->role);
+            setConfigCookie();
             return $this->sendLoginResponse($request);
         }
 

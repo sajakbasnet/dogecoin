@@ -62,7 +62,9 @@ class ConfigService extends Service
             $this->removeImage($this->dir, $config->value);
             $data['value'] = $this->uploadImage($this->dir, 'value');
         }
-        return $config->update($data);
+        $config->update($data);
+        setConfigCookie();
+        return $config = $this->itemByIdentifier($id);
     }
 
     public function delete($id){
