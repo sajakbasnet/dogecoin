@@ -7,7 +7,7 @@ Route::get('/', function () {
 Route::get(PREFIX, function () {
     return redirect('/' . PREFIX . '/login');
 });
-Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['language']], function () {
+Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['language']], function () {
 
     Route::get('/login', 'Auth\LoginController@showLoginForm');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
@@ -53,5 +53,7 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::resource('/configs', 'systemConfig\configController');
         
         Route::resource('/categories', 'category\categoryController', ['except' => ['show']]);
+        Route::resource('/categories2', 'category\categoryController', ['except' => ['show']]);
+
     });
 });
