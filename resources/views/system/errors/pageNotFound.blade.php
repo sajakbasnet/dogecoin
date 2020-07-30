@@ -5,7 +5,6 @@
     <div style="text-align: center;">
     <h1>{{translate("This page doesn't exist.")}}</h1>
     <h2>404</h2>
-        <p></p>
     </div>
   </div>
 </div>

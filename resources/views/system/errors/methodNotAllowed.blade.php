@@ -3,8 +3,8 @@
 <div class="inner-content-fluid">
   <div class="custom-container-fluid">
     <div style="text-align: center;">
-    <h1>{{translate('Error Permission Denied')}}</h1>
-    <h2>401</h2>
+    <h1>{{translate("This method is not allowed.")}}</h1>
+    <h2>405</h2>
     </div>
   </div>
 </div>

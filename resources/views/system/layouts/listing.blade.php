@@ -22,6 +22,7 @@
                                     <h4>{{ translate($title) }}</h4>
                                 </div><!-- ends head-title -->
                             </div>
+                            @section('create')
                             <div class="col-6">
                                 @if(hasPermission($indexUrl.'/create'))
                                 <a class="btn btn-primary pull-right btn-sm" id="addNew" href="{{$indexUrl}}/create">
@@ -29,6 +30,7 @@
                                 </a>
                                 @endif
                             </div>
+                            @show
                         </div>
                     </div><!-- ends page-head -->
                     @show

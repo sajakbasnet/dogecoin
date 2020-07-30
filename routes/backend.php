@@ -49,7 +49,7 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::get('/translations/download/{group}', 'language\TranslationController@downloadExcel');
         Route::post('/translations/upload/{group}', 'language\TranslationController@uploadExcel');
 
-        Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show']]);
+        Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show', 'create', 'store']]);
         
         Route::resource('/configs', 'systemConfig\configController');
         

@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Cookie;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -75,6 +76,10 @@ class Handler extends ExceptionHandler
         }
         if($exception instanceof UnauthorizedException){
             return redirect()->back()->withErrors(['alert-danger' => 'Unauthorized action performed.']);
+        }
+        if($exception instanceof MethodNotAllowedHttpException){
+            $title = translate('Method not allowed.');
+            return response()->view('system.errors.methodnotAllowed', ['title' => $title], 405);
         }
         return parent::render($request, $exception);
     }
