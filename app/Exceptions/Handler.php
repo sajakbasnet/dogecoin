@@ -79,7 +79,7 @@ class Handler extends ExceptionHandler
         }
         if($exception instanceof MethodNotAllowedHttpException){
             $title = translate('Method not allowed.');
-            return response()->view('system.errors.methodnotAllowed', ['title' => $title], 405);
+            return response()->view('system.errors.methodNotAllowed', ['title' => $title], 405);
         }
         return parent::render($request, $exception);
     }
