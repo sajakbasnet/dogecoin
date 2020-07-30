@@ -32,8 +32,7 @@ class LanguageController extends ResourceController
 
     public function setLanguage($lang)
     {
-        Cookie::queue(Cookie::forget('lang'));
-        Cookie::queue(Cookie::make('lang', $lang));
+        Cookie::queue('lang', $lang, 20000);
         session()->put('lang', $lang);
         return back();
     }

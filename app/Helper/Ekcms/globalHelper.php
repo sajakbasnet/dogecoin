@@ -122,7 +122,7 @@ function globalLanguages()
 
 function setConfigCookie()
 {
-    Cookie::queue(Cookie::make('title', conf::where('label', 'cms title')->first()->value));
-    Cookie::queue(Cookie::make('logo', conf::where('label', 'cms logo')->first()->value));
-    Cookie::queue(Cookie::make('color', conf::where('label', 'cms theme color')->first()->value));
+    Cookie::queue('title', conf::where('label', 'cms title')->first()->value, 10000);
+    Cookie::queue('logo', conf::where('label', 'cms logo')->first()->value, 10000);
+    Cookie::queue('color', conf::where('label', 'cms theme color')->first()->value, 10000);
 }
