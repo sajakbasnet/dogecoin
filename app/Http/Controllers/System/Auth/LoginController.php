@@ -64,9 +64,9 @@ class LoginController extends Controller
             method_exists($this, 'hasTooManyAttempts') &&
             $this->hasTooManyAttempts($request, $attempt=5) // maximum attempts
         ) {
-            $this->lockoutEvent($request);
+            $this->customFireLockoutEvent($request);
 
-            return $this->testResponse($request);
+            return $this->customLockoutResponse($request);
         }
         $user = $this->loginType($request);
 
