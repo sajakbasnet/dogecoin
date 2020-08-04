@@ -23,9 +23,9 @@ class VerificationController extends Controller
             method_exists($this, 'hasTooManyAttempts') &&
             $this->hasTooManyAttempts($request, $attempts = 3) // maximum attempts can be set by passing parameter $attempts=
         ) {
-            $this->fireLockoutEvent($request);
+            $this->customFireLockoutEvent($request);
 
-            return $this->sendLockoutResponse($request);
+            return $this->customLockoutResponse($request);
         }
 
         $this->incrementAttempts($request, $minutes = 1); // maximum decay minute can be set by passing parameter $minutes=
@@ -43,9 +43,9 @@ class VerificationController extends Controller
             method_exists($this, 'hasTooManyAttempts') &&
             $this->hasTooManyAttempts($request, $attempts = 3) // maximum attempts can be set by passing parameter $attempts=
         ) {
-            $this->fireLockoutEvent($request);
+            $this->customFireLockoutEvent($request);
 
-            return $this->sendLockoutResponse($request);
+            return $this->customLockoutResponse($request);
         }
 
         $this->incrementAttempts($request, $minutes = 1); // maximum decay minute can be set by passing parameter $minutes=

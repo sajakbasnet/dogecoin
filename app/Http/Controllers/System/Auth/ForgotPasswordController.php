@@ -43,9 +43,9 @@ class ForgotPasswordController extends Controller
             method_exists($this, 'hasTooManyAttempts') &&
             $this->hasTooManyAttempts($request, $attempts = 4) // maximum attempts can be set by passing parameter $attempts=
         ) {
-            $this->fireLockoutEvent($request);
+            $this->customFireLockoutEvent($request);
 
-            return $this->sendLockoutResponse($request);
+            return $this->customLockoutResponse($request);
         }
 
         $this->incrementAttempts($request, $minutes = 1.5); // maximum decay minute can be set by passing parameter $minutes=
