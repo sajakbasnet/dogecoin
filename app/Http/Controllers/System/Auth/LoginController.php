@@ -8,7 +8,6 @@ use App\Model\Config as ModelConfig;
 use App\Traits\CustomThrottleRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Config;
 use Illuminate\Support\Facades\Mail;
 use Auth;
@@ -26,7 +25,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, CustomThrottleRequest;
 
     /**
      * Where to redirect users after login.
@@ -63,8 +62,8 @@ class LoginController extends Controller
         $this->validateLogin($request);
 
         if (
-            method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request, $attempt=5) // maximum attempts
+            method_exists($this, 'hasTooManyAttempts') &&
+            $this->hasTooManyAttempts($request, $attempt=5) // maximum attempts
         ) {
             $this->fireLockoutEvent($request);
 
@@ -79,7 +78,7 @@ class LoginController extends Controller
             return $this->sendLoginResponse($request);
         }
 
-        $this->incrementLoginAttempts($request, $decay=1); // decay minutes
+        $this->incrementAttempts($request, $decay=1); // decay minutes
 
         return $this->sendFailedLoginResponse($request);
     }
@@ -108,7 +107,7 @@ class LoginController extends Controller
     {
         $request->session()->regenerate();
 
-        $this->clearLoginAttempts($request);
+        $this->clearAttempts($request);
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {
             return $response;
