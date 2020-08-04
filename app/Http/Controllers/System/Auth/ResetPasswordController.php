@@ -59,7 +59,7 @@ class ResetPasswordController extends Controller
         $check = $this->checkOldPasswords($user, $request);
         if($check){
             $password = Hash::make($request->password);
-            if($user->userPasswords->count() < 10) $user->userPasswords()->create(['password' => $password]);
+            if($user->userPasswords->count() < 3) $user->userPasswords()->create(['password' => $password]);
             $user->update([
                 'password' => $password,
                 'password_resetted' => 1,
