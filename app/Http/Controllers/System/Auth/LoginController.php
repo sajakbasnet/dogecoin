@@ -67,7 +67,7 @@ class LoginController extends Controller
         ) {
             $this->fireLockoutEvent($request);
 
-            return $this->sendLockoutResponse($request);
+            return $this->lockoutResponse($request);
         }
         $user = $this->loginType($request);
 

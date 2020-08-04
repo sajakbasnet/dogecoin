@@ -43,7 +43,7 @@ trait CustomThrottleRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected function sendLockoutResponse(Request $request)
+    protected function lockoutResponse(Request $request)
     {
         $seconds = $this->limiter()->availableIn(
             $this->throttleKey($request)
