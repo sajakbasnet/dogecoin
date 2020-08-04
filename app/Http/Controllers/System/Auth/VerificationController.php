@@ -25,7 +25,7 @@ class VerificationController extends Controller
         ) {
             $this->fireLockoutEvent($request);
 
-            return $this->lockoutResponse($request);
+            return $this->sendLockoutResponse($request);
         }
 
         $this->incrementAttempts($request, $minutes = 1); // maximum decay minute can be set by passing parameter $minutes=
@@ -45,7 +45,7 @@ class VerificationController extends Controller
         ) {
             $this->fireLockoutEvent($request);
 
-            return $this->lockoutResponse($request);
+            return $this->sendLockoutResponse($request);
         }
 
         $this->incrementAttempts($request, $minutes = 1); // maximum decay minute can be set by passing parameter $minutes=
