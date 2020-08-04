@@ -18,7 +18,7 @@ trait CustomThrottleRequest
     protected function hasTooManyAttempts(Request $request, $attempt = 5)
     {
         return $this->customlimiter()->tooManyAttempts(
-            $this->customThrottleKey($request), $this->maxAttempts($attempt)
+            $this->customThrottleKey($request), $this->customMaxAttempts($attempt)
         );
     }
 
@@ -31,7 +31,7 @@ trait CustomThrottleRequest
     protected function incrementAttempts(Request $request, $minutes = 1)
     {
         $this->customlimiter()->hit(
-            $this->customThrottleKey($request), $this->decayMinutes($minutes) * 60
+            $this->customThrottleKey($request), $this->customDecayMinutes($minutes) * 60
         );
     }
 
@@ -101,7 +101,7 @@ trait CustomThrottleRequest
      *
      * @return int
      */
-    public function maxAttempts($attempt)
+    public function customMaxAttempts($attempt)
     {
         return $attempt;
     }
@@ -111,7 +111,7 @@ trait CustomThrottleRequest
      *
      * @return int
      */
-    public function decayMinutes($minutes)
+    public function customDecayMinutes($minutes)
     {
         return $minutes;
     }
