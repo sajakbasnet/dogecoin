@@ -18,7 +18,7 @@ trait CustomThrottleRequest
     protected function hasTooManyAttempts(Request $request, $attempt = 5)
     {
         return $this->limiter()->tooManyAttempts(
-            $this->throttleKey($request), $this->maxAttempts($attempt)
+            $this->customThrottleKey($request), $this->maxAttempts($attempt)
         );
     }
 
@@ -31,7 +31,7 @@ trait CustomThrottleRequest
     protected function incrementAttempts(Request $request, $minutes = 1)
     {
         $this->limiter()->hit(
-            $this->throttleKey($request), $this->decayMinutes($minutes) * 60
+            $this->customThrottleKey($request), $this->decayMinutes($minutes) * 60
         );
     }
 
@@ -46,7 +46,7 @@ trait CustomThrottleRequest
     protected function testResponse(Request $request)
     {
         $seconds = $this->limiter()->availableIn(
-            $this->throttleKey($request)
+            $this->customThrottleKey($request)
         );
 
         return back()->withErrors(['alert-throttle' => translate('To many attempts. Please try again after seconds', ['seconds' => $seconds])]);
@@ -60,7 +60,7 @@ trait CustomThrottleRequest
      */
     protected function clearAttempts(Request $request)
     {
-        $this->limiter()->clear($this->throttleKey($request));
+        $this->limiter()->clear($this->customThrottleKey($request));
     }
 
     /**
@@ -80,7 +80,7 @@ trait CustomThrottleRequest
      * @param  \Illuminate\Http\Request  $request
      * @return string
      */
-    protected function throttleKey(Request $request)
+    protected function customThrottleKey(Request $request)
     {
         $key = $request->getRequestUri().$request->getMethod();
         return Str::lower($key).'|'.$request->ip();
