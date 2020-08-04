@@ -17,7 +17,7 @@ trait CustomThrottleRequest
      */
     protected function hasTooManyAttempts(Request $request, $attempt = 5)
     {
-        return $this->limiter()->tooManyAttempts(
+        return $this->customlimiter()->tooManyAttempts(
             $this->customThrottleKey($request), $this->maxAttempts($attempt)
         );
     }
@@ -30,7 +30,7 @@ trait CustomThrottleRequest
      */
     protected function incrementAttempts(Request $request, $minutes = 1)
     {
-        $this->limiter()->hit(
+        $this->customlimiter()->hit(
             $this->customThrottleKey($request), $this->decayMinutes($minutes) * 60
         );
     }
@@ -45,7 +45,7 @@ trait CustomThrottleRequest
      */
     protected function testResponse(Request $request)
     {
-        $seconds = $this->limiter()->availableIn(
+        $seconds = $this->customlimiter()->availableIn(
             $this->customThrottleKey($request)
         );
 
@@ -60,7 +60,7 @@ trait CustomThrottleRequest
      */
     protected function clearAttempts(Request $request)
     {
-        $this->limiter()->clear($this->customThrottleKey($request));
+        $this->customlimiter()->clear($this->customThrottleKey($request));
     }
 
     /**
@@ -91,7 +91,7 @@ trait CustomThrottleRequest
      *
      * @return \Illuminate\Cache\RateLimiter
      */
-    protected function limiter()
+    protected function customlimiter()
     {
         return app(RateLimiter::class);
     }
