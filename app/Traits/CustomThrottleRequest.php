@@ -69,7 +69,7 @@ trait CustomThrottleRequest
      * @param  \Illuminate\Http\Request  $request
      * @return void
      */
-    protected function fireLockoutEvent(Request $request)
+    protected function lockoutEvent(Request $request)
     {
         event(new Lockout($request));
     }
