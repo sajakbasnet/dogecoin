@@ -4,8 +4,6 @@ namespace App\Http\Controllers\system;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Spatie\TranslationLoader\LanguageLine;
 
 class ResourceController extends Controller
 {
@@ -14,8 +12,19 @@ class ResourceController extends Controller
     $this->service = $service;
   }
 
-  public function validationRequest(){
+  public function storeValidationRequest()
+  {
     return '';
+  }
+
+  public function updateValidationRequest()
+  {
+    return '';
+  }
+
+  public function defaultRequest()
+  {
+    return 'Illuminate\Http\Request';
   }
 
   /**
@@ -103,7 +112,7 @@ class ResourceController extends Controller
   {
     return [
       "title" => 'Dashboard',
-      "link" =>  '/' . PREFIX . '/'.translate('home'),
+      "link" =>  '/' . PREFIX . '/' . translate('home'),
     ];
   }
 
@@ -215,9 +224,11 @@ class ResourceController extends Controller
    */
   public function store()
   {
-    $request = app()->make($this->validationRequest());
+    if (!empty($this->storeValidationRequest())) $request = $this->storeValidationRequest();
+    else $request = $this->defaultRequest();
+    $request = app()->make($request);
     $store = $this->service->store($request);
-    $this->setModuleId($store->id??"");
+    $this->setModuleId($store->id ?? "");
     return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
   }
 
@@ -237,13 +248,16 @@ class ResourceController extends Controller
    * Update resource details.
    * PUT or PATCH resources/:id
    */
-    public function update($id) {
-      
-      $request = app()->make($this->validationRequest());
-      $this->service->update($id, $request);
-      $this->setModuleId($id??"");
-      return redirect($this->getUrl())->withErrors(['success'=>'Successfully updated.']);
-    }
+  public function update($id)
+  {
+    if (!empty($this->updateValidationRequest())) $request = $this->updateValidationRequest();
+    elseif (!empty($this->storeValidationRequest())) $request = $this->storeValidationRequest();
+    else $request = $this->defaultRequest();
+    $request = app()->make($request);
+    $this->service->update($id, $request);
+    $this->setModuleId($id ?? "");
+    return redirect($this->getUrl())->withErrors(['success' => 'Successfully updated.']);
+  }
 
   /**
    * Delete a resource with id.

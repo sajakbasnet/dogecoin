@@ -31,7 +31,8 @@ return  [
 
   // All the routes are accessible by super user by default
   // routes entered in this array are not accessible by super user
-  "permissionDeniedToSuperUserRoutes" => [],
+  "permissionDeniedToSuperUserRoutes" => [
+  ],
 
   'modules' => [
     [
@@ -361,6 +362,7 @@ return  [
       'name' => 'Category Management 2',
       'icon' => "<i class='fa fa-list'></i>",
       'hasSubmodules' => false,
+      'showInSidebar' =>false,
       'route' => '/categories2',
       "permissions" => [
         [
