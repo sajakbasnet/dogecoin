@@ -15,7 +15,7 @@
         text: `{{$errors->first('success')}}`,
         showHideTransition: 'plain',
         icon: 'success',
-        position: 'bottom-center',
+        position: 'top-right',
       });
     }
 
