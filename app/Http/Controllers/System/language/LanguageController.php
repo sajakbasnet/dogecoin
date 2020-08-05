@@ -15,7 +15,7 @@ class LanguageController extends ResourceController
         parent::__construct($languageService);
     }
     
-    public function validationRequest()
+    public function storeValidationRequest()
     {
         return 'App\Http\Requests\system\languageRequest';
     }

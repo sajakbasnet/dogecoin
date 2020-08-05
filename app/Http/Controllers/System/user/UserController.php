@@ -15,7 +15,7 @@ class UserController extends ResourceController
         parent::__construct($userService);
     }
 
-    public function validationRequest()
+    public function storeValidationRequest()
     {
         return 'App\Http\Requests\system\userRequest';
     }

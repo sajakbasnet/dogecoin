@@ -12,8 +12,7 @@ class ProfileController extends ResourceController
         parent::__construct($profileService);
     }
 
-    public function validationRequest()
-    {
+    public function storeValidationRequest(){
         return  'App\Http\Requests\system\profileRequest';
     }
     

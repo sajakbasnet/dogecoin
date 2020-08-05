@@ -10,7 +10,7 @@ class configController extends ResourceController
         parent::__construct($configService);
     }
     
-    public function validationRequest()
+    public function storeValidationRequest()
     {
         return 'App\Http\Requests\system\ConfigRequest';
     }

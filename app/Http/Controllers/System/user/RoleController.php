@@ -12,7 +12,7 @@ class RoleController extends ResourceController
         parent::__construct($roleService);
     }
 
-    public function validationRequest()
+    public function storeValidationRequest()
     {
         return 'App\Http\Requests\system\roleRequest';
     }

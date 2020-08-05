@@ -14,7 +14,7 @@ class emailTemplateController extends ResourceController
        parent::__construct($emailtemplateService);
     }
 
-    public function validationRequest()
+    public function storeValidationRequest()
     {
         return 'App\Http\Requests\system\emailTemplateRequest';
     }

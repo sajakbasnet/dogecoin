@@ -18,7 +18,7 @@ class TranslationController extends ResourceController
         parent::__construct($translationService);
     }
 
-    public function validationRequest()
+    public function storeValidationRequest()
     {
         return 'App\Http\Requests\system\translationRequest';
     }
@@ -35,7 +35,7 @@ class TranslationController extends ResourceController
 
     public function update($id)
     {
-        $request = app()->make($this->validationRequest());
+        $request = app()->make($this->storeValidationRequest());
         $this->service->update($id, $request);
         return response()->json(["status" => "OK"], 200);
     }
