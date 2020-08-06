@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+
+use App\Exceptions\ResourceNotFoundException;
 use Config;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -84,7 +86,12 @@ class Service
 
     public function itemByIdentifier($id)
     {
+        try{
         return $this->model->findOrFail($id);
+        }
+        catch(\Exception $e){
+            throw new ResourceNotFoundException();
+        }
     }
 
     // Data for index page

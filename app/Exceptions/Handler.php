@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler
             $title = translate('Not found');
             return response()->view('system.errors.pageNotFound', ['title' => $title], 404);
         }
-        if($exception instanceof ModelNotFoundException){
+        if($exception instanceof ResourceNotFoundException){
             return redirect()->back()->withErrors(['alert-danger' => 'Record was not found in our system.']);
         }
         if($exception instanceof NotDeletableException){

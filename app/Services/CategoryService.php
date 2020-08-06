@@ -13,6 +13,6 @@ class CategoryService extends Service
         return $this->model->paginate(20);
     }
     public function singleData($id){
-        return $this->find($id);
+        return $this->model->find($id);
     }
 }
