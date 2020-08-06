@@ -5,7 +5,7 @@ namespace App\Http\Middleware\Frontend;
 use Closure;
 use Auth;
 
-class Language
+class frontendAuth
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,11 @@ class Language
      */
     public function handle($request, Closure $next)
     {
-        $locale = $request->header('locale') ?? 'en';
-        app()->setlocale($locale);
+        if(!Auth::guard('frontendUsers')->check()){
+            return response()->json([
+                "message" => "Unauthenticated"
+            ]);
+        }
         return $next($request);
     }
 }

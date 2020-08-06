@@ -18,13 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['namespace' => 'frontend', 'prefix' => 'v1',  'middleware' => ['passport:frontend-api']], function () {
+Route::group(['namespace' => 'Api', 'prefix' => 'v1',  'middleware' => ['lang']], function () {
     Route::post('/login', 'auth\LoginController@login');
-});
-
-Route::group(['namespace' => 'Api', 'prefix' => 'v1',  'middleware' => ['lang']], function(){
-    Route::post('test', 'TestController@store');
-    Route::get('categories', 'Categories\CategoriesController@index');
+    Route::get('categories', 'Categories\CategoriesController@index')->middleware('frontend-auth');
     Route::get('category-detail/{id}', 'Categories\CategoriesController@detail');
 });
-

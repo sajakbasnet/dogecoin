@@ -19,15 +19,15 @@ class CategoriesController extends ApiController
 
     public function index(Request $request)
     {
-       $categories = $this->service->apiIndexData();
-       return $this->respondWithOutPagination($categories, new CategoriesTransformer, 'Categories');
+        $categories = $this->service->apiIndexData();
+        return $this->respondWithOutPagination($categories, new CategoriesTransformer, 'Categories');
     }
 
 
     public function detail($id)
     {
-       $category = $this->service->singleData($id);
-       if($category == null) return $this->errorNotFound();
-       return $this->respondWithItem($category, new CategoriesTransformer, 'Categories');
+        $category = $this->service->singleData($id);
+        if ($category == null) return $this->errorNotFound();
+        return $this->respondWithItem($category, new CategoriesTransformer, 'Categories');
     }
 }
