@@ -22,10 +22,9 @@ Route::group(['namespace' => 'frontend', 'prefix' => 'v1',  'middleware' => ['pa
     Route::post('/login', 'auth\LoginController@login');
 });
 
-Route::group(['namespace' => 'frontend', 'prefix' => 'v1',  'middleware' => ['auth:api']], function(){
-    Route::get('/user', function(){
-        dd(Auth::user());
-    });
+Route::group(['namespace' => 'Api', 'prefix' => 'v1',  'middleware' => ['lang']], function(){
+    Route::post('test', 'TestController@store');
+    Route::get('categories', 'Categories\CategoriesController@index');
+    Route::get('category-detail/{id}', 'Categories\CategoriesController@detail');
 });
 
-Route::post('v1/test', 'frontend\TestController@store')->middleware('lang');

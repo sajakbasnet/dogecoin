@@ -11,7 +11,7 @@
     var check = `{{$errors->first('success')}}`;
     if (check !== "") {
       $.toast({
-        heading: 'Success',
+        heading: 'success',
         text: `{{$errors->first('success')}}`,
         showHideTransition: 'plain',
         icon: 'success',
