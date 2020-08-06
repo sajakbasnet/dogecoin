@@ -9,6 +9,9 @@ use Laravel\Passport\HasApiTokens;
 class FrontendUser extends Authenticatable
 {
     use Notifiable, HasApiTokens;
-
-    //
+    protected $table = 'frontend_users';
+    protected $guard = 'frontendUsers';
+    protected $fillable = [
+        'name', 'username', 'email', 'password'
+    ];
 }

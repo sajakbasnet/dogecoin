@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Api\auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\LoginRequest;
 use Illuminate\Http\Request;
-use Auth;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Route;
+use Auth;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $user = array(
-            'email' => $request->email,
-            'password' => $request->password
-        );
-        return $this->getAccessandRefreshtoken($request);
+        if (Auth::guard('frontendUsers')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return $this->getAccessandRefreshtoken($request);
+        }
     }
 
     public function getAccessandRefreshtoken($request)
@@ -28,12 +28,12 @@ class LoginController extends Controller
         }
         $response = $http->request('POST', $url, [
             'form_params' => [
-                'grant_type' => 'password',
+                'grant_type' => $request->grantType,
                 'client_id' => $request->clientId,
                 'client_secret' => $request->clientSecret,
                 'username' => $request->email,
                 'password' => $request->password,
-                'provider' => $request->provider
+                'scope' => '',
             ],
         ]);
         $result = json_decode((string) $response->getBody(), true);

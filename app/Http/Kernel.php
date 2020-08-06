@@ -67,12 +67,10 @@ class Kernel extends HttpKernel
         'twofa' => \App\Http\Middleware\TWOFA::class,
         'antitwofa' => \App\Http\Middleware\antiTwoFA::class,
         'language' =>  \App\Http\Middleware\Language::class,
-        'passport' => \App\Http\Middleware\SetPassortAuthGuard::class,
         'reset.password' => \App\Http\Middleware\CheckPasswordResetted::class,
 
-
-
         //api middlewares
+        'frontend-auth' => \App\Http\Middleware\Frontend\frontendAuth::class,
         'lang' => \App\Http\Middleware\Frontend\Language::class,
     ];
 }

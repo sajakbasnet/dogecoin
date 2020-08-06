@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Api;
 
-class TestRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,10 @@ class TestRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required'
-
+            "clientId" => 'required',
+            "clientSecret" => 'required',
+            "email" => 'required',
+            "password" => "required",
         ];
     }
 }
