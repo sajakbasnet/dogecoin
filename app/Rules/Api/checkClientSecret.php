@@ -27,7 +27,7 @@ class checkClientSecret implements Rule
     public function passes($attribute, $value)
     {
         $client = DB::table('oauth_clients')->where('id', $this->clientId)->first();
-        if ($client->secret == $value) return true;
+        if (isset($client) && $client->secret == $value) return true;
         else false;
     }
 
