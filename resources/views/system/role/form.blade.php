@@ -46,5 +46,16 @@
       }
     }
   })
+
+  $("input[type='checkbox']").each(function() {
+    $(this).click(function() {
+      var c = $(this).attr("class");
+      if ($(this).is(":checked")) {
+        $("." + c).attr("checked", true);
+      } else {
+        $("." + c).attr("checked", false);
+      }
+    })
+  })
 </script>
 @endsection

@@ -5,7 +5,6 @@ namespace App\Http\Requests\Api;
 use App\Rules\Api\checkClientSecret;
 use App\Rules\Api\checkClienttId;
 use App\Rules\Api\checkUserExists;
-use App\Rules\Api\checkValidPassword;
 use Illuminate\Http\Request;
 
 class LoginRequest extends FormRequest
