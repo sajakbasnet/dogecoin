@@ -1,8 +1,8 @@
 @if($module['name'] !== 'Dashboard')
-  <h4>@if(!$module['hasSubmodules']) <input type="checkbox" class="{{str_replace('/','',$module['permissions'][0]['route']['url'])}}"> @endif {{ translate($module['name']) }}</h4>
+  <h4>@if(!$module['hasSubmodules']) <input type="checkbox" class="{{str_replace('/','',$module['permissions'][0]['route']['url'])}}" @if(in_array(['url' => $module['permissions'][0]['route']['url'], 'method' => 'get'], $item->permissions)) checked @endif> @endif {{ translate($module['name']) }}</h4>
   @if($module['hasSubmodules'])
     @foreach($module['submodules'] as $submodule)
-    <h5><input type="checkbox" class="{{str_replace('/','',$submodule['permissions'][0]['route']['url'])}}"> {{ translate($submodule['name']) }}</h5>
+    <h5><input type="checkbox" class="{{str_replace('/','',$submodule['permissions'][0]['route']['url'])}}" @if(in_array(['url' => $submodule['permissions'][0]['route']['url'], 'method' => 'get'], $item->permissions)) checked @endif> {{ translate($submodule['name']) }}</h5>
     @foreach($submodule['permissions'] as $permission)
     <label class="checkbox-inline">
       <input class="{{str_replace('/','',$submodule['permissions'][0]['route']['url'])}} permission" type="checkbox" value="{{json_encode($permission['route'], JSON_UNESCAPED_SLASHES)}}" name="permissions[]"
