@@ -10,8 +10,8 @@ class CategoriesTransformer extends TransformerAbstract
   {
     return [
       'id' => $category->id,
-      'categoryName' => $category->name,
-      'categoryAttribute' => $category->attributes,
+      'category_name' => $category->name,
+      'category_attribute' => $category->attributes,
     ];
   }
 }

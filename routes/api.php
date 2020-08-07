@@ -19,7 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['namespace' => 'Api', 'prefix' => 'v1',  'middleware' => ['lang']], function () {
-    Route::post('/login', 'auth\LoginController@login');
     Route::get('categories', 'Categories\CategoriesController@index')->middleware('frontend-auth');
     Route::get('category-detail/{id}', 'Categories\CategoriesController@detail');
 });
