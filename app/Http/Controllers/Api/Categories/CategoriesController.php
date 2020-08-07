@@ -8,7 +8,7 @@ use App\Services\CategoryService;
 use App\Transformers\CategoriesTransformer;
 use Illuminate\Http\Request;
 use League\Fractal\Manager;
-
+use Auth;
 class CategoriesController extends ApiController
 {
     public function __construct(CategoryService $categoryService)

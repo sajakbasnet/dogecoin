@@ -10,16 +10,19 @@ function authUser()
 {
     return Auth::user();
 }
+
+function frontendUser()
+{
+    return Auth::guard('frontendUsers')->user();
+}
 function getCmsConfig($label)
 {
     $value = "";
-    if($label == "cms title"){
+    if ($label == "cms title") {
         $con = 'title';
-    }
-    elseif($label == "cms logo"){
+    } elseif ($label == "cms logo") {
         $con = 'logo';
-    }
-    else{
+    } else {
         $con = 'color';
     }
     $data = Cookie::get($con);

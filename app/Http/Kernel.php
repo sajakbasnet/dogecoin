@@ -70,7 +70,7 @@ class Kernel extends HttpKernel
         'reset.password' => \App\Http\Middleware\CheckPasswordResetted::class,
 
         //api middlewares
-        'frontend-auth' => \App\Http\Middleware\Frontend\frontendAuth::class,
+        'auth-frontend' => \App\Http\Middleware\Frontend\frontendAuth::class,
         'lang' => \App\Http\Middleware\Frontend\Language::class,
     ];
 }

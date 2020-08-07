@@ -16,11 +16,23 @@ class frontendAuth
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::guard('frontendUsers')->check()){
+        if (!Auth::guard('frontendUsers')->check()) {
             return response()->json([
                 "message" => "Unauthenticated"
             ]);
         }
+        $request = $this->addUserToRequest($request);
         return $next($request);
+    }
+
+    private function addUserToRequest($request)
+    {
+        $user = Auth::guard('frontendUsers')->user();
+        $request->merge(['user' => $user]);
+        $request->setUserResolver(function () use ($user) {
+            return $user;
+        });
+        Auth::setUser($user);
+        return $request;
     }
 }
