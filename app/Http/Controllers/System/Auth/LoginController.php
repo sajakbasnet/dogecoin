@@ -4,12 +4,14 @@ namespace App\Http\Controllers\system\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\system\TwoFAEmail;
+use App\Model\Config as conf;
 use App\Traits\CustomThrottleRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Config;
 use Illuminate\Support\Facades\Mail;
 use Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class LoginController extends Controller
 {
@@ -62,7 +64,7 @@ class LoginController extends Controller
 
         if (
             method_exists($this, 'hasTooManyAttempts') &&
-            $this->hasTooManyAttempts($request, $attempt=3) // maximum attempts
+            $this->hasTooManyAttempts($request, $attempt = 3) // maximum attempts
         ) {
             $this->customFireLockoutEvent($request);
 
@@ -73,11 +75,11 @@ class LoginController extends Controller
         if (Auth::attempt($user)) {
 
             session()->put('role', authUser()->role);
-            setConfigCookie();
+            $this->configureConfigCookie();
             return $this->sendLoginResponse($request);
         }
 
-        $this->incrementAttempts($request, $decay=1); // decay minutes
+        $this->incrementAttempts($request, $decay = 1); // decay minutes
 
         return $this->sendFailedLoginResponse($request);
     }
@@ -118,9 +120,16 @@ class LoginController extends Controller
             session()->put('verification_code', $verification_code);
             Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
         }
-        return redirect('/'.PREFIX.'/home');
+        return redirect('/' . PREFIX . '/home');
     }
 
+    public function configureConfigCookie()
+    {
+        if (Cookie::get('title') == null) Cookie::queue('title', conf::where('label', 'cms title')->first()->value, 10000);
+        elseif (Cookie::get('logo') == null) Cookie::queue('title', conf::where('label', 'cms logo')->first()->value, 10000);
+        elseif (Cookie::get('color') == null) Cookie::queue('title', conf::where('label', 'cms theme color')->first()->value, 10000);
+        else {}
+    }
     public function logout(Request $request)
     {
         $this->guard()->logout();
