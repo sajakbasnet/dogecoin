@@ -65,7 +65,7 @@
                                                 </div>
                                             </div>
                                             @else
-                                            <input type='{{$item->type}}' placeholder='Value' name='value' value="{{$item->value}}" onchange="submit()" class='form-control {{ $item->isColorPicker($item->id) ? 'jscolor {hash:true}' : '' }}'>
+                                            <input type='{{$item->type}}' placeholder='Value' name='value' value="{{Cookie::get('color') ?? $item->value}}" onchange="submit()" class='form-control {{ $item->isColorPicker($item->id) ? 'jscolor {hash:true}' : '' }}'>
                                             @endif
                                         </form>
                                         @else
