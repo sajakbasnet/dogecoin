@@ -48,3 +48,9 @@ function translateValidationErrorsOfApi($content, $data = [], $group = 'frontend
 {
     return translate($content, $data, $group);
 }
+
+//frontend tranalation function 
+
+function frontTrans($content, $data = [], $group = 'frontend'){
+    return translate($content, $data, $group);
+}
