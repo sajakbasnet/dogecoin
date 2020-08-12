@@ -31,8 +31,7 @@ return  [
 
   // All the routes are accessible by super user by default
   // routes entered in this array are not accessible by super user
-  "permissionDeniedToSuperUserRoutes" => [
-  ],
+  "permissionDeniedToSuperUserRoutes" => [],
 
   'modules' => [
     [
@@ -338,15 +337,28 @@ return  [
         [
           "name" => 'Create Category',
           "route" => [
-            "url" => '/categories/create',
-            "method" => 'post'
+            [
+              "url" => '/categories/create',
+              "method" => 'get'
+            ],
+            [
+              "url" => '/categories/create',
+              "method" => 'post'
+            ],
+
           ]
         ],
         [
           "name" => 'Edit Category',
           "route" => [
-            "url" => '/categories/*',
-            "method" => 'put'
+            [
+              "url" => '/categories/*',
+              "method" => 'get'
+            ],
+            [
+              "url" => '/categories/*',
+              "method" => 'put'
+            ]
           ]
         ],
         [
@@ -362,7 +374,7 @@ return  [
       'name' => 'Category Management 2',
       'icon' => "<i class='fa fa-list'></i>",
       'hasSubmodules' => false,
-      'showInSidebar' =>false,
+      'showInSidebar' => false,
       'route' => '/categories2',
       "permissions" => [
         [
@@ -375,15 +387,28 @@ return  [
         [
           "name" => 'Create Category 2',
           "route" => [
-            "url" => '/categories2/create',
-            "method" => 'post'
+            [
+              "url" => '/categories2/create',
+              "method" => 'get'
+            ],
+            [
+              "url" => '/categories2/create',
+              "method" => 'post'
+            ],
+
           ]
         ],
         [
           "name" => 'Edit Category 2',
           "route" => [
-            "url" => '/categories2/*',
-            "method" => 'put'
+            [
+              "url" => '/categories2/*',
+              "method" => 'get'
+            ],
+            [
+              "url" => '/categories2/*',
+              "method" => 'put'
+            ]
           ]
         ],
         [
