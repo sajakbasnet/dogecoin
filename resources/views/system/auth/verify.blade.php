@@ -7,7 +7,7 @@
   <div class="login-inner-wrapper">
     <div class="login-sec">
       <h1 style="color:{{getCmsConfig('cms theme color')}}">{{translate('Enter Verification Code.')}}</h1>
-      <p>{{'We have sent you a verification code in your email.'}} <br> {{translate('Copy a 4-digit verification code and enter it below.')}}</p>
+      <p>{{'We have sent you a verification code in your email.'}} <br> {{translate('Copy a 6-digit verification code and enter it below.')}}</p>
       @include('system.partials.message')
       <div class="login-form">
         <form method="post" action="{{route('verify.post')}}">

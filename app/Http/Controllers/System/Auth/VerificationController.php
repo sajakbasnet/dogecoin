@@ -30,7 +30,7 @@ class VerificationController extends Controller
 
         $this->incrementAttempts($request, $minutes = 1); // maximum decay minute can be set by passing parameter $minutes=
 
-        $verification_code = \Str::random(4);
+        $verification_code = mt_rand(100000, 999999);
         session()->forget('verification_code');
         session()->put('verification_code', $verification_code);
         Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
