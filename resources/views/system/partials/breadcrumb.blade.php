@@ -6,7 +6,7 @@
       @if(isset($breadcrumb['active']) && $breadcrumb['active'])
         {{ translate($breadcrumb['title']) }}
       @else
-        <a href="{{ $breadcrumb['link']?? '' }}">{{ translate($breadcrumb['title']) ?? '' }}</a>
+        <a href="{{ $breadcrumb['link'] ? url($breadcrumb['link']) : '' }}">{{ translate($breadcrumb['title']) ?? '' }}</a>
       @endif
     </li>
     @endforeach

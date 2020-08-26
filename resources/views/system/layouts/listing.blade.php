@@ -25,7 +25,7 @@
                             @section('create')
                             <div class="col-6">
                                 @if(hasPermission($indexUrl.'/create'))
-                                <a class="btn btn-primary pull-right btn-sm" id="addNew" href="{{$indexUrl}}/create">
+                                <a class="btn btn-primary pull-right btn-sm" id="addNew" href="{{url($indexUrl.'/create')}}">
                                     <i class="fa fa-plus"></i> {{translate('Add New')}}
                                 </a>
                                 @endif

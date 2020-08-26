@@ -7,6 +7,7 @@ const languageSelector = (function () {
   const $countrySelector = $('#country_id')
   const $languageSelecor = $('#language_code')
   const $prefix = $countrySelector.data('prefix')
+  const $url = $countrySelector.data('url')
 
   const init = () => {
     registerEventListeners()
@@ -24,7 +25,7 @@ const languageSelector = (function () {
   const populateLanguages = countryId => {
     let $languageOptions = `<option value="">Select Language</option>`
     $.ajax({
-      url: '/' + $prefix + '/country-language/' + countryId,
+      url: $url + '/' + $prefix + '/country-language/' + countryId,
       type: "GET",
       success: (response) => {
         const languages = response.languages;

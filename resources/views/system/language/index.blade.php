@@ -1,6 +1,6 @@
 @extends('system.layouts.listing')
 @section('header')
-<x-system.search-form :action="$indexUrl">
+<x-system.search-form :action="url($indexUrl)">
     <x-slot name="inputs">
         <x-system.form.form-inline-group :input="['name' => 'keyword', 'label' => 'Search keyword', 'default' => Request::get('keyword')]" />
         <x-system.form.form-inline-group :input="['name' => 'group', 'label' => 'Group']">

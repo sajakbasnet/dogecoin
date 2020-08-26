@@ -1,6 +1,6 @@
 <select name="{{ $input['name'] ?? '' }}" id="{{ $input['id'] ?? $input['name'] ?? ''}}" 
 class="form-control {{ (isset($input['error']) && $input['error'] !== "") ? 'is-invalid' : '' }}" {{ (isset($input['disabled']) && $input['disabled'] !== "") ? 'disabled' : '' }}
- {{ isset($input['multiple']) ? 'multiple' : '' }} data-prefix="{{PREFIX}}">
+ {{ isset($input['multiple']) ? 'multiple' : '' }} data-prefix="{{PREFIX}}" data-url="{{url('/')}}">
     @if(isset($input['placeholder']))
     <option value="">{{ translate($input['placeholder']) }}</option>
     @endif

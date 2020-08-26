@@ -11,15 +11,15 @@
                 </div>
                 <div class="col-sm-9">
                     @if(hasPermission($indexUrl.'/download-sample'))
-                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right btn-sm" href="{{$indexUrl.'/download-sample'}}" style="margin-right:3px">{{translate('Download Sample')}}</a>
+                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right btn-sm" href="{{url($indexUrl.'/download-sample')}}" style="margin-right:3px">{{translate('Download Sample')}}</a>
                     @endif
                     @if(hasPermission($indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))))
-                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right btn-sm" href="{{$indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))}}" style="margin-right:3px; margin-left:3px">{{translate('Download excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
+                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right btn-sm" href="{{url($indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group')))}}" style="margin-right:3px; margin-left:3px">{{translate('Download excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
                     @endif
 
                     @if(hasPermission($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')), 'post'))
                     <x-system.general-modal 
-                    :url="$indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group'))"
+                    :url="url($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')))"
                     :modalTitle="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" 
                     :modalId="'uploadExcelModal'"
                     :modalTriggerButton="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" 
@@ -42,7 +42,7 @@
         <div class="content-display clearfix">
             <div class="panel panel-default">
                 <div class="panel-heading no-bdr">
-                    <x-system.search-form :action="$indexUrl">
+                    <x-system.search-form :action="url($indexUrl)">
                         <x-slot name="inputs">
                             <x-system.form.form-inline-group :input="['name' => 'keyword','label' => 'Keyword', 'default' => Request::get('keyword')]" />
                             <x-system.form.form-inline-group :input="['name' => 'locale', 'label' => 'Locale']">

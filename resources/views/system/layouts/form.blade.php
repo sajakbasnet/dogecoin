@@ -30,7 +30,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 @include('system.partials.message')
-                                <form method="post" action="{{ $indexUrl }}{{isset($item) ? '/'.$item->id : ''}}" enctype="multipart/form-data">
+                                <form method="post" action="{{isset($item) ? url($indexUrl.'/'.$item->id) : url($indexUrl)}}" enctype="multipart/form-data">
                                     @csrf
                                     @if(isset($item))
                                     @method('PUT')
@@ -41,7 +41,7 @@
                                             <button type="submit" class="btn btn-primary">
                                                 {{ !isset($item) ? translate('Create') : translate('Update')}}
                                             </button>
-                                            <a href="{{ $indexUrl }}" class="btn btn-secondary">
+                                            <a href="{{url($indexUrl)}}" class="btn btn-secondary">
                                                 {{ translate('Cancel') }}
                                             </a>
                                         </div>

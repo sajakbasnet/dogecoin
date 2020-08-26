@@ -15,7 +15,7 @@
         <div class="content-display clearfix">
             <div class="panel panel-default">
                 <div class="panel-heading no-bdr">
-                    <x-system.search-form :action="$indexUrl">
+                    <x-system.search-form :action="url($indexUrl)">
                         <x-slot name="inputs">
                             <x-system.form.form-inline-group :input="['name' => 'keyword', 'label' => 'Search keyword', 'default' => Request::get('keyword')]" />
                         </x-slot>
@@ -49,7 +49,7 @@
                                     <td>{{$item->label}}</td>
                                     <td>
                                         @if(hasPermission($indexUrl.'/'.$item->id, 'put'))
-                                        <form method="post" action="{{$indexUrl}}/{{$item->id}}" id="form{{$item->id}}" enctype="multipart/form-data">
+                                        <form method="post" action="{{url($indexUrl.'/'.$item->id)}}" id="form{{$item->id}}" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
                                             @if($item->isTextArea($item->type))
@@ -64,8 +64,10 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            @else
+                                            @elseif($item->isColorPicker($item->id))
                                             <input type='{{$item->type}}' placeholder='Value' name='value' value="{{Cookie::get('color') ?? $item->value}}" onchange="submit()" class='form-control {{ $item->isColorPicker($item->id) ? 'jscolor {hash:true}' : '' }}'>
+                                            @else
+                                            <input type='{{$item->type}}' placeholder='Value' name='value' value="{{$item->value}}" onchange="submit()" class='form-control'>
                                             @endif
                                         </form>
                                         @else
@@ -97,7 +99,7 @@
             @if(hasPermission($indexUrl, 'post'))
             <div class="panel panel-default">
                 <div class="panel-heading no-bdr">
-                    <form method="post" class="form-inline" action="{{ $indexUrl }}" enctype="multipart/form-data">
+                    <form method="post" class="form-inline" action="{{ url($indexUrl) }}" enctype="multipart/form-data">
                         @csrf
                         <x-system.form.form-inline-group :input="['name' => 'label', 'label' => 'Label', 'default' => old('label'), 'required' => true, 'error' => $errors->first('label')]" />
                         <x-system.form.form-inline-group :input="['name' => 'type', 'label' => 'Type']">

@@ -13,7 +13,7 @@
           @foreach($module['submodules'] as $subModule)
           @if(hasPermission($subModule['route'], 'get'))
           <li>
-            <a href="/{{PREFIX.$subModule['route']}}">
+            <a href="{{url(PREFIX.$subModule['route'])}}">
               {!! $subModule['icon'] ?? ''!!} <span class="span-link">{{translate($subModule['name'])}}</span>
             </a>
           </li>
@@ -24,7 +24,7 @@
       @else
       <li>
         @if(hasPermission($module['route'], 'get'))
-        <a href="/{{PREFIX.$module['route']}}">
+        <a href="{{url(PREFIX.$module['route'])}}">
           {!! $module['icon'] ?? ''!!}<span class="span-link">{{translate($module['name'])}}</span>
         </a>
         @endif
