@@ -75,7 +75,7 @@ class LoginController extends Controller
         if (Auth::attempt($user)) {
 
             session()->put('role', authUser()->role);
-            $this->configureConfigCookie();
+            setConfigCookie();
             return $this->sendLoginResponse($request);
         }
 
@@ -123,13 +123,6 @@ class LoginController extends Controller
         return redirect('/' . PREFIX . '/home');
     }
 
-    public function configureConfigCookie()
-    {
-        if (Cookie::get('title') == null) Cookie::queue('title', conf::where('label', 'cms title')->first()->value, 10000);
-        elseif (Cookie::get('logo') == null) Cookie::queue('logo', conf::where('label', 'cms logo')->first()->value, 10000);
-        elseif (Cookie::get('color') == null) Cookie::queue('color', conf::where('label', 'cms theme color')->first()->value, 10000);
-        else {}
-    }
     public function logout(Request $request)
     {
         $this->guard()->logout();
