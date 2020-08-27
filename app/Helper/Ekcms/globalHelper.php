@@ -22,8 +22,9 @@ function getCmsConfig($label)
         $con = 'title';
     } elseif ($label == "cms logo") {
         $con = 'logo';
-    } else {
+    } elseif ($label == "cms theme color") {
         $con = 'color';
+    } else {
     }
     $data = Cookie::get($con);
     if (isset($data) || $data !== null) {

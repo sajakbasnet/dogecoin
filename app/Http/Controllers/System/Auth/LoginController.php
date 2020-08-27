@@ -126,8 +126,8 @@ class LoginController extends Controller
     public function configureConfigCookie()
     {
         if (Cookie::get('title') == null) Cookie::queue('title', conf::where('label', 'cms title')->first()->value, 10000);
-        elseif (Cookie::get('logo') == null) Cookie::queue('title', conf::where('label', 'cms logo')->first()->value, 10000);
-        elseif (Cookie::get('color') == null) Cookie::queue('title', conf::where('label', 'cms theme color')->first()->value, 10000);
+        elseif (Cookie::get('logo') == null) Cookie::queue('logo', conf::where('label', 'cms logo')->first()->value, 10000);
+        elseif (Cookie::get('color') == null) Cookie::queue('color', conf::where('label', 'cms theme color')->first()->value, 10000);
         else {}
     }
     public function logout(Request $request)
