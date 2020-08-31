@@ -104,20 +104,6 @@ function isPermissionSelected($permission, $permissions)
     return $check;
 }
 
-function routeExists($route)
-{
-    $slugs  = [];
-    $routes = Route::getRoutes();
-
-    foreach ($routes as $route) {
-        $slugs[] = '/' . $route->uri();
-    }
-    if (in_array('"/administrator/users/create"', array_unique($slugs)))
-        return true;
-
-    else return false;
-}
-
 function globalLanguages()
 {
     $languages = Language::where('group', 'backend')->get();
