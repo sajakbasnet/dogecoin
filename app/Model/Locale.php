@@ -2,11 +2,14 @@
 
 namespace App\Model;
 
+use Carbon\Carbon;
 use Spatie\TranslationLoader\LanguageLine;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Locale extends LanguageLine
 {
+    use LogsActivity;
+
     protected $table = 'language_lines';
 
     /** @var array */
@@ -18,8 +21,6 @@ class Locale extends LanguageLine
     /** @var array */
     protected $casts = ['text' => 'array'];
 
-    use LogsActivity;
-
     protected static $logAttributes = ['text'];
 
     protected static $logName = 'Translation';
@@ -28,6 +29,8 @@ class Locale extends LanguageLine
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        return "Model has been {$eventName}";
+        $authUser = authUser();
+        $now = Carbon::now()->format('yy-m-d H:i:s');
+        return "Locale of id {$this->id} was {$eventName} by {$authUser->name} at {$now}.";
     }
 }

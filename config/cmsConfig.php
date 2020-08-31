@@ -248,7 +248,7 @@ return  [
       'icon' => "<i class='fa fa-history'></i>",
       'hasSubmodules' => false,
       'route' => '/logs',
-      'permissions'=>[
+      'permissions' => [
         [
           "name" => 'View Logs',
           "route" => [
@@ -385,56 +385,5 @@ return  [
         ]
       ]
     ],
-    [
-      'name' => 'Category Management 2',
-      'icon' => "<i class='fa fa-list'></i>",
-      'hasSubmodules' => false,
-      'showInSidebar' => false,
-      'route' => '/categories2',
-      "permissions" => [
-        [
-          "name" => 'View Category 2',
-          "route" => [
-            "url" => '/categories2',
-            "method" => 'get'
-          ]
-        ],
-        [
-          "name" => 'Create Category 2',
-          "route" => [
-            [
-              "url" => '/categories2/create',
-              "method" => 'get'
-            ],
-            [
-              "url" => '/categories2/create',
-              "method" => 'post'
-            ],
-
-          ]
-        ],
-        [
-          "name" => 'Edit Category 2',
-          "route" => [
-            [
-              "url" => '/categories2/*',
-              "method" => 'get'
-            ],
-            [
-              "url" => '/categories2/*',
-              "method" => 'put'
-            ]
-          ]
-        ],
-        [
-          "name" => 'Delete Category 2',
-          "route" => [
-            "url" => '/categories2/*',
-            "method" => 'delete'
-          ]
-        ]
-      ]
-    ],
-
   ]
 ];

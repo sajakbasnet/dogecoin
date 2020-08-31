@@ -76,7 +76,7 @@ class LoginController extends Controller
 
             session()->put('role', authUser()->role);
             setConfigCookie();
-            activity()->log('User logged in.');
+            // activity()->log('User logged in.');
             return $this->sendLoginResponse($request);
         }
 

@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -21,14 +22,8 @@ class Category extends Model
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        return "Model has been {$eventName}";
-    }
-
-    public function getAllData($data){
-        $query = $this->query();
-        if($data->keyword !== null || isset($data->keyword)){
-            $query->where('name', 'LIKE', '%'.$data->keyword.'%');
-        }
-        return $query->paginate(PAGINATE);
+        $authUser = authUser();
+        $now = Carbon::now()->format('yy-m-d H:i:s');
+        return "Category of id {$this->id} was {$eventName} by {$authUser->name} at {$now}.";
     }
 }
