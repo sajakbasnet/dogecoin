@@ -247,7 +247,16 @@ return  [
       'name' => 'Logs Management',
       'icon' => "<i class='fa fa-history'></i>",
       'hasSubmodules' => false,
-      'route' => '/logs'
+      'route' => '/logs',
+      'permissions'=>[
+        [
+          "name" => 'View Logs',
+          "route" => [
+            "url" => '/logs',
+            "method" => 'get'
+          ]
+        ],
+      ]
     ],
     [
       "name" => 'System configs',
