@@ -244,6 +244,12 @@ return  [
       ]
     ],
     [
+      'name' => 'Logs Management',
+      'icon' => "<i class='fa fa-history'></i>",
+      'hasSubmodules' => false,
+      'route' => '/logs'
+    ],
+    [
       "name" => 'System configs',
       "icon" => "<i class='fa fa-cogs' aria-hidden='true'></i>",
       "hasSubmodules" => true,
