@@ -112,7 +112,7 @@
             @if(hasPermission($indexUrl, 'post'))
             <div class="panel panel-default">
                 <div class="panel-heading no-bdr">
-                    <form method="post" action="{{$indexUrl}}">
+                    <form method="post" action="{{url($indexUrl)}}">
                         <div class="form-row align-items-center">
                             @csrf
                             <input type="hidden" name="group" value="{{ Request::get('group') ?? 'backend' }}" />

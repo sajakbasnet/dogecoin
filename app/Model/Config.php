@@ -3,13 +3,26 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Config extends Model
 {
+    use LogsActivity;
+
     protected $fillable = [
         'label', 'type', 'value'
     ];
 
+    protected static $logAttributes = ['label', 'type', 'value'];
+
+    protected static $logName = 'Config';
+
+    protected static $logOnlyDirty = true;
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "Model has been {$eventName}";
+    }
     public function isFile($type)
     {
         if (strtolower($type) == 'file') return true;
@@ -37,7 +50,7 @@ class Config extends Model
     }
     public function isDefault($id)
     {
-        if (in_array($id, [1,2,3])) return true;
+        if (in_array($id, [1, 2, 3])) return true;
         else return false;
     }
 }

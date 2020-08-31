@@ -17,7 +17,7 @@ class indexController extends ResourceController
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request, $id="")
+    public function index(Request $request, $id = "")
     {
         // dd(ekHelper::hasPermission('/backend/users'));
         $data['breadcrumbs'] = $this->breadcrumbForIndex();

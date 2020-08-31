@@ -3,12 +3,26 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Language extends Model
 {
+    use LogsActivity;
+
     protected $fillable = [
         'name', 'language_code', 'group'
     ];
+
+    protected static $logAttributes = ['name', 'language_code', 'group'];
+    
+    protected static $logName = 'Language';
+
+    protected static $logOnlyDirty = true;
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "Model has been {$eventName}";
+    }
 
     public function isDefault()
     {

@@ -9,10 +9,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Config;
 use Laravel\Passport\HasApiTokens;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasApiTokens;
+    use Notifiable, HasApiTokens, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -20,8 +21,19 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username', 'role_id', 'token', 'password_resetted'
+        'name', 'email', 'password', 'username', 'role_id', 'token', 'password_resetted'
     ];
+
+    protected static $logAttributes = ['name', 'email', 'password', 'username', 'role_id'];
+    
+    protected static $logName = 'User';
+
+    protected static $logOnlyDirty = true;
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "Model has been {$eventName}";
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -41,22 +53,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 
-    public function userPasswords(){
+    public function userPasswords()
+    {
         return $this->hasMany(UserPassword::class, 'user_id', 'id');
     }
 
-    public function getPasswordSetResetLink($check = false, $token){
+    public function getPasswordSetResetLink($check = false, $token)
+    {
         $title = 'Reset Password';
         $key = 'reset-password';
-        if($check) {
-          $title = 'Set Password';
-          $key = 'set-password';
+        if ($check) {
+            $title = 'Set Password';
+            $key = 'set-password';
         }
-        return "<a href=".Config::get('constants.URL')."/".Config::get('constants.PREFIX')."/".$key."/".$this->email."/".$token.">".$title."</a>";
-      }
-    
+        return "<a href=" . Config::get('constants.URL') . "/" . Config::get('constants.PREFIX') . "/" . $key . "/" . $this->email . "/" . $token . ">" . $title . "</a>";
+    }
 }

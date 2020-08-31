@@ -3,11 +3,12 @@
 namespace App\Services;
 
 use App\Model\Language;
+use App\Model\Locale;
 use Spatie\TranslationLoader\LanguageLine;
 
 class TranslationService extends Service
 {
-    public function __construct(LanguageLine $languageLine, LanguageService $languageService)
+    public function __construct(Locale $languageLine, LanguageService $languageService)
     {
         parent::__construct($languageLine);
         $this->languageService = $languageService;
