@@ -3,6 +3,15 @@
 @section('create')
 @endsection
 
+@section('header')
+    <x-system.search-form :action="url($indexUrl)">
+        <x-slot name="inputs">
+            <x-system.form.form-inline-group :input="['name'=>'from', 'label'=>'From date','default'=> Request::get('from'), 'class'=>'datepicker', 'autoComplete'=>'off']" />
+            <x-system.form.form-inline-group :input="['name'=>'to', 'label'=>'To date', 'default'=> Request::get('to'), 'class'=>'datepicker', 'autoComplete'=>'off']" />
+        </x-slot>
+    </x-system.search-form>
+@endsection
+
 @section('table-heading')
 <tr>
     <th>{{translate("S.N")}}</th>
