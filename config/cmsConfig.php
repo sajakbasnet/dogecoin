@@ -244,18 +244,40 @@ return  [
       ]
     ],
     [
-      'name' => 'Logs Management',
-      'icon' => "<i class='fa fa-history'></i>",
-      'hasSubmodules' => false,
-      'route' => '/logs',
-      'permissions' => [
+      "name" => 'Logs Management',
+      "icon" => "<i class='fa fa-history' aria-hidden='true'></i>",
+      "hasSubmodules" => true,
+      "submodules" => [
         [
-          "name" => 'View Logs',
-          "route" => [
-            "url" => '/logs',
-            "method" => 'get'
+          "name" => 'Login Logs',
+          "icon" => "<i class='fa fa-sign-in' aria-hidden='true'></i>",
+          "route" => '/login-logs',
+          "hasSubmodules" => false,
+          "permissions" => [
+            [
+              "name" => 'View Login Logs',
+              "route" => [
+                "url" => '/login-logs',
+                "method" => 'get'
+              ]
+            ],
           ]
         ],
+        [
+          "name" => 'Activity Logs',
+          "icon" => '<i class="fa fa-tasks" aria-hidden="true"></i>',
+          "route" => '/logs',
+          "hasSubmodules" => false,
+          "permissions" => [
+            [
+              "name" => 'View Activity Logs',
+              "route" => [
+                "url" => '/logs',
+                "method" => 'get'
+              ]
+            ],
+          ]
+        ]
       ]
     ],
     [

@@ -70,6 +70,10 @@ class User extends Authenticatable
         return $this->hasMany(Log::class, 'causer_id', 'id');
     }
 
+    public function loginLogs(){
+        return $this->hasMany(Log::class, 'user_id', 'id');
+    }
+
     public function getPasswordSetResetLink($check = false, $token)
     {
         $title = 'Reset Password';

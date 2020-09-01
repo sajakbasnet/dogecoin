@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\system\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Model\Loginlogs;
 use App\Mail\system\TwoFAEmail;
-use App\Model\Config as conf;
 use App\Traits\CustomThrottleRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Config;
 use Illuminate\Support\Facades\Mail;
 use Auth;
-use Illuminate\Support\Facades\Cookie;
+use GuzzleHttp;
 
 class LoginController extends Controller
 {
@@ -76,7 +76,7 @@ class LoginController extends Controller
 
             session()->put('role', authUser()->role);
             setConfigCookie();
-            // activity()->log('User logged in.');
+            $this->createLoginLog($request);
             return $this->sendLoginResponse($request);
         }
 
@@ -99,6 +99,30 @@ class LoginController extends Controller
         );
         return $user;
     }
+
+    public function createLoginLog($request)
+    {
+        $client = new GuzzleHttp\Client(['base_uri' => 'http://ip-api.com']);
+        $res = $client->request('GET', '/json/' . $request->ip());
+        $ipResponse = json_decode($res->getBody());
+
+        if ($ipResponse->status == 'fail') {
+            $ipResponse = '';
+        }
+
+        return Loginlogs::create([
+            'user_id' => authUser()->id,
+            'ip' => !empty($ipResponse) ? $ipResponse->query : '110.44.123.47',
+            'city' => !empty($ipResponse) ? $ipResponse->city : 'Kathmandu',
+            'country' => !empty($ipResponse) ? $ipResponse->country : 'Nepal',
+            'isp' => !empty($ipResponse) ? $ipResponse->isp : 'Vianet Communications Pvt.',
+            'lat' => !empty($ipResponse) ? $ipResponse->lat : '27.7167',
+            'lon' => !empty($ipResponse) ? $ipResponse->lon : '85.3167',
+            'timezone' => !empty($ipResponse) ? $ipResponse->timezone : 'Asia/Kathmandu',
+            'region_name' => !empty($ipResponse) ? $ipResponse->regionName : 'Central Region',
+        ]);
+    }
+
     /**
      * Send the response after the user was authenticated.
      *

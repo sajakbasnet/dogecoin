@@ -55,6 +55,7 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::resource('/configs', 'systemConfig\configController');
 
         Route::get('logs', 'logs\LogsController@index');
+        Route::get('login-logs', 'logs\LoginLogsController@index');
 
         Route::resource('/categories', 'category\categoryController', ['except' => ['show']]);
 
