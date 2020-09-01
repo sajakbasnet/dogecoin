@@ -2,9 +2,9 @@
 
 use App\Model\Config as conf;
 use App\Model\Language;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Route;
 
 function authUser()
 {
@@ -116,3 +116,12 @@ function setConfigCookie()
     Cookie::queue('logo', conf::where('label', 'cms logo')->first()->value, 10000);
     Cookie::queue('color', conf::where('label', 'cms theme color')->first()->value, 10000);
 }
+
+function localDatetime($dateTime){
+    return Carbon::parse($dateTime)->timezone('Asia/Kathmandu');
+}
+
+function japaneseDateTime($dateTime){
+    return Carbon::parse($dateTime)->timezone('Asia/Tokyo');
+}
+

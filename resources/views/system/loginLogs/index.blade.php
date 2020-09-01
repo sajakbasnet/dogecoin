@@ -22,8 +22,13 @@
     <td>{{ $a }}</td>
     <td>{{ $item->user->name ?? 'N/A'}}</td>
     <td>{{ $item->ip}}</td>
-    <td>{{ $item->created_at}}</td>
-    <td>{{ $item->isp }}</td>
+    <td>{{ localDateTime($item->created_at)}}</td>
+    <td>
+        Latitude : {{$item->lat}}<br>
+        Longitude : {{$item->lon}}<br>
+        City : {{$item->city}}<br>
+        Country : {{$item->country}}<br>
+    </td>
     <td>{{ $item->region_name }}</td>
 </tr>
 @endforeach
