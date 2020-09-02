@@ -3,6 +3,7 @@
 namespace App\Http\Requests\system;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class roleRequest extends FormRequest
 {
@@ -21,10 +22,10 @@ class roleRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:roles,name,'.$request->role,
             'permissions' => 'required',
         ];
     }

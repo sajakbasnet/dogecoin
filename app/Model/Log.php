@@ -24,4 +24,17 @@ class Log extends Activity
     public function user(){
         return $this->belongsTo(User::class, 'causer_id', 'id');
     }
+
+    public function oldValues($rawValues){
+        if(!isset($rawValues['old'])) return 'N/A';
+        $value = trim(json_encode($rawValues['old']), '{}');
+        $string = str_replace(',', "\n", $value);
+        return nl2br($string);
+    }
+
+    public function newValues($rawValues){
+        $value = trim(json_encode($rawValues['attributes']), '{}');
+        $string = str_replace(',', "\n", $value);
+        return nl2br($string);
+    }
 }

@@ -25,7 +25,7 @@ class EmailTemplate extends Model
     {
         $authUser = authUser();
         $now = Carbon::now()->format('yy-m-d H:i:s');
-        return "Email template of id {$this->id} was {$eventName} by {$authUser->name} at {$now}.";
+        return "Email template of id {$this->id} was <strong>{$eventName}</strong> by {$authUser->name} at {$now}.";
     }
 
     public function emailTranslations()
