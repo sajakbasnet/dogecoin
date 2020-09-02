@@ -17,7 +17,7 @@
     <th>{{translate("S.N")}}</th>
     <th>{{translate("User")}}</th>
     <th>{{translate('Log Module')}}</th>
-    <th>{{translate('Log Message')}}</th>
+    <th style="width: 30%;">{{translate('Log Message')}}</th>
     <th>{{translate('Changes')}}</th>
 </tr>
 @endsection
