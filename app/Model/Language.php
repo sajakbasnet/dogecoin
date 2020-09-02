@@ -22,9 +22,7 @@ class Language extends Model
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        $authUser = authUser();
-        $now = Carbon::now()->format('yy-m-d H:i:s');
-        return "Language of id {$this->id} was <strong>{$eventName}</strong> by {$authUser->name} at {$now}.";
+        return logMessage('Language',$this->id,$eventName);
     }
 
     public function isDefault()

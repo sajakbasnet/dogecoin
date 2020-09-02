@@ -125,3 +125,9 @@ function japaneseDateTime($dateTime){
     return Carbon::parse($dateTime)->timezone('Asia/Tokyo');
 }
 
+function logMessage($modelName,$modelId,$eventName){
+    $authUser = authUser();
+    $now = Carbon::now()->format('yy-m-d H:i:s');
+    return "$modelName of id {$modelId} was <strong>{$eventName}</strong> by {$authUser->name} at {$now}.";
+}
+

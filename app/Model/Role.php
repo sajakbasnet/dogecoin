@@ -26,9 +26,7 @@ class Role extends Model
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        $authUser = authUser();
-        $now = Carbon::now()->format('yy-m-d H:i:s');
-        return "Role of id {$this->id} was <strong>{$eventName}</strong> by {$authUser->name} at {$now}.";
+        return logMessage('Role',$this->id,$eventName);
     }
 
     public function users(){
