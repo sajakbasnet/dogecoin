@@ -25,7 +25,13 @@ class User extends Authenticatable
         'name', 'email', 'password', 'username', 'role_id', 'token', 'password_resetted'
     ];
 
+    protected $guarded =[
+        'id'
+    ];
+
     protected static $logAttributes = ['name', 'email', 'username', 'role_id'];
+
+    protected static $ignoreChangedAttributes = ['password', 'password_resetted', 'token','remember_token','updated_at'];
     
     protected static $logName = 'User';
 

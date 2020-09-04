@@ -117,17 +117,27 @@ function setConfigCookie()
     Cookie::queue('color', conf::where('label', 'cms theme color')->first()->value, 10000);
 }
 
-function localDatetime($dateTime){
+function localDatetime($dateTime)
+{
     return Carbon::parse($dateTime)->timezone('Asia/Kathmandu');
 }
 
-function japaneseDateTime($dateTime){
+function japaneseDateTime($dateTime)
+{
     return Carbon::parse($dateTime)->timezone('Asia/Tokyo');
 }
 
-function logMessage($modelName,$modelId,$eventName){
-    $authUser = authUser();
+function storeLog($performedOn, $msg)
+{
     $now = Carbon::now()->format('yy-m-d H:i:s');
-    return "$modelName of id {$modelId} was <strong>{$eventName}</strong> by {$authUser->name} at {$now}.";
+    activity()
+        ->performedOn($performedOn)
+        ->log($msg . ' at ' . $now);
 }
 
+function logMessage($modelName, $modelId, $eventName)
+{
+    $user = authUser()->name ?? '--';
+    $now = Carbon::now()->format('yy-m-d H:i:s');
+    return "$modelName of id {$modelId} was <strong>{$eventName}</strong> by {$user} at {$now}.";
+}

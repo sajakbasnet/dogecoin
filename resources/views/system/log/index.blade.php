@@ -32,6 +32,7 @@
     <td>{{ $item->getModuleName($item->subject_type)}}</td>
     <td>{!! $item->description !!}</td>
     <td>
+        @if(count($item->properties) > 0)
         @if($item->oldValues($item->properties) !== 'N/A')
         <strong>Old values:</strong> <br>
         {!! $item->oldValues($item->properties) !!}
@@ -39,6 +40,9 @@
         @endif
         <strong>Current values:</strong> <br>
         {!! $item->newValues($item->properties) !!}
+        @else
+        --
+        @endif
     </td>
 </tr>
 @endforeach
