@@ -10,6 +10,7 @@ class ResourceController extends Controller
   public function __construct($service)
   {
     $this->service = $service;
+    $this->moduleId = "";
   }
 
   public function storeValidationRequest()
@@ -132,13 +133,11 @@ class ResourceController extends Controller
       ],
     ];
     if ($this->isSubModule()) {
-      $breadcrumbs = [
-        [
-          "title" => $this->subModuleToTitle(),
-          "link" => $this->subModuleIndexUrl(),
-          "active" => $activate,
-        ],
-      ];
+      $breadcrumbs = array_merge($breadcrumbs, [[
+        "title" => $this->subModuleToTitle(),
+        "link" => $this->subModuleIndexUrl(),
+        "active" => $activate,
+      ]]);
     }
     return $breadcrumbs;
   }
