@@ -371,55 +371,54 @@ return  [
       ]
     ],
     [
-      'name' => 'Category Management 2',
+      'name' => 'Product Management',
       'icon' => "<i class='fa fa-list'></i>",
       'hasSubmodules' => false,
-      'showInSidebar' => false,
-      'route' => '/categories2',
+      'showInSideBar' => false,
+      'route' => '/category/*/product',
       "permissions" => [
         [
-          "name" => 'View Category 2',
+          "name" => 'View Product',
           "route" => [
-            "url" => '/categories2',
+            "url" => '/category/*/product',
             "method" => 'get'
           ]
         ],
         [
-          "name" => 'Create Category 2',
+          "name" => 'Create Product',
           "route" => [
             [
-              "url" => '/categories2/create',
+              "url" => '/category/*/product/create',
               "method" => 'get'
             ],
             [
-              "url" => '/categories2/create',
+              "url" => '/category/*/product/create',
               "method" => 'post'
             ],
 
           ]
         ],
         [
-          "name" => 'Edit Category 2',
+          "name" => 'Edit Product',
           "route" => [
             [
-              "url" => '/categories2/*',
+              "url" => '/category/*/product/*/edit',
               "method" => 'get'
             ],
             [
-              "url" => '/categories2/*',
+              "url" => '/category/*/product/*/edit',
               "method" => 'put'
             ]
           ]
         ],
         [
-          "name" => 'Delete Category 2',
+          "name" => 'Delete Category',
           "route" => [
-            "url" => '/categories2/*',
+            "url" => '/category/*/product/*/delete',
             "method" => 'delete'
           ]
         ]
       ]
     ],
-
   ]
 ];
