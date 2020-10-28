@@ -58,8 +58,8 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::get('login-logs', 'logs\LoginLogsController@index');
 
         Route::resource('/categories', 'category\categoryController', ['except' => ['show']]);
-
-        Route::get('/clear-lang', function () {
+        Route::resource('categories/{id}/sub-category', 'category\SubCategoryController');
+        Route::get('/clear-lang', function(){
             LanguageLine::truncate();
         });
     });

@@ -36,7 +36,7 @@ class TranslationController extends ResourceController
     public function update($id)
     {
         $request = app()->make($this->storeValidationRequest());
-        $this->service->update($id, $request);
+        $this->service->update($request, $id);
         return response()->json(["status" => "OK"], 200);
     }
 
