@@ -244,43 +244,6 @@ return  [
       ]
     ],
     [
-      "name" => 'Logs Management',
-      "icon" => "<i class='fa fa-history' aria-hidden='true'></i>",
-      "hasSubmodules" => true,
-      "submodules" => [
-        [
-          "name" => 'Login Logs',
-          "icon" => "<i class='fa fa-sign-in' aria-hidden='true'></i>",
-          "route" => '/login-logs',
-          "hasSubmodules" => false,
-          "permissions" => [
-            [
-              "name" => 'View Login Logs',
-              "route" => [
-                "url" => '/login-logs',
-                "method" => 'get'
-              ]
-            ],
-          ]
-        ],
-        [
-          "name" => 'Activity Logs',
-          "icon" => '<i class="fa fa-tasks" aria-hidden="true"></i>',
-          "route" => '/logs',
-          "hasSubmodules" => false,
-          "permissions" => [
-            [
-              "name" => 'View Activity Logs',
-              "route" => [
-                "url" => '/logs',
-                "method" => 'get'
-              ]
-            ],
-          ]
-        ]
-      ]
-    ],
-    [
       "name" => 'System configs',
       "icon" => "<i class='fa fa-cogs' aria-hidden='true'></i>",
       "hasSubmodules" => true,
@@ -459,3 +422,4 @@ return  [
     ],
   ]
 ];
+
