@@ -12,6 +12,7 @@
     <th>{{translate('S.N')}}</th>
     <th>{{translate('Name')}}</th>
     <th>{{translate('Attributes')}}</th>
+    <th>{{translate('Sub Categories')}}</th>
     <th>{{translate('Action')}}</th>
 </tr>
 @endsection
@@ -25,6 +26,9 @@
     <td>{{ $item->name }}</td>
     <td>
         {{ $item->attributes }}
+    </td>
+    <td>
+        <a href="{{url(PREFIX.'/sub-category/'.$item->id)}}" class="btn btn-success"></a>
     </td>
     <td>
         @include('system.partials.editButton')
