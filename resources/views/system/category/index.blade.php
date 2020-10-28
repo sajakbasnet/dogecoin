@@ -28,7 +28,7 @@
         {{ $item->attributes }}
     </td>
     <td>
-        <a href="{{url(PREFIX.'/sub-category/'.$item->id)}}" class="btn btn-success"></a>
+        <a href="{{url(PREFIX.'/category/'.$item->id.'/sub-category')}}" class="btn btn-success">Sub categories</a>
     </td>
     <td>
         @include('system.partials.editButton')

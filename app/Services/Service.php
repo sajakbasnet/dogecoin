@@ -67,7 +67,7 @@ class Service
 
     //update record
 
-    public function update($id, $request)
+    public function update($request, $id)
     {
         $data = $request->except('_token');
         $update = $this->itemByIdentifier($id);
@@ -96,22 +96,22 @@ class Service
 
     // Data for index page
 
-    public function indexPageData($data)
+    public function indexPageData($request)
     {
         return [
-            'items' => $this->getAllData($data)
+            'items' => $this->getAllData($request)
         ];
     }
 
     // Data for create page
 
-    public function createPageData($data)
+    public function createPageData($request)
     {
     }
 
     // Data for edit page
 
-    public function editPageData($id)
+    public function editPageData($request, $id)
     {
         return [
             'item' => $this->itemByIdentifier($id)

@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class ResourceController extends Controller
 {
+  protected $moduleId;
   public function __construct($service)
   {
     $this->service = $service;
-    $this->moduleId = "";
   }
 
   public function storeValidationRequest()
@@ -42,11 +42,12 @@ class ResourceController extends Controller
    * @params id -> id of the module (for example: users_id)
    * @returns {void}
    */
-  public function setModuleId($id)
+  public function setModuleId($request)
   {
     if ($this->isSubModule()) {
-      $this->moduleId = $id;
+      $this->moduleId = $request->id ?? "";
     }
+    return $this->moduleId;
   }
 
   /**
@@ -196,11 +197,11 @@ class ResourceController extends Controller
    * GET resources
    *
    */
-  public function index(Request $request, $id = "")
+  public function index(Request $request)
   {
     $data = $this->service->indexPageData($request);
     $data['breadcrumbs'] = $this->breadcrumbForIndex();
-    $this->setModuleId($id);
+    $this->setModuleId($request);
     return $this->renderView('index', $data);
   }
 
@@ -209,10 +210,10 @@ class ResourceController extends Controller
    * GET resources/create
    *
    */
-  public function create(Request $request, $id = "")
+  public function create(Request $request)
   {
     $data = $this->service->createPageData($request);
-    $this->setModuleId($id);
+    $this->setModuleId($request);
     $data['breadcrumbs'] = $this->breadcrumbForForm('Create');
     return $this->renderView('form', $data);
   }
@@ -235,10 +236,10 @@ class ResourceController extends Controller
    * Render a form to update an existing resource.
    * GET resources/:id/edit
    */
-  public function edit($id)
+  public function edit(Request $request, $id)
   {
-    $data = $this->service->editPageData($id);
-    $this->setModuleId($id);
+    $data = $this->service->editPageData($request, $id);
+    $this->setModuleId($request);
     $data['breadcrumbs'] = $this->breadcrumbForForm('Edit');
     return $this->renderView('form', $data);
   }
@@ -247,14 +248,14 @@ class ResourceController extends Controller
    * Update resource details.
    * PUT or PATCH resources/:id
    */
-  public function update($id)
+  public function update(Request $request, $id="")
   {
     if (!empty($this->updateValidationRequest())) $request = $this->updateValidationRequest();
     elseif (!empty($this->storeValidationRequest())) $request = $this->storeValidationRequest();
     else $request = $this->defaultRequest();
     $request = app()->make($request);
-    $this->service->update($id, $request);
-    $this->setModuleId($id ?? "");
+    $this->service->update($request, $id);
+    $this->setModuleId($request);
     return redirect($this->getUrl())->withErrors(['success' => 'Successfully updated.']);
   }
 
@@ -262,10 +263,10 @@ class ResourceController extends Controller
    * Delete a resource with id.
    * DELETE resources/:id
    */
-  public function destroy($id)
+  public function destroy($request)
   {
-    $this->service->delete($id);
-    $this->setModuleId($id);
+    $this->service->delete($request);
+    $this->setModuleId($request);
     return redirect($this->getUrl())->withErrors(['success' => 'Successfully deleted.']);
   }
 }

@@ -49,15 +49,15 @@ class UserService extends Service
         return $mapped;
     }
 
-    public function indexPageData($data)
+    public function indexPageData($request)
     {
         return [
-            'items' => $this->getAllData($data),
+            'items' => $this->getAllData($request),
             'roles' => $this->getRoles()
         ];
     }
 
-    public function createPageData($data)
+    public function createPageData($request)
     {
         return [
             'roles' => $this->getRoles()
@@ -79,16 +79,16 @@ class UserService extends Service
         return $user;
     }
 
-    public function editPageData($data)
+    public function editPageData($request, $id)
     {
-        $user = $this->itemByIdentifier($data);
+        $user = $this->itemByIdentifier($id);
         return [
             'item' => $user,
             'roles' => $this->getRoles()
         ];
     }
 
-    public function update($id, $request)
+    public function update($request, $id)
     {
         $data = $request->except('_token');
         $user = $this->itemByIdentifier($id);
@@ -96,10 +96,10 @@ class UserService extends Service
         return $user->update($data);
     }
 
-    public function delete($data)
+    public function delete($request)
     {
-        if ($data == 1) throw new NotDeletableException();
-        $user = $this->itemByIdentifier($data);
+        if ($request == 1) throw new NotDeletableException();
+        $user = $this->itemByIdentifier($request);
         return $user->delete();
     }
 

@@ -39,9 +39,9 @@ class ConfigService extends Service
         }
         return $mapped;
     }
-    public function indexPageData($data)
+    public function indexPageData($request)
     {
-        return ['items' => $this->getAllData($data), 'types' => $this->configTypeOptions()];
+        return ['items' => $this->getAllData($request), 'types' => $this->configTypeOptions()];
     }
 
     public function store($request)
@@ -54,22 +54,22 @@ class ConfigService extends Service
     }
 
     
-    public function update($id, $request)
+    public function update($request)
     {
         $data = $request->except('_token');
-        $config = $this->itemByIdentifier($id);
+        $config = $this->itemByIdentifier($request->config);
         if(strtolower($config->type) == 'file'){
             $this->removeImage($this->dir, $config->value);
             $data['value'] = $this->uploadImage($this->dir, 'value');
         }
         $config->update($data);
         setConfigCookie();
-        return $config = $this->itemByIdentifier($id);
+        return $config = $this->itemByIdentifier($request->config);
     }
 
-    public function delete($id){
-        $config = $this->itemByIdentifier($id);
-        if(in_array($id, [1,2,3])) throw new NotDeletableException;
+    public function delete($request){
+        $config = $this->itemByIdentifier($request);
+        if(in_array($request, [1,2,3])) throw new NotDeletableException;
         if(strtolower($config->type) == 'file'){
             $this->removeImage($this->dir, $config->value);
         }

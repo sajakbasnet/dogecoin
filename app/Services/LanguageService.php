@@ -36,17 +36,17 @@ class LanguageService extends Service
         return $query->orderBy('id', 'ASC')->get();
     }
 
-    public function indexPageData($data)
+    public function indexPageData($request)
     {
         return [
-            'items' => $this->getAllData($data),
+            'items' => $this->getAllData($request),
             'groups' => $this->defaultLanguageGroups(),
         ];
     }
 
-    public function createPageData($data)
+    public function createPageData($request)
     {
-        $countries = $this->countryService->getAllData($data, ['id', 'name', 'languages', 'flag'], false);
+        $countries = $this->countryService->getAllData($request, ['id', 'name', 'languages', 'flag'], false);
         return [
             'countriesOptions' => $this->countryService->extractKeyValuePair($countries),
             'groups' => $this->defaultLanguageGroups(),
@@ -71,9 +71,9 @@ class LanguageService extends Service
         ]);
     }
 
-    public function delete($id)
+    public function delete($request)
     {
-        $language = $this->itemByIdentifier($id);
+        $language = $this->itemByIdentifier($request);
         if ($language->isDefault()) throw new NotDeletableException();
         return $language->delete();
     }

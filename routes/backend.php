@@ -54,7 +54,7 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::resource('/configs', 'systemConfig\configController');
         
         Route::resource('/categories', 'category\categoryController', ['except' => ['show']]);
-        Route::resource('/sub-category/{cat-id}', 'category\SubCategoryController', ['except' => ['show']]);
+        Route::resource('category/{id}/sub-category', 'category\SubCategoryController', ['except' => ['show']]);
         Route::get('/clear-lang', function(){
             LanguageLine::truncate();
         });

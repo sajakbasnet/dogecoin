@@ -24,9 +24,9 @@ class EmailTemplateService extends Service
         return $query->orderBy('id', 'DESC')->get();
     }
 
-    public function indexPageData($data)
+    public function indexPageData($request)
     {
-        return ['items' => $this->getAllData($data)];
+        return ['items' => $this->getAllData($request)];
     }
     public function store($request)
     {
@@ -34,19 +34,19 @@ class EmailTemplateService extends Service
         $emailTemplate->emailTranslations()->createMany($request->get('multilingual'));
         return $emailTemplate;
     }
-    public function editPageData($id)
+    public function editPageData($request)
     {
-        $email = $this->itemByIdentifier($id);
+        $email = $this->itemByIdentifier($request->email_template);
         return [
             'item' => $email,
         ];
     }
-    public function update($id, $request)
+    public function update($request)
     {
-        $emailTemplate = $this->itemByIdentifier($id);
+        $emailTemplate = $this->itemByIdentifier($request->email_template);
         $emailTemplate->emailTranslations()->delete();
         $emailTemplate = $emailTemplate->update($this->parseRequest($request));
-        $emailTemplate = $this->itemByIdentifier($id);
+        $emailTemplate = $this->itemByIdentifier($request->email_template);
         $emailTemplate->emailTranslations()->createMany($request->get('multilingual'));
         return $emailTemplate;
     }
