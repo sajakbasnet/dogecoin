@@ -18,11 +18,11 @@ class ProfileService extends Service
         ];
     }
 
-    public function update($request)
+    public function update($request, $id)
     {
-       if(authUser()->id != $request->id) throw new UnauthorizedException();
+       if(authUser()->id != $id) throw new UnauthorizedException();
        $data = $request->only('password');
-       $user = $this->itemByIdentifier($request->id);
+       $user = $this->itemByIdentifier($id);
        return $user->update([
             'password' => Hash::make($data['password'])
        ]);

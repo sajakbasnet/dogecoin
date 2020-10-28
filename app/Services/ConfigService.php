@@ -54,22 +54,22 @@ class ConfigService extends Service
     }
 
     
-    public function update($request)
+    public function update($request, $id)
     {
         $data = $request->except('_token');
-        $config = $this->itemByIdentifier($request->config);
+        $config = $this->itemByIdentifier($id);
         if(strtolower($config->type) == 'file'){
             $this->removeImage($this->dir, $config->value);
             $data['value'] = $this->uploadImage($this->dir, 'value');
         }
         $config->update($data);
         setConfigCookie();
-        return $config = $this->itemByIdentifier($request->config);
+        return $config = $this->itemByIdentifier($id);
     }
 
-    public function delete($request){
-        $config = $this->itemByIdentifier($request);
-        if(in_array($request, [1,2,3])) throw new NotDeletableException;
+    public function delete($request, $id){
+        $config = $this->itemByIdentifier($id);
+        if(in_array($id, [1,2,3])) throw new NotDeletableException;
         if(strtolower($config->type) == 'file'){
             $this->removeImage($this->dir, $config->value);
         }

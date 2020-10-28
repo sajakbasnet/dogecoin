@@ -34,14 +34,14 @@ class EmailTemplateService extends Service
         $emailTemplate->emailTranslations()->createMany($request->get('multilingual'));
         return $emailTemplate;
     }
-    public function editPageData($request)
+    public function editPageData($request, $id)
     {
-        $email = $this->itemByIdentifier($request->email_template);
+        $email = $this->itemByIdentifier($id);
         return [
             'item' => $email,
         ];
     }
-    public function update($request)
+    public function update($request, $id)
     {
         $emailTemplate = $this->itemByIdentifier($request->email_template);
         $emailTemplate->emailTranslations()->delete();

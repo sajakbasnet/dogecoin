@@ -76,7 +76,7 @@ class Service
 
     //delete a record
 
-    public function delete($id)
+    public function delete($request, $id)
     {
         $item = $this->itemByIdentifier($id);
         return $item->delete();

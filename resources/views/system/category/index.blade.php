@@ -28,7 +28,7 @@
         {{ $item->attributes }}
     </td>
     <td>
-        <a href="{{url(PREFIX.'/category/'.$item->id.'/sub-category')}}" class="btn btn-success">Sub categories</a>
+        <a href="{{url(PREFIX.'/categories/'.$item->id.'/sub-category')}}" class="btn btn-success">COUNT ({{$item->subCategoryCount($item->id)}})</a>
     </td>
     <td>
         @include('system.partials.editButton')

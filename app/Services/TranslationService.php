@@ -80,9 +80,9 @@ class TranslationService extends Service
         return $data;
     }
 
-    public function delete($request)
+    public function delete($request, $id)
     {
-        $item = $this->itemByIdentifier($request);
+        $item = $this->itemByIdentifier($id);
         return $item->delete();
     }
 

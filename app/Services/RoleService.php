@@ -67,7 +67,7 @@ class RoleService extends Service
         return $role->update($data);
     }
 
-    public function delete($id)
+    public function delete($request, $id)
     {
         $role = $this->itemByIdentifier($id);
         if($role->users->count() > 0) throw new NotDeletableException('The role is associated to the users.');

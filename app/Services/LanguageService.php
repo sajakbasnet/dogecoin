@@ -71,9 +71,9 @@ class LanguageService extends Service
         ]);
     }
 
-    public function delete($request)
+    public function delete($request, $id)
     {
-        $language = $this->itemByIdentifier($request);
+        $language = $this->itemByIdentifier($id);
         if ($language->isDefault()) throw new NotDeletableException();
         return $language->delete();
     }

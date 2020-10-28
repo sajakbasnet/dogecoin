@@ -96,10 +96,10 @@ class UserService extends Service
         return $user->update($data);
     }
 
-    public function delete($request)
+    public function delete($request, $id)
     {
-        if ($request == 1) throw new NotDeletableException();
-        $user = $this->itemByIdentifier($request);
+        if ($id == 1) throw new NotDeletableException();
+        $user = $this->itemByIdentifier($id);
         return $user->delete();
     }
 
