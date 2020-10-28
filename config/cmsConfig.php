@@ -370,56 +370,6 @@ return  [
         ]
       ]
     ],
-    [
-      'name' => 'Product Management',
-      'icon' => "<i class='fa fa-list'></i>",
-      'hasSubmodules' => false,
-      'showInSideBar' => false,
-      'route' => '/category/*/product',
-      "permissions" => [
-        [
-          "name" => 'View Product',
-          "route" => [
-            "url" => '/category/*/product',
-            "method" => 'get'
-          ]
-        ],
-        [
-          "name" => 'Create Product',
-          "route" => [
-            [
-              "url" => '/category/*/product/create',
-              "method" => 'get'
-            ],
-            [
-              "url" => '/category/*/product/create',
-              "method" => 'post'
-            ],
-
-          ]
-        ],
-        [
-          "name" => 'Edit Product',
-          "route" => [
-            [
-              "url" => '/category/*/product/*/edit',
-              "method" => 'get'
-            ],
-            [
-              "url" => '/category/*/product/*/edit',
-              "method" => 'put'
-            ]
-          ]
-        ],
-        [
-          "name" => 'Delete Category',
-          "route" => [
-            "url" => '/category/*/product/*/delete',
-            "method" => 'delete'
-          ]
-        ]
-      ]
-    ],
   ]
 ];
 
