@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use Spatie\TranslationLoader\LanguageLine;
 
@@ -40,7 +39,7 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
 
         Route::get('/profile', 'profile\ProfileController@index')->name('profile');
         Route::put('/profile/{id}', 'profile\ProfileController@update');
-
+        
         Route::resource('/languages', 'language\LanguageController', ['except' => ['show', 'edit', 'update']]);
         Route::get('/languages/set-language/{lang}', 'language\LanguageController@setLanguage')->name('set.lang');
         Route::get('/country-language/{country_id}', 'countryLanguage\countryLanguageController@getLanguages');
@@ -51,16 +50,15 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::post('/translations/upload/{group}', 'language\TranslationController@uploadExcel');
 
         Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show', 'create', 'store']]);
-
+        
         Route::resource('/configs', 'systemConfig\configController');
-
-        Route::get('logs', 'logs\LogsController@index');
-        Route::get('login-logs', 'logs\LoginLogsController@index');
-
+        
         Route::resource('/categories', 'category\categoryController', ['except' => ['show']]);
-
-        Route::get('/clear-lang', function () {
+        Route::resource('categories/{id}/sub-category', 'category\SubCategoryController');
+        Route::get('/clear-lang', function(){
             LanguageLine::truncate();
         });
+
     });
 });
+

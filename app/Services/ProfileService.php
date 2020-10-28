@@ -20,7 +20,7 @@ class ProfileService extends Service
         ];
     }
 
-    public function update($id, $request)
+    public function update($request, $id)
     {
         if (authUser()->id != $id) throw new UnauthorizedException();
         $data = $request->only('password');

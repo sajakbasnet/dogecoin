@@ -31,11 +31,11 @@ class TranslationService extends Service
         if ($pagination) return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
         return $query->orderBy('id', 'DESC')->get();
     }
-    public function indexPageData($data)
+    public function indexPageData($request)
     {
-        $languages = $this->languageService->getAllData($data->only('group'), ['name', 'language_code'], false);
+        $languages = $this->languageService->getAllData($request->only('group'), ['name', 'language_code'], false);
         return [
-            'items' => $this->getAllData($data),
+            'items' => $this->getAllData($request),
             'groups' => $this->languageService->defaultLanguageGroups(),
             'locales' => $this->languageService->getKeyValuePair($languages)
         ];
@@ -66,7 +66,7 @@ class TranslationService extends Service
         return $text;
     }
 
-    public function update($id, $request)
+    public function update($request, $id)
     {
         $data = $this->itemByIdentifier($id);
         $currentTextArray = $data->text;
@@ -81,7 +81,7 @@ class TranslationService extends Service
         return $data;
     }
 
-    public function delete($id)
+    public function delete($request, $id)
     {
         $item = $this->itemByIdentifier($id);
         return $item->delete();

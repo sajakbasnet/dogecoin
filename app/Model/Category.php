@@ -11,7 +11,7 @@ class Category extends Model
     use LogsActivity;
 
     protected $fillable = [
-        'name', 'attributes'
+        'name', 'attributes', 'parent_id'
     ];
 
     protected static $logAttributes = ['name', 'attributes'];
@@ -23,5 +23,9 @@ class Category extends Model
     public function getDescriptionForEvent(string $eventName): string
     {
         return logMessage('Category',$this->id,$eventName);
+    }
+
+    public function subCategoryCount($id){
+        return $this->where('parent_id', $id)->count();
     }
 }

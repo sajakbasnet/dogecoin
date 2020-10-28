@@ -42,9 +42,9 @@ class RoleService extends Service
         return $query->orderBy('id', 'DESC')->with('users')->get();
     }
 
-    public function indexPageData($data)
+    public function indexPageData($request)
     {
-        return ['items' => $this->getAllData($data)];
+        return ['items' => $this->getAllData($request)];
     }
     public function store($request)
     {
@@ -52,22 +52,22 @@ class RoleService extends Service
         $data['permissions'] = $this->mapPermission($request->permissions);
         return $this->model->create($data);
     }
-    public function editPageData($id)
+    public function editPageData($request, $id)
     {
         $role = $this->itemByIdentifier($id);
         return [
             'item' => $role
         ];
     }
-    public function update($id, $data)
+    public function update($request, $id)
     {
         $role = $this->itemByIdentifier($id);
-        $data = $data->except('_token');
+        $data = $request->except('_token');
         $data['permissions'] = $this->mapPermission($data['permissions']);
         return $role->update($data);
     }
 
-    public function delete($id)
+    public function delete($request, $id)
     {
         $role = $this->itemByIdentifier($id);
         if($role->users->count() > 0) throw new NotDeletableException('The role is associated to the users.');

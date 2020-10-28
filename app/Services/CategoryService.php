@@ -12,6 +12,12 @@ class CategoryService extends Service
     public function apiIndexData(){
         return $this->model->paginate(20);
     }
+    public function indexPageData($request)
+    {
+        return [
+            'items' => $this->model->where('parent_id', null)->paginate(20)
+        ];
+    }
     public function singleData($id){
         return $this->model->find($id);
     }

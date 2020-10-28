@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ResourceController extends Controller
 {
+  protected $moduleId;
   public function __construct($service)
   {
     $this->service = $service;
@@ -46,6 +47,7 @@ class ResourceController extends Controller
     if ($this->isSubModule()) {
       $this->moduleId = $id;
     }
+    return $this->moduleId;
   }
 
   /**
@@ -132,13 +134,11 @@ class ResourceController extends Controller
       ],
     ];
     if ($this->isSubModule()) {
-      $breadcrumbs = [
-        [
-          "title" => $this->subModuleToTitle(),
-          "link" => $this->subModuleIndexUrl(),
-          "active" => $activate,
-        ],
-      ];
+      $breadcrumbs = array_merge($breadcrumbs, [[
+        "title" => $this->subModuleToTitle(),
+        "link" => $this->subModuleIndexUrl(),
+        "active" => $activate,
+      ]]);
     }
     return $breadcrumbs;
   }
@@ -197,7 +197,7 @@ class ResourceController extends Controller
    * GET resources
    *
    */
-  public function index(Request $request, $id = "")
+  public function index(Request $request, $id="")
   {
     $data = $this->service->indexPageData($request);
     $data['breadcrumbs'] = $this->breadcrumbForIndex();
@@ -210,10 +210,12 @@ class ResourceController extends Controller
    * GET resources/create
    *
    */
-  public function create(Request $request, $id = "")
+  public function create()
   {
+    $request = $this->defaultRequest();
+    $request = app()->make($request);
     $data = $this->service->createPageData($request);
-    $this->setModuleId($id);
+    $this->setModuleId($request->id);
     $data['breadcrumbs'] = $this->breadcrumbForForm('Create');
     return $this->renderView('form', $data);
   }
@@ -227,8 +229,8 @@ class ResourceController extends Controller
     if (!empty($this->storeValidationRequest())) $request = $this->storeValidationRequest();
     else $request = $this->defaultRequest();
     $request = app()->make($request);
-    $store = $this->service->store($request);
-    $this->setModuleId($store->id ?? "");
+    $this->service->store($request);
+    $this->setModuleId($request->id);
     return redirect($this->getUrl())->withErrors(['success' => 'Successfully created.']);
   }
 
@@ -238,7 +240,9 @@ class ResourceController extends Controller
    */
   public function edit($id)
   {
-    $data = $this->service->editPageData($id);
+    $request = $this->defaultRequest();
+    $request = app()->make($request);
+    $data = $this->service->editPageData($request, $id);
     $this->setModuleId($id);
     $data['breadcrumbs'] = $this->breadcrumbForForm('Edit');
     return $this->renderView('form', $data);
@@ -254,8 +258,8 @@ class ResourceController extends Controller
     elseif (!empty($this->storeValidationRequest())) $request = $this->storeValidationRequest();
     else $request = $this->defaultRequest();
     $request = app()->make($request);
-    $this->service->update($id, $request);
-    $this->setModuleId($id ?? "");
+    $this->service->update($request, $id);
+    $this->setModuleId($id);
     return redirect($this->getUrl())->withErrors(['success' => 'Successfully updated.']);
   }
 
@@ -263,9 +267,9 @@ class ResourceController extends Controller
    * Delete a resource with id.
    * DELETE resources/:id
    */
-  public function destroy($id)
+  public function destroy(Request $request, $id)
   {
-    $this->service->delete($id);
+    $this->service->delete($request, $id);
     $this->setModuleId($id);
     return redirect($this->getUrl())->withErrors(['success' => 'Successfully deleted.']);
   }
