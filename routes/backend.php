@@ -39,6 +39,9 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
 
         Route::get('/profile', 'profile\ProfileController@index')->name('profile');
         Route::put('/profile/{id}', 'profile\ProfileController@update');
+
+        Route::get('/login-logs', 'logs\LoginLogsController@index');
+        Route::get('/activity-logs', 'logs\LogsController@index');
         
         Route::resource('/languages', 'language\LanguageController', ['except' => ['show', 'edit', 'update']]);
         Route::get('/languages/set-language/{lang}', 'language\LanguageController@setLanguage')->name('set.lang');

@@ -144,6 +144,43 @@ return  [
       ]
     ],
     [
+      "name" => 'Log Management',
+      "icon" => "<i class='fa fa-history'></i>",
+      "hasSubmodules" => true,
+      "submodules" => [
+        [
+          "name" => 'Login Logs',
+          "icon" => "<i class='fa fa-users'></i>",
+          "hasSubmodules" => false,
+          "route" => '/login-logs',
+          "permissions" => [
+            [
+              "name" => 'View Login logs',
+              "route" => [
+                "url" => '/login-logs',
+                "method" => 'get'
+              ]
+            ],
+          ]
+        ],
+        [
+          "name" => 'Activity logs',
+          "icon" => "<i class='fa fa-tags'></i>",
+          "hasSubmodules" => false,
+          "route" => '/activity-logs',
+          "permissions" => [
+            [
+              "name" => 'View Activity logs',
+              "route" => [
+                "url" => '/activity-logs',
+                "method" => 'get'
+              ]
+            ],
+          ]
+        ],
+      ]
+    ],
+    [
       "name" => 'Language Management',
       "hasSubmodules" => true,
       "icon" => "<i class='fa fa-language' aria-hidden='true'></i>",
