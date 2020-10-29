@@ -150,7 +150,7 @@ return  [
       "submodules" => [
         [
           "name" => 'Login Logs',
-          "icon" => "<i class='fa fa-users'></i>",
+          "icon" => "<i class='fas fa-sign-in-alt'></i>",
           "hasSubmodules" => false,
           "route" => '/login-logs',
           "permissions" => [
@@ -165,7 +165,7 @@ return  [
         ],
         [
           "name" => 'Activity logs',
-          "icon" => "<i class='fa fa-tags'></i>",
+          "icon" => "<i class='fas fa-chart-line'></i>",
           "hasSubmodules" => false,
           "route" => '/activity-logs',
           "permissions" => [
