@@ -38,7 +38,7 @@
         {!! $item->oldValues($item->properties) !!}
         <br>
         @endif
-        <strong>Current values:</strong> <br>
+        <strong>Values:</strong> <br>
         {!! $item->newValues($item->properties) !!}
         @else
         --
