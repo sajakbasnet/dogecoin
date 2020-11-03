@@ -24,19 +24,31 @@ class userRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        $data = [
+        $validate = [
             'name' => 'required',
-            'username' => 'required|unique:users,username,' . $request->user,
-            'email' => 'required|email|unique:users,email,' . $request->user,
             'role_id' => 'required'
         ];
 
+        if ($request->method() == "POST") {
+            $validate = array_merge($validate, [
+                'username' => 'required|unique:users,username,',
+                'email' => 'required|email|unique:users,email,',
+            ]);
+        }
+        if ($request->method() == "PUT") {
+            $validate = array_merge($validate, [
+                'username' => 'required|unique:users,username,'.$request->user,
+                'email' => 'required|email|unique:users,email,'.$request->user,
+            ]);
+        }
+
         if ($request->set_password_status == 1) {
-            $data = array_merge($data, [
+            $validate = array_merge($validate, [
                 'password' => 'required|confirmed|min:6',
                 'password_confirmation' => 'required'
             ]);
         }
-        return $data;
+
+        return $validate;
     }
 }

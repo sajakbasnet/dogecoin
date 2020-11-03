@@ -24,15 +24,28 @@ class roleRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        return [
-            'name' => 'required|unique:roles,name,'.$request->role,
+        $validate =  [
             'permissions' => 'required',
         ];
+
+        if ($request->method() == "POST") {
+            $validate = array_merge($validate, [
+                'name' => 'required|unique:roles,name',
+            ]);
+        }
+        if ($request->method() == "PUT") {
+            $validate = array_merge($validate, [
+                'name' => 'required|unique:roles,name,'.$request->role,
+            ]);
+        }
+
+        return $validate;
     }
-     public function messages(){
-         return [
-             'name.required' => 'The role field is required.',
-             'permissions.required' => 'Please select the permissions.'
-         ];
-     }
+    public function messages()
+    {
+        return [
+            'name.required' => 'The role field is required.',
+            'permissions.required' => 'Please select the permissions.'
+        ];
+    }
 }

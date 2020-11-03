@@ -24,13 +24,25 @@ class emailTemplateRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        return [
+        $validate = [
             'title' => 'required',
-            'code' => 'required|unique:email_templates,code,' . $request->email_template,
             'from' => 'email',
             'multilingual.*.subject' => 'required',
             'multilingual.*.template' => 'required',
         ];
+
+        if ($request->method() == "POST") {
+            $validate = array_merge($validate, [
+                'code' => 'required|unique:email_templates,code',
+            ]);
+        }
+
+        if ($request->method() == "PUT") {
+            $validate = array_merge($validate, [
+                'code' => 'required|unique:email_templates,code,' . $request->email_template,
+            ]);
+        }
+        return $validate;
     }
     public function messages()
     {
