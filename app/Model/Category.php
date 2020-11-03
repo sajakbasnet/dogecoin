@@ -25,7 +25,7 @@ class Category extends Model
         return logMessage('Category',$this->id,$eventName);
     }
 
-    // public function subCategoryCount($id){
-    //     return $this->where('parent_id', $id)->count();
-    // }
+    public function subCategoryCount($id){
+        return $this->where('parent_id', $id)->count();
+    }
 }
