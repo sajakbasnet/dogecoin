@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 
     function hasPermission($url, $method = 'get')
     {
-        $role = session()->get('role');
+        $role = getRoleCache(authUser());
         $method = strtolower($method);
         $splittedUrl = explode('/' . PREFIX, $url);
         if (count($splittedUrl) > 1) {

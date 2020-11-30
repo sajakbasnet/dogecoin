@@ -24,7 +24,7 @@ class UserService extends Service
         $this->role = $role;
     }
 
-    public function getAllData($data, $selectedColumns=[], $pagination = true)
+    public function getAllData($data, $selectedColumns = [], $pagination = true)
     {
         $query = $this->query();
         if (isset($data->keyword) && $data->keyword !== null) {
@@ -33,7 +33,7 @@ class UserService extends Service
         if (isset($data->role) && $data->role !== null) {
             $query->where('role_id', $data->role);
         }
-        if(count($selectedColumns) > 0){
+        if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
         }
         if ($pagination) return $query->orderBy('id', 'DESC')->with('role')->paginate(PAGINATE);
@@ -43,8 +43,8 @@ class UserService extends Service
     {
         $mapped = array();
         $roles = $this->role->orderBy('name', 'ASC')->get();
-        foreach($roles as $role){
-           $mapped [$role->id] = $role->name;
+        foreach ($roles as $role) {
+            $mapped[$role->id] = $role->name;
         }
         return $mapped;
     }
@@ -115,10 +115,9 @@ class UserService extends Service
 
     public function findByEmailAndToken($email, $token)
     {
-        try{
+        try {
             $decryptedToken = decrypt($token);
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             throw new EncryptedPayloadException();
         }
         $user = $this->model->where('email', $email)->where('token', $decryptedToken)->first();

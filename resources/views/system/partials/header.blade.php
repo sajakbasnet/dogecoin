@@ -32,7 +32,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDown">
               <div class="li-user dropdown-item">
                 <h2>{{Auth::user()->name}}</h2>
-                <p>{{Auth::user()->username}}({{Session::get('role')->name}})</p>
+                <p>{{Auth::user()->username}}({{getRoleCache(authUser())->name}})</p>
               </div>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ route('profile') }}">

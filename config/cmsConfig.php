@@ -379,7 +379,7 @@ return  [
               "method" => 'get'
             ],
             [
-              "url" => '/categories/create',
+              "url" => '/categories',
               "method" => 'post'
             ],
 

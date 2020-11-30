@@ -73,8 +73,7 @@ class LoginController extends Controller
         $user = $this->loginType($request);
 
         if (Auth::attempt($user)) {
-
-            session()->put('role', authUser()->role);
+            setRoleCache(authUser());
             setConfigCookie();
             $this->createLoginLog($request);
             return $this->sendLoginResponse($request);
@@ -150,8 +149,8 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+        clearRoleCache(authUser());
         $this->guard()->logout();
-        session()->forget('role');
         $request->session()->invalidate();
         return redirect(PREFIX . '/login')->withErrors(['alert-success' => 'Successfully logged out!']);
     }

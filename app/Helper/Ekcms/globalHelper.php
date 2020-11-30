@@ -11,6 +11,16 @@ function authUser()
     return Auth::user();
 }
 
+function setRoleCache($user)
+{
+    return \Cache::put('role-' . $user->id, $user->role);
+}
+function getRoleCache($user){
+    return \Cache::get('role-'.$user->id);
+}
+function clearRoleCache($user){
+    return \Cache::forget('role-'.$user->id);
+}
 function frontendUser()
 {
     return Auth::guard('frontendUsers')->user();

@@ -16,8 +16,8 @@ class Permission
      */
     public function handle($request, Closure $next)
     {
-        if (session()->get('role') == null ) {
-            session()->put('role', authUser()->role);
+        if (getRoleCache(authUser()) == null) {
+            setRoleCache(authUser());
         }
         if (hasPermission($request->url(), $request->method())) return $next($request);
         else throw new PermissionDeniedException();
