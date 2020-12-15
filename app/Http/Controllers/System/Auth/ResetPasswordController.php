@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\system\Auth;
 
+use App\Exceptions\CustomGenericException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\system\setResetRequest;
 use App\Providers\RouteServiceProvider;
@@ -33,42 +34,50 @@ class ResetPasswordController extends Controller
 
     public function showSetResetForm(Request $request)
     {
-        $data['title'] = 'Set Password';
-        if ($request->route()->getName() == "reset.password") $data['title'] = 'Reset Password';;
-        $user = $this->service->findByEmailAndToken($request->email, $request->token);
-        if (isset($user)) {
+        try {
+            $data['title'] = 'Set Password';
+            if ($request->route()->getName() == "reset.password") $data['title'] = 'Reset Password';;
+            $this->service->findByEmailAndToken($request->email, $request->token);
             $data['email'] = $request->email;
             $data['token'] = $request->token;
             return view('system.auth.setPassword', $data);
-        } else {
-            throw new NotFoundHttpException;
+        } catch (\Exception $e) {
+            throw new NotFoundHttpException();
         }
     }
 
     public function handleSetResetPassword(setResetRequest $request)
     {
-        if($this->setResetPassword($request)) {$redirect = redirect(PREFIX.'/login'); $msg = ['alert-success' => 'Password has been successfully set.'];}
-        else {$redirect = back();$msg = ['alert-danger' => 'Please provide the new password.'];}
+        if ($this->setResetPassword($request)) {
+            $redirect = redirect(PREFIX . '/login');
+            $msg = ['alert-success' => 'Password has been successfully set.'];
+        } else {
+            $redirect = back();
+            $msg = ['alert-danger' => 'Please provide the new password.'];
+        }
         return $redirect->withErrors($msg);
     }
 
     public function setResetPassword($request)
     {
-        $user = $this->service->findByEmailAndToken($request->email, $request->token);
+        try {
+            $user = $this->service->findByEmailAndToken($request->email, $request->token);
 
-        $check = $this->checkOldPasswords($user, $request);
-        if($check){
-            $password = Hash::make($request->password);
-            if($user->userPasswords->count() < 3) $user->userPasswords()->create(['password' => $password]);
-            $user->update([
-                'password' => $password,
-                'password_resetted' => 1,
-                'token' => $this->service->generateToken(24)
-            ]);
+            $check = $this->checkOldPasswords($user, $request);
+            if ($check) {
+                $password = Hash::make($request->password);
+                if ($user->userPasswords->count() < 3) $user->userPasswords()->create(['password' => $password]);
+                $user->update([
+                    'password' => $password,
+                    'password_resetted' => 1,
+                    'token' => $this->service->generateToken(24)
+                ]);
 
-            return true;
+                return true;
+            } else return false;
+        } catch (\Exception $e) {
+            throw new CustomGenericException($e->getMessage());
         }
-        else return false;
     }
 
     public function checkOldPasswords($user, $request)
@@ -76,7 +85,7 @@ class ResetPasswordController extends Controller
         $oldPasswords = $user->userPasswords()->get();
         $check = true;
         foreach ($oldPasswords as $oldPassword) {
-            if(Hash::check($request->password, $oldPassword->password)){
+            if (Hash::check($request->password, $oldPassword->password)) {
                 $check = false;
                 break;
             }

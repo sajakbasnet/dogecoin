@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\system\Auth;
 
+use App\Exceptions\CustomGenericException;
+use App\Exceptions\ResourceNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Mail\system\PasswordResetEmail;
 use App\Services\UserService;
@@ -25,9 +27,9 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails, CustomThrottleRequest;
 
-    public function __construct(UserService $user){
+    public function __construct(UserService $user)
+    {
         $this->user = $user;
-
     }
     public function showRequestForm()
     {
@@ -38,24 +40,28 @@ class ForgotPasswordController extends Controller
     public function handleForgotPassword(Request $request)
     {
         $request->validate(['email' => 'required|email']);
+        try {
+            if (
+                method_exists($this, 'hasTooManyAttempts') &&
+                $this->hasTooManyAttempts($request, 5) // maximum attempts can be set by passing parameter $attempts=
+            ) {
+                $this->customFireLockoutEvent($request);
 
-        if (
-            method_exists($this, 'hasTooManyAttempts') &&
-            $this->hasTooManyAttempts($request, $attempts = 4) // maximum attempts can be set by passing parameter $attempts=
-        ) {
-            $this->customFireLockoutEvent($request);
+                return $this->customLockoutResponse($request);
+            }
 
-            return $this->customLockoutResponse($request);
+            $this->incrementAttempts($request, 1); // maximum decay minute can be set by passing parameter $minutes=
+
+            $this->sendPasswordResetLink($request->email);
+
+            return back()->withErrors(['alert-success' => "Password reset link has been sent to your email."]);
+        } catch (\Exception $e) {
+            throw new CustomGenericException($e->getMessage());
         }
-
-        $this->incrementAttempts($request, $minutes = 1.5); // maximum decay minute can be set by passing parameter $minutes=
-
-        $this->sendPasswordResetLink($request->email);
-
-        return back()->withErrors(['alert-success' => "Password reset link has been sent to your email."]);
     }
 
-    public function sendPasswordResetLink($email){
+    public function sendPasswordResetLink($email)
+    {
         $user = $this->user->findByEmail($email);
         $token = $this->user->generateToken(24);
         $encryptedToken = encrypt($token);

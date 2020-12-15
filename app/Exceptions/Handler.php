@@ -54,32 +54,26 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if($exception instanceof PermissionDeniedException){
+        if ($exception instanceof PermissionDeniedException) {
             $title = translate('Error Permission Denied');
             return response()->view('system.errors.permissionDenied', ['title' => $title], 401);
         }
-        if($exception instanceof NotFoundHttpException){
+        if ($exception instanceof NotFoundHttpException) {
             $title = translate('Not found');
             return response()->view('system.errors.pageNotFound', ['title' => $title], 404);
         }
-        if($exception instanceof ResourceNotFoundException){
-            return redirect()->back()->withErrors(['alert-danger' => 'Record was not found in our system.']);
-        }
-        if($exception instanceof NotDeletableException){
-            return redirect()->back()->withErrors(['alert-danger' => $exception->message]);
-        }
-        if($exception instanceof RoleNotChangeableException){
-            return redirect()->back()->withErrors(['alert-danger' => 'This role cannot be changed.']);
-        }
-        if($exception instanceof EncryptedPayloadException){
-            return redirect()->back()->withErrors(['alert-danger' => 'Invalid encrypted data']);
-        }
-        if($exception instanceof UnauthorizedException){
-            return redirect()->back()->withErrors(['alert-danger' => 'Unauthorized action performed.']);
-        }
-        if($exception instanceof MethodNotAllowedHttpException){
+        if ($exception instanceof MethodNotAllowedHttpException) {
             $title = translate('Method not allowed.');
             return response()->view('system.errors.methodNotAllowed', ['title' => $title], 405);
+        }
+        if ($exception instanceof ResourceNotFoundException) {
+            return redirect()->back()->withErrors(['alert-danger' => 'Record was not found in our system.']);
+        }
+        if ($exception instanceof NotDeletableException) {
+            return redirect()->back()->withErrors(['alert-danger' => $exception->message]);
+        }
+        if ($exception instanceof CustomGenericException) {
+            return redirect()->back()->withErrors([$exception->alert => $exception->message]);
         }
         return parent::render($request, $exception);
     }

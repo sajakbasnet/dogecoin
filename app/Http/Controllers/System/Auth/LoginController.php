@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\system\Auth;
 
+use App\Exceptions\CustomGenericException;
 use App\Http\Controllers\Controller;
 use App\Model\Loginlogs;
 use App\Mail\system\TwoFAEmail;
@@ -130,21 +131,27 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
-        $request->session()->regenerate();
+        try {
+            $request->session()->regenerate();
 
-        $this->clearAttempts($request);
+            $this->clearAttempts($request);
 
-        if ($response = $this->authenticated($request, $this->guard()->user())) {
-            return $response;
+            if ($response = $this->authenticated($request, $this->guard()->user())) {
+                return $response;
+            }
+
+            if (Config::get('constants.TWOFA') == 1) {
+                session()->forget('verification_code');
+                $verification_code = mt_rand(100000, 999999);
+                session()->put('verification_code', $verification_code);
+                Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
+            }
+            return redirect('/' . PREFIX . '/home');
+        } catch (\Exception $e) {
+            clearRoleCache(authUser());
+            $this->guard()->logout();
+            throw new CustomGenericException($e->getMessage());
         }
-
-        if (Config::get('constants.TWOFA') == 1) {
-            session()->forget('verification_code');
-            $verification_code = mt_rand(100000, 999999);
-            session()->put('verification_code', $verification_code);
-            Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
-        }
-        return redirect('/' . PREFIX . '/home');
     }
 
     public function logout(Request $request)
