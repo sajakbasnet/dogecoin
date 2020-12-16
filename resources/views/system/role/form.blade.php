@@ -47,15 +47,21 @@
     }
   })
 
-  $("input[type='checkbox']").each(function() {
-    $(this).click(function() {
-      var c = $(this).attr("class");
-      if ($(this).is(":checked")) {
-        $("." + c).attr("checked", true);
-      } else {
-        $("." + c).attr("checked", false);
-      }
-    })
-  })
+  $(".module").change(function() {
+    var moduleValue = $(this).data('module');
+    $(":checkbox[class='" + moduleValue + "-sub permission" + "']").prop("checked", this.checked);
+  });
+
+  $('.permission').change(function() {
+    var moduleValue = $(this).data('module');
+    var main = moduleValue.split('-sub')
+    var checkBoxes = $(".permission[data-module='" + moduleValue + "']").length;
+    var checkedCheckBoxes = $('input[type="checkbox"].' + moduleValue + ':checked').length;
+    if (checkBoxes === checkedCheckBoxes) {
+      $(".module[data-module='" + main[0] + "']").prop('checked', true);
+    }else{
+      $(".module[data-module='" + main[0] + "']").prop('checked', false);
+    }
+  });
 </script>
 @endsection
