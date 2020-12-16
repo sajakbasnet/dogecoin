@@ -25,21 +25,21 @@ class User extends Authenticatable
         'name', 'email', 'password', 'username', 'role_id', 'token', 'password_resetted'
     ];
 
-    protected $guarded =[
+    protected $guarded = [
         'id'
     ];
 
     protected static $logAttributes = ['name', 'email', 'username', 'role_id'];
 
-    protected static $ignoreChangedAttributes = ['password', 'password_resetted', 'token','remember_token','updated_at'];
-    
+    protected static $ignoreChangedAttributes = ['password', 'password_resetted', 'token', 'remember_token', 'updated_at'];
+
     protected static $logName = 'User';
 
     protected static $logOnlyDirty = true;
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        return logMessage('User',$this->id,$eventName);
+        return logMessage('User', $this->id, $eventName);
     }
 
     /**
@@ -70,11 +70,13 @@ class User extends Authenticatable
         return $this->hasMany(UserPassword::class, 'user_id', 'id');
     }
 
-    public function logs(){
+    public function logs()
+    {
         return $this->hasMany(Log::class, 'causer_id', 'id');
     }
 
-    public function loginLogs(){
+    public function loginLogs()
+    {
         return $this->hasMany(Log::class, 'user_id', 'id');
     }
 
@@ -86,6 +88,7 @@ class User extends Authenticatable
             $title = 'Set Password';
             $key = 'set-password';
         }
-        return "<a href=" . Config::get('constants.URL') . "/" . Config::get('constants.PREFIX') . "/" . $key . "/" . $this->email . "/" . $token . ">" . $title . "</a>";
+        $link = Config::get('constants.URL')."/".Config::get('constants.PREFIX')."/".$key."/".$this->email."/".$token;
+        return $link;
     }
 }

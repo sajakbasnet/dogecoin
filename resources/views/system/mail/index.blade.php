@@ -238,6 +238,6 @@
     </style>
 </head>
 <body class="">
-{!! $content !!}
+{!!$content!!}
 </body>
 </html>

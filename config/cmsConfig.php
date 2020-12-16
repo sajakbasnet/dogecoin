@@ -389,7 +389,7 @@ return  [
           "name" => 'Edit Category',
           "route" => [
             [
-              "url" => '/categories/*',
+              "url" => '/categories/*/edit',
               "method" => 'get'
             ],
             [
