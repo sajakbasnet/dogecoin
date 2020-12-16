@@ -1,5 +1,4 @@
 <?php
-
 use App\Model\FrontendUser;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;

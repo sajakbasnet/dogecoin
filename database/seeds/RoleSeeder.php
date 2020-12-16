@@ -1,5 +1,4 @@
 <?php
-
 use App\Model\Role;
 use Illuminate\Database\Seeder;
 

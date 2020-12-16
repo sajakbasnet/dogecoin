@@ -1,5 +1,4 @@
 <?php
-
 use App\Model\EmailTemplate;
 use Illuminate\Database\Seeder;
 

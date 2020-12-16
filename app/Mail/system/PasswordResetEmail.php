@@ -36,7 +36,7 @@ class PasswordResetEmail extends Mailable
     {
         $content = $this->parseEmailTemplate([
             '%user_name%' => $this->user->name,
-            '%password_reset_link%' => urlencode($this->user->getPasswordSetResetLink(false, $this->token))
+            '%password_reset_link%' => $this->user->getPasswordSetResetLink(false, $this->token)
         ], 'PasswordResetLinkEmail', $this->locale);
         return $this->view('system.mail.index', compact('content'));
     }

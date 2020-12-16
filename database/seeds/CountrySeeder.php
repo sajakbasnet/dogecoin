@@ -1,5 +1,4 @@
 <?php
-
 use App\Model\Country;
 use Illuminate\Database\Seeder;
 
