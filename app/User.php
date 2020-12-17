@@ -89,6 +89,6 @@ class User extends Authenticatable
             $key = 'set-password';
         }
         $link = Config::get('constants.URL')."/".Config::get('constants.PREFIX')."/".$key."/".$this->email."/".$token;
-        return $link;
+        return "<a href="'".$link."'">".$title."</a>";
     }
 }
