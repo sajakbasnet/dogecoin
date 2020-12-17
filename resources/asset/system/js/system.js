@@ -17,4 +17,6 @@ getCSRFToken = () => {
   require('./admin')
   require('./config')
   require('./timeFormat')
+  require('./roles')
+
   
