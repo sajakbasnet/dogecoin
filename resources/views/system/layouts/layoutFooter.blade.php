@@ -20,10 +20,16 @@
       });
     }
 
+    let sideBarState = localStorage.getItem('sidebarToggle')
+    if(sideBarState == 1) {
+      $(".page-wrapper").addClass('toggle-page')
+    }
   })
-</script>
-<script>
+
   $(".toggle-button").on('click', function() {
-    $(".page-wrapper").toggleClass("toggle-page");
+    let sideBarState = localStorage.getItem('sidebarToggle')
+    if (sideBarState == 0) localStorage.setItem('sidebarToggle', 1)
+    if (sideBarState == 1) localStorage.setItem('sidebarToggle', 0)
+    $(".page-wrapper").toggleClass("toggle-page")
   })
 </script>

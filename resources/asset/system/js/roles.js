@@ -69,6 +69,7 @@ const rolesPermissions = (function () {
         for (let i = mainPermissions.length - 1; i >= 0; i--) {
             let permission = mainPermissions[i];
             let moduleName = $(permission).data("module")
+            $(".module[data-module='" + moduleName + "']").prop('checked', false);
             let subModuleName = $(permission).data("module") + '-sub'
             var checkBoxes = $(".permission[data-module='" + subModuleName + "']").length;
             var checkedCheckBoxes = $('input[type="checkbox"].' + subModuleName + ':checked').length;
