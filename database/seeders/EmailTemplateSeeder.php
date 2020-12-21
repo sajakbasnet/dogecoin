@@ -1,5 +1,8 @@
 <?php
+namespace Database\Seeders;
+
 use App\Model\EmailTemplate;
+use App\Model\EmailTemplateTranslation;
 use Illuminate\Database\Seeder;
 
 class EmailTemplateSeeder extends Seeder
@@ -168,6 +171,9 @@ class EmailTemplateSeeder extends Seeder
 
             ]
         ];
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        EmailTemplate::truncate();
+        EmailTemplateTranslation::truncate();
         foreach ($templates as $template) {
             $data = [
                 'title' => $template['title'],
@@ -178,5 +184,6 @@ class EmailTemplateSeeder extends Seeder
             $email = EmailTemplate::create($data);
             $email->emailTranslations()->createMany($template['translations']);
         }
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
