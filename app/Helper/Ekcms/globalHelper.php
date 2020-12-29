@@ -151,3 +151,8 @@ function logMessage($modelName, $modelId, $eventName)
     $now = Carbon::now()->format('yy-m-d H:i:s');
     return "$modelName of id {$modelId} was <strong>{$eventName}</strong> by {$user} at {$now}.";
 }
+
+function SN($items, $key){
+    $sn =$items->perPage() * ($items->currentPage()-1);
+    return $sn+=$key+1;
+}

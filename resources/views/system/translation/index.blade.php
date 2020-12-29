@@ -18,22 +18,16 @@
                     @endif
 
                     @if(hasPermission($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')), 'post'))
-                    <x-system.general-modal 
-                    :url="url($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')))"
-                    :modalTitle="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" 
-                    :modalId="'uploadExcelModal'"
-                    :modalTriggerButton="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" 
-                    :buttonClass="(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend') ? 'btn-info' : 'btn-primary'"
-                    :submitButtonTitle="'Upload'">
-                    <x-slot name="body">
-                    @include('system.partials.errors')
-                    <div class="form-group">
-                        <label for="name" class="col-sm-3 control-label">{{translate('Excel File')}}</label>
-                        <div class="col-sm-6">
-                        <input type="file" name="excel_file" class="form-control" accept=".xls">
-                        </div>
-                    </div>
-                    </x-slot>
+                    <x-system.general-modal :url="url($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')))" :modalTitle="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" :modalId="'uploadExcelModal'" :modalTriggerButton="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" :buttonClass="(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend') ? 'btn-info' : 'btn-primary'" :submitButtonTitle="'Upload'">
+                        <x-slot name="body">
+                            @include('system.partials.errors')
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">{{translate('Excel File')}}</label>
+                                <div class="col-sm-6">
+                                    <input type="file" name="excel_file" class="form-control" accept=".xls">
+                                </div>
+                            </div>
+                        </x-slot>
                     </x-system.general-modal>
                     @endif
                 </div>
@@ -78,11 +72,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $a=$items->perPage() * ($items->currentPage()-1); @endphp
-                                @forelse($items as $item)
-                                @php $a++ ;@endphp
+                                @forelse($items as $key=>$item)
                                 <tr>
-                                    <td>{{$a}}</td>
+                                    <td>{{SN($items, $key)}}</td>
                                     <td>{{$item->key}}</td>
                                     <td>
                                         @if(hasPermission($indexUrl.'/'.$item->id, 'put'))
@@ -130,7 +122,7 @@
 @section('scripts')
 <script>
     let error = `{{ $errors->first('excel_file')}}`
-    if(error !== ""){
+    if (error !== "") {
         $('#uploadExcelModal').modal('show')
     }
 </script>

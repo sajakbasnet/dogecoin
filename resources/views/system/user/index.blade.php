@@ -5,7 +5,7 @@
         <x-system.form.form-inline-group :input="['name' => 'keyword', 'label' => 'Search keyword', 'default' => Request::get('keyword')]" />
         <x-system.form.form-inline-group :input="['name' => 'role', 'label' => 'Role']">
             <x-slot name="inputs">
-                <x-system.form.input-select :input="['name' => 'role', 'placeholder' => 'Select role', 'options' => $roles, 'default' => Request::get('role')]"/>
+                <x-system.form.input-select :input="['name' => 'role', 'placeholder' => 'Select role', 'options' => $roles, 'default' => Request::get('role')]" />
             </x-slot>
         </x-system.form.form-inline-group>
     </x-slot>
@@ -22,11 +22,9 @@
 @endsection
 
 @section('table-data')
-@php $a=$items->perPage() * ($items->currentPage()-1); @endphp
-@foreach($items as $item)
-@php $a++ @endphp
+@foreach($items as $key=>$item)
 <tr>
-    <td>{{ $a }}</td>
+    <td>{{SN($items, $key)}}</td>
     <td>{{ $item->name }}</td>
     <td>
         <a href="/{{PREFIX}}/roles?keyword={{$item->role->name}}" class="badge badge-secondary">

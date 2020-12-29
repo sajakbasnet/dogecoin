@@ -31,9 +31,9 @@ class Service
             $query->where('name', 'LIKE', '%' . $data->keyword . '%');
         }
         if($pagination){
-            return $query->paginate(Config::get('constants.PAGINATION'));
+            return $query->orderBy('id', 'DESC')->paginate(Config::get('constants.PAGINATION'));
         }else{
-            return $query->get();
+            return $query->orderBy('id', 'DESC')->get();
         }
         
     }

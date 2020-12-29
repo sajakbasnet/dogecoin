@@ -41,11 +41,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $a=$items->perPage() * ($items->currentPage()-1); @endphp
-                                @forelse($items as $item)
-                                @php $a++; @endphp
+                                @forelse($items as $key=>$item)
                                 <tr>
-                                    <td>{{$a}}</td>
+                                    <td>{{SN($items, $key)}}</td>
                                     <td>{{$item->label}}</td>
                                     <td>
                                         @if(hasPermission($indexUrl.'/'.$item->id, 'put'))
@@ -71,11 +69,11 @@
                                             @endif
                                         </form>
                                         @else
-                                            @if($item->isFile($item->type))
-                                            <img src="{{ asset('uploads/config/'.$item->value) }}" class="img-thumbnail mr-2" alt="{{$item->value}}" style="max-width:100px;">
-                                            @else
-                                            {{$item->value}}
-                                            @endif
+                                        @if($item->isFile($item->type))
+                                        <img src="{{ asset('uploads/config/'.$item->value) }}" class="img-thumbnail mr-2" alt="{{$item->value}}" style="max-width:100px;">
+                                        @else
+                                        {{$item->value}}
+                                        @endif
                                         @endif
                                     </td>
                                     <td>

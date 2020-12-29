@@ -11,7 +11,7 @@ class Category extends Model
     use LogsActivity;
 
     protected $fillable = [
-        'name', 'attributes', 'parent_id'
+        'name', 'attributes','description', 'parent_id'
     ];
 
     protected static $logAttributes = ['name', 'attributes'];

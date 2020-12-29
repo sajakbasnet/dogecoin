@@ -24,11 +24,9 @@
 @endsection
 
 @section('table-data')
-@php $a=$items->perPage() * ($items->currentPage()-1); @endphp
-@foreach($items as $item)
-@php $a++ @endphp
+@foreach($items as $key=>$item)
 <tr>
-    <td>{{ $a }}</td>
+    <td>{{SN($items, $key)}}</td>
     <td>{{ $item->user->name ?? 'N/A'}}</td>
     <td>{{ $item->ip}}</td>
     <td>{{ localDateTime($item->created_at)}}</td>
