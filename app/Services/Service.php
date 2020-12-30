@@ -112,7 +112,6 @@ class Service
     }
 
     // Data for edit page
-
     public function editPageData($request, $id)
     {
         return [
