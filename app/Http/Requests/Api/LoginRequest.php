@@ -31,7 +31,7 @@ class LoginRequest extends FormRequest
             "client_secret" => ['required', new checkClientSecret($request->client_id)],
             "grant_type" => 'required|in:password,refresh_token',
             "refresh_token" => 'requiredIf:grant_type,refresh_token',
-            "username" => ['requiredIf:grant_type,password', new checkUserExists($request->password)],
+            "email" => ['requiredIf:grant_type,password', new checkUserExists($request->password)],
             "password" => 'requiredIf:grant_type,password'
         ];
     }

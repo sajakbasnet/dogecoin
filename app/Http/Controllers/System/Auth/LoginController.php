@@ -156,7 +156,9 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        clearRoleCache(authUser());
+        if(authUser() != null){
+            clearRoleCache(authUser());
+        }
         $this->guard()->logout();
         $request->session()->invalidate();
         return redirect(PREFIX . '/login')->withErrors(['alert-success' => 'Successfully logged out!']);

@@ -36,10 +36,9 @@ class PassportUserRepository implements UserRepositoryInterface
      */
     public function getUserEntityByUserCredentials($username, $password, $grantType, ClientEntityInterface $clientEntity)
     {
-        $guard = 'frontend-api'; // obtain current guard name from config
+        $guard = 'frontendUsers'; // obtain current guard name from config
         $provider = Config::get('auth.guards.'.$guard.'.provider');
         
-
         if (is_null($model = config('auth.providers.'.$provider.'.model'))) {
             throw new RuntimeException('Unable to determine authentication model from configuration.');
         }
