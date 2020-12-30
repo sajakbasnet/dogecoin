@@ -21,21 +21,20 @@ class Service
 
     // get all data 
 
-    public function getAllData($data, $selectedColumns=[], $pagination=true)
+    public function getAllData($data, $selectedColumns = [], $pagination = true)
     {
         $query = $this->query();
-        if(count($selectedColumns) > 0){
+        if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
         }
         if (isset($data->keyword) && $data->keyword !== null) {
             $query->where('name', 'LIKE', '%' . $data->keyword . '%');
         }
-        if($pagination){
+        if ($pagination) {
             return $query->orderBy('id', 'DESC')->paginate(Config::get('constants.PAGINATION'));
-        }else{
+        } else {
             return $query->orderBy('id', 'DESC')->get();
         }
-        
     }
 
     // find model by its identifier
@@ -45,9 +44,10 @@ class Service
         return $this->model->find($id);
     }
 
-    public function findByEmail($email){
+    public function findByEmail($email)
+    {
         $data = $this->model->where('email', $email)->first();
-        if(!isset($data)) throw new ModelNotFoundException;
+        if (!isset($data)) throw new ModelNotFoundException;
         return $data;
     }
 
@@ -86,10 +86,9 @@ class Service
 
     public function itemByIdentifier($id)
     {
-        try{
-        return $this->model->findOrFail($id);
-        }
-        catch(\Exception $e){
+        try {
+            return $this->model->findOrFail($id);
+        } catch (\Exception $e) {
             throw new ResourceNotFoundException();
         }
     }
@@ -107,6 +106,9 @@ class Service
 
     public function createPageData($request)
     {
+        return [
+            'status' => $this->status()
+        ];
     }
 
     // Data for edit page
@@ -114,7 +116,8 @@ class Service
     public function editPageData($request, $id)
     {
         return [
-            'item' => $this->itemByIdentifier($id)
+            'item' => $this->itemByIdentifier($id),
+            'status' => $this->status()
         ];
     }
 
@@ -123,5 +126,13 @@ class Service
     public function query()
     {
         return $this->model->query();
+    }
+
+    public function status()
+    {
+        return [
+            ['value' => 1, 'label' => 'Active'],
+            ['value' => 0, 'label' => 'Inactive']
+        ];
     }
 }

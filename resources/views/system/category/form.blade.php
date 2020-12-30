@@ -7,4 +7,9 @@
         <x-system.form.text-area :input="['name' => 'description', 'default'=> $item->description ?? old('description'), 'placeholder' => 'Category Description']" />
     </x-slot>
 </x-system.form.form-group>
+<x-system.form.form-group :input="['label' => 'Status']">
+    <x-slot name="inputs">
+        <x-system.form.input-radio :input="['name' => 'status', 'options' => $status, 'default' => $item->status ?? 1]" />
+    </x-slot>
+</x-system.form.form-group>
 @endsection
