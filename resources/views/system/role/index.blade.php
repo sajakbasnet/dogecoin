@@ -2,7 +2,7 @@
 @section('header')
 <x-system.search-form :action="$indexUrl">
   <x-slot name="inputs">
-    <x-system.form.form-inline-group :input="['name' => 'keyword', 'label' => 'Search keyword', 'default' => Request::get('keyword')]"/>
+    <x-system.form.form-inline-group :input="['name' => 'keyword', 'label' => 'Search keyword', 'default' => Request::get('keyword')]" />
   </x-slot>
 </x-system.search-form>
 @endsection
@@ -16,9 +16,10 @@
 @endsection
 
 @section('table-data')
+@php $pageIndex = pageIndex($items); @endphp
 @foreach($items as $key=>$item)
 <tr>
-  <td>{{SN($items, $key)}}</td>
+  <td>{{SN($pageIndex, $key)}}</td>
   <td>{{$item->name}}</td>
   <td>
     @if($item->isEditable($item->id))

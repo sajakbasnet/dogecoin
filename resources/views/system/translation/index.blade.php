@@ -72,9 +72,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $pageIndex = pageIndex($items); @endphp
                                 @forelse($items as $key=>$item)
                                 <tr>
-                                    <td>{{SN($items, $key)}}</td>
+                                    <td>{{SN($pageIndex, $key)}}</td>
                                     <td>{{$item->key}}</td>
                                     <td>
                                         @if(hasPermission($indexUrl.'/'.$item->id, 'put'))

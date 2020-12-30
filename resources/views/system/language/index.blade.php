@@ -22,9 +22,10 @@
 @endsection
 
 @section('table-data')
+@php $pageIndex = pageIndex($items); @endphp
 @foreach($items as $key=>$item)
 <tr>
-    <td>{{SN($items, $key)}}</td>
+    <td>{{SN($pageIndex, $key)}}</td>
     <td>{{ $item->name }} ({{$item->language_code}})</td>
     <td>
         <span class="badge {{$item->group === 'backend' ? 'badge-primary' : 'badge-info'}}">{{$item->group}}</span>

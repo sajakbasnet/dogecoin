@@ -152,7 +152,14 @@ function logMessage($modelName, $modelId, $eventName)
     return "$modelName of id {$modelId} was <strong>{$eventName}</strong> by {$user} at {$now}.";
 }
 
-function SN($items, $key){
-    $sn =$items->perPage() * ($items->currentPage()-1);
+function pageIndex($items){
+    $sn = 0;
+    if(method_exists($items, 'perPage') && method_exists($items, 'currentPage')){
+        $sn =$items->perPage() * ($items->currentPage()-1);
+    }
+    return $sn;
+}
+
+function SN($sn, $key){
     return $sn+=$key+1;
 }

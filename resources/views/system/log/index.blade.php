@@ -23,9 +23,10 @@
 @endsection
 
 @section('table-data')
+@php $pageIndex = pageIndex($items); @endphp
 @foreach($items as $key=>$item)
 <tr>
-    <td>{{SN($items, $key)}}</td>
+    <td>{{SN($pageIndex, $key)}}</td>
     <td>{{ $item->user->name ?? 'N/A'}}</td>
     <td>{{ $item->getModuleName($item->subject_type)}}</td>
     <td>{!! $item->description !!}</td>

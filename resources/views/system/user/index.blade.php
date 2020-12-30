@@ -22,9 +22,10 @@
 @endsection
 
 @section('table-data')
+@php $pageIndex = pageIndex($items); @endphp
 @foreach($items as $key=>$item)
 <tr>
-    <td>{{SN($items, $key)}}</td>
+    <td>{{SN($pageIndex, $key)}}</td>
     <td>{{ $item->name }}</td>
     <td>
         <a href="/{{PREFIX}}/roles?keyword={{$item->role->name}}" class="badge badge-secondary">
