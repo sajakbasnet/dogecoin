@@ -1,10 +1,16 @@
 <?php
-namespace App\Traits\Api;
-
+namespace App\Services\Api;
 use Nyholm\Psr7\Response as Psr7Response;
+use League\OAuth2\Server\AuthorizationServer;
+use Psr\Http\Message\ServerRequestInterface;
 
-trait LoginTrait
+class LoginService
 {
+    public function __construct(ServerRequestInterface $request, AuthorizationServer $server){
+        $this->serverRequest = $request;
+        $this->server = $server;
+    }
+
     public function parseFormat($data)
     {
         $data['client_id'] = $data['clientId'];
