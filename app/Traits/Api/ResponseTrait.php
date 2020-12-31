@@ -54,8 +54,8 @@ trait ResponseTrait
     }
 
     public function respondWithSuccess($message = "OK"){
-        $data = [
-            'success' => $message
+        $data['data'] = [
+            'message' => $message
         ];
         return $this->metaEncode($data);
     }
