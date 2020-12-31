@@ -8,4 +8,11 @@ class CategoryService extends Service
     public function __construct(Category $category){
         parent::__construct($category);
     }
+    public function apiIndexData()
+    {
+        return $this->model->where('parent_id', null)->paginate(20);
+    }
+    public function singleData($id){
+        return $this->model->find($id);
+    }
 }

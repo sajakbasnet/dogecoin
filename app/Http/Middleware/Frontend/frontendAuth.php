@@ -19,7 +19,7 @@ class frontendAuth
         if (!Auth::guard('frontendUsers')->check()) {
             return response()->json([
                 "message" => "Unauthenticated"
-            ]);
+            ], 401);
         }
         $request = $this->addUserToRequest($request);
         return $next($request);

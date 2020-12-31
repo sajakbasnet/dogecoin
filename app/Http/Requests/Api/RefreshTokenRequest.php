@@ -4,10 +4,9 @@ namespace App\Http\Requests\Api;
 
 use App\Rules\Api\checkClientSecret;
 use App\Rules\Api\checkClienttId;
-use App\Rules\Api\checkUserExists;
 use Illuminate\Http\Request;
 
-class LoginRequest extends FormRequest
+class RefreshTokenRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,9 +28,8 @@ class LoginRequest extends FormRequest
         return [
             "clientId" => ['required', new checkClienttId],
             "clientSecret" => ['required', new checkClientSecret($request->clientId)],
-            "grantType" => 'required|in:password',
-            "email" => ['requiredIf:grantType,password', new checkUserExists($request->password)],
-            "password" => 'required'
+            "grantType" => 'required|in:refresh_token',
+            'refreshToken' => 'required'
         ];
     }
 }

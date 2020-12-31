@@ -8,7 +8,7 @@ return [
     "META" =>  ['meta' => [
         "copyright" => "Copyright 2020 E.K. Solutions Pvt. Ltd.",
         "site" => env('APP_URL'),
-        "emails" => ["krishna.maharjan@ekbana.info","pramesh.karmacharya@ekbana.info", "ekbana@info.com"],
+        "emails" => ["pramesh.karmacharya@ekbana.info", "ekbana@info.com"],
         "api" => [
             "version" => 1
         ]

@@ -41,7 +41,7 @@ trait ResponseTrait
             $error['source'] = $pointer . '":' . '"' . '/data/attributes/' . $key;
             $error['code'] = trans("code.".$key);
         }else{
-            $error['code'] = $code;
+            $error['code'] = $this->statusCode;
         }
 
         $error['title'] = is_null($titleMessage) ? $message : $titleMessage;

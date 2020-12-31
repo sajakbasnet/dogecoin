@@ -47,8 +47,8 @@ class FormRequest extends IlluminateFormRequest
   {
     $json1 = json_encode($response, JSON_UNESCAPED_SLASHES);
     $meta = json_encode(Config::get('constants.META'));
-    $array1 = json_decode($json1, TRUE);
-    $array2 = json_decode($meta, TRUE);
+    $array1 = json_decode($meta, TRUE);
+    $array2 = json_decode($json1, TRUE);
     $data = array_merge_recursive($array1, $array2);
     return $data;
   }

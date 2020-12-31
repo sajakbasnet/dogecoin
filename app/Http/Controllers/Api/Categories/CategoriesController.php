@@ -20,7 +20,7 @@ class CategoriesController extends ApiController
     public function index(Request $request)
     {
         $categories = $this->service->apiIndexData();
-        return $this->respondWithOutPagination($categories, new CategoriesTransformer, 'Categories');
+        return $this->respondWithCollection($categories, new CategoriesTransformer, 'Categories');
     }
 
 
