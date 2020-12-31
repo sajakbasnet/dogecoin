@@ -60,6 +60,14 @@ trait ResponseTrait
         return $this->metaEncode($data);
     }
 
+    public function unauthenticated($message = 'Unauthenticated'){
+        $data['error'] = [
+            'title' => $message,
+            'detail' => $message,
+        ];
+        return $this->metaEncode($data);
+    }
+
     protected function metaEncode($response)
     {
         $json1 = json_encode($response);
