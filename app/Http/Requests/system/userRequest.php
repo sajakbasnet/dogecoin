@@ -31,8 +31,8 @@ class userRequest extends FormRequest
 
         if ($request->method() == "POST") {
             $validate = array_merge($validate, [
-                'username' => 'required|unique:users,username,',
-                'email' => 'required|email|unique:users,email,',
+                'username' => 'required|unique:users,username',
+                'email' => 'required|email|unique:users,email',
             ]);
         }
         if ($request->method() == "PUT") {
