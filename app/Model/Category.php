@@ -2,17 +2,16 @@
 
 namespace App\Model;
 
+use App\Traits\uuidTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Category extends Model
 {
-    use LogsActivity;
+    use uuidTrait;
 
-    protected $fillable = [
-        'name', 'attributes','description', 'status', 'parent_id'
-    ];
+    protected $guarded = ['id'];
 
     protected static $logAttributes = ['name', 'attributes'];
     
@@ -20,12 +19,16 @@ class Category extends Model
 
     protected static $logOnlyDirty = true;
 
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return logMessage('Category',$this->id,$eventName);
-    }
+    // public function getDescriptionForEvent(string $eventName): string
+    // {
+    //     return logMessage('Category',$this->id,$eventName);
+    // }
 
     public function subCategoryCount($id){
         return $this->where('parent_id', $id)->count();
+    }
+
+    public function child(){
+        return $this->hasMany(Category::class, 'parent_id', 'id');
     }
 }

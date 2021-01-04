@@ -62,8 +62,8 @@ trait ResponseTrait
 
     public function unauthenticated($message = 'Unauthenticated'){
         $data['error'] = [
-            'title' => $message,
-            'detail' => $message,
+            'title' => frontTrans($message),
+            'detail' => frontTrans($message),
         ];
         return $this->metaEncode($data);
     }

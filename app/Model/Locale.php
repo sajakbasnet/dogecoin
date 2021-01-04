@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Model;
-
-use Carbon\Carbon;
 use Spatie\TranslationLoader\LanguageLine;
 use Spatie\Activitylog\Traits\LogsActivity;
 

@@ -10,8 +10,9 @@ class CategoriesTransformer extends TransformerAbstract
   {
     return [
       'id' => $category->id,
-      'category_name' => $category->name,
-      'category_attribute' => $category->attributes,
+      'categoryName' => $category->name,
+      'categoryAttribute' => $category->attributes,
+      'subCategory' => $category->child()->get() ?? null
     ];
   }
 }

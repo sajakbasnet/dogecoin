@@ -14,7 +14,7 @@ class AddParentIdCategories extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->integer('parent_id')->nullable();
+            $table->uuid('parent_id')->nullable();
         });
     }
 
