@@ -30,7 +30,8 @@ class SocialLoginRequest extends FormRequest
             "clientSecret" => ['required', new checkClientSecret($request->clientId)],
             "grantType" => 'required|in:social',
             'provider' => 'required|in:facebook,google,apple',
-            'accessToken'=>'required'
+            'accessToken'=>'required',
+            'userIdentifier' => 'requiredIf:provider,apple'
         ];
     }
 }

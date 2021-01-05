@@ -14,12 +14,14 @@ class LoginService
         AuthorizationServer $server,
         GoogleLoginService $google,
         FacebookLoginService $facebook,
+        AppleLoginService $apple,
         SocialService $service
     ) {
         $this->serverRequest = $request;
         $this->server = $server;
         $this->google = $google;
         $this->facebook = $facebook;
+        $this->apple = $apple;
         $this->service = $service;
     }
 
@@ -40,24 +42,22 @@ class LoginService
 
     public function loginWithGoogle($request)
     {
-        try {
-            $googleUserData = $this->google->googleUserData($request->accessToken);
-            return $this->socialLoginFurtherProcessing($request, $googleUserData);
-        } catch (\Exception $e) {
-            throw new ApiGenericException($e->getMessage());
-        }
+        $googleUserData = $this->google->googleUserData($request->accessToken);
+        return $this->socialLoginFurtherProcessing($request, $googleUserData);
     }
 
     public function loginWithFacebook($request)
     {
-        try {
-            $facebookUserData = $this->facebook->facebookUserData($request->accessToken);
-            return $this->socialLoginFurtherProcessing($request, $facebookUserData);
-        } catch (\Exception $e) {
-            throw new ApiGenericException($e->getMessage());
-        }
+        $facebookUserData = $this->facebook->facebookUserData($request->accessToken);
+        return $this->socialLoginFurtherProcessing($request, $facebookUserData);
     }
 
+    public function loginWithApple($request)
+    {
+        $appleUserData = $this->apple->appleUserData($request->accessToken, $request->userIdentifier);
+        return $this->socialLoginFurtherProcessing($request, $appleUserData);
+    }
+    
     public function socialLoginFurtherProcessing($request, $socialUserData)
     {
         $user = $this->service->setOrGetUser($socialUserData);

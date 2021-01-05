@@ -9,6 +9,7 @@ use App\Http\Requests\Api\SocialLoginRequest;
 use App\Services\Api\LoginService;
 use App\Transformers\TokenTransformer;
 use League\Fractal\Manager;
+use GuzzleHttp\Exception\ClientException;
 
 
 class LoginController extends ApiController
@@ -37,16 +38,21 @@ class LoginController extends ApiController
 
     public function socialLogin(SocialLoginRequest $request)
     {
-        switch ($request->provider) {
-            case 'google':
-                return $this->service->loginWithgoogle($request);
-                break;
-            case 'facebook':
-                return $this->service->loginWithFacebook($request);
-                break;
-            default:
+        try {
+            if ($request->provider == "google") {
+                $tokenData = $this->service->loginWithgoogle($request);
+            } elseif ($request->provider == "facebook") {
+                $tokenData = $this->service->loginWithFacebook($request);
+            } elseif ($request->provider == "apple") {
+                $tokenData = $this->service->loginWithApple($request);
+            } else {
                 return $this->errorInternalError('Social-login setup needs to be done.', 401);
-                break;
+            }
+            return $this->respondWithItem($tokenData, new TokenTransformer, 'social-login');
+        } catch (ClientException $e) {
+            return $this->errorInternalError('Expired Token.', 500);
+        } catch (\Exception $e) {
+            return $this->errorInternalError($e->getMessage(), 500);
         }
     }
 

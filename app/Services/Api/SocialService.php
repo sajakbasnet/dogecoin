@@ -28,11 +28,11 @@ class SocialService
     public function parsedUserData($data){
         return [
             'name' => $data['name'] ?? null,
-            'username' => $data['given_name'] ?? $data['short_name'] ?? null,
-            'email' => $data['email'] ?? null,
+            'username' => $data['given_name'] ?? $data['short_name'] ?? $data->getEmail() ?? null,
+            'email' => $data['email'] ?? $data->getEmail() ??null,
             'name' => $data['name'] ?? null,
             'provider' => $data['provider'] ?? null,
-            'provider_user_id' => $data['sub'] ?? $data['id'] ?? null
+            'provider_user_id' => $data['sub'] ?? $data['id'] ?? $data->getId() ?? null
         ];
     }
 }
