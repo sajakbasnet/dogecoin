@@ -58,7 +58,8 @@ class LoginService
         }
     }
 
-    public function socialLoginFurtherProcessing($request, $socialUserData){
+    public function socialLoginFurtherProcessing($request, $socialUserData)
+    {
         $user = $this->service->setOrGetUser($socialUserData);
         $parsedData = $this->parseFormat($request->only('clientId', 'clientSecret', 'grantType'));
         $parsedData['provider'] = $user->provider;
