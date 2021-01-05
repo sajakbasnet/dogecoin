@@ -1,7 +1,6 @@
 <?php
-Route::post('/api/v1/login', [
-  'uses' => 'Api\auth\LoginController@login'
-])->middleware('throttle', 'lang');
-Route::post('/api/v1/refresh-token', [
-  'uses' => 'Api\auth\LoginController@refreshToken'
-])->middleware('throttle', 'lang');
+Route::group(['namespace' => 'Api\auth', 'prefix' => 'api/v1', 'middleware' => ['throttle', 'lang']], function () {
+  Route::post('/login', ['uses' => 'LoginController@login']);
+  Route::post('/social-login', ['uses' => 'LoginController@socialLogin']);
+  Route::post('/refresh-token', ['uses' => 'LoginController@refreshToken']);
+});

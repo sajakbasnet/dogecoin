@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\auth;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\RefreshTokenRequest;
+use App\Http\Requests\Api\SocialLoginRequest;
 use App\Services\Api\LoginService;
 use App\Transformers\TokenTransformer;
 use League\Fractal\Manager;
@@ -31,6 +32,21 @@ class LoginController extends ApiController
             return $this->respondWithItem($tokenData, new TokenTransformer, 'login');
         } catch (\Exception $e) {
             return $this->errorInternalError($e->getMessage(), 401);
+        }
+    }
+
+    public function socialLogin(SocialLoginRequest $request)
+    {
+        switch ($request->provider) {
+            case 'google':
+                return $this->service->loginWithgoogle($request);
+                break;
+            case 'facebook':
+                return $this->service->loginWithFacebook($request);
+                break;
+            default:
+                return $this->errorInternalError('Social-login setup needs to be done.', 401);
+                break;
         }
     }
 

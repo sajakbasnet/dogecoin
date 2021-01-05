@@ -2,15 +2,16 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Exceptions\Api\ApiGenericException;
+use App\Traits\Api\ResponseTrait;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Support\Facades\Cookie;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use ResponseTrait;
     /**
      * A list of the exception types that are not reported.
      *
@@ -74,6 +75,9 @@ class Handler extends ExceptionHandler
         }
         if ($exception instanceof CustomGenericException) {
             return redirect()->back()->withErrors([$exception->alert => $exception->message]);
+        }
+        if ($exception instanceof ApiGenericException) {
+            return $this->setStatusCode($exception->statusCode)->respondWithError($exception->message);
         }
         return parent::render($request, $exception);
     }

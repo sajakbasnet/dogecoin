@@ -12,6 +12,6 @@ class FrontendUser extends Authenticatable
     protected $table = 'frontend_users';
     protected $guard = 'frontendUsers';
     protected $fillable = [
-        'name', 'username', 'email', 'password'
+        'name', 'username', 'email', 'password', 'provider', 'provider_user_id'
     ];
 }

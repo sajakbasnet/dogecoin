@@ -19,7 +19,7 @@ class frontendAuth
     public function handle($request, Closure $next)
     {
         if (!Auth::guard('frontendUsers')->check()) {
-            return $this->setStatusCode(401)->unauthenticated();
+            return $this->setStatusCode(401)->userUnauthenticated();
         }
         $request = $this->addUserToRequest($request);
         return $next($request);

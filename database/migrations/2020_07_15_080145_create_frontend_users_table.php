@@ -15,10 +15,12 @@ class CreateFrontendUsersTable extends Migration
     {
         Schema::create('frontend_users', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->notNullable()->unique();
-            $table->string('username', 80)->notNullable()->unique();
-            $table->string('email', 254)->notNullable()->unique();
-            $table->string('password', 60)->notNullable();
+            $table->string('name')->nullable();
+            $table->string('username', 80)->nullable()->unique();
+            $table->string('email', 254)->nullable()->unique();
+            $table->string('password', 60)->nullable();
+            $table->string('provider', 60)->nullable();
+            $table->string('provider_user_id', 200)->nullable();
             $table->timestamps();
         });
     }
