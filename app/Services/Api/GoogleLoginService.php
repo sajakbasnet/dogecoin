@@ -13,23 +13,10 @@ class GoogleLoginService
             $url
         );
         $data = json_decode((string) $response->getBody(), true);
-        $parsedData = $this->parseUserData($data);
-        if (empty($parsedData['email'])) {
+        $data['provider'] = 'google';
+        if (empty($data['email'])) {
             throw new EmailIdNotFound();
         }
-        return $parsedData;
-    }
-
-    protected function parseUserData($data){
-        $googleUserData = [
-            'email' => $data['email'] ?? null,
-            'given_name' => $data['given_name'] ?? null,
-            'family_name' => $data['family_name'] ?? null,
-            'name' => $data['name'] ?? null,
-            'picture' => $data['picture'] ?? null,
-            'user_id' => $data['sub'] ?? null,
-            'provider' => 'google'
-        ];
-        return $googleUserData;
+        return $data;
     }
 }

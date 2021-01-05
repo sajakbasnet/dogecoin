@@ -42,13 +42,9 @@ class LoginService
     {
         try {
             $googleUserData = $this->google->googleUserData($request->accessToken);
-            $user = $this->service->setOrGetUser($googleUserData);
-            $parsedData = $this->parseFormat($request->only('clientId', 'clientSecret', 'grantType'));
-            $parsedData['provider'] = $user->provider;
-            $parsedData['provider_user_id'] = $user->provider_user_id;
-            return $this->generateToken($parsedData);
+            return $this->socialLoginFurtherProcessing($request, $googleUserData);
         } catch (\Exception $e) {
-            throw new ApiGenericException('Invalid access token provided.');
+            throw new ApiGenericException($e->getMessage());
         }
     }
 
@@ -56,9 +52,17 @@ class LoginService
     {
         try {
             $facebookUserData = $this->facebook->facebookUserData($request->accessToken);
-            dd($facebookUserData);
+            return $this->socialLoginFurtherProcessing($request, $facebookUserData);
         } catch (\Exception $e) {
             throw new ApiGenericException($e->getMessage());
         }
+    }
+
+    public function socialLoginFurtherProcessing($request, $socialUserData){
+        $user = $this->service->setOrGetUser($socialUserData);
+        $parsedData = $this->parseFormat($request->only('clientId', 'clientSecret', 'grantType'));
+        $parsedData['provider'] = $user->provider;
+        $parsedData['provider_user_id'] = $user->provider_user_id;
+        return $this->generateToken($parsedData);
     }
 }

@@ -16,7 +16,7 @@ class SocialService
         $existingUser = $this->user->where([
             ['email', $userData['email']],
             ['provider',$userData['provider']],
-            ['provider_user_id', $userData['user_id']]
+            ['provider_user_id', $userData['sub'] ?? $userData['id']]
         ])->first();
         if(empty($existingUser)){
             $parsedUserData = $this->parsedUserData($userData);
@@ -28,11 +28,11 @@ class SocialService
     public function parsedUserData($data){
         return [
             'name' => $data['name'] ?? null,
-            'username' => $data['given_name'] ?? null,
+            'username' => $data['given_name'] ?? $data['short_name'] ?? null,
             'email' => $data['email'] ?? null,
             'name' => $data['name'] ?? null,
-            'provider' => $data['provider'] ?? 'google',
-            'provider_user_id' => $data['user_id'] ?? null
+            'provider' => $data['provider'] ?? null,
+            'provider_user_id' => $data['sub'] ?? $data['id'] ?? null
         ];
     }
 }
