@@ -32,7 +32,7 @@ class LoginController extends ApiController
 
             return $this->respondWithItem($tokenData, new TokenTransformer, 'login');
         } catch (\Exception $e) {
-            return $this->errorInternalError($e->getMessage(), 401);
+            return $this->errorInternalError($e->getMessage());
         }
     }
 
@@ -46,13 +46,13 @@ class LoginController extends ApiController
             } elseif ($request->provider == "apple") {
                 $tokenData = $this->service->loginWithApple($request);
             } else {
-                return $this->errorInternalError('Social-login setup needs to be done.', 401);
+                return $this->errorInternalError('Social-login setup needs to be done.');
             }
             return $this->respondWithItem($tokenData, new TokenTransformer, 'social-login');
         } catch (ClientException $e) {
-            return $this->errorInternalError('Expired Token.', 500);
+            return $this->errorInternalError('Expired Token.');
         } catch (\Exception $e) {
-            return $this->errorInternalError($e->getMessage(), 500);
+            return $this->errorInternalError($e->getMessage());
         }
     }
 
@@ -69,7 +69,7 @@ class LoginController extends ApiController
 
             return $this->respondWithItem($tokenData, new TokenTransformer, 'login');
         } catch (\Exception $e) {
-            return $this->errorInternalError($e->getMessage(), 401);
+            return $this->errorInternalError($e->getMessage());
         }
     }
 }
