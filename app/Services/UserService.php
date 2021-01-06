@@ -65,22 +65,18 @@ class UserService extends Service
     public function store($request)
     {
         $data = $request->except('_token');
+        if ($request->set_password_status == '1') {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
+        }
+        $token = $this->generateToken(24);
+        $data['token'] = $token;
+        $user = $this->model->create($data);
         try {
-            DB::beginTransaction();
-            if ($request->set_password_status == '1') {
-                $data['password'] = Hash::make($data['password']);
-            } else {
-                unset($data['password']);
-            }
-            $token = $this->generateToken(24);
-            $data['token'] = $token;
-            $user = $this->model->create($data);
             event(new UserCreated($user, $token));
-            DB::commit();
             return $user;
         } catch (\Exception $e) {
-            DB::rollBack();
-            throw new CustomGenericException($e->getMessage());
         }
     }
 
