@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\system\user;
 
-use App\Http\Controllers\System\ResourceController;
+use App\Http\Controllers\system\ResourceController;
 use App\Services\RoleService;
 
 class RoleController extends ResourceController
