@@ -8,7 +8,7 @@ Route::get('/', function () {
 Route::get(PREFIX, function () {
     return redirect('/' . PREFIX . '/login');
 });
-Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['language']], function () {
+Route::group(['namespace' => 'system', 'prefix' => PREFIX, 'middleware' => ['language']], function () {
 
     Route::get('/login', 'Auth\LoginController@showLoginForm');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
