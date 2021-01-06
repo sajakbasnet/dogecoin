@@ -63,26 +63,34 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
-        if (
-            method_exists($this, 'hasTooManyAttempts') &&
-            $this->hasTooManyAttempts($request, $attempt = 3) // maximum attempts
-        ) {
-            $this->customFireLockoutEvent($request);
+        try {
+            if (
+                method_exists($this, 'hasTooManyAttempts') &&
+                $this->hasTooManyAttempts($request, $attempt = 3) // maximum attempts
+            ) {
+                $this->customFireLockoutEvent($request);
 
-            return $this->customLockoutResponse($request);
+                return $this->customLockoutResponse($request);
+            }
+            $user = $this->loginType($request);
+
+            if (Auth::attempt($user)) {
+                setRoleCache(authUser());
+                setConfigCookie();
+                $this->createLoginLog($request);
+                return $this->sendLoginResponse($request);
+            }
+
+            $this->incrementAttempts($request, $decay = 1); // decay minutes
+
+            return $this->sendFailedLoginResponse($request);
+        } catch (\Exception $e) {
+            if (authUser() != null) {
+                clearRoleCache(authUser());
+                $this->guard()->logout();
+            }
+            throw new CustomGenericException($e->getMessage());
         }
-        $user = $this->loginType($request);
-
-        if (Auth::attempt($user)) {
-            setRoleCache(authUser());
-            setConfigCookie();
-            $this->createLoginLog($request);
-            return $this->sendLoginResponse($request);
-        }
-
-        $this->incrementAttempts($request, $decay = 1); // decay minutes
-
-        return $this->sendFailedLoginResponse($request);
     }
     public function loginType(Request $request)
     {
@@ -131,32 +139,29 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
-        try {
-            $request->session()->regenerate();
+        $request->session()->regenerate();
 
-            $this->clearAttempts($request);
+        $this->clearAttempts($request);
 
-            if ($response = $this->authenticated($request, $this->guard()->user())) {
-                return $response;
-            }
-
-            if (Config::get('constants.TWOFA') == 1) {
-                session()->forget('verification_code');
-                $verification_code = mt_rand(100000, 999999);
-                session()->put('verification_code', $verification_code);
-                Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
-            }
-            return redirect('/' . PREFIX . '/home');
-        } catch (\Exception $e) {
-            clearRoleCache(authUser());
-            $this->guard()->logout();
-            throw new CustomGenericException($e->getMessage());
+        if ($response = $this->authenticated($request, $this->guard()->user())) {
+            return $response;
         }
+
+        if (Config::get('constants.TWOFA') == 1) {
+            session()->forget('verification_code');
+            $verification_code = mt_rand(100000, 999999);
+            session()->put('verification_code', $verification_code);
+            try {
+                Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
+            } catch (\Exception $e) {
+            }
+        }
+        return redirect('/' . PREFIX . '/home');
     }
 
     public function logout(Request $request)
     {
-        if(authUser() != null){
+        if (authUser() != null) {
             clearRoleCache(authUser());
         }
         $this->guard()->logout();
