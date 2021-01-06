@@ -22,7 +22,6 @@ class LoginController extends ApiController
     public function login(LoginRequest $request)
     {
         try {
-
             $data = $request->all();
             $data = $this->service->parseFormat($data);
             $data['username'] = $data['email'];
