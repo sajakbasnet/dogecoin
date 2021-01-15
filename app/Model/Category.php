@@ -1,15 +1,12 @@
 <?php
 
 namespace App\Model;
-
-use App\Traits\uuidTrait;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Category extends Model
 {
-    use uuidTrait;
+    use LogsActivity;
 
     protected $guarded = ['id'];
 
