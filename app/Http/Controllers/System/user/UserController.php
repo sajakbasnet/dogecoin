@@ -4,6 +4,7 @@ namespace App\Http\Controllers\System\user;
 
 use App\Http\Controllers\System\ResourceController;
 use App\Services\UserService;
+use Illuminate\Http\Request;
 
 class UserController extends ResourceController
 {
@@ -36,5 +37,9 @@ class UserController extends ResourceController
             $data['buttonText'] = "Change Password";
             return view('system.auth.setPassword', $data);
         } else return redirect(PREFIX . '/home');
+    }
+
+    public function passwordReset(Request $request, $id){
+        dd($id);
     }
 }

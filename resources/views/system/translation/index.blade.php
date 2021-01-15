@@ -5,20 +5,17 @@
         <div class="page-head clearfix">
             <div class="row">
                 <div class="col-sm-3">
-                    <div class="head-title">
-                        <h4>{{translate($title)}}</h4>
-                    </div><!-- ends head-title -->
                 </div>
                 <div class="col-sm-9">
                     @if(hasPermission($indexUrl.'/download-sample'))
-                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right btn-sm" href="{{url($indexUrl.'/download-sample')}}" style="margin-right:3px">{{translate('Download Sample')}}</a>
+                    <a style="margin-top: 7px;" class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right btn-sm" href="{{url($indexUrl.'/download-sample')}}" style="margin-right:3px">{{translate('Download Sample')}}</a>
                     @endif
                     @if(hasPermission($indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group'))))
-                    <a class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right btn-sm" href="{{url($indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group')))}}" style="margin-right:3px; margin-left:3px">{{translate('Download excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
+                    <a style="margin-top: 7px; margin-right:2px; margin-left:2px" class="btn @if(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend' ) btn-info @else btn-primary @endif pull-right btn-sm" href="{{url($indexUrl.'/download/'.(Request::get('group') == null ? 'backend' : Request::get('group')))}}" style="margin-right:3px; margin-left:3px">{{translate('Download excel for '.(Request::get('group') == null ? 'backend' : Request::get('group')))}}</a>
                     @endif
 
                     @if(hasPermission($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')), 'post'))
-                    <x-system.general-modal :url="url($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')))" :modalTitle="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" :modalId="'uploadExcelModal'" :modalTriggerButton="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" :buttonClass="(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend') ? 'btn-info' : 'btn-primary'" :submitButtonTitle="'Upload'">
+                    <x-system.general-modal :url="url($indexUrl.'/upload/'.(Request::get('group') == null ? 'backend' : Request::get('group')))" :modalTitle="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" :modalId="'uploadExcelModal'" :modalTriggerButton="'Upload excel for '.(Request::get('group') == null ? 'backend' : Request::get('group'))" :buttonClass="(Request::get('group') !== null && strtolower(Request::get('group')) == 'frontend') ? 'btn-info pull-right' : 'btn-primary pull-right'" :submitButtonTitle="'Upload'">
                         <x-slot name="body">
                             @include('system.partials.errors')
                             <div class="form-group">
