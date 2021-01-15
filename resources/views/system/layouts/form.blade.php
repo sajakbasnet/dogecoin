@@ -13,9 +13,9 @@
         <div class="page-contents clearfix">
             <div class="inner-content-fluid">
                 <div class="custom-container-fluid">
-
+                    @section('breadcrumb')
                     @include('system.partials.breadcrumb')
-
+                    @show
                     <div class="page-head clearfix">
                         <div class="row">
                             <div class="col-9">
@@ -26,8 +26,8 @@
                         </div>
                     </div><!-- ends page-head -->
 
-                    <div class="content-display clearfix">
-                        <div class="panel panel-default">
+                    <div class="content-display clearfix custom-border">
+                        <div class="panel panel-default custom-padding">
                             <div class="panel-body">
                                 @include('system.partials.message')
                                 <form method="post" action="{{isset($item) ? url($indexUrl.'/'.$item->id) : url($indexUrl)}}" enctype="multipart/form-data">
