@@ -35,7 +35,7 @@
     <td>
         @include('system.partials.editButton')
         @include('system.partials.deleteButton')
-        <x-system.general-modal :url="route('user.reset-password', $item->id)" :modalTitle="'Password Reset'" :modalId="'passwordReset'.$item->id" :modalTriggerButton="'Reset-Password'" :buttonClass="'btn-success'" :submitButtonTitle="'Reset Password'">
+        <x-system.general-modal :url="route('user.reset-password', $item->id)" :modalTitle="'Password Reset'" :modalId="'passwordReset'.$item->id" :modalTriggerButton="'Reset-Password'" :buttonClass="'btn-success'" :submitButtonTitle="'Reset'">
             <x-slot name="body">
                 @include('system.partials.errors')
                 <div class="form-group row">
