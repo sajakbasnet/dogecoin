@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\system\countryLanguage;
+namespace App\Http\Controllers\System\countryLanguage;
 
 use App\Http\Controllers\Controller;
 use App\Services\CountryService;

@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\system\user;
+namespace App\Http\Controllers\System\user;
 
-use App\Http\Controllers\system\ResourceController;
-use App\Http\Requests\system\userRequest;
+use App\Http\Controllers\System\ResourceController;
 use App\Services\UserService;
-use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Parent_;
 
 class UserController extends ResourceController
 {

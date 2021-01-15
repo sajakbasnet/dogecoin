@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\system\language;
+namespace App\Http\Controllers\System\language;
 
 use App\Exports\TranslationExport;
-use App\Http\Controllers\system\ResourceController;
+use App\Http\Controllers\System\ResourceController;
 use App\Http\Requests\system\uploadExcel;
 use App\Imports\TranslationImport;
 use App\Model\Language;

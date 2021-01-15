@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\system\category;
+namespace App\Http\Controllers\System\category;
 
-use App\Http\Controllers\system\ResourceController;
+use App\Http\Controllers\System\ResourceController;
 use App\Services\CategoryService;
 
 class categoryController extends ResourceController

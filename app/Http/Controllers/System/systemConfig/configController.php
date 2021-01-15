@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\system\systemConfig;
-use App\Http\Controllers\system\ResourceController;
+namespace App\Http\Controllers\System\systemConfig;
+use App\Http\Controllers\System\ResourceController;
 use App\Services\ConfigService;
 
 class configController extends ResourceController

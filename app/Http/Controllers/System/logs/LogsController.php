@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\system\logs;
+namespace App\Http\Controllers\System\logs;
 
-use App\Http\Controllers\system\ResourceController;
+use App\Http\Controllers\System\ResourceController;
 use App\Services\LogService;
 
 class LogsController extends ResourceController

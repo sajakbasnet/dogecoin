@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\system\profile;
+namespace App\Http\Controllers\System\profile;
 
-use App\Http\Controllers\system\ResourceController;
+use App\Http\Controllers\System\ResourceController;
 use App\Services\ProfileService;
 
 class ProfileController extends ResourceController

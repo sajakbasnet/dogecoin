@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\system\user;
+namespace App\Http\Controllers\System\user;
 
-use App\Http\Controllers\system\ResourceController;
+use App\Http\Controllers\System\ResourceController;
 use App\Services\RoleService;
 
 class RoleController extends ResourceController

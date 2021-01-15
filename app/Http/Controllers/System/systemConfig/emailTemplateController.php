@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\system\systemConfig;
+namespace App\Http\Controllers\System\systemConfig;
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\system\ResourceController;
-use App\Http\Requests\system\emailTemplateRequest;
+use App\Http\Controllers\System\ResourceController;
 use App\Services\EmailTemplateService;
-use Illuminate\Http\Request;
 
 class emailTemplateController extends ResourceController
 {
