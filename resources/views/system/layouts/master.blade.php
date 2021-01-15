@@ -14,10 +14,13 @@
         <div class="custom-container-fluid">
           @include('system.partials.breadcrumb')
           <div class="page-head clearfix">
-            <div class="col-6">
-              <div class="head-title" style="margin-left: -15px;">
-                <h4>{{ translate($title) }}</h4>
-              </div><!-- ends head-title -->
+            <div class="row">
+              <div class="col-6">
+                <div class="head-title" style="margin-left: -5px;">
+                  <h4>{{ translate($title) }}</h4>
+                </div><!-- ends head-title -->
+              </div>
+              @yield('heading-contents')
             </div>
           </div><!-- ends page-head -->
           @yield('content')
