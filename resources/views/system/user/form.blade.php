@@ -18,8 +18,8 @@
 </x-system.form.form-group>
 
 <div class="d-none" id="password-inputs">
-  <x-system.form.form-group :input="[ 'name' => 'password', 'label'=> 'Password', 'required' => true, 'type' => 'password', 'default' => old('password'), 'error' => $errors->first('password')]" />
-  <x-system.form.form-group :input="[ 'name' => 'password_confirmation', 'label'=> 'Confirm Password', 'required' => true, 'type' => 'password', 'default' => old('password_confirmation'), 'error' => $errors->first('password_confirmation')]" />
+  <x-system.form.form-group :input="[ 'name' => 'password', 'label'=> 'Password','label-required'=>true, 'type' => 'password', 'default' => old('password'), 'error' => $errors->first('password')]" />
+  <x-system.form.form-group :input="[ 'name' => 'password_confirmation', 'label'=> 'Confirm Password','label-required'=>true, 'type' => 'password', 'default' => old('password_confirmation'), 'error' => $errors->first('password_confirmation')]" />
 </div>
 @endif
 @endsection
