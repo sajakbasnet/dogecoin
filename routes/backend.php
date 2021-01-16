@@ -40,7 +40,7 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::get('/profile', 'profile\ProfileController@index')->name('profile');
         Route::put('/profile/{id}', 'profile\ProfileController@update');
 
-        Route::post('reset-password/{id}', 'user\UserController@passwordReset')->name('user.reset-password');
+        Route::post('users/reset-password/{id}', 'user\UserController@passwordReset')->name('user.reset-password');
 
         Route::get('/login-logs', 'logs\LoginLogsController@index');
         Route::get('/activity-logs', 'logs\LogsController@index');

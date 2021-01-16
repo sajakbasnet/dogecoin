@@ -94,6 +94,13 @@ return  [
                 "url" => '/users/*',
                 "method" => 'delete'
               ],
+            ],
+            [
+              "name" => 'Reset Password',
+              "route" => [
+                "url" => '/users/reset-password/*',
+                "method" => 'post'
+              ],
             ]
           ]
         ],

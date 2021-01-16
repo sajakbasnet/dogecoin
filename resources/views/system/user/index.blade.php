@@ -35,7 +35,8 @@
     <td>
         @include('system.partials.editButton')
         @include('system.partials.deleteButton')
-        <x-system.general-modal :url="route('user.reset-password', $item->id)" :modalTitle="'Password Reset'" :modalId="'passwordReset'.$item->id" :modalTriggerButton="'Reset-Password'" :buttonClass="'btn-success'" :submitButtonTitle="'Reset'">
+        @if(hasPermission($indexUrl.'/reset-password/'.$item->id, 'post'))
+        <x-system.general-modal :url="url($indexUrl.'/reset-password/'.$item->id)" :modalTitle="'Password Reset'" :modalId="'passwordReset'.$item->id" :modalTriggerButton="'Reset-Password'" :buttonClass="'btn-success'" :submitButtonTitle="'Reset'">
             <x-slot name="body">
                 <input type="hidden" name="id" value="{{$item->id}}">
                 @include('system.partials.errors')
@@ -58,6 +59,7 @@
                 </div>
             </x-slot>
         </x-system.general-modal>
+        @endif
     </td>
 </tr>
 @endforeach
