@@ -10,9 +10,8 @@ use App\Exceptions\ResourceNotFoundException;
 use App\Exceptions\RoleNotChangeableException;
 use App\Model\Role;
 use App\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 
 class UserService extends Service
 {
@@ -134,5 +133,13 @@ class UserService extends Service
         $user = $this->model->where('email', $email)->first();
         if (!isset($user)) throw new ResourceNotFoundException("User doesn't exist in our system.");
         return $user;
+    }
+
+    public function resetPassword($request)
+    {
+        $user = $this->itemByIdentifier($request->id);
+        return $user->update([
+            'password' => Hash::make($request->password)
+        ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\System\user;
 
 use App\Http\Controllers\System\ResourceController;
+use App\Http\Requests\system\resetPassword;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,8 @@ class UserController extends ResourceController
         } else return redirect(PREFIX . '/home');
     }
 
-    public function passwordReset(Request $request, $id){
-        dd($id);
+    public function passwordReset(resetPassword $request){
+        $this->service->resetPassword($request);
+        return redirect($this->getUrl())->withErrors(['success' => 'Password successfully updated.']);
     }
 }

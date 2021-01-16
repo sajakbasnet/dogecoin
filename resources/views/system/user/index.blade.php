@@ -37,13 +37,14 @@
         @include('system.partials.deleteButton')
         <x-system.general-modal :url="route('user.reset-password', $item->id)" :modalTitle="'Password Reset'" :modalId="'passwordReset'.$item->id" :modalTriggerButton="'Reset-Password'" :buttonClass="'btn-success'" :submitButtonTitle="'Reset'">
             <x-slot name="body">
+                <input type="hidden" name="id" value="{{$item->id}}">
                 @include('system.partials.errors')
                 <div class="form-group row">
                     <div class="col-sm-4 col-form-label">
                         <label for="name" class="control-label">{{translate('New Password')}}</label> <span style="color:red;">*</span>
                     </div>
                     <div class="col-sm-6">
-                        <input type="password" name="password" class="form-control" placeholder="Enter your new password " required>
+                        <input type="password" name="password" class="form-control" autocomplete="off" placeholder="Enter your new password " required>
                     </div>
                 </div>
 
@@ -52,7 +53,7 @@
                         <label for="name" class="control-label">{{translate('Confirm Password')}}</label> <span style="color:red;">*</span>
                     </div>
                     <div class="col-sm-6">
-                        <input type="password" name="password_confirmation" class="form-control" placeholder="Enter your confirm password " required>
+                        <input type="password" name="password_confirmation" class="form-control" autocomplete="off" placeholder="Enter your confirm password " required>
                     </div>
                 </div>
             </x-slot>
@@ -64,8 +65,9 @@
 @section('scripts')
 <script>
     let error = `{{ $errors->first('password')}}`
+    let oldId = `{{ old('id') }}`
     if (error !== "") {
-        $('#uploadExcelModal').modal('show')
+        $('#passwordReset'+oldId).modal('show')
     }
 </script>
 @endsection
