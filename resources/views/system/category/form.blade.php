@@ -4,7 +4,7 @@
 <x-system.form.form-group :input="['name' => 'attributes', 'required'=>'true', 'label' => 'Category Attribute','default'=> $item->attributes ?? old('attributes'), 'error' => $errors->first('attributes')]" />
 <x-system.form.form-group :input="['label' => 'Category Description']">
     <x-slot name="inputs">
-        <x-system.form.text-area :input="['name' => 'description', 'default'=> $item->description ?? old('description'), 'placeholder' => 'Category Description']" />
+    <x-system.form.text-area :input="['name'=>'description', 'label' => 'Description', 'editor' => true, 'error' => $errors->first('description')]" />
     </x-slot>
 </x-system.form.form-group>
 <x-system.form.form-group :input="['label' => 'Status']">

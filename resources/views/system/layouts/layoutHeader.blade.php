@@ -15,5 +15,5 @@
 <link href="{{ asset('compiledCssAndJs/css/system.css')}}" rel="stylesheet" media="screen">
 <link href="{{ asset('toast/jquery.toast.min.css')}}" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="https://cdn.tiny.cloud/1/41jra8qtzk5rtwn670i465mbqefbgip8s5j4ut0sfyagfkzp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" />
+<script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
