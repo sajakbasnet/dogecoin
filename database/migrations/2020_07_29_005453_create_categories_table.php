@@ -17,6 +17,8 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name')->notNullable();
             $table->string('attributes')->notNullable();
+            $table->text('description')->notNullable();
+            $table->boolean('status')->notNullable();
             $table->timestamps();
         });
     }

@@ -12,6 +12,8 @@ class CategoriesTransformer extends TransformerAbstract
       'id' => $category->id,
       'categoryName' => $category->name,
       'categoryAttribute' => $category->attributes,
+      'description' => $category->dexcription,
+      'status' => $category->status,
       'subCategory' => $category->child()->get() ?? null
     ];
   }

@@ -71,7 +71,9 @@ class Service
     {
         $data = $request->except('_token');
         $update = $this->itemByIdentifier($id);
-        return $update->fill($data)->save();
+        $update->fill($data)->save();
+        $update = $this->itemByIdentifier($id);
+        return $update;
     }
 
     //delete a record

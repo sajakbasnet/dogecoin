@@ -20,6 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Api', 'prefix' => 'v1',  'middleware' => ['lang', 'auth-frontend']], function () {
     Route::get('categories', 'Categories\CategoriesController@index');
-    Route::get('category-detail/{id}', 'Categories\CategoriesController@detail');
-    Route::post('category', 'Categories\CategoriesController@create');
+    Route::get('categories/{id}', 'Categories\CategoriesController@detail');
+    Route::post('categories', 'Categories\CategoriesController@create');
+    Route::put('categories/{id}', 'Categories\CategoriesController@update');
+    Route::delete('categories/{id}', 'Categories\CategoriesController@delete');
 });
