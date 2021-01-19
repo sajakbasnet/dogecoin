@@ -17,8 +17,9 @@ class CategoryService extends Service
         ];
     }
 
+    
     public function singleData($id)
     {
-        return $this->model->find($id);
+        return $this->itemByIdentifier($id);
     }
 }

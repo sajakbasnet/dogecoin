@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Categories;
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Requests\Api\CategoryRequest;
 use App\Services\CategoryService;
 use App\Transformers\CategoriesTransformer;
 use Illuminate\Http\Request;
@@ -22,7 +23,11 @@ class CategoriesController extends ApiController
         return $this->respondWithCollection($categories['items'], new CategoriesTransformer, 'Categories');
     }
 
-
+    public function create(CategoryRequest $request){
+        $category = $this->service->store($request);
+        return $this->respondWithItem($category, new CategoriesTransformer, 'Categories');
+    }
+    
     public function detail($id)
     {
         $category = $this->service->singleData($id);
