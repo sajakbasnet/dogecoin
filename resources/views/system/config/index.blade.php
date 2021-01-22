@@ -109,7 +109,7 @@
                         </x-slot>
                     </x-system.form.form-inline-group>
                 </div>
-                <button class="btn btn-primary" type="submit">{{translate('Save')}}</button>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> {{translate('Save')}}</button>
             </form>
         </div>
     </div>
