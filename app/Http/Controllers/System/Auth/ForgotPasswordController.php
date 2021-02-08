@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\system\Auth;
 
 use App\Exceptions\CustomGenericException;
-use App\Exceptions\ResourceNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Mail\system\PasswordResetEmail;
-use App\Services\UserService;
+use App\Services\System\UserService;
 use App\Traits\CustomThrottleRequest;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;

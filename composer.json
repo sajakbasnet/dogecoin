@@ -50,7 +50,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helper/Ekcms/ekHelper.php",
+            "app/Helper/Ekcms/permissionHelper.php",
             "app/Helper/Ekcms/globalHelper.php",
             "app/Helper/Ekcms/translationHelper.php"
         ]

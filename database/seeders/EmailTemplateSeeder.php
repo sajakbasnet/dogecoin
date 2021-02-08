@@ -171,7 +171,7 @@ class EmailTemplateSeeder extends Seeder
 
             ]
         ];
-        // \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         EmailTemplate::truncate();
         EmailTemplateTranslation::truncate();
         foreach ($templates as $template) {
@@ -184,6 +184,6 @@ class EmailTemplateSeeder extends Seeder
             $email = EmailTemplate::create($data);
             $email->emailTranslations()->createMany($template['translations']);
         }
-        // \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

@@ -91,29 +91,6 @@ function transformCountries($countries)
     return $transformedCountries;
 }
 
-function isPermissionSelected($permission, $permissions)
-{
-    $permission = json_decode($permission);
-    $permissions = json_decode($permissions);
-    $check = false;
-    if (!is_array($permission)) {
-        if ($permissions != null) {
-            $exists = in_array($permission, $permissions);
-            if ($exists) $check = true;
-        }
-    } else {
-        $temCheck = false;
-        if ($permissions != null) {
-            foreach ($permission as $perm) {
-                $exists = in_array($perm, $permissions);
-                if ($exists) $temCheck = true;
-            }
-        }
-        $check = $temCheck;
-    }
-    return $check;
-}
-
 function globalLanguages()
 {
     $languages = Language::where('group', 'backend')->get();

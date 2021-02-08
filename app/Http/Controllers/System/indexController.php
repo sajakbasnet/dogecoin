@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\System;
-
-use App\Http\Controllers\Controller;
-use ekHelper;
 use Illuminate\Http\Request;
 
 class indexController extends ResourceController
