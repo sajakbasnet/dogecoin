@@ -7,7 +7,7 @@ use App\Http\Controllers\System\ResourceController;
 use App\Http\Requests\system\uploadExcel;
 use App\Imports\TranslationImport;
 use App\Model\Language;
-use App\Services\TranslationService;
+use App\Services\System\TranslationService;
 use Illuminate\Http\Request;
 use Spatie\TranslationLoader\LanguageLine;
 

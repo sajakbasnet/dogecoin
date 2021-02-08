@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\System\logs;
 
 use App\Http\Controllers\System\ResourceController;
-use App\Services\LogService;
+use App\Services\System\LogService;
 
 class LogsController extends ResourceController
 {

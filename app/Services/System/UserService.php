@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\System;
 
 use App\Events\UserCreated;
 use App\Exceptions\CustomGenericException;
@@ -9,8 +9,8 @@ use App\Exceptions\NotDeletableException;
 use App\Exceptions\ResourceNotFoundException;
 use App\Exceptions\RoleNotChangeableException;
 use App\Model\Role;
+use App\Services\Service;
 use App\User;
-use Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserService extends Service

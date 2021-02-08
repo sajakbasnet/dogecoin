@@ -1,7 +1,8 @@
 <?php
-namespace App\Services;
+namespace App\Services\System;
 
 use App\Model\Country;
+use App\Services\Service;
 
 class CountryService extends Service
 {

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\System;
 
 use App\Model\Loginlogs;
+use App\Services\Service;
 use Carbon\Carbon;
 use Config;
 

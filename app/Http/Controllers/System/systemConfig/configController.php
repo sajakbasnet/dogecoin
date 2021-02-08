@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\System\systemConfig;
 use App\Http\Controllers\System\ResourceController;
-use App\Services\ConfigService;
+use App\Services\System\ConfigService;
 
 class configController extends ResourceController
 {

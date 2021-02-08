@@ -3,7 +3,6 @@
 namespace App\Http\Middleware\Frontend;
 
 use Closure;
-use Auth;
 
 class Language
 {

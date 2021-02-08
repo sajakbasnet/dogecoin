@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Services\LanguageService;
+use App\Services\System\LanguageService;
 use Closure;
 use Illuminate\Support\Facades\View;
 use Config;

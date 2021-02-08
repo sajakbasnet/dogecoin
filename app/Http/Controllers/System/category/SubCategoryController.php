@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\System\category;
 
 use App\Http\Controllers\System\ResourceController;
-use App\Services\SubCategoryService;
+use App\Services\System\SubCategoryService;
 
 class SubCategoryController extends ResourceController
 {

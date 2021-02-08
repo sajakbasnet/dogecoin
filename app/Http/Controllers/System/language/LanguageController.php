@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\System\language;
 
 use App\Http\Controllers\System\ResourceController;
-use App\Services\LanguageService;
+use App\Services\System\LanguageService;
 use Illuminate\Support\Facades\Cookie;
 
 class LanguageController extends ResourceController

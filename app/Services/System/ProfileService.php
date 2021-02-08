@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\System;
 
 use App\Exceptions\CustomGenericException;
 use App\Exceptions\UnauthorizedException;
+use App\Services\Service;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\System;
 
 use App\Exceptions\NotDeletableException;
 use App\Model\Role;
+use App\Services\Service;
 use App\User;
-use Config;
 
 class RoleService extends Service
 {

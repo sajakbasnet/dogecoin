@@ -4,8 +4,7 @@ namespace App\Http\Controllers\System\user;
 
 use App\Http\Controllers\System\ResourceController;
 use App\Http\Requests\system\resetPassword;
-use App\Services\UserService;
-use Illuminate\Http\Request;
+use App\Services\System\UserService;
 
 class UserController extends ResourceController
 {

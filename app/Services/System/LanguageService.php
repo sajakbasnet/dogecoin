@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\System;
 
 use App\Exceptions\NotDeletableException;
 use App\Model\Language;
+use App\Services\Service;
 
 class LanguageService extends Service
 {

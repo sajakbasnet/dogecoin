@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\System;
 
 use App\Model\Language;
 use App\Model\Locale;
-use Spatie\TranslationLoader\LanguageLine;
+use App\Services\Service;
 
 class TranslationService extends Service
 {

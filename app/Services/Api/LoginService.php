@@ -2,7 +2,6 @@
 
 namespace App\Services\Api;
 
-use App\Exceptions\Api\ApiGenericException;
 use Nyholm\Psr7\Response as Psr7Response;
 use League\OAuth2\Server\AuthorizationServer;
 use Psr\Http\Message\ServerRequestInterface;

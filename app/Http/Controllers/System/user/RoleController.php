@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\System\user;
 
 use App\Http\Controllers\System\ResourceController;
-use App\Services\RoleService;
+use App\Services\System\RoleService;
 
 class RoleController extends ResourceController
 {

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\System;
 
 use App\Exceptions\NotDeletableException;
 use App\Model\Config;
+use App\Services\Service;
 use App\Traits\ImageTrait;
 
 class ConfigService extends Service

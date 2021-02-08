@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\System;
 
 use App\Model\EmailTemplate;
+use App\Services\Service;
 
 class EmailTemplateService extends Service
 {

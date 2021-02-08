@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\System\systemConfig;
 
 use App\Http\Controllers\System\ResourceController;
-use App\Services\EmailTemplateService;
+use App\Services\System\EmailTemplateService;
 
 class emailTemplateController extends ResourceController
 {
