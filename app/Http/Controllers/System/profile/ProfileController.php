@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\System\profile;
 
 use App\Http\Controllers\System\ResourceController;
-use App\Services\ProfileService;
+use App\Services\System\ProfileService;
 
 class ProfileController extends ResourceController
 {
