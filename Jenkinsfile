@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    def BRANCH = ["ver-8"]
+    BRANCH = 'ver-8'
   }
   stages {
       stage('Sonarqube') {
