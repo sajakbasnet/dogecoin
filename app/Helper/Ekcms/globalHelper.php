@@ -116,7 +116,7 @@ function japaneseDateTime($dateTime)
 
 function storeLog($performedOn, $msg)
 {
-    $now = Carbon::now()->format('yy-m-d H:i:s');
+    $now = Carbon::now()->format('Y-m-d H:i:s');
     activity()
         ->performedOn($performedOn)
         ->log($msg . ' at ' . $now);
@@ -125,7 +125,7 @@ function storeLog($performedOn, $msg)
 function logMessage($modelName, $modelId, $eventName)
 {
     $user = authUser()->name ?? '--';
-    $now = Carbon::now()->format('yy-m-d H:i:s');
+    $now = Carbon::now()->format('Y-m-d H:i:s');
     return "$modelName of id {$modelId} was <strong>{$eventName}</strong> by {$user} at {$now}.";
 }
 

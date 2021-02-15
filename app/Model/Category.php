@@ -16,10 +16,10 @@ class Category extends Model
 
     protected static $logOnlyDirty = true;
 
-    // public function getDescriptionForEvent(string $eventName): string
-    // {
-    //     return logMessage('Category',$this->id,$eventName);
-    // }
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return logMessage('Category',$this->id,$eventName);
+    }
 
     public function subCategoryCount($id){
         return $this->where('parent_id', $id)->count();

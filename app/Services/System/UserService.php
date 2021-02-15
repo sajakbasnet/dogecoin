@@ -63,20 +63,22 @@ class UserService extends Service
 
     public function store($request)
     {
-        $data = $request->except('_token');
-        if ($request->set_password_status == '1') {
-            $data['password'] = Hash::make($data['password']);
-        } else {
-            unset($data['password']);
-        }
-        $token = $this->generateToken(24);
-        $data['token'] = $token;
-        $user = $this->model->create($data);
-        try {
-            event(new UserCreated($user, $token));
-            return $user;
-        } catch (\Exception $e) {
-        }
+        \DB::transaction(function () use ($request) {
+            $data = $request->except('_token');
+            if ($request->set_password_status == '1') {
+                $data['password'] = Hash::make($data['password']);
+            } else {
+                unset($data['password']);
+            }
+            $token = $this->generateToken(24);
+            $data['token'] = $token;
+            $user = $this->model->create($data);
+            try {
+                event(new UserCreated($user, $token));
+                return $user;
+            } catch (\Exception $e) {
+            }
+        });
     }
 
     public function editPageData($request, $id)

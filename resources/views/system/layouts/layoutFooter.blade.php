@@ -6,6 +6,9 @@
 <script src="{{ asset('jscolor/jscolor.js')}}"></script>
 <script src="{{ asset('compiledCssAndJs/js/system.js')}}"></script>
 <script src="{{ asset('toast/jquery.toast.min.js')}}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 
 <script>
   $(function() {
@@ -21,7 +24,7 @@
     }
 
     let sideBarState = localStorage.getItem('sidebarToggle')
-    if(sideBarState == 1) {
+    if (sideBarState == 1) {
       $(".page-wrapper").addClass('toggle-page')
     }
   })
@@ -32,4 +35,17 @@
     if (sideBarState == 1) localStorage.setItem('sidebarToggle', 0)
     $(".page-wrapper").toggleClass("toggle-page")
   })
+
+  $('.daterange').daterangepicker({
+    autoUpdateInput: false,
+    locale: {
+      cancelLabel: 'Clear'
+    }
+  });
+
+  $('.daterange').on('apply.daterangepicker', function(ev, picker) {
+    $('#from-date').val(picker.startDate.format('YYYY-MM-DD'));
+    $('#to-date').val(picker.endDate.format('YYYY-MM-DD'));
+    $(this).val(picker.startDate.format('YYYY-MM-DD') + ' to ' + picker.endDate.format('YYYY-MM-DD'));
+  });
 </script>

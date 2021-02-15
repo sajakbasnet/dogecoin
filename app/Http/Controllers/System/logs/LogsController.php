@@ -14,7 +14,7 @@ class LogsController extends ResourceController
 
     public function moduleName()
     {
-        return 'logs';
+        return 'activity-logs';
     }
 
     public function viewFolder()

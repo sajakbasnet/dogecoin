@@ -6,8 +6,9 @@
 @section('header')
 <x-system.search-form :action="url($indexUrl)">
     <x-slot name="inputs">
-        <x-system.form.form-inline-group :input="['name'=>'from', 'label'=>'From date','default'=> Request::get('from'), 'class'=>'datepicker', 'autoComplete'=>'off']" />
-        <x-system.form.form-inline-group :input="['name'=>'to', 'label'=>'To date', 'default'=> Request::get('to'), 'class'=>'datepicker', 'autoComplete'=>'off']" />
+        <x-system.form.form-inline-group :input="['name'=>'range','class'=>'daterange','type'=>'text', 'label'=>'Select Date Range','default'=> Request::get('range'),'autoComplete'=>'off']" />
+        <input type="hidden" name="from" id="from-date" value="{{Request::get('from')}}">
+        <input type="hidden" name="to" id="to-date" value="{{Request::get('to')}}">
     </x-slot>
 </x-system.search-form>
 @endsection
