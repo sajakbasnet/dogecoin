@@ -9,16 +9,22 @@ pipeline {
         scannerHome = tool 'SonarQubeScanner'
       }
       steps {
-        if(BRANCH.contains(env.BRANCH_NAME)) {
-          withSonarQubeEnv('sonarqube') {
-            sh "${scannerHome}/bin/sonar-scanner"
+        script{
+          if(BRANCH.contains(env.BRANCH_NAME)) {
+            stage('Sonarqube scan'){            
+              withSonarQubeEnv('sonarqube') {
+                sh "${scannerHome}/bin/sonar-scanner"
+              }
+              timeout(time: 10, unit: 'MINUTES') {
+                waitForQualityGate abortPipeline: true
+              }
+            }
           }
-          timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
+          else{
+            stage('No Scan'){
+              echo env.BRANCH_NAME + " branch is not being scanned!!"
+            }
           }
-        }
-        else{
-          echo env.BRANCH_NAME + " branch is not being scanned!!"
         }
       }
     }
