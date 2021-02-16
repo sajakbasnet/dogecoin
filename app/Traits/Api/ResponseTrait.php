@@ -88,23 +88,23 @@ trait ResponseTrait
     protected function respondWithArray(array $array, array $headers = [])
     {
         $mimeTypeRaw = Request::server('HTTP_ACCEPT', '*/*');
-
+        $contentType = 'application/json';
         // If its empty or has */* then default to JSON
         if ($mimeTypeRaw === '*/*') {
-            $mimeType = 'application/json';
+            $mimeType = $contentType;
         } else {
             $mimeParts = (array) explode(';', $mimeTypeRaw);
             $mimeType = strtolower($mimeParts[0]);
         }
 
         switch ($mimeType) {
-            case 'application/json':
-                $contentType = 'application/json';
+            case $contentType:
+                $contentType = $contentType;
                 $content = json_encode($array);
                 break;
 
             default:
-                $contentType = 'application/json';
+                $contentType = $contentType;
                 $content = json_encode($array);
         }
         $response = response()->make($content, $this->statusCode, $headers);

@@ -28,10 +28,10 @@ function translate($content, $data = [], $group = "backend")
             }
         } else {
             $trans = trans($group . '.' . $key, $data);
-            if ($trans == $group . "." . $key) return $content;
-            else return $trans;
+            if ($trans == $group . "." . $key) {return $content;}
+            else {return $trans;}
         }
-    } else return $key;
+    } else {return $key;}
 }
 
 function insertText($content, $group)

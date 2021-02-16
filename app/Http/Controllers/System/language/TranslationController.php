@@ -48,8 +48,11 @@ class TranslationController extends ResourceController
 
     public function downloadExcel(Request $request, $group)
     {
-        if ($group == "frontend") $filename = "frontend.xls";
-        else $filename = "backend.xls";
+        if ($group == "frontend") {
+            $filename = "frontend.xls";
+        } else {
+            $filename = "backend.xls";
+        }
         return \Excel::download(new TranslationExport($group), $filename);
     }
 

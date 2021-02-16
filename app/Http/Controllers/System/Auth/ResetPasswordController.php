@@ -35,7 +35,9 @@ class ResetPasswordController extends Controller
     {
         try {
             $data['title'] = 'Set Password';
-            if ($request->route()->getName() == "reset.password") $data['title'] = 'Reset Password';;
+            if ($request->route()->getName() == "reset.password") {
+                $data['title'] = 'Reset Password';
+            }
             $this->service->findByEmailAndToken($request->email, $request->token);
             $data['email'] = $request->email;
             $data['token'] = $request->token;
@@ -65,7 +67,9 @@ class ResetPasswordController extends Controller
             $check = $this->checkOldPasswords($user, $request);
             if ($check) {
                 $password = Hash::make($request->password);
-                if ($user->userPasswords->count() < 3) $user->userPasswords()->create(['password' => $password]);
+                if ($user->userPasswords->count() < 3) {
+                    $user->userPasswords()->create(['password' => $password]);
+                }
                 $user->update([
                     'password' => $password,
                     'password_resetted' => 1,
@@ -73,7 +77,9 @@ class ResetPasswordController extends Controller
                 ]);
 
                 return true;
-            } else return false;
+            } else {
+                return false;
+            }
         } catch (\Exception $e) {
             throw new CustomGenericException($e->getMessage());
         }

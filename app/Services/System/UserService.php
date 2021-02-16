@@ -33,7 +33,9 @@ class UserService extends Service
         if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
         }
-        if ($pagination) return $query->orderBy('id', 'DESC')->with('role')->paginate(PAGINATE);
+        if ($pagination) {
+            return $query->orderBy('id', 'DESC')->with('role')->paginate(PAGINATE);
+        }
         return $query->orderBy('id', 'DESC')->with('role')->get();
     }
     public function getRoles()
@@ -95,7 +97,9 @@ class UserService extends Service
         try {
             $data = $request->except('_token');
             $user = $this->itemByIdentifier($id);
-            if (isset($request->role_id) && ($user->id == 1 && $request->role_id != 1)) throw new RoleNotChangeableException('The role of the specific user cannot be changed.');
+            if (isset($request->role_id) && ($user->id == 1 && $request->role_id != 1)) {
+                throw new RoleNotChangeableException('The role of the specific user cannot be changed.');
+            }
             return $user->update($data);
         } catch (\Exception $e) {
             throw new CustomGenericException($e->getMessage());
@@ -104,7 +108,9 @@ class UserService extends Service
 
     public function delete($request, $id)
     {
-        if ($id == 1) throw new NotDeletableException();
+        if ($id == 1) {
+            throw new NotDeletableException();
+        }
         $user = $this->itemByIdentifier($id);
         return $user->delete();
     }
@@ -127,13 +133,17 @@ class UserService extends Service
             throw new EncryptedPayloadException('Invalid encrypted data');
         }
         $user = $this->model->where('email', $email)->where('token', $decryptedToken)->first();
-        if (!isset($user)) throw new ResourceNotFoundException("User doesn't exist in our system.");;
+        if (!isset($user)) {
+            throw new ResourceNotFoundException("User doesn't exist in our system.");
+        }
         return $user;
     }
     public function findByEmail($email)
     {
         $user = $this->model->where('email', $email)->first();
-        if (!isset($user)) throw new ResourceNotFoundException("User doesn't exist in our system.");
+        if (!isset($user)) {
+            throw new ResourceNotFoundException("User doesn't exist in our system.");
+        }
         return $user;
     }
 

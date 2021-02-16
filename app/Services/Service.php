@@ -47,7 +47,9 @@ class Service
     public function findByEmail($email)
     {
         $data = $this->model->where('email', $email)->first();
-        if (!isset($data)) throw new ModelNotFoundException;
+        if (!isset($data)) {
+            throw new ModelNotFoundException;
+        }
         return $data;
     }
 

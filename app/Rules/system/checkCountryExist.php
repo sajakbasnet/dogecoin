@@ -27,8 +27,11 @@ class checkCountryExist implements Rule
     public function passes($attribute, $value)
     {
         $checkExist = Country::find($value);
-        if(isset($checkExist)) return true;
-        else return false;
+        if (isset($checkExist)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

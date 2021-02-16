@@ -25,7 +25,9 @@ class ProfileService extends Service
     public function update($request, $id)
     {
         try {
-            if (authUser()->id != $id) throw new UnauthorizedException('Unauthorized action performed.');
+            if (authUser()->id != $id) {
+                throw new UnauthorizedException('Unauthorized action performed.');
+            }
             $data = $request->only('password');
             $user = $this->itemByIdentifier($id);
             $logMsg = "New Password was <strong>created</strong> by {$user->name}";

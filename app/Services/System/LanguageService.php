@@ -24,16 +24,17 @@ class LanguageService extends Service
         }
         if (isset($data->group) && $data->group !== null) {
             $query->where('group', $data->group);
-        } elseif(isset($data['group'])) {
+        } elseif (isset($data['group'])) {
             $query->where('group', $data['group']);
-        }else{
+        } else {
             $query->where('group', 'backend');
-
         }
         if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
         }
-        if ($pagination) return $query->orderBy('id', 'ASC')->paginate(PAGINATE);
+        if ($pagination) {
+            return $query->orderBy('id', 'ASC')->paginate(PAGINATE);
+        }
         return $query->orderBy('id', 'ASC')->get();
     }
 
@@ -75,7 +76,9 @@ class LanguageService extends Service
     public function delete($request, $id)
     {
         $language = $this->itemByIdentifier($id);
-        if ($language->isDefault()) throw new NotDeletableException();
+        if ($language->isDefault()) {
+            throw new NotDeletableException();
+        }
         return $language->delete();
     }
 
@@ -87,14 +90,15 @@ class LanguageService extends Service
                 'frontend' => 'Frontend',
             ];
     }
-    public function getKeyValuePair($languages, $key = 'language_code', $value = 'name') {
+    public function getKeyValuePair($languages, $key = 'language_code', $value = 'name')
+    {
         $options = array();
-        forEach($languages as $language){
+        foreach ($languages as $language) {
             $options[$language[$key]] = $language[$value];
         }
         return $options;
-      }
-    
+    }
+
     public function getBackendLanguages()
     {
         return $this->model->where('group', 'backend')->get();

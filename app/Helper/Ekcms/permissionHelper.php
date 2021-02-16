@@ -30,7 +30,7 @@ function hasPermission($url, $method = 'get')
             $check = true;
         }
     }
-    if ($check) return true;
+    if ($check) {return true;}
 
     $permissions = $role->permissions;
 
@@ -44,7 +44,7 @@ function hasPermission($url, $method = 'get')
             $check = true;
         }
     }
-    if ($check) return true;
+    if ($check) {return true;}
     return false;
 }
 
@@ -76,14 +76,14 @@ function isPermissionSelected($permission, $permissions)
     if (!is_array($permission)) {
         if ($permissions != null) {
             $exists = in_array($permission, $permissions);
-            if ($exists) $check = true;
+            if ($exists) {$check = true;}
         }
     } else {
         $temCheck = false;
         if ($permissions != null) {
             foreach ($permission as $perm) {
                 $exists = in_array($perm, $permissions);
-                if ($exists) $temCheck = true;
+                if ($exists) {$temCheck = true;}
             }
         }
         $check = $temCheck;

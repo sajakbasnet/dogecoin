@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Categories;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\Api\CategoryRequest;
-use App\Services\CategoryService;
+use App\Services\System\CategoryService;
 use App\Transformers\CategoriesTransformer;
 use Illuminate\Http\Request;
 use League\Fractal\Manager;
@@ -26,7 +26,7 @@ class CategoriesController extends ApiController
     public function detail($id)
     {
         $category = $this->service->singleData($id);
-        if ($category == null) return $this->errorNotFound();
+        if ($category == null) {return $this->errorNotFound();}
         return $this->respondWithItem($category, new CategoriesTransformer, 'Categories');
     }
 

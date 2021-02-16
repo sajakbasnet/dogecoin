@@ -55,8 +55,11 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        if (Auth::check()) return redirect('/' . PREFIX . '/home');
-        else return view('system.auth.login');
+        if (Auth::check()) {
+            return redirect('/' . PREFIX . '/home');
+        } else {
+            return view('system.auth.login');
+        }
     }
 
     public function login(Request $request)

@@ -28,7 +28,9 @@ class TranslationService extends Service
         if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
         }
-        if ($pagination) return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
+        if ($pagination) {
+            return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
+        }
         return $query->orderBy('id', 'DESC')->get();
     }
     public function indexPageData($request)
@@ -44,7 +46,7 @@ class TranslationService extends Service
     public function store($request)
     {
         $key = strtolower(trim(str_replace(".", "", $request->key)));
-        if($key !== ""){
+        if ($key !== "") {
             $check = $this->model::where('key', $key)->where('group', $request->group)->first();
             if (!isset($check)) {
                 return $this->model::create([
@@ -53,7 +55,9 @@ class TranslationService extends Service
                     'text' => $this->inserttext($key, $request->group),
                 ]);
             }
-        }else return true;
+        } else {
+            return true;
+        }
     }
 
     public function inserttext($content, $group)
@@ -70,13 +74,13 @@ class TranslationService extends Service
     {
         $data = $this->itemByIdentifier($id);
         $currentTextArray = $data->text;
-        if(in_array($request->locale, array_keys($currentTextArray))){
+        if (in_array($request->locale, array_keys($currentTextArray))) {
             unset($currentTextArray[$request->locale]);
             $updatedTextArray = array_merge($currentTextArray, [$request->locale => $request->text]);
-            $data->update(['group'=>$request->group,'text' => $updatedTextArray]);
-        }else{
+            $data->update(['group' => $request->group, 'text' => $updatedTextArray]);
+        } else {
             $updatedTextArray = array_merge($currentTextArray, [$request->locale => $request->text]);
-            $data->update(['group'=>$request->group,'text' => $updatedTextArray]);
+            $data->update(['group' => $request->group, 'text' => $updatedTextArray]);
         }
         return $data;
     }
@@ -86,6 +90,4 @@ class TranslationService extends Service
         $item = $this->itemByIdentifier($id);
         return $item->delete();
     }
-
-
 }

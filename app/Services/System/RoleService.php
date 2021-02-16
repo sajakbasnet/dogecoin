@@ -40,7 +40,9 @@ class RoleService extends Service
         if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
         }
-        if ($pagination) return $query->orderBy('id', 'DESC')->with('users')->paginate(PAGINATE);
+        if ($pagination) {
+            return $query->orderBy('id', 'DESC')->with('users')->paginate(PAGINATE);
+        }
         return $query->orderBy('id', 'DESC')->with('users')->get();
     }
 
@@ -83,7 +85,9 @@ class RoleService extends Service
     public function delete($request, $id)
     {
         $role = $this->itemByIdentifier($id);
-        if ($role->users->count() > 0) throw new NotDeletableException('The role is associated to the users.');
+        if ($role->users->count() > 0) {
+            throw new NotDeletableException('The role is associated to the users.');
+        }
         return $role->delete();
     }
 }

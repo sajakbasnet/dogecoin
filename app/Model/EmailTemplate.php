@@ -48,7 +48,7 @@ class EmailTemplate extends Model
                 } else {
                     return $translations;
                 }
-            } else return null;
+            } else {return null;}
         };
     }
 }

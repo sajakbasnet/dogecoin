@@ -29,8 +29,11 @@ class checkUserExists implements Rule
     public function passes($attribute, $value)
     {
         $user = $this->frontendUser->where('email', $value)->first();
-        if(isset($user) && Hash::check($this->password, $user->password)) return true;
-        else return false;
+        if (isset($user) && Hash::check($this->password, $user->password)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

@@ -36,10 +36,13 @@ class UserController extends ResourceController
             $data['token'] = encrypt(authUser()->token);
             $data['buttonText'] = "Change Password";
             return view('system.auth.setPassword', $data);
-        } else return redirect(PREFIX . '/home');
+        } else {
+            return redirect(PREFIX . '/home');
+        }
     }
 
-    public function passwordReset(resetPassword $request){
+    public function passwordReset(resetPassword $request)
+    {
         $this->service->resetPassword($request);
         return redirect($this->getUrl())->withErrors(['success' => 'Password successfully updated.']);
     }

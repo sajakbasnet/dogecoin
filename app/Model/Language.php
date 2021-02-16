@@ -15,19 +15,22 @@ class Language extends Model
     ];
 
     protected static $logAttributes = ['name', 'language_code', 'group'];
-    
+
     protected static $logName = 'Language';
 
     protected static $logOnlyDirty = true;
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        return logMessage('Language',$this->id,$eventName);
+        return logMessage('Language', $this->id, $eventName);
     }
 
     public function isDefault()
     {
-        if(in_array($this->language_code, ['en', 'ja'])) return true;
-        else return false;
+        if (in_array($this->language_code, ['en', 'ja'])) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

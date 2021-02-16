@@ -197,7 +197,7 @@ class ResourceController extends Controller
    * GET resources
    *
    */
-  public function index(Request $request, $id="")
+  public function index(Request $request, $id = "")
   {
     $data = $this->service->indexPageData($request);
     $data['breadcrumbs'] = $this->breadcrumbForIndex();
@@ -226,8 +226,11 @@ class ResourceController extends Controller
    */
   public function store()
   {
-    if (!empty($this->storeValidationRequest())) $request = $this->storeValidationRequest();
-    else $request = $this->defaultRequest();
+    if (!empty($this->storeValidationRequest())) {
+      $request = $this->storeValidationRequest();
+    } else {
+      $request = $this->defaultRequest();
+    }
     $request = app()->make($request);
     $this->service->store($request);
     $this->setModuleId($request->id);
@@ -254,9 +257,13 @@ class ResourceController extends Controller
    */
   public function update($id)
   {
-    if (!empty($this->updateValidationRequest())) $request = $this->updateValidationRequest();
-    elseif (!empty($this->storeValidationRequest())) $request = $this->storeValidationRequest();
-    else $request = $this->defaultRequest();
+    if (!empty($this->updateValidationRequest())) {
+      $request = $this->updateValidationRequest();
+    } elseif (!empty($this->storeValidationRequest())) {
+      $request = $this->storeValidationRequest();
+    } else {
+      $request = $this->defaultRequest();
+    }
     $request = app()->make($request);
     $this->service->update($request, $id);
     $this->setModuleId($id);

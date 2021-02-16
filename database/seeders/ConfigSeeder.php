@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\Model\Config;
@@ -16,7 +17,9 @@ class ConfigSeeder extends Seeder
         $settings = Config::where('id', 1)->first();
         if (!isset($settings)) {
             $directory = public_path() . '/uploads/config';
-            if (is_dir($directory) != true) \File::makeDirectory($directory, $mode = 0755, true);
+            if (is_dir($directory) != true) {
+                \File::makeDirectory($directory, $mode = 0755, true);
+            }
             \File::copy(public_path('images/logo.png'), public_path('uploads/config/cms_logo.png'));
             Config::create([
                 'label' => 'cms logo',
@@ -27,7 +30,7 @@ class ConfigSeeder extends Seeder
         }
 
         $settings2 = Config::where('id', 2)->first();
-        if(!isset($settings2)){
+        if (!isset($settings2)) {
             Config::create([
                 'label' => 'cms title',
                 'type' => 'text',
@@ -37,7 +40,7 @@ class ConfigSeeder extends Seeder
         }
 
         $settings3 = Config::where('id', 3)->first();
-        if(!isset($settings3)){
+        if (!isset($settings3)) {
             Config::create([
                 'label' => 'cms theme color',
                 'type' => 'text',

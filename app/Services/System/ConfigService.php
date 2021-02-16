@@ -17,17 +17,19 @@ class ConfigService extends Service
         parent::__construct($config);
     }
 
-    public function getAllData($data, $selectedColumns =[],$pagination = true)
+    public function getAllData($data, $selectedColumns = [], $pagination = true)
     {
         $query = $this->query();
 
         if (isset($data->keyword) && $data->keyword !== null) {
             $query->where('label', 'LIKE', '%' . $data->keyword . '%');
         }
-        if(count($selectedColumns) > 0){
+        if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
         }
-        if ($pagination) return $query->orderBy('id', 'ASC')->paginate(PAGINATE);
+        if ($pagination) {
+            return $query->orderBy('id', 'ASC')->paginate(PAGINATE);
+        }
         return $query->orderBy('id', 'ASC')->get();
     }
 
@@ -48,18 +50,18 @@ class ConfigService extends Service
     public function store($request)
     {
         $data = $request->except('_token');
-        if(strtolower($request->type) == 'file'){
+        if (strtolower($request->type) == 'file') {
             $data['value'] = $this->uploadImage($this->dir, 'value');
         }
         return $this->model->create($data);
     }
 
-    
+
     public function update($request, $id)
     {
         $data = $request->except('_token');
         $config = $this->itemByIdentifier($id);
-        if(strtolower($config->type) == 'file'){
+        if (strtolower($config->type) == 'file') {
             $this->removeImage($this->dir, $config->value);
             $data['value'] = $this->uploadImage($this->dir, 'value');
         }
@@ -68,10 +70,13 @@ class ConfigService extends Service
         return $config = $this->itemByIdentifier($id);
     }
 
-    public function delete($request, $id){
+    public function delete($request, $id)
+    {
         $config = $this->itemByIdentifier($id);
-        if(in_array($id, [1,2,3])) throw new NotDeletableException;
-        if(strtolower($config->type) == 'file'){
+        if (in_array($id, [1, 2, 3])) {
+            throw new NotDeletableException;
+        }
+        if (strtolower($config->type) == 'file') {
             $this->removeImage($this->dir, $config->value);
         }
         return $config->delete();

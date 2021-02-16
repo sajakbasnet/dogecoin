@@ -19,7 +19,10 @@ class Permission
         if (getRoleCache(authUser()) == null) {
             setRoleCache(authUser());
         }
-        if (hasPermission($request->url(), $request->method())) return $next($request);
-        else throw new PermissionDeniedException();
+        if (hasPermission($request->url(), $request->method())) {
+            return $next($request);
+        } else {
+            throw new PermissionDeniedException();
+        }
     }
 }

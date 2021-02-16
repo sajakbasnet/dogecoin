@@ -11,17 +11,19 @@ class EmailTemplateService extends Service
     {
         parent::__construct($emailTemplate);
     }
-    public function getAllData($data, $selectedColumns=[], $pagination = true)
+    public function getAllData($data, $selectedColumns = [], $pagination = true)
     {
         $query = $this->query();
 
         if (isset($data->keyword) && $data->keyword !== null) {
             $query->where('title', 'LIKE', '%' . $data->keyword . '%');
         }
-        if(count($selectedColumns) > 0){
+        if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
         }
-        if ($pagination) return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
+        if ($pagination) {
+            return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
+        }
         return $query->orderBy('id', 'DESC')->get();
     }
 
