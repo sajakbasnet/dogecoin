@@ -86,9 +86,9 @@ class SocialGrant extends AbstractGrant
             throw new RuntimeException('Unable to determine authentication model from configuration.');
         }
         $socialAccount = FrontendUser::where('provider', $request->provider)->where('provider_user_id', $request->provider_user_id)->first();
-        if (!$socialAccount) return;
+        if (!$socialAccount) {return false;}
         $user = $socialAccount;
-        if (!$user) return;
+        if (!$user) {return false;}
         return new User($user->getAuthIdentifier());
     }
     /**

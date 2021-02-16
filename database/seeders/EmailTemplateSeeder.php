@@ -14,6 +14,7 @@ class EmailTemplateSeeder extends Seeder
      */
     public function run()
     {
+        $fromEmail = env('MAIL_FROM_ADDRESS') ?? 'info@ekbana.com';
         /**
          * Template for table header
          */
@@ -71,7 +72,7 @@ class EmailTemplateSeeder extends Seeder
             [
                 'title' => 'Account Created Email',
                 'code' => 'AccountCreateEmail',
-                'from' => 'info@ekbana.com',
+                'from' => $fromEmail,
                 'translations' => [
                     [
                         'language_code' => 'en',
@@ -95,7 +96,7 @@ class EmailTemplateSeeder extends Seeder
             [
                 'title' => 'Password Set Link Email',
                 'code' => 'PasswordSetLinkEmail',
-                'from' => 'info@ekbana.com',
+                'from' => $fromEmail,
                 'translations' => [
                     [
                         'language_code' => 'en',
@@ -121,7 +122,7 @@ class EmailTemplateSeeder extends Seeder
             [
                 'title' => 'Password ResetLink Email',
                 'code' => 'PasswordResetLinkEmail',
-                'from' => 'info@ekbana.com',
+                'from' => $fromEmail,
                 'translations' => [
                     [
                         'language_code' => 'en',
@@ -147,7 +148,7 @@ class EmailTemplateSeeder extends Seeder
             [
                 'title' => 'Two Factor Authentication Email',
                 'code' => 'TwoFAEmail',
-                'from' => 'info@ekbana.com',
+                'from' => $fromEmail,
                 'translations' => [
                     [
                         'language_code' => 'en',
