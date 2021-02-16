@@ -22,8 +22,8 @@
             -webkit-text-size-adjust: 100%; }
         table {
             border-collapse: separate;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
+            /* mso-table-lspace: 0pt; */
+            /* mso-table-rspace: 0pt; */
             width: 100%; }
         table td {
             font-family: sans-serif;
@@ -167,7 +167,7 @@
             max-width: 0;
             opacity: 0;
             overflow: hidden;
-            mso-hide: all;
+            /* mso-hide: all; */
             visibility: hidden;
             width: 0; }
         .powered-by a {

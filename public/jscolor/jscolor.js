@@ -281,14 +281,15 @@ var jsc = {
 	//
 	removeData : function () {
 		var obj = arguments[0];
+		var check = true;
 		if (!obj.hasOwnProperty(jsc.dataProp)) {
-			return true; // data object does not exist
+			return check; // data object does not exist
 		}
 		for (var i = 1; i < arguments.length; i += 1) {
 			var prop = arguments[i];
 			delete obj[jsc.dataProp][prop];
 		}
-		return true;
+		return check;
 	},
 
 

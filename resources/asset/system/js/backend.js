@@ -14,7 +14,7 @@ const sidebar = (function () {
     const $navSidebar = $('.nav-sidebar')
 
     var path = window.location.pathname.split('/');
-    lastSegment = path[path.length - 1];
+    let lastSegment = path[path.length - 1];
     if (lastSegment == 'create') {
       path = path[path.length - 2];
     } else if (lastSegment == 'edit') {
