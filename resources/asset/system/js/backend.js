@@ -2,7 +2,6 @@ $(document).ready(function () {
   sidebar.init()
   confirmDelete.init()
   fileInput.init()
-  datepicker.init()
 })
 
 const sidebar = (function () {
@@ -77,17 +76,6 @@ const fileInput = (function () {
     })
   }
 
-  return {
-    init,
-  }
-})()
-
-const datepicker = (function () {
-  const init = function () {
-    $('.datepicker').datepicker({
-      format:'yyyy-mm-dd' 
-    });
-  }
   return {
     init,
   }
