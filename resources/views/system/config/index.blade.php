@@ -19,13 +19,13 @@
     <div class="panel">
         <div class="panel-box">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered" aria-describedby="config table">
                     <thead>
                         <tr>
-                            <th style="width: 5px;">{{translate('S.N')}}</th>
-                            <th>{{translate('Label')}}</th>
-                            <th>{{translate('Value')}}</th>
-                            <th style="width: 10%;">{{translate('Action')}}</th>
+                            <th style="width: 5px;" scope="col">{{translate('S.N')}}</th>
+                            <th scope="col">{{translate('Label')}}</th>
+                            <th scope="col">{{translate('Value')}}</th>
+                            <th scope="col" style="width: 10%;">{{translate('Action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,7 +109,7 @@
                         </x-slot>
                     </x-system.form.form-inline-group>
                 </div>
-                <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> {{translate('Save')}}</button>
+                <button class="btn btn-primary" type="submit"><em class="fas fa-save"></em> {{translate('Save')}}</button>
             </form>
         </div>
     </div>

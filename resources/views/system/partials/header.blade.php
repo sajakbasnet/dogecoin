@@ -4,7 +4,7 @@
       <div class="header-left clearfix pull-left">
         <h1 class="pull-left logo-tag">
           <a href="{{route('home')}}">
-            <img src="{{asset('uploads/config/')}}/{{ getCmsConfig('cms logo')}}" alt="" height="20">
+            <img src="{{asset('uploads/config/')}}/{{ getCmsConfig('cms logo')}}" alt="Ek logo" height="20">
             <span>{{getCmsConfig('cms title')}}</span>
           </a>
         </h1>

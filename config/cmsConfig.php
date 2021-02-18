@@ -1,35 +1,51 @@
 <?php
+$getMethod = 'get';
+$postMethod = 'post';
+$putMethod = 'put';
+$deleteMethod = 'delete';
+
+$homeBaseUrl = '/home';
+$userBaseUrl = '/users';
+$roleBaseUrl = '/roles';
+$loginLogsBaseUrl = '/login-logs';
+$activityLogsBaseUrl = '/activity-logs';
+$languagesBaseUrl = '/languages';
+$translationBaseUrl = '/translations';
+$emailTemplateBaseUrl = '/email-templates';
+$configBaseUrl = '/configs';
+$categoriesBaseUrl = '/categories';
+$profileBaseUrl = '/profile';
 
 return  [
   // routes entered in this array are accessible by any user no matter what role is given
   'permissionGrantedbyDefaultRoutes' => [
     [
-      "url" => '/home',
-      "method" => 'get'
+      "url" => $homeBaseUrl,
+      "method" => $getMethod
     ],
     [
       "url" => '/logout',
-      "method" => 'get'
+      "method" => $getMethod
     ],
     [
       "url" => '/languages/set-language/*',
-      "method" => 'get'
+      "method" => $getMethod
     ],
     [
       "url" => '/miscellaneous/scrap',
-      "method" => 'get'
+      "method" => $getMethod
     ],
     [
-      "url" => '/profile',
-      "method" => 'get'
+      "url" => $profileBaseUrl,
+      "method" => $getMethod
     ],
     [
-      "url" => '/profile/*',
-      "method" => 'put'
+      "url" => $profileBaseUrl . '/*',
+      "method" => $putMethod
     ],
     [
       "url" => '/change-password',
-      "method" => 'get'
+      "method" => $getMethod
     ]
   ],
 
@@ -42,7 +58,7 @@ return  [
       'name' => 'Dashboard',
       'icon' => "<i class='fa fa-home'></i>",
       'hasSubmodules' => false,
-      'route' => '/home'
+      'route' => $homeBaseUrl
     ],
     [
       "name" => 'User Management',
@@ -53,25 +69,25 @@ return  [
           "name" => 'Users',
           "icon" => "<i class='fa fa-users'></i>",
           "hasSubmodules" => false,
-          "route" => '/users',
+          "route" => $userBaseUrl,
           "permissions" => [
             [
               "name" => 'View Users',
               "route" => [
-                "url" => '/users',
-                "method" => 'get'
+                "url" => $userBaseUrl,
+                "method" => $getMethod
               ]
             ],
             [
               "name" => 'Create Users',
               "route" => [
                 [
-                  "url" => '/users/create',
-                  "method" => 'get'
+                  "url" => $userBaseUrl . '/create',
+                  "method" => $getMethod
                 ],
                 [
-                  "url" => '/users',
-                  "method" =>  'post'
+                  "url" => $userBaseUrl,
+                  "method" =>  $postMethod
                 ],
               ]
             ],
@@ -79,27 +95,27 @@ return  [
               "name" => 'Edit Users',
               "route" => [
                 [
-                  "url" =>  '/users/*/edit',
-                  "method" => 'get'
+                  "url" =>  $userBaseUrl . '/*/edit',
+                  "method" => $getMethod
                 ],
                 [
-                  "url" => '/users/*',
-                  "method" => 'put'
+                  "url" => $userBaseUrl . '/*',
+                  "method" => $putMethod
                 ],
               ]
             ],
             [
               "name" => 'Delete Users',
               "route" => [
-                "url" => '/users/*',
-                "method" => 'delete'
+                "url" => $userBaseUrl . '/*',
+                "method" => $deleteMethod
               ],
             ],
             [
               "name" => 'Reset Password',
               "route" => [
-                "url" => '/users/reset-password/*',
-                "method" => 'post'
+                "url" => $userBaseUrl . '/reset-password/*',
+                "method" => $postMethod
               ],
             ]
           ]
@@ -113,20 +129,20 @@ return  [
             [
               "name" => 'View Roles',
               "route" => [
-                "url" => '/roles',
-                "method" => 'get'
+                "url" => $roleBaseUrl,
+                "method" => $getMethod
               ]
             ],
             [
               "name" => 'Create Roles',
               "route" => [
                 [
-                  "url" => '/roles/create',
-                  "method" => 'get'
+                  "url" => $roleBaseUrl . '/create',
+                  "method" => $getMethod
                 ],
                 [
-                  "url" => '/roles',
-                  "method" =>  'post'
+                  "url" => $roleBaseUrl,
+                  "method" =>  $postMethod
                 ],
               ]
             ],
@@ -134,20 +150,20 @@ return  [
               "name" => 'Edit Roles',
               "route" => [
                 [
-                  "url" =>  '/roles/*/edit',
-                  "method" => 'get'
+                  "url" =>  $roleBaseUrl . '/*/edit',
+                  "method" => $getMethod
                 ],
                 [
-                  "url" => '/roles/*',
-                  "method" => 'put'
+                  "url" => $roleBaseUrl . '/*',
+                  "method" => $putMethod
                 ],
               ]
             ],
             [
               "name" => 'Delete Roles',
               "route" => [
-                "url" => '/roles/*',
-                "method" => 'delete'
+                "url" => $roleBaseUrl . '/*',
+                "method" => $deleteMethod
               ],
             ]
           ]
@@ -163,13 +179,13 @@ return  [
           "name" => 'Login Logs',
           "icon" => "<i class='fas fa-sign-in-alt'></i>",
           "hasSubmodules" => false,
-          "route" => '/login-logs',
+          "route" => $loginLogsBaseUrl,
           "permissions" => [
             [
               "name" => 'View Login logs',
               "route" => [
-                "url" => '/login-logs',
-                "method" => 'get'
+                "url" => $loginLogsBaseUrl,
+                "method" => $getMethod
               ]
             ],
           ]
@@ -178,13 +194,13 @@ return  [
           "name" => 'Activity logs',
           "icon" => "<i class='fas fa-chart-line'></i>",
           "hasSubmodules" => false,
-          "route" => '/activity-logs',
+          "route" => $activityLogsBaseUrl,
           "permissions" => [
             [
               "name" => 'View Activity logs',
               "route" => [
-                "url" => '/activity-logs',
-                "method" => 'get'
+                "url" => $activityLogsBaseUrl,
+                "method" => $getMethod
               ]
             ],
           ]
@@ -200,33 +216,33 @@ return  [
           "name" => 'Languages',
           "icon" => "<i class='fa fa-language' aria-hidden='true'></i>",
           "hasSubmodules" => false,
-          "route" => '/languages',
+          "route" => $languagesBaseUrl,
           "permissions" => [
             [
               "name" => 'View Languages',
               "route" => [
-                "url" => '/languages',
-                "method" => 'get'
+                "url" => $languagesBaseUrl,
+                "method" => $getMethod
               ]
             ],
             [
               "name" => 'Create Languages',
               "route" => [
                 [
-                  "url" => '/languages/create',
-                  "method" => 'get'
+                  "url" => $languagesBaseUrl . '/create',
+                  "method" => $getMethod
                 ],
                 [
-                  "url" => '/languages',
-                  "method" => 'post'
+                  "url" => $languagesBaseUrl,
+                  "method" => $postMethod
                 ],
               ]
             ],
             [
               "name" => 'Delete Languages',
               "route" =>  [
-                "url" => '/languages/*',
-                "method" => 'delete'
+                "url" => $languagesBaseUrl . '/*',
+                "method" => $deleteMethod
               ],
             ]
           ]
@@ -235,55 +251,55 @@ return  [
           "name" => 'Translations',
           "icon" => "<i class='fa fa-globe' aria-hidden='true'></i>",
           "hasSubmodules" => false,
-          "route" => '/translations',
+          "route" => $translationBaseUrl,
           "permissions" => [
             [
               "name" => 'View Translations',
               "route" => [
-                "url" => '/translations',
-                "method" => 'get'
+                "url" => $translationBaseUrl,
+                "method" => $getMethod
               ]
             ],
             [
               "name" => 'Create Translations',
               "route" =>  [
-                "url" => '/translations',
-                "method" => 'post'
+                "url" => $translationBaseUrl,
+                "method" => $postMethod
               ]
             ],
             [
               "name" => 'Edit Translations',
               "route" => [
-                "url" => '/translations/*',
-                "method" => 'put'
+                "url" => $translationBaseUrl . '/*',
+                "method" => $putMethod
               ]
             ],
             [
               "name" => 'Delete Translations',
               "route" => [
-                "url" => '/translations/*',
-                "method" => 'delete'
+                "url" => $translationBaseUrl . '/*',
+                "method" => $deleteMethod
               ]
             ],
             [
               "name" => 'Download Sample',
               "route" =>  [
-                "url" => '/translations/download-sample',
-                "method" => 'get'
+                "url" => $translationBaseUrl . '/download-sample',
+                "method" => $getMethod
               ],
             ],
             [
               "name" => 'Download Excel',
               "route" =>  [
-                "url" => '/translations/download/*',
-                "method" => 'get'
+                "url" => $translationBaseUrl . '/download/*',
+                "method" => $getMethod
               ],
             ],
             [
               "name" => 'Upload Excel',
               "route" =>  [
-                "url" => '/translations/upload/*',
-                "method" => 'post'
+                "url" => $translationBaseUrl . '/upload/*',
+                "method" => $postMethod
               ],
             ]
           ]
@@ -299,34 +315,34 @@ return  [
         [
           "name" => 'Email Templates',
           "icon" => "<i class='fa fa-envelope' aria-hidden='true'></i>",
-          "route" => '/email-templates',
+          "route" => $emailTemplateBaseUrl,
           "hasSubmodules" => false,
           "permissions" => [
             [
               "name" => 'View Email Templates',
               "route" => [
-                "url" => '/email-templates',
-                "method" => 'get'
+                "url" => $emailTemplateBaseUrl,
+                "method" => $getMethod
               ]
             ],
             [
               "name" => 'Edit Email Templates',
               "route" => [
                 [
-                  "url" => '/email-templates/*/edit',
-                  "method" => 'get'
+                  "url" => $emailTemplateBaseUrl . '/*/edit',
+                  "method" => $getMethod
                 ],
                 [
-                  "url" => '/email-templates/*',
-                  "method" => 'put'
+                  "url" => $emailTemplateBaseUrl . '/*',
+                  "method" => $putMethod
                 ]
               ]
             ],
             [
               "name" => 'Delete Email Templates',
               "route" => [
-                "url" => '/email-templates/*',
-                "method" => 'delete'
+                "url" => $emailTemplateBaseUrl . '/*',
+                "method" => $deleteMethod
               ]
             ],
           ]
@@ -334,35 +350,35 @@ return  [
         [
           "name" => 'Configs',
           "icon" => '<i class="fa fa-cog" aria-hidden="true"></i>',
-          "route" => '/configs',
+          "route" => $configBaseUrl,
           "hasSubmodules" => false,
           "permissions" => [
             [
               "name" => 'View Configs',
               "route" => [
-                "url" => '/configs',
-                "method" => 'get'
+                "url" => $configBaseUrl,
+                "method" => $getMethod
               ]
             ],
             [
               "name" => 'Create Config',
               "route" => [
-                "url" => '/configs',
-                "method" => 'post'
+                "url" => $configBaseUrl,
+                "method" => $postMethod
               ]
             ],
             [
               "name" => 'Edit Config',
               "route" => [
-                "url" => '/configs/*',
-                "method" => 'put'
+                "url" => $configBaseUrl . '/*',
+                "method" => $putMethod
               ]
             ],
             [
               "name" => 'Delete Config',
               "route" => [
-                "url" => '/configs/*',
-                "method" => 'delete'
+                "url" => $configBaseUrl . '/*',
+                "method" => $deleteMethod
               ]
             ]
           ]
@@ -373,25 +389,25 @@ return  [
       'name' => 'Category Management',
       'icon' => "<i class='fa fa-list'></i>",
       'hasSubmodules' => false,
-      'route' => '/categories',
+      'route' => $categoriesBaseUrl,
       "permissions" => [
         [
           "name" => 'View Category',
           "route" => [
-            "url" => '/categories',
-            "method" => 'get'
+            "url" => $categoriesBaseUrl,
+            "method" => $getMethod
           ]
         ],
         [
           "name" => 'Create Category',
           "route" => [
             [
-              "url" => '/categories/create',
-              "method" => 'get'
+              "url" => $categoriesBaseUrl . '/create',
+              "method" => $getMethod
             ],
             [
-              "url" => '/categories',
-              "method" => 'post'
+              "url" => $categoriesBaseUrl,
+              "method" => $postMethod
             ],
 
           ]
@@ -400,24 +416,23 @@ return  [
           "name" => 'Edit Category',
           "route" => [
             [
-              "url" => '/categories/*/edit',
-              "method" => 'get'
+              "url" => $categoriesBaseUrl . '/*/edit',
+              "method" => $getMethod
             ],
             [
-              "url" => '/categories/*',
-              "method" => 'put'
+              "url" => $categoriesBaseUrl . '/*',
+              "method" => $putMethod
             ]
           ]
         ],
         [
           "name" => 'Delete Category',
           "route" => [
-            "url" => '/categories/*',
-            "method" => 'delete'
+            "url" => $categoriesBaseUrl . '/*',
+            "method" => $deleteMethod
           ]
         ]
       ]
     ],
   ]
 ];
-

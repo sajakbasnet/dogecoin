@@ -15,12 +15,12 @@
 
 @section('table-heading')
 <tr>
-    <th>{{translate("S.N")}}</th>
-    <th>{{translate("User")}}</th>
-    <th>{{translate('Ip Address')}}</th>
-    <th>{{translate('Time')}}</th>
-    <th>{{translate('ISP')}}</th>
-    <th>{{translate('Location')}}</th>
+    <th scope="col">{{translate("S.N")}}</th>
+    <th scope="col">{{translate("User")}}</th>
+    <th scope="col">{{translate('Ip Address')}}</th>
+    <th scope="col">{{translate('Time')}}</th>
+    <th scope="col">{{translate('ISP')}}</th>
+    <th scope="col">{{translate('Location')}}</th>
 </tr>
 @endsection
 

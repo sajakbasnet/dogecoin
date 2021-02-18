@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    @include('system.layouts.layoutHeader')
-</head>
-
+@include('system.layouts.layoutHeader')
 <body>
-
     @include('system.partials.header')
     <div class="page-wrapper">
         @include('system.partials.sidebar')
@@ -39,10 +35,10 @@
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
                                             <button type="submit" class="btn btn-primary">
-                                            <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ !isset($item) ? translate('Create') : translate('Update')}}
+                                                <i class="fa fa-plus-circle" aria-hidden="true"></i> {{ !isset($item) ? translate('Create') : translate('Update')}}
                                             </button>
                                             <a href="{{url($indexUrl)}}" class="btn btn-secondary">
-                                            <i class="far fa-window-close"></i> {{ translate('Cancel') }}
+                                                <em class="far fa-window-close"></em> {{ translate('Cancel') }}
                                             </a>
                                         </div>
                                     </div>

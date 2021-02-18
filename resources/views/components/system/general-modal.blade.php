@@ -1,7 +1,7 @@
 @props(['url', 'modalTitle', 'modalId', 'buttonClass', 'submitButtonTitle', 'modalTriggerButton', 'buttonIconClass'])
 
 <button type="button" class="btn {{$buttonClass}} mb-2 btn-sm" data-toggle="modal" data-target="#{{$modalId}}" style="margin-top:7px;">
-@if(isset($buttonIconClass))<i class="fas {{$buttonIconClass}}"></i>@endif {{translate($modalTriggerButton)}}
+@if(isset($buttonIconClass))<em class="fas {{$buttonIconClass}}"></em>@endif {{translate($modalTriggerButton)}}
 </button>
 
 <!-- Modal -->

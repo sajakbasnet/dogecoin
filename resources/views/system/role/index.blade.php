@@ -9,9 +9,9 @@
 
 @section('table-heading')
 <tr>
-  <th>{{translate('S.N')}}</th>
-  <th>{{translate('Name')}}</th>
-  <th>{{translate('Action')}}</th>
+  <th scope="col">{{translate('S.N')}}</th>
+  <th scope="col">{{translate('Name')}}</th>
+  <th scope="col">{{translate('Action')}}</th>
 </tr>
 @endsection
 

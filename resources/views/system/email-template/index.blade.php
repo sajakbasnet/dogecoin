@@ -11,10 +11,10 @@
 
 @section('table-heading')
 <tr>
-    <th>{{translate('S.N')}}</th>
-    <th>{{translate('Title')}}</th>
-    <th>{{translate('Code')}}</th>
-    <th>{{translate('Action')}}</th>
+    <th scope="col">{{translate('S.N')}}</th>
+    <th scope="col">{{translate('Title')}}</th>
+    <th scope="col">{{translate('Code')}}</th>
+    <th scope="col">{{translate('Action')}}</th>
 </tr>
 @endsection
 

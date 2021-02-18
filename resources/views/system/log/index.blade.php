@@ -15,11 +15,11 @@
 
 @section('table-heading')
 <tr>
-    <th>{{translate("S.N")}}</th>
-    <th>{{translate("User")}}</th>
-    <th>{{translate('Log Module')}}</th>
-    <th style="width: 30%;">{{translate('Log Message')}}</th>
-    <th>{{translate('Changes')}}</th>
+    <th scope="col">{{translate("S.N")}}</th>
+    <th scope="col">{{translate("User")}}</th>
+    <th scope="col">{{translate('Log Module')}}</th>
+    <th style="width: 30%;" scope="col">{{translate('Log Message')}}</th>
+    <th scope="col">{{translate('Changes')}}</th>
 </tr>
 @endsection
 

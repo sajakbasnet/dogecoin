@@ -86,27 +86,9 @@ trait ResponseTrait
      * @return \Illuminate\Http\Response
      */
     protected function respondWithArray(array $array, array $headers = [])
-    {
-        $mimeTypeRaw = Request::server('HTTP_ACCEPT', '*/*');
+    {     
         $contentType = 'application/json';
-        // If its empty or has */* then default to JSON
-        if ($mimeTypeRaw === '*/*') {
-            $mimeType = $contentType;
-        } else {
-            $mimeParts = (array) explode(';', $mimeTypeRaw);
-            $mimeType = strtolower($mimeParts[0]);
-        }
-
-        switch ($mimeType) {
-            case $contentType:
-                $contentType = $contentType;
-                $content = json_encode($array);
-                break;
-
-            default:
-                $contentType = $contentType;
-                $content = json_encode($array);
-        }
+        $content = json_encode($array);
         $response = response()->make($content, $this->statusCode, $headers);
 
         $response->header('Content-Type', $contentType);

@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    @include('system.layouts.layoutHeader')
-</head>
+@include('system.layouts.layoutHeader')
 
 <body>
 
@@ -40,7 +38,7 @@
                             <div class="panel-box">
                                 @include('system.partials.message')
                                 <div class="table-responsive mt-3">
-                                    <table class="table table-striped table-bordered">
+                                    <table class="table table-striped table-bordered" aria-describedby="general table">
                                         <thead>
                                             @yield('table-heading')
                                         </thead>
@@ -80,10 +78,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                            <i class="glyph-icon icon-close"></i> {{translate('Cancel')}}
+                            <em class="glyph-icon icon-close"></em> {{translate('Cancel')}}
                         </button>
                         <button type="submit" class="btn btn-sm btn-danger" id="confirmDelete">
-                            <i class="glyph-icon icon-trash"></i> {{translate('Delete')}}
+                            <em class="glyph-icon icon-trash"></em> {{translate('Delete')}}
                         </button>
                     </div>
                 </div>

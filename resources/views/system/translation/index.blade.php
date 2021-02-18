@@ -55,13 +55,13 @@
     <div class="panel">
         <div class="panel-box">
             <div class="table-responsive mt-3">
-                <table id="example" class="table table-striped table-bordered">
+                <table id="example" class="table table-striped table-bordered" aria-describedby="translation table">
                     <thead>
                         <tr>
-                            <th style="width: 5px;">{{translate('S.N')}}</th>
-                            <th>{{translate('Item')}}</th>
-                            <th>{{translate('Text')}}</th>
-                            <th style="width: 10%;">{{translate('Action')}}</th>
+                            <th style="width: 5px;" scope="col">{{translate('S.N')}}</th>
+                            <th scope="col">{{translate('Item')}}</th>
+                            <th scope="col">{{translate('Text')}}</th>
+                            <th style="width: 10%;" scope="col">{{translate('Action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -103,7 +103,7 @@
                     @csrf
                     <input type="hidden" name="group" value="{{ Request::get('group') ?? 'backend' }}" />
                     <x-system.form.form-inline-group :input="['name' => 'key','label' => 'Item', 'required' => true]" />
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> {{translate('Save')}}</button>
+                    <button class="btn btn-primary" type="submit"><em class="fas fa-save"></em> {{translate('Save')}}</button>
                 </div>
             </form>
         </div>

@@ -6,12 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-<table>
+<table aria-describedby="transaltion export">
     <thead>
     <tr>
-        <th><strong>Key</strong></th>
+        <th scope="col"><strong>Key</strong></th>
         @foreach($languages as $language)
-        <th><strong>{{$language->language_code}}</strong></th>
+        <th scope="col"><strong>{{$language->language_code}}</strong></th>
         @endforeach
     </tr>
     </thead>

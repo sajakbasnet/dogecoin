@@ -283,7 +283,7 @@ var jsc = {
 		var obj = arguments[0];
 		var check = true;
 		if (!obj.hasOwnProperty(jsc.dataProp)) {
-			return check; // data object does not exist
+			check = false; // data object does not exist
 		}
 		for (var i = 1; i < arguments.length; i += 1) {
 			var prop = arguments[i];
@@ -992,7 +992,7 @@ var jsc = {
 
 	getPadYChannel : function (thisObj) {
 		switch (thisObj.mode.charAt(1).toLowerCase()) {
-			case 'v': return 'v'; break;
+			case 'v': return 'v';
 		}
 		return 's';
 	},
@@ -1001,8 +1001,8 @@ var jsc = {
 	getSliderChannel : function (thisObj) {
 		if (thisObj.mode.length > 2) {
 			switch (thisObj.mode.charAt(2).toLowerCase()) {
-				case 's': return 's'; break;
-				case 'v': return 'v'; break;
+				case 's': return 's'; 
+				case 'v': return 'v';
 			}
 		}
 		return null;
@@ -1251,7 +1251,7 @@ var jsc = {
 			hGrad.addColorStop(3 / 6, '#0FF');
 			hGrad.addColorStop(4 / 6, '#00F');
 			hGrad.addColorStop(5 / 6, '#F0F');
-			hGrad.addColorStop(6 / 6, '#F00');
+			hGrad.addColorStop(1, '#F00');
 
 			ctx.fillStyle = hGrad;
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -1832,9 +1832,9 @@ var jsc = {
 				format = this._currentFormat; // format not specified -> use the current format
 			}
 			switch (format.toLowerCase()) {
-				case 'hex': return this.toHEXString(); break;
-				case 'rgb': return this.toRGBString(); break;
-				case 'rgba': return this.toRGBAString(); break;
+				case 'hex': return this.toHEXString();
+				case 'rgb': return this.toRGBString();
+				case 'rgba': return this.toRGBAString();
 			}
 			return false;
 		};
