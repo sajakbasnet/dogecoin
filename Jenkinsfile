@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent 
+  {
+    docker {
+      image 'node:current-alpine3.10'      
+    }
+  }
   environment {
     BRANCH = 'ver-8'
   }
