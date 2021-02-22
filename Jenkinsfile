@@ -17,6 +17,7 @@ pipeline {
       steps {
         script{
           if(BRANCH.contains(env.BRANCH_NAME)) {
+            sh 'apk add openjdk11' 
             stage('Sonarqube scan'){                 
               withSonarQubeEnv('SonarQube') {
                 sh "${scannerHome}/bin/sonar-scanner"
