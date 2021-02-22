@@ -2,8 +2,9 @@ pipeline {
   agent 
   {
     docker {
-      image 'node:current-alpine3.10'    
-      args '-v /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation:/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation'       
+      image 'node:current-alpine3.10'
+      args '-v /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation:/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation'
+      args '-u root:root'
     }
   }
   environment {
