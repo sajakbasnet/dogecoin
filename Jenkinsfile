@@ -1,5 +1,11 @@
 pipeline {
-  agent any
+  agent   {
+    docker {
+      image 'node:current-alpine3.10'
+      args '-v /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation:/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation -u root:root'      
+    }
+  }
+
   environment {
     BRANCH = 'ver-8'
   }
@@ -11,7 +17,8 @@ pipeline {
       steps {
         script{
           if(BRANCH.contains(env.BRANCH_NAME)) {
-            stage('Sonarqube scan'){            
+            sh 'apk add openjdk11' 
+            stage('Sonarqube scan'){                 
               withSonarQubeEnv('SonarQube') {
                 sh "${scannerHome}/bin/sonar-scanner"
               }
