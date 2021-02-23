@@ -15,11 +15,11 @@
 
 @section('table-heading')
 <tr>
-    <th scope="col">{{translate("S.N")}}</th>
-    <th scope="col">{{translate("User")}}</th>
-    <th scope="col">{{translate('Log Module')}}</th>
-    <th style="width: 30%;" scope="col">{{translate('Log Message')}}</th>
-    <th scope="col">{{translate('Changes')}}</th>
+    <th>{{translate("S.N")}}</th>
+    <th>{{translate("User")}}</th>
+    <th>{{translate('Log Module')}}</th>
+    <th style="width: 30%;">{{translate('Log Message')}}</th>
+    <th>{{translate('Changes')}}</th>
 </tr>
 @endsection
 
@@ -27,19 +27,23 @@
 @php $pageIndex = pageIndex($items); @endphp
 @foreach($items as $key=>$item)
 <tr>
+    @php 
+    $oldValues = $item->oldValues($item->properties);
+    $newValues = $item->newValues($item->properties);
+    @endphp
     <td>{{SN($pageIndex, $key)}}</td>
-    <td>{{ $item->getNameFromDescription($item->description)}}</td>
+    <td>{{ $item->getNameFromDescription($item->description) }}</td>
     <td>{{ $item->getModuleName($item->subject_type)}}</td>
     <td>{!! $item->description !!}</td>
     <td>
         @if(count($item->properties) > 0)
-        @if($item->oldValues($item->properties) !== 'N/A')
+        @if($oldValues !== 'N/A')
         <strong>Old values:</strong> <br>
-        {!! $item->oldValues($item->properties) !!}
+        {!! $oldValues !!}
         <br>
         @endif
-        <strong>Values:</strong> <br>
-        {!! $item->newValues($item->properties) !!}
+        <strong>{{$oldValues == $newValues || $oldValues == 'N/A' ? 'Values:' : 'New Values:'}}</strong> <br>
+        {!! $newValues !!}
         @else
         --
         @endif
