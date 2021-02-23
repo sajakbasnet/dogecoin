@@ -42,7 +42,7 @@
         {!! $oldValues !!}
         <br>
         @endif
-        <strong>{{$oldValues == $newValues || $oldValues == 'N/A' ? 'Values:' : 'New Values:'}}</strong> <br>
+        <strong>{{$oldValues == 'N/A' ? 'Values:' : 'New Values:'}}</strong> <br>
         {!! $newValues !!}
         @else
         --
