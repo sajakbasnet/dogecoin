@@ -28,7 +28,7 @@
 @foreach($items as $key=>$item)
 <tr>
     <td>{{SN($pageIndex, $key)}}</td>
-    <td>{{ $item->user->name ?? 'N/A'}}</td>
+    <td>{{ $item->getNameFromDescription($item->description)}}</td>
     <td>{{ $item->getModuleName($item->subject_type)}}</td>
     <td>{!! $item->description !!}</td>
     <td>

@@ -21,6 +21,13 @@ class Log extends Activity
         return $moduleName;
     }
 
+    function getNameFromDescription($description)
+    {
+        $content = explode('by', $description);
+        $content = explode('at', $content[1]);
+        return ucfirst(trim($content[0]));
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'causer_id', 'id');
