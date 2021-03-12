@@ -27,7 +27,7 @@
 
           <li class="nav-item dropdown header-user">
             <a class="nav-link dropdown-toggle" href="#" id="userDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img class="header-avatar js-lazy-loaded" src="{{asset('images/avatar.png')}}" width="23" height="23">
+              <img class="header-avatar js-lazy-loaded" src="{{asset('images/avatar.png')}}" width="23" height="23" alt="profile">
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDown">
               <div class="li-user dropdown-item">
