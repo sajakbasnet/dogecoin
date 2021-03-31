@@ -38,5 +38,4 @@
         $('#tabControls0tab').tab('show')
     }
 </script>
-@include('system.layouts.editorScript')
 @endsection

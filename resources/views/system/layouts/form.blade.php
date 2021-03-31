@@ -52,6 +52,7 @@
     </div><!-- page-wrapper -->
 
     @include('system.layouts.layoutFooter')
+    @include('system.layouts.editorScript')
     @yield('scripts')
 </body>
 

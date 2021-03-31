@@ -20,8 +20,8 @@
         // },
         // image_advtab: true,
 
-        external_filemanager_path: "/filemanager/",
-        filemanager_title: "Responsive Filemanager" ,
-        external_plugins: { "filemanager" : "/tinymce/plugins/responsivefilemanager/plugin.min.js"}
+        // external_filemanager_path: "/filemanager/",
+        // filemanager_title: "Responsive Filemanager" ,
+        // external_plugins: { "filemanager" : "/tinymce/plugins/responsivefilemanager/plugin.min.js"}
     });
 </script>
