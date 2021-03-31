@@ -17,4 +17,5 @@
 <link href="{{ asset('toast/jquery.toast.min.css')}}" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
+<script src="{{asset('tinymce/tinymce.min.js')}}"></script>
 </head>
