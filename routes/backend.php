@@ -64,6 +64,9 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
             LanguageLine::truncate();
         });
 
+        Route::get('/mail-test/create', 'MailTestController@create');
+        Route::post('/mail-test', 'MailTestController@sendEmail');
+
     });
 });
 

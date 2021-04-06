@@ -15,6 +15,7 @@ $emailTemplateBaseUrl = '/email-templates';
 $configBaseUrl = '/configs';
 $categoriesBaseUrl = '/categories';
 $profileBaseUrl = '/profile';
+$mailtestBaseUrl = '/mail-test';
 
 return  [
   // routes entered in this array are accessible by any user no matter what role is given
@@ -434,5 +435,26 @@ return  [
         ]
       ]
     ],
+    [
+      'name' => 'Mail Test',
+      'icon' => "<i class='fa fa-envelope-o'></i>",
+      'hasSubmodules' => false,
+      'route' => $mailtestBaseUrl. '/create',
+      "permissions" => [
+        [
+          "name" => 'Create Mail',
+          "route" => [
+            "url" => $mailtestBaseUrl . '/create',
+            "method" => $getMethod
+          ],
+          [
+            "url" => $mailtestBaseUrl,
+            "method" => $postMethod
+          ],
+
+        ]
+      ]
+    ],
+
   ]
 ];

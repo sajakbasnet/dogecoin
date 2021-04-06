@@ -23,7 +23,7 @@
     }
 
     let sideBarState = localStorage.getItem('sidebarToggle')
-    if (sideBarState == 1) {
+    if (sideBarState == 1) {ps
       $(".page-wrapper").addClass('toggle-page')
     }
   })

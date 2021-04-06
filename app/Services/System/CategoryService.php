@@ -11,16 +11,16 @@ class CategoryService extends Service
     {
         parent::__construct($category);
     }
-    public function indexPageData($request)
-    {
-        return [
-            'items' => $this->model->where('parent_id', null)->paginate(20)
-        ];
-    }
+    // public function indexPageData($request)
+    // {
+    //     return [
+    //         'items' => $this->model->where('parent_id', null)->paginate(20)
+    //     ];
+    // }
 
     
-    public function singleData($id)
-    {
-        return $this->itemByIdentifier($id);
-    }
+    // public function singleData($id)
+    // {
+    //     return $this->itemByIdentifier($id);
+    // }
 }
