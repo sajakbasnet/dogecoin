@@ -239,7 +239,7 @@
 </head>
 <body class="">
 <h2>Dear, {{$detail['toname']}}</h2>
-<h4>We have send you a test mail</h1>
+<h4>We have send you a test mail</h1><br>
 {!! $detail['body'] !!}
 <p>Thank You !</p>
 </body>
