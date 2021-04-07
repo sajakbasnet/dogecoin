@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\System;
 
 use App\Exceptions\CustomGenericException;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\system\testMailRequest;
 use App\Services\System\MailService;
-use Illuminate\Http\Request;
 
 class MailTestController extends ResourceController
 {
@@ -22,18 +21,10 @@ class MailTestController extends ResourceController
         return 'system.mailtest';
     }
 
-    public function sendEmail(Request $request)
+    public function sendEmail(testMailRequest $request)
     {
-        $request->validate([
-            'fromemail' => 'email|required|max:255',
-            'fromname' => 'string|required|max:255',
-            'toemail' => 'email|required|max:255',
-            'toname' => 'string|required|max:255',
-            'subject' => 'string|required|max:255',
-            'body' => 'required|string',
-        ]);
         try {
-            $response = $this->service->sendMail($request);
+            $this->service->sendMail($request);
             return redirect()->back()->withErrors(['success' => 'Mail Sent successfully .']);
         } catch (\Exception $e) {
             throw new CustomGenericException($e->getMessage());
