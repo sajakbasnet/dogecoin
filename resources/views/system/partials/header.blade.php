@@ -14,12 +14,12 @@
         <ul class="nav nav-pills">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="localeDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{$globalLocale}}
+              {{$globalLocale ?? ''}}
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="localeDropDown">
               @foreach(globalLanguages() as $lang)
-              <a href="{{route('set.lang', $lang->language_code)}}" class="dropdown-item">
-              {{$lang->name}} ({{$lang->language_code}})
+              <a href="{{route('set.lang', $lang->language_code ?? '')}}" class="dropdown-item">
+              {{$lang->name??''}} ({{$lang->language_code??''}})
               </a>
               @endforeach
             </div>
@@ -31,8 +31,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDown">
               <div class="li-user dropdown-item">
-                <h2>{{Auth::user()->name}}</h2>
-                <p>{{Auth::user()->username}}({{getRoleCache(authUser())->name}})</p>
+                <h2>{{Auth::user()->name?? ''}}</h2>
+                <p>{{Auth::user() ? Auth::user()->username ?? '': ''}}({{ getRoleCache(authUser())->name??''}})</p>
               </div>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ route('profile') }}">

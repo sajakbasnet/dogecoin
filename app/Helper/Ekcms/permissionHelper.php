@@ -3,6 +3,11 @@
 function hasPermission($url, $method = 'get')
 {
     $role = getRoleCache(authUser());
+
+    if(!isset($role) || $role == null){
+        $role = authUser()->role;
+    }
+    
     $method = strtolower($method);
     $splittedUrl = explode('/' . PREFIX, $url);
     if (count($splittedUrl) > 1) {
