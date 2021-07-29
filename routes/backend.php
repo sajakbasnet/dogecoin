@@ -5,9 +5,11 @@ use Spatie\TranslationLoader\LanguageLine;
 Route::get('/', function () {
     return redirect(route('login.form'));
 });
+
 Route::get(PREFIX, function () {
     return redirect(route('login.form'));
 });
+
 Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['language']], function () {
 
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login.form');

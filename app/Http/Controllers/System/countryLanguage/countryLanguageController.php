@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\System\countryLanguage;
 
 use App\Http\Controllers\Controller;
-use App\Services\CountryService;
+use App\Services\System\CountryService;
 use Illuminate\Http\Request;
 
 class countryLanguageController extends Controller
