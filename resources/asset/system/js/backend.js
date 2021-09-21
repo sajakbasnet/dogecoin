@@ -10,18 +10,16 @@ const sidebar = (function () {
   }
 
   const highlightModule = () => {
+    const prefix = $('input[name="prefix"]').val();
     const $navSidebar = $('.nav-sidebar')
 
-    var path = window.location.pathname.split('/');
-    let lastSegment = path[path.length - 1];
-    if (lastSegment == 'create') {
-      path = path[path.length - 2];
-    } else if (lastSegment == 'edit') {
-      path = path[path.length - 3];
-    } else {
-      path = lastSegment;
+    var path = window.location.pathname.split('/'+prefix+"/");
+    if(path[1].includes("/")){
+      path = path[1].split("/")[0];
+    }else{
+      path = path[1];
     }
-    if (path !== undefined) {
+    if (path !== undefined && window.location.pathname.includes(path)) {
       $navSidebar.find("a[href$='" + path + "']").closest('li').addClass('active');
       $navSidebar.find("a[href$='" + path + "']").parents().eq(2).addClass('active');
       $navSidebar.find("a[href$='" + path + "']").closest('.collapse').collapse();

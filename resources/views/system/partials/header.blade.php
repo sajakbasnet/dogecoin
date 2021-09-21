@@ -9,6 +9,7 @@
           </a>
         </h1>
       </div>
+      <input type="hidden" name="prefix" value="{{PREFIX}}">
 
       <div class="header-right clearfix pull-right">
         <ul class="nav nav-pills">
