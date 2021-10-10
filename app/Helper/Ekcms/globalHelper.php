@@ -66,31 +66,6 @@ function configTypes()
     return ['file', 'text', 'textarea', 'number'];
 }
 
-function getCountries()
-{
-    $http = new Client();
-    $response = $http->get('https://restcountries.eu/rest/v2/all');
-    $countries = (\GuzzleHttp\json_decode($response->getBody()->getContents()));
-    return transformCountries($countries);
-}
-
-function transformCountries($countries)
-{
-    $transformedCountries = [];
-    foreach ($countries as $key => $value) {
-        $transformedCountries[$key]['name'] = $value->name;
-        $transformedCountries[$key]['alpha_code'] = $value->alpha2Code;
-        $transformedCountries[$key]['alpha_code_3'] = $value->alpha3Code;
-        $transformedCountries[$key]['native_name'] = $value->nativeName;
-        $transformedCountries[$key]['alternate_spellings'] = json_encode($value->altSpellings, JSON_UNESCAPED_SLASHES);
-        $transformedCountries[$key]['calling_codes'] = json_encode($value->callingCodes, JSON_UNESCAPED_SLASHES);
-        $transformedCountries[$key]['currencies'] = json_encode($value->currencies, JSON_UNESCAPED_SLASHES);
-        $transformedCountries[$key]['languages'] = json_encode($value->languages, JSON_UNESCAPED_SLASHES);
-        $transformedCountries[$key]['flag'] = $value->flag;
-    }
-    return $transformedCountries;
-}
-
 function globalLanguages()
 {
     $languages = Language::where('group', 'backend')->get();
