@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Services\System;
-
-use App\Exceptions\CustomGenericException;
 use App\Mail\system\TestMail;
 use App\MailTest;
 use App\Services\Service;

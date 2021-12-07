@@ -3,9 +3,7 @@
 namespace App\Model;
 
 use App\User;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Models\Activity;
-
 class Log extends Activity
 {
     protected $table = 'activity_log';
