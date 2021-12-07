@@ -15,7 +15,7 @@
 <script src="https://kit.fontawesome.com/f0dad6a07d.js" crossorigin="anonymous"></script>
 <link href="{{ asset('compiledCssAndJs/css/system.css')}}" rel="stylesheet" media="screen">
 <link href="{{ asset('toast/jquery.toast.min.css')}}" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js" integrity="sha256-H2TaUgwe8vbd8Uf3Pki5UcggDC05eieuDNDCjzEngWU=" crossorigin="anonymous"></script>
 <script src="{{asset('tinymce/tinymce.min.js')}}"></script>
 </head>
