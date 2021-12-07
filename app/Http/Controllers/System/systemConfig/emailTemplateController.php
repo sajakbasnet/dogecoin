@@ -5,7 +5,7 @@ namespace App\Http\Controllers\System\systemConfig;
 use App\Http\Controllers\System\ResourceController;
 use App\Services\System\EmailTemplateService;
 
-class emailTemplateController extends ResourceController
+class EmailTemplateController extends ResourceController
 {
     public function __construct(EmailTemplateService $emailtemplateService){
        parent::__construct($emailtemplateService);

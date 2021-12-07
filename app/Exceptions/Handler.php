@@ -57,27 +57,30 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof PermissionDeniedException) {
             $title = translate('Error Permission Denied');
-            return response()->view('system.errors.permissionDenied', ['title' => $title], 401);
+            $return =  response()->view('system.errors.permissionDenied', ['title' => $title], 401);
         }
         if ($exception instanceof NotFoundHttpException) {
             $title = translate('Not found');
-            return response()->view('system.errors.pageNotFound', ['title' => $title], 404);
+            $return =  response()->view('system.errors.pageNotFound', ['title' => $title], 404);
         }
         if ($exception instanceof MethodNotAllowedHttpException) {
             $title = translate('Method not allowed.');
-            return response()->view('system.errors.methodNotAllowed', ['title' => $title], 405);
+            $return =  response()->view('system.errors.methodNotAllowed', ['title' => $title], 405);
         }
         if ($exception instanceof ResourceNotFoundException) {
-            return redirect()->back()->withErrors(['alert-danger' => 'Record was not found in our system.']);
+            $return =  redirect()->back()->withErrors(['alert-danger' => 'Record was not found in our system.']);
         }
         if ($exception instanceof NotDeletableException) {
-            return redirect()->back()->withErrors(['alert-danger' => $exception->message]);
+            $return =  redirect()->back()->withErrors(['alert-danger' => $exception->message]);
         }
         if ($exception instanceof CustomGenericException) {
-            return redirect()->back()->withErrors([$exception->alert => $exception->message]);
+            $return =  redirect()->back()->withErrors([$exception->alert => $exception->message]);
         }
         if ($exception instanceof ApiGenericException) {
-            return $this->setStatusCode($exception->statusCode)->respondWithError($exception->message);
+            $return =  $this->setStatusCode($exception->statusCode)->respondWithError($exception->message);
+        }
+        if (isset($return)) {
+            return $return;
         }
         return parent::render($request, $exception);
     }

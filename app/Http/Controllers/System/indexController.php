@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\System;
 use Illuminate\Http\Request;
 
-class indexController extends ResourceController
+class IndexController extends ResourceController
 {
     public function __construct()
     {

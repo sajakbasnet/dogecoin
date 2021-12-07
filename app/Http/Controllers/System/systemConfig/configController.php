@@ -4,7 +4,7 @@ namespace App\Http\Controllers\System\systemConfig;
 use App\Http\Controllers\System\ResourceController;
 use App\Services\System\ConfigService;
 
-class configController extends ResourceController
+class ConfigController extends ResourceController
 {
     public function __construct(ConfigService $configService){
         parent::__construct($configService);
