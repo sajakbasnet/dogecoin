@@ -123,7 +123,7 @@ class LoginController extends Controller
 
         return Loginlogs::create([
             'user_id' => authUser()->id,
-            'ip' => !empty($ipResponse) ? $ipResponse->query : '110.44.123.47',
+            'ip' => !empty($ipResponse) ? $ipResponse->query : 'null',
             'city' => !empty($ipResponse) ? $ipResponse->city : 'Kathmandu',
             'country' => !empty($ipResponse) ? $ipResponse->country : 'Nepal',
             'isp' => !empty($ipResponse) ? $ipResponse->isp : 'Vianet Communications Pvt.',

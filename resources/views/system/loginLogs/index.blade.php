@@ -30,15 +30,15 @@
 <tr>
     <td>{{SN($pageIndex, $key)}}</td>
     <td>{{ $item->user->name ?? 'N/A'}}</td>
-    <td>{{ $item->ip}}</td>
+    <td>{{ $item->ip ?? ''}}</td>
     <td>{{ localDateTime($item->created_at)}}</td>
     <td>
-        Latitude : {{$item->lat}}<br>
-        Longitude : {{$item->lon}}<br>
-        City : {{$item->city}}<br>
-        Country : {{$item->country}}<br>
+        Latitude : {{$item->lat ?? ''}}<br>
+        Longitude : {{$item->lon ?? ''}}<br>
+        City : {{$item->city ?? ''}}<br>
+        Country : {{$item->country ?? ''}}<br>
     </td>
-    <td>{{ $item->region_name }}</td>
+    <td>{{ $item->region_name ?? '' }}</td>
 </tr>
 @endforeach
 @endsection

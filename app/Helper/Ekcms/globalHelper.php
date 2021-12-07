@@ -3,7 +3,6 @@
 use App\Model\Config as conf;
 use App\Model\Language;
 use Carbon\Carbon;
-use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cookie;
 
 function authUser()
@@ -34,8 +33,7 @@ function getCmsConfig($label)
         $con = 'logo';
     } elseif ($label == "cms theme color") {
         $con = 'color';
-    } else {
-    }
+    } 
     $data = Cookie::get($con);
     if (isset($data) || $data !== null) {
         $value = $data;
@@ -57,8 +55,8 @@ function showInSideBar($check)
 
 function modules()
 {
-    $modules = Config::get('cmsConfig.modules');
-    return $modules;
+    return Config::get('cmsConfig.modules');
+    
 }
 
 function configTypes()
@@ -68,8 +66,8 @@ function configTypes()
 
 function globalLanguages()
 {
-    $languages = Language::where('group', 'backend')->get();
-    return $languages;
+    return Language::where('group', 'backend')->get();
+    
 }
 
 function setConfigCookie()
