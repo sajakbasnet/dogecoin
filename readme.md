@@ -8,7 +8,7 @@
 <p>- Install npm or yarn dependency manager. (npm install OR yarn install) note: yarn prefered </p>
 <p>- To compile all the CSS and JS file execute the command. (npm run dev OR yarn run dev) </p>
     ```
-- Place the hooks folder content inside folder .git/hooks (unix platform commands is given below)
+<p>Place the hooks folder content inside folder .git/hooks (unix platform commands is given below)</p>
     ```
         cp ./hooks/* ./.git/hooks 
         // Making sure the file is executable
