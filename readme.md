@@ -9,8 +9,8 @@
 <p>- To compile all the CSS and JS file execute the command. (npm run dev OR yarn run dev) </p>
     ```
 <p>Place the hooks folder content inside folder .git/hooks (unix platform commands is given below)</p>
-    ```
+ ```
         cp ./hooks/* ./.git/hooks 
         // Making sure the file is executable
         sudo chmod +x ./.git/hooks/pre-commit
-    ```
+ ```
