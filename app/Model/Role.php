@@ -39,8 +39,8 @@ class Role extends Model
         return $id == 1 ? false : true;
     }
 
-    public function isDeletable($id)
+    public function isDeletable($ids)
     {
-        return $id == 1 ? false : true;
+        return $ids == 1 ? false : true;
     }
 }
