@@ -14,3 +14,11 @@
         // Making sure the file is executable
         sudo chmod +x ./.git/hooks/pre-commit
  ```
+ <p>Use bellow command to check if any minor fixes need to be done </p>
+  ```
+       composer sniff
+ ```
+ <p>Use bellow command to fix the problems </p>
+  ```
+       composer lint
+ ```
