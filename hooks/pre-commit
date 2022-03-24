@@ -53,11 +53,6 @@ function warning_header_message() {
 ######################
 
 
-if [ $COUNTFILES -eq 0 ]; then
-    warning_header_message "Cannot Find Any Staged PHP Files To Run Linter"
-    exit 0;
-fi
-
 php_lint_errors=false
 while read line; do
     php_lint_output=`php -l -d display_errors=On $line 2>&1 | grep 'PHP Parse error:'`
