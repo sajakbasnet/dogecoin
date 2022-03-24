@@ -34,21 +34,22 @@ class EmailTemplate extends Model
         $translations = $this->emailTranslations->where('language_code', $language_code)->first();
         if (isset($translations)) {
             if ($key != null) {
-                return $translations->$key;
+                $translations =  $translations->$key;
             } else {
-                return $translations;
+                $translations =  $translations;
             }
         } else {
             $translations = $this->emailTranslations->where('language_code', 'en')->first();
             if (isset($translations)) {
                 if ($key != null) {
-                    return $translations->$key;
+                    $translations =  $translations->$key;
                 } else {
-                    return $translations;
+                    $translations =  $translations;
                 }
             } else {
-                return null;
+                $translations =  null;
             }
         }
+        return $translations;
     }
 }
