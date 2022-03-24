@@ -20,8 +20,8 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         'App\Events\UserCreated' => [
-            'App\Listeners\RegisteredEmail'
-        ]
+            'App\Listeners\RegisteredEmail',
+        ],
     ];
 
     /**

@@ -7,7 +7,8 @@ use App\Services\System\SubCategoryService;
 
 class SubCategoryController extends ResourceController
 {
-    public function __construct(SubCategoryService $subCategoryService){
+    public function __construct(SubCategoryService $subCategoryService)
+    {
         parent::__construct($subCategoryService);
     }
 

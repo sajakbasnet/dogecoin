@@ -31,24 +31,26 @@ class emailTemplateRequest extends FormRequest
             'multilingual.*.template' => 'required',
         ];
 
-        if ($request->method() == "POST") {
+        if ($request->method() == 'POST') {
             $validate = array_merge($validate, [
                 'code' => 'required|unique:email_templates,code',
             ]);
         }
 
-        if ($request->method() == "PUT") {
+        if ($request->method() == 'PUT') {
             $validate = array_merge($validate, [
-                'code' => 'required|unique:email_templates,code,' . $request->email_template,
+                'code' => 'required|unique:email_templates,code,'.$request->email_template,
             ]);
         }
+
         return $validate;
     }
+
     public function messages()
     {
         return [
-            "multilingual.*.subject.required" => "The subject field is required.",
-            "multilingual.*.template.required" => "The template field is required."
+            'multilingual.*.subject.required' => 'The subject field is required.',
+            'multilingual.*.template.required' => 'The template field is required.',
         ];
     }
 }

@@ -4,12 +4,12 @@ function hasPermission($url, $method = 'get')
 {
     $role = getRoleCache(authUser());
 
-    if(!isset($role) || $role == null){
+    if (! isset($role) || $role == null) {
         $role = authUser()->role;
     }
-    
+
     $method = strtolower($method);
-    $splittedUrl = explode('/' . PREFIX, $url);
+    $splittedUrl = explode('/'.PREFIX, $url);
     if (count($splittedUrl) > 1) {
         $url = $splittedUrl[1];
     } else {
@@ -23,6 +23,7 @@ function hasPermission($url, $method = 'get')
                 $checkDeniedRoute = false;
             }
         }
+
         return $checkDeniedRoute;
     }
 
@@ -35,7 +36,9 @@ function hasPermission($url, $method = 'get')
             $check = true;
         }
     }
-    if ($check) {return true;}
+    if ($check) {
+        return true;
+    }
 
     $permissions = $role->permissions;
 
@@ -43,20 +46,22 @@ function hasPermission($url, $method = 'get')
         return false;
     }
 
-
     foreach ($permissions as $piurl) {
         if (\Str::is($piurl['url'], $url) && $piurl['method'] == $method) {
             $check = true;
         }
     }
-    if ($check) {return true;}
+    if ($check) {
+        return true;
+    }
+
     return false;
 }
 
 function hasPermissionOnModule($module)
 {
     $check = false;
-    if (!$module['hasSubmodules']) {
+    if (! $module['hasSubmodules']) {
         $check = hasPermission($module['route']);
     } else {
         try {
@@ -70,6 +75,7 @@ function hasPermissionOnModule($module)
             return false;
         }
     }
+
     return $check;
 }
 
@@ -78,20 +84,25 @@ function isPermissionSelected($permission, $permissions)
     $permission = json_decode($permission);
     $permissions = json_decode($permissions);
     $check = false;
-    if (!is_array($permission)) {
+    if (! is_array($permission)) {
         if ($permissions != null) {
             $exists = in_array($permission, $permissions);
-            if ($exists) {$check = true;}
+            if ($exists) {
+                $check = true;
+            }
         }
     } else {
         $temCheck = false;
         if ($permissions != null) {
             foreach ($permission as $perm) {
                 $exists = in_array($perm, $permissions);
-                if ($exists) {$temCheck = true;}
+                if ($exists) {
+                    $temCheck = true;
+                }
             }
         }
         $check = $temCheck;
     }
+
     return $check;
 }

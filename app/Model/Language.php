@@ -11,7 +11,7 @@ class Language extends Model
     use LogsActivity;
 
     protected $fillable = [
-        'name', 'language_code', 'group'
+        'name', 'language_code', 'group',
     ];
 
     protected static $logAttributes = ['name', 'language_code', 'group'];

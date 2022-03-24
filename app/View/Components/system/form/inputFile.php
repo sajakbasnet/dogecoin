@@ -12,6 +12,7 @@ class inputFile extends Component
      * @return void
      */
     public $input;
+
     public function __construct($input)
     {
         $this->input = $input;

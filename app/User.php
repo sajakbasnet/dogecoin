@@ -5,10 +5,10 @@ namespace App;
 use App\Model\Role;
 use App\Model\UserPassword;
 use Carbon\Carbon;
+use Config;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Config;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -22,11 +22,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'role_id', 'token', 'password_resetted'
+        'name', 'email', 'password', 'username', 'role_id', 'token', 'password_resetted',
     ];
 
     protected $guarded = [
-        'id'
+        'id',
     ];
 
     protected static $logAttributes = ['name', 'email', 'username', 'role_id'];
@@ -80,7 +80,7 @@ class User extends Authenticatable
         return $this->hasMany(Log::class, 'user_id', 'id');
     }
 
-    public function getPasswordSetResetLink($check = false, $token)
+    public function getPasswordSetResetLink($check, $token)
     {
         $title = 'Reset Password';
         $key = 'reset-password';
@@ -88,7 +88,8 @@ class User extends Authenticatable
             $title = 'Set Password';
             $key = 'set-password';
         }
-        $link =  ''.Config::get('constants.URL')."/".Config::get('constants.PREFIX')."/".$key."/".$this->email."/".$token.'';
-        return "<a href=".$link.">".$title."</a>";
+        $link = ''.Config::get('constants.URL').'/'.Config::get('constants.PREFIX').'/'.$key.'/'.$this->email.'/'.$token.'';
+
+        return '<a href='.$link.'>'.$title.'</a>';
     }
 }

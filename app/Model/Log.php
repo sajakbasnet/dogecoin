@@ -13,18 +13,20 @@ class Log extends Activity
     public function getModuleName($data)
     {
         if (isset($data)) {
-            $data = explode("\\", $data);
+            $data = explode('\\', $data);
             $moduleName = $data[array_key_last($data)];
         } else {
             $moduleName = 'N/A';
         }
+
         return $moduleName;
     }
 
-    function getNameFromDescription($description)
+    public function getNameFromDescription($description)
     {
         $content = explode('by', $description);
         $content = explode('at', $content[1]);
+
         return ucfirst(trim($content[0]));
     }
 
@@ -35,11 +37,12 @@ class Log extends Activity
 
     public function oldValues($rawValues)
     {
-        if (!isset($rawValues['old'])) {
+        if (! isset($rawValues['old'])) {
             return 'N/A';
         }
         $value = trim(json_encode($rawValues['old']), '{}');
         $string = str_replace(',', "\n", $value);
+
         return nl2br($string);
     }
 
@@ -48,6 +51,7 @@ class Log extends Activity
         // if(!isset($rawValues['old'])) return 'N/A';
         $value = trim(json_encode($rawValues['attributes']), '{}');
         $string = str_replace(',', "\n", $value);
+
         return nl2br($string);
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Str;
+
 $host = '127.0.0.1';
+
 return [
 
     /*

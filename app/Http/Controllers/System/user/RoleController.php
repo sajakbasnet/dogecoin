@@ -16,7 +16,7 @@ class RoleController extends ResourceController
     {
         return 'App\Http\Requests\system\roleRequest';
     }
-    
+
     public function moduleName()
     {
         return 'roles';

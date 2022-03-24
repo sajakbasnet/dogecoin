@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class Service
 {
     /**
-     * Stores the model used for service
+     * Stores the model used for service.
      * @var Eloquent object
      */
     protected $model;
@@ -19,7 +19,7 @@ class Service
         $this->model = $model;
     }
 
-    // get all data 
+    // get all data
 
     public function getAllData($data, $selectedColumns = [], $pagination = true)
     {
@@ -28,7 +28,7 @@ class Service
             $query->select($selectedColumns);
         }
         if (isset($data->keyword) && $data->keyword !== null) {
-            $query->where('name', 'LIKE', '%' . $data->keyword . '%');
+            $query->where('name', 'LIKE', '%'.$data->keyword.'%');
         }
         if ($pagination) {
             return $query->orderBy('id', 'DESC')->paginate(Config::get('constants.PAGINATION'));
@@ -47,9 +47,10 @@ class Service
     public function findByEmail($email)
     {
         $data = $this->model->where('email', $email)->first();
-        if (!isset($data)) {
+        if (! isset($data)) {
             throw new ModelNotFoundException;
         }
+
         return $data;
     }
 
@@ -75,6 +76,7 @@ class Service
         $update = $this->itemByIdentifier($id);
         $update->fill($data)->save();
         $update = $this->itemByIdentifier($id);
+
         return $update;
     }
 
@@ -83,6 +85,7 @@ class Service
     public function delete($request, $id)
     {
         $item = $this->itemByIdentifier($id);
+
         return $item->delete();
     }
 
@@ -102,7 +105,7 @@ class Service
     public function indexPageData($request)
     {
         return [
-            'items' => $this->getAllData($request)
+            'items' => $this->getAllData($request),
         ];
     }
 
@@ -111,7 +114,7 @@ class Service
     public function createPageData($request)
     {
         return [
-            'status' => $this->status()
+            'status' => $this->status(),
         ];
     }
 
@@ -120,11 +123,11 @@ class Service
     {
         return [
             'item' => $this->itemByIdentifier($id),
-            'status' => $this->status()
+            'status' => $this->status(),
         ];
     }
 
-    // get query for modal 
+    // get query for modal
 
     public function query()
     {
@@ -135,7 +138,7 @@ class Service
     {
         return [
             ['value' => 1, 'label' => 'Active'],
-            ['value' => 0, 'label' => 'Inactive']
+            ['value' => 0, 'label' => 'Inactive'],
         ];
     }
 }

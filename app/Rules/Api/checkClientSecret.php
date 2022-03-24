@@ -2,8 +2,8 @@
 
 namespace App\Rules\Api;
 
-use Illuminate\Contracts\Validation\Rule;
 use DB;
+use Illuminate\Contracts\Validation\Rule;
 
 class checkClientSecret implements Rule
 {

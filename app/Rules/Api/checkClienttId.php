@@ -27,7 +27,7 @@ class checkClienttId implements Rule
     public function passes($attribute, $value)
     {
         $clientIds = DB::table('oauth_clients')->pluck('id')->toArray();
-        if (!in_array($value, $clientIds)) {
+        if (! in_array($value, $clientIds)) {
             return false;
         } else {
             return true;

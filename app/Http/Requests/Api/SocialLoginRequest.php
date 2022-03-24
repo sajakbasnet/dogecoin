@@ -26,12 +26,12 @@ class SocialLoginRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            "clientId" => ['required', new checkClienttId],
-            "clientSecret" => ['required', new checkClientSecret($request->clientId)],
-            "grantType" => 'required|in:social',
+            'clientId' => ['required', new checkClienttId],
+            'clientSecret' => ['required', new checkClientSecret($request->clientId)],
+            'grantType' => 'required|in:social',
             'provider' => 'required|in:facebook,google,apple',
             'accessToken'=>'required',
-            'userIdentifier' => 'requiredIf:provider,apple'
+            'userIdentifier' => 'requiredIf:provider,apple',
         ];
     }
 }

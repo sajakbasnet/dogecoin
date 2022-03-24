@@ -19,7 +19,7 @@ class LanguageService extends Service
         $query = $this->query();
         if (isset($data->keyword) && $data->keyword !== null) {
             $query->where(function ($q) use ($data) {
-                $q->where('name', 'LIKE', '%' . $data->keyword . '%')->orWhere('language_code', 'LIKE', '%' . $data->keyword . '%');
+                $q->where('name', 'LIKE', '%'.$data->keyword.'%')->orWhere('language_code', 'LIKE', '%'.$data->keyword.'%');
             });
         }
         if (isset($data->group) && $data->group !== null) {
@@ -35,6 +35,7 @@ class LanguageService extends Service
         if ($pagination) {
             return $query->orderBy('id', 'ASC')->paginate(PAGINATE);
         }
+
         return $query->orderBy('id', 'ASC')->get();
     }
 
@@ -49,6 +50,7 @@ class LanguageService extends Service
     public function createPageData($request)
     {
         $countries = $this->countryService->getAllData($request, ['id', 'name', 'languages', 'flag'], false);
+
         return [
             'countriesOptions' => $this->countryService->extractKeyValuePair($countries),
             'groups' => $this->defaultLanguageGroups(),
@@ -66,10 +68,11 @@ class LanguageService extends Service
                 break;
             }
         }
+
         return $this->model->create([
             'name' => $name,
             'language_code' => $language_code,
-            'group' => $request->get('group')
+            'group' => $request->get('group'),
         ]);
     }
 
@@ -79,6 +82,7 @@ class LanguageService extends Service
         if ($language->isDefault()) {
             throw new NotDeletableException();
         }
+
         return $language->delete();
     }
 
@@ -90,12 +94,14 @@ class LanguageService extends Service
                 'frontend' => 'Frontend',
             ];
     }
+
     public function getKeyValuePair($languages, $key = 'language_code', $value = 'name')
     {
-        $options = array();
+        $options = [];
         foreach ($languages as $language) {
             $options[$language[$key]] = $language[$value];
         }
+
         return $options;
     }
 

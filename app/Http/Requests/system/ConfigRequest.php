@@ -25,7 +25,7 @@ class ConfigRequest extends FormRequest
     public function rules(Request $request)
     {
         $validate = [];
-        if ($request->method() == "POST") {
+        if ($request->method() == 'POST') {
             $validate = [
                 'label' => 'required|unique:configs,label',
                 'type' => 'required|in:text,textarea,file,number',
@@ -38,6 +38,7 @@ class ConfigRequest extends FormRequest
         } else {
             $validate = ['value' => 'required'];
         }
+
         return $validate;
     }
 }

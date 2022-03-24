@@ -15,8 +15,8 @@ class MailService extends Service
         parent::__construct($mailTest);
     }
 
-    public function sendMail($request){
-        
+    public function sendMail($request)
+    {
         return Mail::to($request->toemail)->send(new TestMail($request->all()));
     }
 }

@@ -11,12 +11,13 @@ class EmailTemplateService extends Service
     {
         parent::__construct($emailTemplate);
     }
+
     public function getAllData($data, $selectedColumns = [], $pagination = true)
     {
         $query = $this->query();
 
         if (isset($data->keyword) && $data->keyword !== null) {
-            $query->where('title', 'LIKE', '%' . $data->keyword . '%');
+            $query->where('title', 'LIKE', '%'.$data->keyword.'%');
         }
         if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
@@ -24,6 +25,7 @@ class EmailTemplateService extends Service
         if ($pagination) {
             return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
         }
+
         return $query->orderBy('id', 'DESC')->get();
     }
 
@@ -31,19 +33,24 @@ class EmailTemplateService extends Service
     {
         return ['items' => $this->getAllData($request)];
     }
+
     public function store($request)
     {
         $emailTemplate = $this->model->create($this->parseRequest($request));
         $emailTemplate->emailTranslations()->createMany($request->get('multilingual'));
+
         return $emailTemplate;
     }
+
     public function editPageData($request, $id)
     {
         $email = $this->itemByIdentifier($id);
+
         return [
             'item' => $email,
         ];
     }
+
     public function update($request, $id)
     {
         $emailTemplate = $this->itemByIdentifier($request->email_template);
@@ -51,6 +58,7 @@ class EmailTemplateService extends Service
         $emailTemplate = $emailTemplate->update($this->parseRequest($request));
         $emailTemplate = $this->itemByIdentifier($request->email_template);
         $emailTemplate->emailTranslations()->createMany($request->get('multilingual'));
+
         return $emailTemplate;
     }
 

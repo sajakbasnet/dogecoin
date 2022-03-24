@@ -18,7 +18,7 @@ class TranslationService extends Service
     {
         $query = $this->query();
         if (isset($data->keyword) && $data->keyword !== null) {
-            $query->where('key', 'LIKE', '%' . $data->keyword . '%');
+            $query->where('key', 'LIKE', '%'.$data->keyword.'%');
         }
         if (isset($data->group) && $data->group !== null) {
             $query->where('group', $data->group);
@@ -31,24 +31,27 @@ class TranslationService extends Service
         if ($pagination) {
             return $query->orderBy('id', 'DESC')->paginate(PAGINATE);
         }
+
         return $query->orderBy('id', 'DESC')->get();
     }
+
     public function indexPageData($request)
     {
         $languages = $this->languageService->getAllData($request->only('group'), ['name', 'language_code'], false);
+
         return [
             'items' => $this->getAllData($request),
             'groups' => $this->languageService->defaultLanguageGroups(),
-            'locales' => $this->languageService->getKeyValuePair($languages)
+            'locales' => $this->languageService->getKeyValuePair($languages),
         ];
     }
 
     public function store($request)
     {
-        $key = strtolower(trim(str_replace(".", "", $request->key)));
-        if ($key !== "") {
+        $key = strtolower(trim(str_replace('.', '', $request->key)));
+        if ($key !== '') {
             $check = $this->model::where('key', $key)->where('group', $request->group)->first();
-            if (!isset($check)) {
+            if (! isset($check)) {
                 return $this->model::create([
                     'group' => $request->group,
                     'key' => $key,
@@ -63,10 +66,11 @@ class TranslationService extends Service
     public function inserttext($content, $group)
     {
         $languages = Language::where('group', $group)->orderBy('group', 'ASC')->pluck('language_code');
-        $text = array();
+        $text = [];
         foreach ($languages as $language) {
             $text[$language] = $content;
         }
+
         return $text;
     }
 
@@ -82,12 +86,14 @@ class TranslationService extends Service
             $updatedTextArray = array_merge($currentTextArray, [$request->locale => $request->text]);
             $data->update(['group' => $request->group, 'text' => $updatedTextArray]);
         }
+
         return $data;
     }
 
     public function delete($request, $id)
     {
         $item = $this->itemByIdentifier($id);
+
         return $item->delete();
     }
 }

@@ -1,22 +1,25 @@
 <?php
 
 namespace App\Console\Commands;
+
 use Illuminate\Console\GeneratorCommand;
 
 class ServiceCommand extends GeneratorCommand
 {
-  /**
+    /**
      * The name and signature of the console command.
      *
      * @var string
      */
     protected $name = 'make:service';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new service';
+
     /**
      * Get the stub file for the generator.
      *
@@ -26,6 +29,7 @@ class ServiceCommand extends GeneratorCommand
     {
         return __DIR__.'/stubs/service.stub';
     }
+
     /**
      * Get the default namespace for the class.
      *
@@ -37,4 +41,3 @@ class ServiceCommand extends GeneratorCommand
         return $rootNamespace.'\Services';
     }
 }
-

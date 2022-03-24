@@ -10,7 +10,8 @@ use App\Traits\ImageTrait;
 class ConfigService extends Service
 {
     use ImageTrait;
-    public $dir = "/uploads/config";
+
+    public $dir = '/uploads/config';
 
     public function __construct(Config $config)
     {
@@ -22,7 +23,7 @@ class ConfigService extends Service
         $query = $this->query();
 
         if (isset($data->keyword) && $data->keyword !== null) {
-            $query->where('label', 'LIKE', '%' . $data->keyword . '%');
+            $query->where('label', 'LIKE', '%'.$data->keyword.'%');
         }
         if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
@@ -30,18 +31,21 @@ class ConfigService extends Service
         if ($pagination) {
             return $query->orderBy('id', 'ASC')->paginate(PAGINATE);
         }
+
         return $query->orderBy('id', 'ASC')->get();
     }
 
     //config type key value pair
     public function configTypeOptions()
     {
-        $mapped = array();
+        $mapped = [];
         foreach (configTypes() as $config) {
             $mapped[$config] = ucfirst($config);
         }
+
         return $mapped;
     }
+
     public function indexPageData($request)
     {
         return ['items' => $this->getAllData($request), 'types' => $this->configTypeOptions()];
@@ -53,9 +57,9 @@ class ConfigService extends Service
         if (strtolower($request->type) == 'file') {
             $data['value'] = $this->uploadImage($this->dir, 'value');
         }
+
         return $this->model->create($data);
     }
-
 
     public function update($request, $id)
     {
@@ -67,6 +71,7 @@ class ConfigService extends Service
         }
         $config->update($data);
         setConfigCookie();
+
         return $config = $this->itemByIdentifier($id);
     }
 
@@ -79,6 +84,7 @@ class ConfigService extends Service
         if (strtolower($config->type) == 'file') {
             $this->removeImage($this->dir, $config->value);
         }
+
         return $config->delete();
     }
 }

@@ -3,12 +3,13 @@
 namespace App\Http\Middleware\Frontend;
 
 use App\Traits\Api\ResponseTrait;
-use Closure;
 use Auth;
+use Closure;
 
 class frontendAuth
 {
     use ResponseTrait;
+
     /**
      * Handle an incoming request.
      *
@@ -18,10 +19,11 @@ class frontendAuth
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::guard('frontendUsers')->check()) {
+        if (! Auth::guard('frontendUsers')->check()) {
             return $this->setStatusCode(401)->userUnauthenticated();
         }
         $request = $this->addUserToRequest($request);
+
         return $next($request);
     }
 
@@ -33,6 +35,7 @@ class frontendAuth
             return $user;
         });
         Auth::setUser($user);
+
         return $request;
     }
 }

@@ -16,7 +16,6 @@ class RegisteredEmail
      */
     public function __construct()
     {
-    
     }
 
     /**
@@ -28,7 +27,7 @@ class RegisteredEmail
     public function handle(UserCreated $event)
     {
         $user = $event->user;
-          if (!isset($user->password)) {
+        if (! isset($user->password)) {
             $encryptedToken = encrypt($event->token);
             Mail::to($user->email)->send(new PasswordSetEmail($user, $encryptedToken));
         } else {

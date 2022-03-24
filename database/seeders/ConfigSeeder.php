@@ -15,8 +15,8 @@ class ConfigSeeder extends Seeder
     public function run()
     {
         $settings = Config::where('id', 1)->first();
-        if (!isset($settings)) {
-            $directory = public_path() . '/uploads/config';
+        if (! isset($settings)) {
+            $directory = public_path().'/uploads/config';
             if (is_dir($directory) != true) {
                 \File::makeDirectory($directory, $mode = 0755, true);
             }
@@ -30,7 +30,7 @@ class ConfigSeeder extends Seeder
         }
 
         $settings2 = Config::where('id', 2)->first();
-        if (!isset($settings2)) {
+        if (! isset($settings2)) {
             Config::create([
                 'label' => 'cms title',
                 'type' => 'text',
@@ -40,7 +40,7 @@ class ConfigSeeder extends Seeder
         }
 
         $settings3 = Config::where('id', 3)->first();
-        if (!isset($settings3)) {
+        if (! isset($settings3)) {
             Config::create([
                 'label' => 'cms theme color',
                 'type' => 'text',

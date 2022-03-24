@@ -6,19 +6,17 @@ use Illuminate\Database\Seeder;
 
 class CountriesTableSeeder extends Seeder
 {
-
     /**
-     * Auto generated seed file
+     * Auto generated seed file.
      *
      * @return void
      */
     public function run()
     {
         \DB::table('countries')->delete();
-        
-        \DB::table('countries')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('countries')->insert([
+            0 => [
                 'id' => 1,
                 'name' => 'Afghanistan',
                 'native_name' => 'افغانستان',
@@ -29,11 +27,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AFN", "name": "Afghan afghani", "symbol": "؋"}]',
                 'languages' => '[{"name": "Pashto", "iso639_1": "ps", "iso639_2": "pus", "nativeName": "پښتو"}, {"name": "Uzbek", "iso639_1": "uz", "iso639_2": "uzb", "nativeName": "Oʻzbek"}, {"name": "Turkmen", "iso639_1": "tk", "iso639_2": "tuk", "nativeName": "Türkmen"}]',
                 'flag' => 'https://restcountries.eu/data/afg.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            1 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            1 => [
                 'id' => 2,
                 'name' => 'Åland Islands',
                 'native_name' => 'Åland',
@@ -44,11 +41,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Swedish", "iso639_1": "sv", "iso639_2": "swe", "nativeName": "svenska"}]',
                 'flag' => 'https://restcountries.eu/data/ala.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            2 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            2 => [
                 'id' => 3,
                 'name' => 'Albania',
                 'native_name' => 'Shqipëria',
@@ -59,11 +55,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ALL", "name": "Albanian lek", "symbol": "L"}]',
                 'languages' => '[{"name": "Albanian", "iso639_1": "sq", "iso639_2": "sqi", "nativeName": "Shqip"}]',
                 'flag' => 'https://restcountries.eu/data/alb.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            3 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            3 => [
                 'id' => 4,
                 'name' => 'Algeria',
                 'native_name' => 'الجزائر',
@@ -74,11 +69,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "DZD", "name": "Algerian dinar", "symbol": "د.ج"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/dza.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            4 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            4 => [
                 'id' => 5,
                 'name' => 'American Samoa',
                 'native_name' => 'American Samoa',
@@ -89,11 +83,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United State Dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Samoan", "iso639_1": "sm", "iso639_2": "smo", "nativeName": "gagana fa\'a Samoa"}]',
                 'flag' => 'https://restcountries.eu/data/asm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            5 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            5 => [
                 'id' => 6,
                 'name' => 'Andorra',
                 'native_name' => 'Andorra',
@@ -104,11 +97,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Catalan", "iso639_1": "ca", "iso639_2": "cat", "nativeName": "català"}]',
                 'flag' => 'https://restcountries.eu/data/and.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            6 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            6 => [
                 'id' => 7,
                 'name' => 'Angola',
                 'native_name' => 'Angola',
@@ -119,11 +111,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AOA", "name": "Angolan kwanza", "symbol": "Kz"}]',
                 'languages' => '[{"name": "Portuguese", "iso639_1": "pt", "iso639_2": "por", "nativeName": "Português"}]',
                 'flag' => 'https://restcountries.eu/data/ago.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            7 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            7 => [
                 'id' => 8,
                 'name' => 'Anguilla',
                 'native_name' => 'Anguilla',
@@ -134,11 +125,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XCD", "name": "East Caribbean dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/aia.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            8 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            8 => [
                 'id' => 9,
                 'name' => 'Antarctica',
                 'native_name' => 'Antarctica',
@@ -149,11 +139,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AUD", "name": "Australian dollar", "symbol": "$"}, {"code": "GBP", "name": "British pound", "symbol": "£"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Russian", "iso639_1": "ru", "iso639_2": "rus", "nativeName": "Русский"}]',
                 'flag' => 'https://restcountries.eu/data/ata.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            9 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            9 => [
                 'id' => 10,
                 'name' => 'Antigua and Barbuda',
                 'native_name' => 'Antigua and Barbuda',
@@ -164,11 +153,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XCD", "name": "East Caribbean dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/atg.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            10 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            10 => [
                 'id' => 11,
                 'name' => 'Argentina',
                 'native_name' => 'Argentina',
@@ -179,11 +167,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ARS", "name": "Argentine peso", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}, {"name": "Guaraní", "iso639_1": "gn", "iso639_2": "grn", "nativeName": "Avañe\'ẽ"}]',
                 'flag' => 'https://restcountries.eu/data/arg.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            11 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            11 => [
                 'id' => 12,
                 'name' => 'Armenia',
                 'native_name' => 'Հայաստան',
@@ -194,11 +181,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AMD", "name": "Armenian dram", "symbol": null}]',
                 'languages' => '[{"name": "Armenian", "iso639_1": "hy", "iso639_2": "hye", "nativeName": "Հայերեն"}, {"name": "Russian", "iso639_1": "ru", "iso639_2": "rus", "nativeName": "Русский"}]',
                 'flag' => 'https://restcountries.eu/data/arm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            12 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            12 => [
                 'id' => 13,
                 'name' => 'Aruba',
                 'native_name' => 'Aruba',
@@ -209,11 +195,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AWG", "name": "Aruban florin", "symbol": "ƒ"}]',
             'languages' => '[{"name": "Dutch", "iso639_1": "nl", "iso639_2": "nld", "nativeName": "Nederlands"}, {"name": "(Eastern) Punjabi", "iso639_1": "pa", "iso639_2": "pan", "nativeName": "ਪੰਜਾਬੀ"}]',
                 'flag' => 'https://restcountries.eu/data/abw.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            13 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            13 => [
                 'id' => 14,
                 'name' => 'Australia',
                 'native_name' => 'Australia',
@@ -224,11 +209,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AUD", "name": "Australian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/aus.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            14 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            14 => [
                 'id' => 15,
                 'name' => 'Austria',
                 'native_name' => 'Österreich',
@@ -239,11 +223,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "German", "iso639_1": "de", "iso639_2": "deu", "nativeName": "Deutsch"}]',
                 'flag' => 'https://restcountries.eu/data/aut.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            15 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            15 => [
                 'id' => 16,
                 'name' => 'Azerbaijan',
                 'native_name' => 'Azərbaycan',
@@ -254,11 +237,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AZN", "name": "Azerbaijani manat", "symbol": null}]',
                 'languages' => '[{"name": "Azerbaijani", "iso639_1": "az", "iso639_2": "aze", "nativeName": "azərbaycan dili"}]',
                 'flag' => 'https://restcountries.eu/data/aze.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            16 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            16 => [
                 'id' => 17,
                 'name' => 'Bahamas',
                 'native_name' => 'Bahamas',
@@ -269,11 +251,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BSD", "name": "Bahamian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/bhs.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            17 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            17 => [
                 'id' => 18,
                 'name' => 'Bahrain',
                 'native_name' => '‏البحرين',
@@ -284,11 +265,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BHD", "name": "Bahraini dinar", "symbol": ".د.ب"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/bhr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            18 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            18 => [
                 'id' => 19,
                 'name' => 'Bangladesh',
                 'native_name' => 'Bangladesh',
@@ -299,11 +279,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BDT", "name": "Bangladeshi taka", "symbol": "৳"}]',
                 'languages' => '[{"name": "Bengali", "iso639_1": "bn", "iso639_2": "ben", "nativeName": "বাংলা"}]',
                 'flag' => 'https://restcountries.eu/data/bgd.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            19 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            19 => [
                 'id' => 20,
                 'name' => 'Barbados',
                 'native_name' => 'Barbados',
@@ -314,11 +293,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BBD", "name": "Barbadian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/brb.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            20 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            20 => [
                 'id' => 21,
                 'name' => 'Belarus',
                 'native_name' => 'Белару́сь',
@@ -329,11 +307,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BYN", "name": "New Belarusian ruble", "symbol": "Br"}, {"code": "BYR", "name": "Old Belarusian ruble", "symbol": "Br"}]',
                 'languages' => '[{"name": "Belarusian", "iso639_1": "be", "iso639_2": "bel", "nativeName": "беларуская мова"}, {"name": "Russian", "iso639_1": "ru", "iso639_2": "rus", "nativeName": "Русский"}]',
                 'flag' => 'https://restcountries.eu/data/blr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            21 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            21 => [
                 'id' => 22,
                 'name' => 'Belgium',
                 'native_name' => 'België',
@@ -344,11 +321,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Dutch", "iso639_1": "nl", "iso639_2": "nld", "nativeName": "Nederlands"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "German", "iso639_1": "de", "iso639_2": "deu", "nativeName": "Deutsch"}]',
                 'flag' => 'https://restcountries.eu/data/bel.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            22 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            22 => [
                 'id' => 23,
                 'name' => 'Belize',
                 'native_name' => 'Belize',
@@ -359,11 +335,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BZD", "name": "Belize dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/blz.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            23 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            23 => [
                 'id' => 24,
                 'name' => 'Benin',
                 'native_name' => 'Bénin',
@@ -374,11 +349,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XOF", "name": "West African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/ben.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            24 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            24 => [
                 'id' => 25,
                 'name' => 'Bermuda',
                 'native_name' => 'Bermuda',
@@ -389,11 +363,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BMD", "name": "Bermudian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/bmu.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            25 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            25 => [
                 'id' => 26,
                 'name' => 'Bhutan',
                 'native_name' => 'ʼbrug-yul',
@@ -404,11 +377,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BTN", "name": "Bhutanese ngultrum", "symbol": "Nu."}, {"code": "INR", "name": "Indian rupee", "symbol": "₹"}]',
                 'languages' => '[{"name": "Dzongkha", "iso639_1": "dz", "iso639_2": "dzo", "nativeName": "རྫོང་ཁ"}]',
                 'flag' => 'https://restcountries.eu/data/btn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            26 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            26 => [
                 'id' => 27,
             'name' => 'Bolivia (Plurinational State of)',
                 'native_name' => 'Bolivia',
@@ -419,11 +391,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BOB", "name": "Bolivian boliviano", "symbol": "Bs."}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}, {"name": "Aymara", "iso639_1": "ay", "iso639_2": "aym", "nativeName": "aymar aru"}, {"name": "Quechua", "iso639_1": "qu", "iso639_2": "que", "nativeName": "Runa Simi"}]',
                 'flag' => 'https://restcountries.eu/data/bol.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            27 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            27 => [
                 'id' => 28,
                 'name' => 'Bonaire, Sint Eustatius and Saba',
                 'native_name' => 'Bonaire',
@@ -434,11 +405,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "Dutch", "iso639_1": "nl", "iso639_2": "nld", "nativeName": "Nederlands"}]',
                 'flag' => 'https://restcountries.eu/data/bes.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            28 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            28 => [
                 'id' => 29,
                 'name' => 'Bosnia and Herzegovina',
                 'native_name' => 'Bosna i Hercegovina',
@@ -449,11 +419,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BAM", "name": "Bosnia and Herzegovina convertible mark", "symbol": null}]',
                 'languages' => '[{"name": "Bosnian", "iso639_1": "bs", "iso639_2": "bos", "nativeName": "bosanski jezik"}, {"name": "Croatian", "iso639_1": "hr", "iso639_2": "hrv", "nativeName": "hrvatski jezik"}, {"name": "Serbian", "iso639_1": "sr", "iso639_2": "srp", "nativeName": "српски језик"}]',
                 'flag' => 'https://restcountries.eu/data/bih.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            29 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            29 => [
                 'id' => 30,
                 'name' => 'Botswana',
                 'native_name' => 'Botswana',
@@ -464,11 +433,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BWP", "name": "Botswana pula", "symbol": "P"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Tswana", "iso639_1": "tn", "iso639_2": "tsn", "nativeName": "Setswana"}]',
                 'flag' => 'https://restcountries.eu/data/bwa.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            30 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            30 => [
                 'id' => 31,
                 'name' => 'Bouvet Island',
                 'native_name' => 'Bouvetøya',
@@ -479,11 +447,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NOK", "name": "Norwegian krone", "symbol": "kr"}]',
                 'languages' => '[{"name": "Norwegian", "iso639_1": "no", "iso639_2": "nor", "nativeName": "Norsk"}, {"name": "Norwegian Bokmål", "iso639_1": "nb", "iso639_2": "nob", "nativeName": "Norsk bokmål"}, {"name": "Norwegian Nynorsk", "iso639_1": "nn", "iso639_2": "nno", "nativeName": "Norsk nynorsk"}]',
                 'flag' => 'https://restcountries.eu/data/bvt.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            31 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            31 => [
                 'id' => 32,
                 'name' => 'Brazil',
                 'native_name' => 'Brasil',
@@ -494,11 +461,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BRL", "name": "Brazilian real", "symbol": "R$"}]',
                 'languages' => '[{"name": "Portuguese", "iso639_1": "pt", "iso639_2": "por", "nativeName": "Português"}]',
                 'flag' => 'https://restcountries.eu/data/bra.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            32 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            32 => [
                 'id' => 33,
                 'name' => 'British Indian Ocean Territory',
                 'native_name' => 'British Indian Ocean Territory',
@@ -509,11 +475,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/iot.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            33 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            33 => [
                 'id' => 34,
                 'name' => 'United States Minor Outlying Islands',
                 'native_name' => 'United States Minor Outlying Islands',
@@ -524,11 +489,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States Dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/umi.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            34 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            34 => [
                 'id' => 35,
             'name' => 'Virgin Islands (British)',
                 'native_name' => 'British Virgin Islands',
@@ -539,11 +503,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": null, "name": "[D]", "symbol": "$"}, {"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/vgb.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            35 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            35 => [
                 'id' => 36,
             'name' => 'Virgin Islands (U.S.)',
                 'native_name' => 'Virgin Islands of the United States',
@@ -554,11 +517,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/vir.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            36 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            36 => [
                 'id' => 37,
                 'name' => 'Brunei Darussalam',
                 'native_name' => 'Negara Brunei Darussalam',
@@ -569,11 +531,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BND", "name": "Brunei dollar", "symbol": "$"}, {"code": "SGD", "name": "Singapore dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "Malay", "iso639_1": "ms", "iso639_2": "msa", "nativeName": "bahasa Melayu"}]',
                 'flag' => 'https://restcountries.eu/data/brn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            37 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            37 => [
                 'id' => 38,
                 'name' => 'Bulgaria',
                 'native_name' => 'България',
@@ -584,11 +545,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BGN", "name": "Bulgarian lev", "symbol": "лв"}]',
                 'languages' => '[{"name": "Bulgarian", "iso639_1": "bg", "iso639_2": "bul", "nativeName": "български език"}]',
                 'flag' => 'https://restcountries.eu/data/bgr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            38 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            38 => [
                 'id' => 39,
                 'name' => 'Burkina Faso',
                 'native_name' => 'Burkina Faso',
@@ -599,11 +559,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XOF", "name": "West African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Fula", "iso639_1": "ff", "iso639_2": "ful", "nativeName": "Fulfulde"}]',
                 'flag' => 'https://restcountries.eu/data/bfa.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            39 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            39 => [
                 'id' => 40,
                 'name' => 'Burundi',
                 'native_name' => 'Burundi',
@@ -614,11 +573,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BIF", "name": "Burundian franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Kirundi", "iso639_1": "rn", "iso639_2": "run", "nativeName": "Ikirundi"}]',
                 'flag' => 'https://restcountries.eu/data/bdi.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            40 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            40 => [
                 'id' => 41,
                 'name' => 'Cambodia',
                 'native_name' => 'Kâmpŭchéa',
@@ -629,11 +587,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "KHR", "name": "Cambodian riel", "symbol": "៛"}, {"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "Khmer", "iso639_1": "km", "iso639_2": "khm", "nativeName": "ខ្មែរ"}]',
                 'flag' => 'https://restcountries.eu/data/khm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            41 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            41 => [
                 'id' => 42,
                 'name' => 'Cameroon',
                 'native_name' => 'Cameroon',
@@ -644,11 +601,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XAF", "name": "Central African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/cmr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            42 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            42 => [
                 'id' => 43,
                 'name' => 'Canada',
                 'native_name' => 'Canada',
@@ -659,11 +615,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "CAD", "name": "Canadian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/can.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            43 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            43 => [
                 'id' => 44,
                 'name' => 'Cabo Verde',
                 'native_name' => 'Cabo Verde',
@@ -674,11 +629,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "CVE", "name": "Cape Verdean escudo", "symbol": "Esc"}]',
                 'languages' => '[{"name": "Portuguese", "iso639_1": "pt", "iso639_2": "por", "nativeName": "Português"}]',
                 'flag' => 'https://restcountries.eu/data/cpv.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            44 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            44 => [
                 'id' => 45,
                 'name' => 'Cayman Islands',
                 'native_name' => 'Cayman Islands',
@@ -689,11 +643,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "KYD", "name": "Cayman Islands dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/cym.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            45 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            45 => [
                 'id' => 46,
                 'name' => 'Central African Republic',
                 'native_name' => 'Ködörösêse tî Bêafrîka',
@@ -704,11 +657,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XAF", "name": "Central African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Sango", "iso639_1": "sg", "iso639_2": "sag", "nativeName": "yângâ tî sängö"}]',
                 'flag' => 'https://restcountries.eu/data/caf.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            46 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            46 => [
                 'id' => 47,
                 'name' => 'Chad',
                 'native_name' => 'Tchad',
@@ -719,11 +671,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XAF", "name": "Central African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/tcd.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            47 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            47 => [
                 'id' => 48,
                 'name' => 'Chile',
                 'native_name' => 'Chile',
@@ -734,11 +685,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "CLP", "name": "Chilean peso", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/chl.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            48 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            48 => [
                 'id' => 49,
                 'name' => 'China',
                 'native_name' => '中国',
@@ -749,11 +699,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "CNY", "name": "Chinese yuan", "symbol": "¥"}]',
             'languages' => '[{"name": "Chinese", "iso639_1": "zh", "iso639_2": "zho", "nativeName": "中文 (Zhōngwén)"}]',
                 'flag' => 'https://restcountries.eu/data/chn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            49 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            49 => [
                 'id' => 50,
                 'name' => 'Christmas Island',
                 'native_name' => 'Christmas Island',
@@ -764,11 +713,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AUD", "name": "Australian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/cxr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            50 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            50 => [
                 'id' => 51,
             'name' => 'Cocos (Keeling) Islands',
             'native_name' => 'Cocos (Keeling) Islands',
@@ -779,11 +727,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AUD", "name": "Australian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/cck.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            51 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            51 => [
                 'id' => 52,
                 'name' => 'Colombia',
                 'native_name' => 'Colombia',
@@ -794,11 +741,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "COP", "name": "Colombian peso", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/col.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            52 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            52 => [
                 'id' => 53,
                 'name' => 'Comoros',
                 'native_name' => 'Komori',
@@ -809,11 +755,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "KMF", "name": "Comorian franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/com.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            53 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            53 => [
                 'id' => 54,
                 'name' => 'Congo',
                 'native_name' => 'République du Congo',
@@ -824,11 +769,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XAF", "name": "Central African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Lingala", "iso639_1": "ln", "iso639_2": "lin", "nativeName": "Lingála"}]',
                 'flag' => 'https://restcountries.eu/data/cog.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            54 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            54 => [
                 'id' => 55,
             'name' => 'Congo (Democratic Republic of the)',
                 'native_name' => 'République démocratique du Congo',
@@ -839,11 +783,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "CDF", "name": "Congolese franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Lingala", "iso639_1": "ln", "iso639_2": "lin", "nativeName": "Lingála"}, {"name": "Kongo", "iso639_1": "kg", "iso639_2": "kon", "nativeName": "Kikongo"}, {"name": "Swahili", "iso639_1": "sw", "iso639_2": "swa", "nativeName": "Kiswahili"}, {"name": "Luba-Katanga", "iso639_1": "lu", "iso639_2": "lub", "nativeName": "Tshiluba"}]',
                 'flag' => 'https://restcountries.eu/data/cod.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            55 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            55 => [
                 'id' => 56,
                 'name' => 'Cook Islands',
                 'native_name' => 'Cook Islands',
@@ -854,11 +797,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NZD", "name": "New Zealand dollar", "symbol": "$"}, {"code": "CKD", "name": "Cook Islands dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/cok.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            56 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            56 => [
                 'id' => 57,
                 'name' => 'Costa Rica',
                 'native_name' => 'Costa Rica',
@@ -869,11 +811,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "CRC", "name": "Costa Rican colón", "symbol": "₡"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/cri.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            57 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            57 => [
                 'id' => 58,
                 'name' => 'Croatia',
                 'native_name' => 'Hrvatska',
@@ -884,11 +825,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "HRK", "name": "Croatian kuna", "symbol": "kn"}]',
                 'languages' => '[{"name": "Croatian", "iso639_1": "hr", "iso639_2": "hrv", "nativeName": "hrvatski jezik"}]',
                 'flag' => 'https://restcountries.eu/data/hrv.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            58 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            58 => [
                 'id' => 59,
                 'name' => 'Cuba',
                 'native_name' => 'Cuba',
@@ -899,11 +839,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "CUC", "name": "Cuban convertible peso", "symbol": "$"}, {"code": "CUP", "name": "Cuban peso", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/cub.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            59 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            59 => [
                 'id' => 60,
                 'name' => 'Curaçao',
                 'native_name' => 'Curaçao',
@@ -914,11 +853,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ANG", "name": "Netherlands Antillean guilder", "symbol": "ƒ"}]',
             'languages' => '[{"name": "Dutch", "iso639_1": "nl", "iso639_2": "nld", "nativeName": "Nederlands"}, {"name": "(Eastern) Punjabi", "iso639_1": "pa", "iso639_2": "pan", "nativeName": "ਪੰਜਾਬੀ"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/cuw.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            60 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            60 => [
                 'id' => 61,
                 'name' => 'Cyprus',
                 'native_name' => 'Κύπρος',
@@ -929,11 +867,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
             'languages' => '[{"name": "Greek (modern)", "iso639_1": "el", "iso639_2": "ell", "nativeName": "ελληνικά"}, {"name": "Turkish", "iso639_1": "tr", "iso639_2": "tur", "nativeName": "Türkçe"}, {"name": "Armenian", "iso639_1": "hy", "iso639_2": "hye", "nativeName": "Հայերեն"}]',
                 'flag' => 'https://restcountries.eu/data/cyp.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            61 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            61 => [
                 'id' => 62,
                 'name' => 'Czech Republic',
                 'native_name' => 'Česká republika',
@@ -944,11 +881,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "CZK", "name": "Czech koruna", "symbol": "Kč"}]',
                 'languages' => '[{"name": "Czech", "iso639_1": "cs", "iso639_2": "ces", "nativeName": "čeština"}, {"name": "Slovak", "iso639_1": "sk", "iso639_2": "slk", "nativeName": "slovenčina"}]',
                 'flag' => 'https://restcountries.eu/data/cze.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            62 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            62 => [
                 'id' => 63,
                 'name' => 'Denmark',
                 'native_name' => 'Danmark',
@@ -959,11 +895,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "DKK", "name": "Danish krone", "symbol": "kr"}]',
                 'languages' => '[{"name": "Danish", "iso639_1": "da", "iso639_2": "dan", "nativeName": "dansk"}]',
                 'flag' => 'https://restcountries.eu/data/dnk.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            63 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            63 => [
                 'id' => 64,
                 'name' => 'Djibouti',
                 'native_name' => 'Djibouti',
@@ -974,11 +909,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "DJF", "name": "Djiboutian franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/dji.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            64 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            64 => [
                 'id' => 65,
                 'name' => 'Dominica',
                 'native_name' => 'Dominica',
@@ -989,11 +923,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XCD", "name": "East Caribbean dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/dma.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            65 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            65 => [
                 'id' => 66,
                 'name' => 'Dominican Republic',
                 'native_name' => 'República Dominicana',
@@ -1004,11 +937,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "DOP", "name": "Dominican peso", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/dom.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            66 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            66 => [
                 'id' => 67,
                 'name' => 'Ecuador',
                 'native_name' => 'Ecuador',
@@ -1019,11 +951,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/ecu.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            67 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            67 => [
                 'id' => 68,
                 'name' => 'Egypt',
                 'native_name' => 'مصر‎',
@@ -1034,11 +965,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EGP", "name": "Egyptian pound", "symbol": "£"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/egy.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            68 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            68 => [
                 'id' => 69,
                 'name' => 'El Salvador',
                 'native_name' => 'El Salvador',
@@ -1049,11 +979,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/slv.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            69 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            69 => [
                 'id' => 70,
                 'name' => 'Equatorial Guinea',
                 'native_name' => 'Guinea Ecuatorial',
@@ -1064,11 +993,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XAF", "name": "Central African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/gnq.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            70 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            70 => [
                 'id' => 71,
                 'name' => 'Eritrea',
                 'native_name' => 'ኤርትራ',
@@ -1079,11 +1007,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ERN", "name": "Eritrean nakfa", "symbol": "Nfk"}]',
                 'languages' => '[{"name": "Tigrinya", "iso639_1": "ti", "iso639_2": "tir", "nativeName": "ትግርኛ"}, {"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/eri.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            71 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            71 => [
                 'id' => 72,
                 'name' => 'Estonia',
                 'native_name' => 'Eesti',
@@ -1094,11 +1021,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Estonian", "iso639_1": "et", "iso639_2": "est", "nativeName": "eesti"}]',
                 'flag' => 'https://restcountries.eu/data/est.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            72 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            72 => [
                 'id' => 73,
                 'name' => 'Ethiopia',
                 'native_name' => 'ኢትዮጵያ',
@@ -1109,11 +1035,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ETB", "name": "Ethiopian birr", "symbol": "Br"}]',
                 'languages' => '[{"name": "Amharic", "iso639_1": "am", "iso639_2": "amh", "nativeName": "አማርኛ"}]',
                 'flag' => 'https://restcountries.eu/data/eth.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            73 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            73 => [
                 'id' => 74,
             'name' => 'Falkland Islands (Malvinas)',
                 'native_name' => 'Falkland Islands',
@@ -1124,11 +1049,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "FKP", "name": "Falkland Islands pound", "symbol": "£"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/flk.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            74 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            74 => [
                 'id' => 75,
                 'name' => 'Faroe Islands',
                 'native_name' => 'Føroyar',
@@ -1139,11 +1063,10 @@ class CountriesTableSeeder extends Seeder
             'currencies' => '[{"code": "DKK", "name": "Danish krone", "symbol": "kr"}, {"code": "(none)", "name": "Faroese króna", "symbol": "kr"}]',
                 'languages' => '[{"name": "Faroese", "iso639_1": "fo", "iso639_2": "fao", "nativeName": "føroyskt"}]',
                 'flag' => 'https://restcountries.eu/data/fro.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            75 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            75 => [
                 'id' => 76,
                 'name' => 'Fiji',
                 'native_name' => 'Fiji',
@@ -1154,11 +1077,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "FJD", "name": "Fijian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Fijian", "iso639_1": "fj", "iso639_2": "fij", "nativeName": "vosa Vakaviti"}, {"name": "Hindi", "iso639_1": "hi", "iso639_2": "hin", "nativeName": "हिन्दी"}, {"name": "Urdu", "iso639_1": "ur", "iso639_2": "urd", "nativeName": "اردو"}]',
                 'flag' => 'https://restcountries.eu/data/fji.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            76 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            76 => [
                 'id' => 77,
                 'name' => 'Finland',
                 'native_name' => 'Suomi',
@@ -1169,11 +1091,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Finnish", "iso639_1": "fi", "iso639_2": "fin", "nativeName": "suomi"}, {"name": "Swedish", "iso639_1": "sv", "iso639_2": "swe", "nativeName": "svenska"}]',
                 'flag' => 'https://restcountries.eu/data/fin.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            77 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            77 => [
                 'id' => 78,
                 'name' => 'France',
                 'native_name' => 'France',
@@ -1184,11 +1105,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/fra.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            78 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            78 => [
                 'id' => 79,
                 'name' => 'French Guiana',
                 'native_name' => 'Guyane française',
@@ -1199,11 +1119,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/guf.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            79 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            79 => [
                 'id' => 80,
                 'name' => 'French Polynesia',
                 'native_name' => 'Polynésie française',
@@ -1214,11 +1133,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XPF", "name": "CFP franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/pyf.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            80 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            80 => [
                 'id' => 81,
                 'name' => 'French Southern Territories',
                 'native_name' => 'Territoire des Terres australes et antarctiques françaises',
@@ -1229,11 +1147,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/atf.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            81 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            81 => [
                 'id' => 82,
                 'name' => 'Gabon',
                 'native_name' => 'Gabon',
@@ -1244,11 +1161,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XAF", "name": "Central African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/gab.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            82 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            82 => [
                 'id' => 83,
                 'name' => 'Gambia',
                 'native_name' => 'Gambia',
@@ -1259,11 +1175,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "GMD", "name": "Gambian dalasi", "symbol": "D"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/gmb.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            83 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            83 => [
                 'id' => 84,
                 'name' => 'Georgia',
                 'native_name' => 'საქართველო',
@@ -1274,11 +1189,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "GEL", "name": "Georgian Lari", "symbol": "ლ"}]',
                 'languages' => '[{"name": "Georgian", "iso639_1": "ka", "iso639_2": "kat", "nativeName": "ქართული"}]',
                 'flag' => 'https://restcountries.eu/data/geo.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            84 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            84 => [
                 'id' => 85,
                 'name' => 'Germany',
                 'native_name' => 'Deutschland',
@@ -1289,11 +1203,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "German", "iso639_1": "de", "iso639_2": "deu", "nativeName": "Deutsch"}]',
                 'flag' => 'https://restcountries.eu/data/deu.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            85 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            85 => [
                 'id' => 86,
                 'name' => 'Ghana',
                 'native_name' => 'Ghana',
@@ -1304,11 +1217,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "GHS", "name": "Ghanaian cedi", "symbol": "₵"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/gha.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            86 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            86 => [
                 'id' => 87,
                 'name' => 'Gibraltar',
                 'native_name' => 'Gibraltar',
@@ -1319,11 +1231,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "GIP", "name": "Gibraltar pound", "symbol": "£"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/gib.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            87 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            87 => [
                 'id' => 88,
                 'name' => 'Greece',
                 'native_name' => 'Ελλάδα',
@@ -1334,11 +1245,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
             'languages' => '[{"name": "Greek (modern)", "iso639_1": "el", "iso639_2": "ell", "nativeName": "ελληνικά"}]',
                 'flag' => 'https://restcountries.eu/data/grc.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            88 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            88 => [
                 'id' => 89,
                 'name' => 'Greenland',
                 'native_name' => 'Kalaallit Nunaat',
@@ -1349,11 +1259,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "DKK", "name": "Danish krone", "symbol": "kr"}]',
                 'languages' => '[{"name": "Kalaallisut", "iso639_1": "kl", "iso639_2": "kal", "nativeName": "kalaallisut"}]',
                 'flag' => 'https://restcountries.eu/data/grl.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            89 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            89 => [
                 'id' => 90,
                 'name' => 'Grenada',
                 'native_name' => 'Grenada',
@@ -1364,11 +1273,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XCD", "name": "East Caribbean dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/grd.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            90 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            90 => [
                 'id' => 91,
                 'name' => 'Guadeloupe',
                 'native_name' => 'Guadeloupe',
@@ -1379,11 +1287,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/glp.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            91 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            91 => [
                 'id' => 92,
                 'name' => 'Guam',
                 'native_name' => 'Guam',
@@ -1394,11 +1301,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Chamorro", "iso639_1": "ch", "iso639_2": "cha", "nativeName": "Chamoru"}, {"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/gum.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            92 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            92 => [
                 'id' => 93,
                 'name' => 'Guatemala',
                 'native_name' => 'Guatemala',
@@ -1409,11 +1315,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "GTQ", "name": "Guatemalan quetzal", "symbol": "Q"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/gtm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            93 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            93 => [
                 'id' => 94,
                 'name' => 'Guernsey',
                 'native_name' => 'Guernsey',
@@ -1424,11 +1329,10 @@ class CountriesTableSeeder extends Seeder
             'currencies' => '[{"code": "GBP", "name": "British pound", "symbol": "£"}, {"code": "(none)", "name": "Guernsey pound", "symbol": "£"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/ggy.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            94 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            94 => [
                 'id' => 95,
                 'name' => 'Guinea',
                 'native_name' => 'Guinée',
@@ -1439,11 +1343,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "GNF", "name": "Guinean franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Fula", "iso639_1": "ff", "iso639_2": "ful", "nativeName": "Fulfulde"}]',
                 'flag' => 'https://restcountries.eu/data/gin.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            95 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            95 => [
                 'id' => 96,
                 'name' => 'Guinea-Bissau',
                 'native_name' => 'Guiné-Bissau',
@@ -1454,11 +1357,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XOF", "name": "West African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "Portuguese", "iso639_1": "pt", "iso639_2": "por", "nativeName": "Português"}]',
                 'flag' => 'https://restcountries.eu/data/gnb.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            96 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            96 => [
                 'id' => 97,
                 'name' => 'Guyana',
                 'native_name' => 'Guyana',
@@ -1469,11 +1371,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "GYD", "name": "Guyanese dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/guy.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            97 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            97 => [
                 'id' => 98,
                 'name' => 'Haiti',
                 'native_name' => 'Haïti',
@@ -1484,11 +1385,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "HTG", "name": "Haitian gourde", "symbol": "G"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Haitian", "iso639_1": "ht", "iso639_2": "hat", "nativeName": "Kreyòl ayisyen"}]',
                 'flag' => 'https://restcountries.eu/data/hti.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            98 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            98 => [
                 'id' => 99,
                 'name' => 'Heard Island and McDonald Islands',
                 'native_name' => 'Heard Island and McDonald Islands',
@@ -1499,11 +1399,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AUD", "name": "Australian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/hmd.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            99 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            99 => [
                 'id' => 100,
                 'name' => 'Holy See',
                 'native_name' => 'Sancta Sedes',
@@ -1514,11 +1413,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Latin", "iso639_1": "la", "iso639_2": "lat", "nativeName": "latine"}, {"name": "Italian", "iso639_1": "it", "iso639_2": "ita", "nativeName": "Italiano"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "German", "iso639_1": "de", "iso639_2": "deu", "nativeName": "Deutsch"}]',
                 'flag' => 'https://restcountries.eu/data/vat.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            100 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            100 => [
                 'id' => 101,
                 'name' => 'Honduras',
                 'native_name' => 'Honduras',
@@ -1529,11 +1427,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "HNL", "name": "Honduran lempira", "symbol": "L"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/hnd.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            101 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            101 => [
                 'id' => 102,
                 'name' => 'Hong Kong',
                 'native_name' => '香港',
@@ -1544,11 +1441,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "HKD", "name": "Hong Kong dollar", "symbol": "$"}]',
             'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Chinese", "iso639_1": "zh", "iso639_2": "zho", "nativeName": "中文 (Zhōngwén)"}]',
                 'flag' => 'https://restcountries.eu/data/hkg.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            102 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            102 => [
                 'id' => 103,
                 'name' => 'Hungary',
                 'native_name' => 'Magyarország',
@@ -1559,11 +1455,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "HUF", "name": "Hungarian forint", "symbol": "Ft"}]',
                 'languages' => '[{"name": "Hungarian", "iso639_1": "hu", "iso639_2": "hun", "nativeName": "magyar"}]',
                 'flag' => 'https://restcountries.eu/data/hun.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            103 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            103 => [
                 'id' => 104,
                 'name' => 'Iceland',
                 'native_name' => 'Ísland',
@@ -1574,11 +1469,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ISK", "name": "Icelandic króna", "symbol": "kr"}]',
                 'languages' => '[{"name": "Icelandic", "iso639_1": "is", "iso639_2": "isl", "nativeName": "Íslenska"}]',
                 'flag' => 'https://restcountries.eu/data/isl.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            104 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            104 => [
                 'id' => 105,
                 'name' => 'India',
                 'native_name' => 'भारत',
@@ -1589,11 +1483,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "INR", "name": "Indian rupee", "symbol": "₹"}]',
                 'languages' => '[{"name": "Hindi", "iso639_1": "hi", "iso639_2": "hin", "nativeName": "हिन्दी"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/ind.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            105 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            105 => [
                 'id' => 106,
                 'name' => 'Indonesia',
                 'native_name' => 'Indonesia',
@@ -1604,11 +1497,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "IDR", "name": "Indonesian rupiah", "symbol": "Rp"}]',
                 'languages' => '[{"name": "Indonesian", "iso639_1": "id", "iso639_2": "ind", "nativeName": "Bahasa Indonesia"}]',
                 'flag' => 'https://restcountries.eu/data/idn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            106 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            106 => [
                 'id' => 107,
                 'name' => 'Côte d\'Ivoire',
                 'native_name' => 'Côte d\'Ivoire',
@@ -1619,11 +1511,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XOF", "name": "West African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/civ.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            107 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            107 => [
                 'id' => 108,
             'name' => 'Iran (Islamic Republic of)',
                 'native_name' => 'ایران',
@@ -1634,11 +1525,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "IRR", "name": "Iranian rial", "symbol": "﷼"}]',
             'languages' => '[{"name": "Persian (Farsi)", "iso639_1": "fa", "iso639_2": "fas", "nativeName": "فارسی"}]',
                 'flag' => 'https://restcountries.eu/data/irn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            108 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            108 => [
                 'id' => 109,
                 'name' => 'Iraq',
                 'native_name' => 'العراق',
@@ -1649,11 +1539,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "IQD", "name": "Iraqi dinar", "symbol": "ع.د"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}, {"name": "Kurdish", "iso639_1": "ku", "iso639_2": "kur", "nativeName": "Kurdî"}]',
                 'flag' => 'https://restcountries.eu/data/irq.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            109 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            109 => [
                 'id' => 110,
                 'name' => 'Ireland',
                 'native_name' => 'Éire',
@@ -1664,11 +1553,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Irish", "iso639_1": "ga", "iso639_2": "gle", "nativeName": "Gaeilge"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/irl.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            110 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            110 => [
                 'id' => 111,
                 'name' => 'Isle of Man',
                 'native_name' => 'Isle of Man',
@@ -1679,11 +1567,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "GBP", "name": "British pound", "symbol": "£"}, {"code": "IMP[G]", "name": "Manx pound", "symbol": "£"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Manx", "iso639_1": "gv", "iso639_2": "glv", "nativeName": "Gaelg"}]',
                 'flag' => 'https://restcountries.eu/data/imn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            111 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            111 => [
                 'id' => 112,
                 'name' => 'Israel',
                 'native_name' => 'יִשְׂרָאֵל',
@@ -1694,11 +1581,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ILS", "name": "Israeli new shekel", "symbol": "₪"}]',
             'languages' => '[{"name": "Hebrew (modern)", "iso639_1": "he", "iso639_2": "heb", "nativeName": "עברית"}, {"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/isr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            112 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            112 => [
                 'id' => 113,
                 'name' => 'Italy',
                 'native_name' => 'Italia',
@@ -1709,11 +1595,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Italian", "iso639_1": "it", "iso639_2": "ita", "nativeName": "Italiano"}]',
                 'flag' => 'https://restcountries.eu/data/ita.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            113 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            113 => [
                 'id' => 114,
                 'name' => 'Jamaica',
                 'native_name' => 'Jamaica',
@@ -1724,11 +1609,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "JMD", "name": "Jamaican dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/jam.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            114 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            114 => [
                 'id' => 115,
                 'name' => 'Japan',
                 'native_name' => '日本',
@@ -1739,11 +1623,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "JPY", "name": "Japanese yen", "symbol": "¥"}]',
             'languages' => '[{"name": "Japanese", "iso639_1": "ja", "iso639_2": "jpn", "nativeName": "日本語 (にほんご)"}]',
                 'flag' => 'https://restcountries.eu/data/jpn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            115 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            115 => [
                 'id' => 116,
                 'name' => 'Jersey',
                 'native_name' => 'Jersey',
@@ -1754,11 +1637,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "GBP", "name": "British pound", "symbol": "£"}, {"code": "JEP[G]", "name": "Jersey pound", "symbol": "£"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/jey.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            116 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            116 => [
                 'id' => 117,
                 'name' => 'Jordan',
                 'native_name' => 'الأردن',
@@ -1769,11 +1651,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "JOD", "name": "Jordanian dinar", "symbol": "د.ا"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/jor.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            117 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            117 => [
                 'id' => 118,
                 'name' => 'Kazakhstan',
                 'native_name' => 'Қазақстан',
@@ -1784,11 +1665,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "KZT", "name": "Kazakhstani tenge", "symbol": null}]',
                 'languages' => '[{"name": "Kazakh", "iso639_1": "kk", "iso639_2": "kaz", "nativeName": "қазақ тілі"}, {"name": "Russian", "iso639_1": "ru", "iso639_2": "rus", "nativeName": "Русский"}]',
                 'flag' => 'https://restcountries.eu/data/kaz.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            118 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            118 => [
                 'id' => 119,
                 'name' => 'Kenya',
                 'native_name' => 'Kenya',
@@ -1799,11 +1679,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "KES", "name": "Kenyan shilling", "symbol": "Sh"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Swahili", "iso639_1": "sw", "iso639_2": "swa", "nativeName": "Kiswahili"}]',
                 'flag' => 'https://restcountries.eu/data/ken.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            119 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            119 => [
                 'id' => 120,
                 'name' => 'Kiribati',
                 'native_name' => 'Kiribati',
@@ -1814,11 +1693,10 @@ class CountriesTableSeeder extends Seeder
             'currencies' => '[{"code": "AUD", "name": "Australian dollar", "symbol": "$"}, {"code": "(none)", "name": "Kiribati dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/kir.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            120 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            120 => [
                 'id' => 121,
                 'name' => 'Kuwait',
                 'native_name' => 'الكويت',
@@ -1829,11 +1707,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "KWD", "name": "Kuwaiti dinar", "symbol": "د.ك"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/kwt.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            121 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            121 => [
                 'id' => 122,
                 'name' => 'Kyrgyzstan',
                 'native_name' => 'Кыргызстан',
@@ -1844,11 +1721,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "KGS", "name": "Kyrgyzstani som", "symbol": "с"}]',
                 'languages' => '[{"name": "Kyrgyz", "iso639_1": "ky", "iso639_2": "kir", "nativeName": "Кыргызча"}, {"name": "Russian", "iso639_1": "ru", "iso639_2": "rus", "nativeName": "Русский"}]',
                 'flag' => 'https://restcountries.eu/data/kgz.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            122 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            122 => [
                 'id' => 123,
                 'name' => 'Lao People\'s Democratic Republic',
                 'native_name' => 'ສປປລາວ',
@@ -1859,11 +1735,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "LAK", "name": "Lao kip", "symbol": "₭"}]',
                 'languages' => '[{"name": "Lao", "iso639_1": "lo", "iso639_2": "lao", "nativeName": "ພາສາລາວ"}]',
                 'flag' => 'https://restcountries.eu/data/lao.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            123 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            123 => [
                 'id' => 124,
                 'name' => 'Latvia',
                 'native_name' => 'Latvija',
@@ -1874,11 +1749,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Latvian", "iso639_1": "lv", "iso639_2": "lav", "nativeName": "latviešu valoda"}]',
                 'flag' => 'https://restcountries.eu/data/lva.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            124 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            124 => [
                 'id' => 125,
                 'name' => 'Lebanon',
                 'native_name' => 'لبنان',
@@ -1889,11 +1763,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "LBP", "name": "Lebanese pound", "symbol": "ل.ل"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/lbn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            125 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            125 => [
                 'id' => 126,
                 'name' => 'Lesotho',
                 'native_name' => 'Lesotho',
@@ -1904,11 +1777,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "LSL", "name": "Lesotho loti", "symbol": "L"}, {"code": "ZAR", "name": "South African rand", "symbol": "R"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Southern Sotho", "iso639_1": "st", "iso639_2": "sot", "nativeName": "Sesotho"}]',
                 'flag' => 'https://restcountries.eu/data/lso.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            126 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            126 => [
                 'id' => 127,
                 'name' => 'Liberia',
                 'native_name' => 'Liberia',
@@ -1919,11 +1791,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "LRD", "name": "Liberian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/lbr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            127 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            127 => [
                 'id' => 128,
                 'name' => 'Libya',
                 'native_name' => '‏ليبيا',
@@ -1934,11 +1805,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "LYD", "name": "Libyan dinar", "symbol": "ل.د"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/lby.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            128 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            128 => [
                 'id' => 129,
                 'name' => 'Liechtenstein',
                 'native_name' => 'Liechtenstein',
@@ -1949,11 +1819,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "CHF", "name": "Swiss franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "German", "iso639_1": "de", "iso639_2": "deu", "nativeName": "Deutsch"}]',
                 'flag' => 'https://restcountries.eu/data/lie.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            129 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            129 => [
                 'id' => 130,
                 'name' => 'Lithuania',
                 'native_name' => 'Lietuva',
@@ -1964,11 +1833,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Lithuanian", "iso639_1": "lt", "iso639_2": "lit", "nativeName": "lietuvių kalba"}]',
                 'flag' => 'https://restcountries.eu/data/ltu.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            130 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            130 => [
                 'id' => 131,
                 'name' => 'Luxembourg',
                 'native_name' => 'Luxembourg',
@@ -1979,11 +1847,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "German", "iso639_1": "de", "iso639_2": "deu", "nativeName": "Deutsch"}, {"name": "Luxembourgish", "iso639_1": "lb", "iso639_2": "ltz", "nativeName": "Lëtzebuergesch"}]',
                 'flag' => 'https://restcountries.eu/data/lux.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            131 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            131 => [
                 'id' => 132,
                 'name' => 'Macao',
                 'native_name' => '澳門',
@@ -1994,11 +1861,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MOP", "name": "Macanese pataca", "symbol": "P"}]',
             'languages' => '[{"name": "Chinese", "iso639_1": "zh", "iso639_2": "zho", "nativeName": "中文 (Zhōngwén)"}, {"name": "Portuguese", "iso639_1": "pt", "iso639_2": "por", "nativeName": "Português"}]',
                 'flag' => 'https://restcountries.eu/data/mac.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            132 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            132 => [
                 'id' => 133,
             'name' => 'Macedonia (the former Yugoslav Republic of)',
                 'native_name' => 'Македонија',
@@ -2009,11 +1875,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MKD", "name": "Macedonian denar", "symbol": "ден"}]',
                 'languages' => '[{"name": "Macedonian", "iso639_1": "mk", "iso639_2": "mkd", "nativeName": "македонски јазик"}]',
                 'flag' => 'https://restcountries.eu/data/mkd.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            133 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            133 => [
                 'id' => 134,
                 'name' => 'Madagascar',
                 'native_name' => 'Madagasikara',
@@ -2024,11 +1889,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MGA", "name": "Malagasy ariary", "symbol": "Ar"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Malagasy", "iso639_1": "mg", "iso639_2": "mlg", "nativeName": "fiteny malagasy"}]',
                 'flag' => 'https://restcountries.eu/data/mdg.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            134 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            134 => [
                 'id' => 135,
                 'name' => 'Malawi',
                 'native_name' => 'Malawi',
@@ -2039,11 +1903,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MWK", "name": "Malawian kwacha", "symbol": "MK"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Chichewa", "iso639_1": "ny", "iso639_2": "nya", "nativeName": "chiCheŵa"}]',
                 'flag' => 'https://restcountries.eu/data/mwi.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            135 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            135 => [
                 'id' => 136,
                 'name' => 'Malaysia',
                 'native_name' => 'Malaysia',
@@ -2054,11 +1917,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MYR", "name": "Malaysian ringgit", "symbol": "RM"}]',
                 'languages' => '[{"name": "Malaysian", "iso639_1": null, "iso639_2": "zsm", "nativeName": "بهاس مليسيا"}]',
                 'flag' => 'https://restcountries.eu/data/mys.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            136 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            136 => [
                 'id' => 137,
                 'name' => 'Maldives',
                 'native_name' => 'Maldives',
@@ -2069,11 +1931,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MVR", "name": "Maldivian rufiyaa", "symbol": ".ރ"}]',
                 'languages' => '[{"name": "Divehi", "iso639_1": "dv", "iso639_2": "div", "nativeName": "ދިވެހި"}]',
                 'flag' => 'https://restcountries.eu/data/mdv.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            137 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            137 => [
                 'id' => 138,
                 'name' => 'Mali',
                 'native_name' => 'Mali',
@@ -2084,11 +1945,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XOF", "name": "West African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/mli.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            138 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            138 => [
                 'id' => 139,
                 'name' => 'Malta',
                 'native_name' => 'Malta',
@@ -2099,11 +1959,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Maltese", "iso639_1": "mt", "iso639_2": "mlt", "nativeName": "Malti"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/mlt.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            139 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            139 => [
                 'id' => 140,
                 'name' => 'Marshall Islands',
                 'native_name' => 'M̧ajeļ',
@@ -2114,11 +1973,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Marshallese", "iso639_1": "mh", "iso639_2": "mah", "nativeName": "Kajin M̧ajeļ"}]',
                 'flag' => 'https://restcountries.eu/data/mhl.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            140 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            140 => [
                 'id' => 141,
                 'name' => 'Martinique',
                 'native_name' => 'Martinique',
@@ -2129,11 +1987,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/mtq.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            141 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            141 => [
                 'id' => 142,
                 'name' => 'Mauritania',
                 'native_name' => 'موريتانيا',
@@ -2144,11 +2001,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MRO", "name": "Mauritanian ouguiya", "symbol": "UM"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/mrt.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            142 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            142 => [
                 'id' => 143,
                 'name' => 'Mauritius',
                 'native_name' => 'Maurice',
@@ -2159,11 +2015,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MUR", "name": "Mauritian rupee", "symbol": "₨"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/mus.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            143 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            143 => [
                 'id' => 144,
                 'name' => 'Mayotte',
                 'native_name' => 'Mayotte',
@@ -2174,11 +2029,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/myt.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            144 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            144 => [
                 'id' => 145,
                 'name' => 'Mexico',
                 'native_name' => 'México',
@@ -2189,11 +2043,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MXN", "name": "Mexican peso", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/mex.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            145 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            145 => [
                 'id' => 146,
             'name' => 'Micronesia (Federated States of)',
                 'native_name' => 'Micronesia',
@@ -2204,11 +2057,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": null, "name": "[D]", "symbol": "$"}, {"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/fsm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            146 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            146 => [
                 'id' => 147,
             'name' => 'Moldova (Republic of)',
                 'native_name' => 'Moldova',
@@ -2219,11 +2071,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MDL", "name": "Moldovan leu", "symbol": "L"}]',
                 'languages' => '[{"name": "Romanian", "iso639_1": "ro", "iso639_2": "ron", "nativeName": "Română"}]',
                 'flag' => 'https://restcountries.eu/data/mda.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            147 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            147 => [
                 'id' => 148,
                 'name' => 'Monaco',
                 'native_name' => 'Monaco',
@@ -2234,11 +2085,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/mco.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            148 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            148 => [
                 'id' => 149,
                 'name' => 'Mongolia',
                 'native_name' => 'Монгол улс',
@@ -2249,11 +2099,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MNT", "name": "Mongolian tögrög", "symbol": "₮"}]',
                 'languages' => '[{"name": "Mongolian", "iso639_1": "mn", "iso639_2": "mon", "nativeName": "Монгол хэл"}]',
                 'flag' => 'https://restcountries.eu/data/mng.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            149 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            149 => [
                 'id' => 150,
                 'name' => 'Montenegro',
                 'native_name' => 'Црна Гора',
@@ -2264,11 +2113,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Serbian", "iso639_1": "sr", "iso639_2": "srp", "nativeName": "српски језик"}, {"name": "Bosnian", "iso639_1": "bs", "iso639_2": "bos", "nativeName": "bosanski jezik"}, {"name": "Albanian", "iso639_1": "sq", "iso639_2": "sqi", "nativeName": "Shqip"}, {"name": "Croatian", "iso639_1": "hr", "iso639_2": "hrv", "nativeName": "hrvatski jezik"}]',
                 'flag' => 'https://restcountries.eu/data/mne.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            150 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            150 => [
                 'id' => 151,
                 'name' => 'Montserrat',
                 'native_name' => 'Montserrat',
@@ -2279,11 +2127,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XCD", "name": "East Caribbean dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/msr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            151 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            151 => [
                 'id' => 152,
                 'name' => 'Morocco',
                 'native_name' => 'المغرب',
@@ -2294,11 +2141,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MAD", "name": "Moroccan dirham", "symbol": "د.م."}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/mar.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            152 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            152 => [
                 'id' => 153,
                 'name' => 'Mozambique',
                 'native_name' => 'Moçambique',
@@ -2309,11 +2155,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MZN", "name": "Mozambican metical", "symbol": "MT"}]',
                 'languages' => '[{"name": "Portuguese", "iso639_1": "pt", "iso639_2": "por", "nativeName": "Português"}]',
                 'flag' => 'https://restcountries.eu/data/moz.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            153 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            153 => [
                 'id' => 154,
                 'name' => 'Myanmar',
                 'native_name' => 'Myanma',
@@ -2324,11 +2169,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MMK", "name": "Burmese kyat", "symbol": "Ks"}]',
                 'languages' => '[{"name": "Burmese", "iso639_1": "my", "iso639_2": "mya", "nativeName": "ဗမာစာ"}]',
                 'flag' => 'https://restcountries.eu/data/mmr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            154 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            154 => [
                 'id' => 155,
                 'name' => 'Namibia',
                 'native_name' => 'Namibia',
@@ -2339,11 +2183,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NAD", "name": "Namibian dollar", "symbol": "$"}, {"code": "ZAR", "name": "South African rand", "symbol": "R"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Afrikaans", "iso639_1": "af", "iso639_2": "afr", "nativeName": "Afrikaans"}]',
                 'flag' => 'https://restcountries.eu/data/nam.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            155 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            155 => [
                 'id' => 156,
                 'name' => 'Nauru',
                 'native_name' => 'Nauru',
@@ -2354,11 +2197,10 @@ class CountriesTableSeeder extends Seeder
             'currencies' => '[{"code": "AUD", "name": "Australian dollar", "symbol": "$"}, {"code": "(none)", "name": null, "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Nauruan", "iso639_1": "na", "iso639_2": "nau", "nativeName": "Dorerin Naoero"}]',
                 'flag' => 'https://restcountries.eu/data/nru.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            156 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            156 => [
                 'id' => 157,
                 'name' => 'Nepal',
                 'native_name' => 'नेपाल',
@@ -2369,11 +2211,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NPR", "name": "Nepalese rupee", "symbol": "₨"}]',
                 'languages' => '[{"name": "Nepali", "iso639_1": "ne", "iso639_2": "nep", "nativeName": "नेपाली"}]',
                 'flag' => 'https://restcountries.eu/data/npl.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            157 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            157 => [
                 'id' => 158,
                 'name' => 'Netherlands',
                 'native_name' => 'Nederland',
@@ -2384,11 +2225,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Dutch", "iso639_1": "nl", "iso639_2": "nld", "nativeName": "Nederlands"}]',
                 'flag' => 'https://restcountries.eu/data/nld.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            158 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            158 => [
                 'id' => 159,
                 'name' => 'New Caledonia',
                 'native_name' => 'Nouvelle-Calédonie',
@@ -2399,11 +2239,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XPF", "name": "CFP franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/ncl.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            159 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            159 => [
                 'id' => 160,
                 'name' => 'New Zealand',
                 'native_name' => 'New Zealand',
@@ -2414,11 +2253,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NZD", "name": "New Zealand dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Māori", "iso639_1": "mi", "iso639_2": "mri", "nativeName": "te reo Māori"}]',
                 'flag' => 'https://restcountries.eu/data/nzl.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            160 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            160 => [
                 'id' => 161,
                 'name' => 'Nicaragua',
                 'native_name' => 'Nicaragua',
@@ -2429,11 +2267,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NIO", "name": "Nicaraguan córdoba", "symbol": "C$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/nic.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            161 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            161 => [
                 'id' => 162,
                 'name' => 'Niger',
                 'native_name' => 'Niger',
@@ -2444,11 +2281,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XOF", "name": "West African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/ner.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            162 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            162 => [
                 'id' => 163,
                 'name' => 'Nigeria',
                 'native_name' => 'Nigeria',
@@ -2459,11 +2295,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NGN", "name": "Nigerian naira", "symbol": "₦"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/nga.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            163 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            163 => [
                 'id' => 164,
                 'name' => 'Niue',
                 'native_name' => 'Niuē',
@@ -2474,11 +2309,10 @@ class CountriesTableSeeder extends Seeder
             'currencies' => '[{"code": "NZD", "name": "New Zealand dollar", "symbol": "$"}, {"code": "(none)", "name": "Niue dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/niu.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            164 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            164 => [
                 'id' => 165,
                 'name' => 'Norfolk Island',
                 'native_name' => 'Norfolk Island',
@@ -2489,11 +2323,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AUD", "name": "Australian dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/nfk.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            165 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            165 => [
                 'id' => 166,
             'name' => 'Korea (Democratic People\'s Republic of)',
                 'native_name' => '북한',
@@ -2504,11 +2337,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "KPW", "name": "North Korean won", "symbol": "₩"}]',
                 'languages' => '[{"name": "Korean", "iso639_1": "ko", "iso639_2": "kor", "nativeName": "한국어"}]',
                 'flag' => 'https://restcountries.eu/data/prk.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            166 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            166 => [
                 'id' => 167,
                 'name' => 'Northern Mariana Islands',
                 'native_name' => 'Northern Mariana Islands',
@@ -2519,11 +2351,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Chamorro", "iso639_1": "ch", "iso639_2": "cha", "nativeName": "Chamoru"}]',
                 'flag' => 'https://restcountries.eu/data/mnp.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            167 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            167 => [
                 'id' => 168,
                 'name' => 'Norway',
                 'native_name' => 'Norge',
@@ -2534,11 +2365,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NOK", "name": "Norwegian krone", "symbol": "kr"}]',
                 'languages' => '[{"name": "Norwegian", "iso639_1": "no", "iso639_2": "nor", "nativeName": "Norsk"}, {"name": "Norwegian Bokmål", "iso639_1": "nb", "iso639_2": "nob", "nativeName": "Norsk bokmål"}, {"name": "Norwegian Nynorsk", "iso639_1": "nn", "iso639_2": "nno", "nativeName": "Norsk nynorsk"}]',
                 'flag' => 'https://restcountries.eu/data/nor.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            168 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            168 => [
                 'id' => 169,
                 'name' => 'Oman',
                 'native_name' => 'عمان',
@@ -2549,11 +2379,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "OMR", "name": "Omani rial", "symbol": "ر.ع."}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/omn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            169 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            169 => [
                 'id' => 170,
                 'name' => 'Pakistan',
                 'native_name' => 'Pakistan',
@@ -2564,11 +2393,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "PKR", "name": "Pakistani rupee", "symbol": "₨"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Urdu", "iso639_1": "ur", "iso639_2": "urd", "nativeName": "اردو"}]',
                 'flag' => 'https://restcountries.eu/data/pak.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            170 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            170 => [
                 'id' => 171,
                 'name' => 'Palau',
                 'native_name' => 'Palau',
@@ -2579,11 +2407,10 @@ class CountriesTableSeeder extends Seeder
             'currencies' => '[{"code": "(none)", "name": "[E]", "symbol": "$"}, {"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/plw.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            171 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            171 => [
                 'id' => 172,
                 'name' => 'Palestine, State of',
                 'native_name' => 'فلسطين',
@@ -2594,11 +2421,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ILS", "name": "Israeli new sheqel", "symbol": "₪"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/pse.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            172 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            172 => [
                 'id' => 173,
                 'name' => 'Panama',
                 'native_name' => 'Panamá',
@@ -2609,11 +2435,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "PAB", "name": "Panamanian balboa", "symbol": "B/."}, {"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/pan.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            173 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            173 => [
                 'id' => 174,
                 'name' => 'Papua New Guinea',
                 'native_name' => 'Papua Niugini',
@@ -2624,11 +2449,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "PGK", "name": "Papua New Guinean kina", "symbol": "K"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/png.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            174 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            174 => [
                 'id' => 175,
                 'name' => 'Paraguay',
                 'native_name' => 'Paraguay',
@@ -2639,11 +2463,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "PYG", "name": "Paraguayan guaraní", "symbol": "₲"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}, {"name": "Guaraní", "iso639_1": "gn", "iso639_2": "grn", "nativeName": "Avañe\'ẽ"}]',
                 'flag' => 'https://restcountries.eu/data/pry.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            175 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            175 => [
                 'id' => 176,
                 'name' => 'Peru',
                 'native_name' => 'Perú',
@@ -2654,11 +2477,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "PEN", "name": "Peruvian sol", "symbol": "S/."}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/per.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            176 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            176 => [
                 'id' => 177,
                 'name' => 'Philippines',
                 'native_name' => 'Pilipinas',
@@ -2669,11 +2491,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "PHP", "name": "Philippine peso", "symbol": "₱"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/phl.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            177 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            177 => [
                 'id' => 178,
                 'name' => 'Pitcairn',
                 'native_name' => 'Pitcairn Islands',
@@ -2684,11 +2505,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NZD", "name": "New Zealand dollar", "symbol": "$"}, {"code": null, "name": "Pitcairn Islands dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/pcn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            178 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            178 => [
                 'id' => 179,
                 'name' => 'Poland',
                 'native_name' => 'Polska',
@@ -2699,11 +2519,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "PLN", "name": "Polish złoty", "symbol": "zł"}]',
                 'languages' => '[{"name": "Polish", "iso639_1": "pl", "iso639_2": "pol", "nativeName": "język polski"}]',
                 'flag' => 'https://restcountries.eu/data/pol.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            179 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            179 => [
                 'id' => 180,
                 'name' => 'Portugal',
                 'native_name' => 'Portugal',
@@ -2714,11 +2533,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Portuguese", "iso639_1": "pt", "iso639_2": "por", "nativeName": "Português"}]',
                 'flag' => 'https://restcountries.eu/data/prt.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            180 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            180 => [
                 'id' => 181,
                 'name' => 'Puerto Rico',
                 'native_name' => 'Puerto Rico',
@@ -2729,11 +2547,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/pri.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            181 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            181 => [
                 'id' => 182,
                 'name' => 'Qatar',
                 'native_name' => 'قطر',
@@ -2744,11 +2561,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "QAR", "name": "Qatari riyal", "symbol": "ر.ق"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/qat.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            182 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            182 => [
                 'id' => 183,
                 'name' => 'Republic of Kosovo',
                 'native_name' => 'Republika e Kosovës',
@@ -2759,11 +2575,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Albanian", "iso639_1": "sq", "iso639_2": "sqi", "nativeName": "Shqip"}, {"name": "Serbian", "iso639_1": "sr", "iso639_2": "srp", "nativeName": "српски језик"}]',
                 'flag' => 'https://restcountries.eu/data/kos.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            183 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            183 => [
                 'id' => 184,
                 'name' => 'Réunion',
                 'native_name' => 'La Réunion',
@@ -2774,11 +2589,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/reu.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            184 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            184 => [
                 'id' => 185,
                 'name' => 'Romania',
                 'native_name' => 'România',
@@ -2789,11 +2603,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "RON", "name": "Romanian leu", "symbol": "lei"}]',
                 'languages' => '[{"name": "Romanian", "iso639_1": "ro", "iso639_2": "ron", "nativeName": "Română"}]',
                 'flag' => 'https://restcountries.eu/data/rou.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            185 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            185 => [
                 'id' => 186,
                 'name' => 'Russian Federation',
                 'native_name' => 'Россия',
@@ -2804,11 +2617,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "RUB", "name": "Russian ruble", "symbol": "₽"}]',
                 'languages' => '[{"name": "Russian", "iso639_1": "ru", "iso639_2": "rus", "nativeName": "Русский"}]',
                 'flag' => 'https://restcountries.eu/data/rus.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            186 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            186 => [
                 'id' => 187,
                 'name' => 'Rwanda',
                 'native_name' => 'Rwanda',
@@ -2819,11 +2631,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "RWF", "name": "Rwandan franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "Kinyarwanda", "iso639_1": "rw", "iso639_2": "kin", "nativeName": "Ikinyarwanda"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/rwa.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            187 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            187 => [
                 'id' => 188,
                 'name' => 'Saint Barthélemy',
                 'native_name' => 'Saint-Barthélemy',
@@ -2834,11 +2645,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/blm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            188 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            188 => [
                 'id' => 189,
                 'name' => 'Saint Helena, Ascension and Tristan da Cunha',
                 'native_name' => 'Saint Helena',
@@ -2849,11 +2659,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SHP", "name": "Saint Helena pound", "symbol": "£"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/shn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            189 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            189 => [
                 'id' => 190,
                 'name' => 'Saint Kitts and Nevis',
                 'native_name' => 'Saint Kitts and Nevis',
@@ -2864,11 +2673,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XCD", "name": "East Caribbean dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/kna.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            190 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            190 => [
                 'id' => 191,
                 'name' => 'Saint Lucia',
                 'native_name' => 'Saint Lucia',
@@ -2879,11 +2687,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XCD", "name": "East Caribbean dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/lca.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            191 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            191 => [
                 'id' => 192,
             'name' => 'Saint Martin (French part)',
                 'native_name' => 'Saint-Martin',
@@ -2894,11 +2701,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Dutch", "iso639_1": "nl", "iso639_2": "nld", "nativeName": "Nederlands"}]',
                 'flag' => 'https://restcountries.eu/data/maf.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            192 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            192 => [
                 'id' => 193,
                 'name' => 'Saint Pierre and Miquelon',
                 'native_name' => 'Saint-Pierre-et-Miquelon',
@@ -2909,11 +2715,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/spm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            193 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            193 => [
                 'id' => 194,
                 'name' => 'Saint Vincent and the Grenadines',
                 'native_name' => 'Saint Vincent and the Grenadines',
@@ -2924,11 +2729,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XCD", "name": "East Caribbean dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/vct.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            194 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            194 => [
                 'id' => 195,
                 'name' => 'Samoa',
                 'native_name' => 'Samoa',
@@ -2939,11 +2743,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "WST", "name": "Samoan tālā", "symbol": "T"}]',
                 'languages' => '[{"name": "Samoan", "iso639_1": "sm", "iso639_2": "smo", "nativeName": "gagana fa\'a Samoa"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/wsm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            195 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            195 => [
                 'id' => 196,
                 'name' => 'San Marino',
                 'native_name' => 'San Marino',
@@ -2954,11 +2757,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Italian", "iso639_1": "it", "iso639_2": "ita", "nativeName": "Italiano"}]',
                 'flag' => 'https://restcountries.eu/data/smr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            196 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            196 => [
                 'id' => 197,
                 'name' => 'Sao Tome and Principe',
                 'native_name' => 'São Tomé e Príncipe',
@@ -2969,11 +2771,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "STD", "name": "São Tomé and Príncipe dobra", "symbol": "Db"}]',
                 'languages' => '[{"name": "Portuguese", "iso639_1": "pt", "iso639_2": "por", "nativeName": "Português"}]',
                 'flag' => 'https://restcountries.eu/data/stp.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            197 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            197 => [
                 'id' => 198,
                 'name' => 'Saudi Arabia',
                 'native_name' => 'العربية السعودية',
@@ -2984,11 +2785,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SAR", "name": "Saudi riyal", "symbol": "ر.س"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/sau.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            198 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            198 => [
                 'id' => 199,
                 'name' => 'Senegal',
                 'native_name' => 'Sénégal',
@@ -2999,11 +2799,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XOF", "name": "West African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/sen.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            199 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            199 => [
                 'id' => 200,
                 'name' => 'Serbia',
                 'native_name' => 'Србија',
@@ -3014,11 +2813,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "RSD", "name": "Serbian dinar", "symbol": "дин."}]',
                 'languages' => '[{"name": "Serbian", "iso639_1": "sr", "iso639_2": "srp", "nativeName": "српски језик"}]',
                 'flag' => 'https://restcountries.eu/data/srb.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            200 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            200 => [
                 'id' => 201,
                 'name' => 'Seychelles',
                 'native_name' => 'Seychelles',
@@ -3029,11 +2827,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SCR", "name": "Seychellois rupee", "symbol": "₨"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/syc.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            201 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            201 => [
                 'id' => 202,
                 'name' => 'Sierra Leone',
                 'native_name' => 'Sierra Leone',
@@ -3044,11 +2841,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SLL", "name": "Sierra Leonean leone", "symbol": "Le"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/sle.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            202 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            202 => [
                 'id' => 203,
                 'name' => 'Singapore',
                 'native_name' => 'Singapore',
@@ -3059,11 +2855,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "BND", "name": "Brunei dollar", "symbol": "$"}, {"code": "SGD", "name": "Singapore dollar", "symbol": "$"}]',
             'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Malay", "iso639_1": "ms", "iso639_2": "msa", "nativeName": "bahasa Melayu"}, {"name": "Tamil", "iso639_1": "ta", "iso639_2": "tam", "nativeName": "தமிழ்"}, {"name": "Chinese", "iso639_1": "zh", "iso639_2": "zho", "nativeName": "中文 (Zhōngwén)"}]',
                 'flag' => 'https://restcountries.eu/data/sgp.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            203 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            203 => [
                 'id' => 204,
             'name' => 'Sint Maarten (Dutch part)',
                 'native_name' => 'Sint Maarten',
@@ -3074,11 +2869,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ANG", "name": "Netherlands Antillean guilder", "symbol": "ƒ"}]',
                 'languages' => '[{"name": "Dutch", "iso639_1": "nl", "iso639_2": "nld", "nativeName": "Nederlands"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/sxm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            204 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            204 => [
                 'id' => 205,
                 'name' => 'Slovakia',
                 'native_name' => 'Slovensko',
@@ -3089,11 +2883,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Slovak", "iso639_1": "sk", "iso639_2": "slk", "nativeName": "slovenčina"}]',
                 'flag' => 'https://restcountries.eu/data/svk.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            205 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            205 => [
                 'id' => 206,
                 'name' => 'Slovenia',
                 'native_name' => 'Slovenija',
@@ -3104,11 +2897,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Slovene", "iso639_1": "sl", "iso639_2": "slv", "nativeName": "slovenski jezik"}]',
                 'flag' => 'https://restcountries.eu/data/svn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            206 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            206 => [
                 'id' => 207,
                 'name' => 'Solomon Islands',
                 'native_name' => 'Solomon Islands',
@@ -3119,11 +2911,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SBD", "name": "Solomon Islands dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/slb.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            207 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            207 => [
                 'id' => 208,
                 'name' => 'Somalia',
                 'native_name' => 'Soomaaliya',
@@ -3134,11 +2925,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SOS", "name": "Somali shilling", "symbol": "Sh"}]',
                 'languages' => '[{"name": "Somali", "iso639_1": "so", "iso639_2": "som", "nativeName": "Soomaaliga"}, {"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/som.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            208 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            208 => [
                 'id' => 209,
                 'name' => 'South Africa',
                 'native_name' => 'South Africa',
@@ -3149,11 +2939,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ZAR", "name": "South African rand", "symbol": "R"}]',
                 'languages' => '[{"name": "Afrikaans", "iso639_1": "af", "iso639_2": "afr", "nativeName": "Afrikaans"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Southern Ndebele", "iso639_1": "nr", "iso639_2": "nbl", "nativeName": "isiNdebele"}, {"name": "Southern Sotho", "iso639_1": "st", "iso639_2": "sot", "nativeName": "Sesotho"}, {"name": "Swati", "iso639_1": "ss", "iso639_2": "ssw", "nativeName": "SiSwati"}, {"name": "Tswana", "iso639_1": "tn", "iso639_2": "tsn", "nativeName": "Setswana"}, {"name": "Tsonga", "iso639_1": "ts", "iso639_2": "tso", "nativeName": "Xitsonga"}, {"name": "Venda", "iso639_1": "ve", "iso639_2": "ven", "nativeName": "Tshivenḓa"}, {"name": "Xhosa", "iso639_1": "xh", "iso639_2": "xho", "nativeName": "isiXhosa"}, {"name": "Zulu", "iso639_1": "zu", "iso639_2": "zul", "nativeName": "isiZulu"}]',
                 'flag' => 'https://restcountries.eu/data/zaf.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            209 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            209 => [
                 'id' => 210,
                 'name' => 'South Georgia and the South Sandwich Islands',
                 'native_name' => 'South Georgia',
@@ -3164,11 +2953,10 @@ class CountriesTableSeeder extends Seeder
             'currencies' => '[{"code": "GBP", "name": "British pound", "symbol": "£"}, {"code": "(none)", "name": null, "symbol": "£"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/sgs.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            210 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            210 => [
                 'id' => 211,
             'name' => 'Korea (Republic of)',
                 'native_name' => '대한민국',
@@ -3179,11 +2967,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "KRW", "name": "South Korean won", "symbol": "₩"}]',
                 'languages' => '[{"name": "Korean", "iso639_1": "ko", "iso639_2": "kor", "nativeName": "한국어"}]',
                 'flag' => 'https://restcountries.eu/data/kor.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            211 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            211 => [
                 'id' => 212,
                 'name' => 'South Sudan',
                 'native_name' => 'South Sudan',
@@ -3194,11 +2981,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SSP", "name": "South Sudanese pound", "symbol": "£"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/ssd.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            212 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            212 => [
                 'id' => 213,
                 'name' => 'Spain',
                 'native_name' => 'España',
@@ -3209,11 +2995,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "EUR", "name": "Euro", "symbol": "€"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/esp.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            213 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            213 => [
                 'id' => 214,
                 'name' => 'Sri Lanka',
                 'native_name' => 'śrī laṃkāva',
@@ -3224,11 +3009,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "LKR", "name": "Sri Lankan rupee", "symbol": "Rs"}]',
                 'languages' => '[{"name": "Sinhalese", "iso639_1": "si", "iso639_2": "sin", "nativeName": "සිංහල"}, {"name": "Tamil", "iso639_1": "ta", "iso639_2": "tam", "nativeName": "தமிழ்"}]',
                 'flag' => 'https://restcountries.eu/data/lka.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            214 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            214 => [
                 'id' => 215,
                 'name' => 'Sudan',
                 'native_name' => 'السودان',
@@ -3239,11 +3023,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SDG", "name": "Sudanese pound", "symbol": "ج.س."}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/sdn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            215 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            215 => [
                 'id' => 216,
                 'name' => 'Suriname',
                 'native_name' => 'Suriname',
@@ -3254,11 +3037,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SRD", "name": "Surinamese dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "Dutch", "iso639_1": "nl", "iso639_2": "nld", "nativeName": "Nederlands"}]',
                 'flag' => 'https://restcountries.eu/data/sur.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            216 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            216 => [
                 'id' => 217,
                 'name' => 'Svalbard and Jan Mayen',
                 'native_name' => 'Svalbard og Jan Mayen',
@@ -3269,11 +3051,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NOK", "name": "Norwegian krone", "symbol": "kr"}]',
                 'languages' => '[{"name": "Norwegian", "iso639_1": "no", "iso639_2": "nor", "nativeName": "Norsk"}]',
                 'flag' => 'https://restcountries.eu/data/sjm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            217 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            217 => [
                 'id' => 218,
                 'name' => 'Swaziland',
                 'native_name' => 'Swaziland',
@@ -3284,11 +3065,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SZL", "name": "Swazi lilangeni", "symbol": "L"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Swati", "iso639_1": "ss", "iso639_2": "ssw", "nativeName": "SiSwati"}]',
                 'flag' => 'https://restcountries.eu/data/swz.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            218 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            218 => [
                 'id' => 219,
                 'name' => 'Sweden',
                 'native_name' => 'Sverige',
@@ -3299,11 +3079,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SEK", "name": "Swedish krona", "symbol": "kr"}]',
                 'languages' => '[{"name": "Swedish", "iso639_1": "sv", "iso639_2": "swe", "nativeName": "svenska"}]',
                 'flag' => 'https://restcountries.eu/data/swe.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            219 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            219 => [
                 'id' => 220,
                 'name' => 'Switzerland',
                 'native_name' => 'Schweiz',
@@ -3314,11 +3093,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "CHF", "name": "Swiss franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "German", "iso639_1": "de", "iso639_2": "deu", "nativeName": "Deutsch"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}, {"name": "Italian", "iso639_1": "it", "iso639_2": "ita", "nativeName": "Italiano"}]',
                 'flag' => 'https://restcountries.eu/data/che.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            220 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            220 => [
                 'id' => 221,
                 'name' => 'Syrian Arab Republic',
                 'native_name' => 'سوريا',
@@ -3329,11 +3107,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "SYP", "name": "Syrian pound", "symbol": "£"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/syr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            221 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            221 => [
                 'id' => 222,
                 'name' => 'Taiwan',
                 'native_name' => '臺灣',
@@ -3344,11 +3121,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "TWD", "name": "New Taiwan dollar", "symbol": "$"}]',
             'languages' => '[{"name": "Chinese", "iso639_1": "zh", "iso639_2": "zho", "nativeName": "中文 (Zhōngwén)"}]',
                 'flag' => 'https://restcountries.eu/data/twn.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            222 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            222 => [
                 'id' => 223,
                 'name' => 'Tajikistan',
                 'native_name' => 'Тоҷикистон',
@@ -3359,11 +3135,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "TJS", "name": "Tajikistani somoni", "symbol": "ЅМ"}]',
                 'languages' => '[{"name": "Tajik", "iso639_1": "tg", "iso639_2": "tgk", "nativeName": "тоҷикӣ"}, {"name": "Russian", "iso639_1": "ru", "iso639_2": "rus", "nativeName": "Русский"}]',
                 'flag' => 'https://restcountries.eu/data/tjk.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            223 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            223 => [
                 'id' => 224,
                 'name' => 'Tanzania, United Republic of',
                 'native_name' => 'Tanzania',
@@ -3374,11 +3149,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "TZS", "name": "Tanzanian shilling", "symbol": "Sh"}]',
                 'languages' => '[{"name": "Swahili", "iso639_1": "sw", "iso639_2": "swa", "nativeName": "Kiswahili"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/tza.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            224 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            224 => [
                 'id' => 225,
                 'name' => 'Thailand',
                 'native_name' => 'ประเทศไทย',
@@ -3389,11 +3163,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "THB", "name": "Thai baht", "symbol": "฿"}]',
                 'languages' => '[{"name": "Thai", "iso639_1": "th", "iso639_2": "tha", "nativeName": "ไทย"}]',
                 'flag' => 'https://restcountries.eu/data/tha.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            225 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            225 => [
                 'id' => 226,
                 'name' => 'Timor-Leste',
                 'native_name' => 'Timor-Leste',
@@ -3404,11 +3177,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}, {"code": null, "name": null, "symbol": null}]',
                 'languages' => '[{"name": "Portuguese", "iso639_1": "pt", "iso639_2": "por", "nativeName": "Português"}]',
                 'flag' => 'https://restcountries.eu/data/tls.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            226 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            226 => [
                 'id' => 227,
                 'name' => 'Togo',
                 'native_name' => 'Togo',
@@ -3419,11 +3191,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XOF", "name": "West African CFA franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/tgo.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            227 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            227 => [
                 'id' => 228,
                 'name' => 'Tokelau',
                 'native_name' => 'Tokelau',
@@ -3434,11 +3205,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "NZD", "name": "New Zealand dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/tkl.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            228 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            228 => [
                 'id' => 229,
                 'name' => 'Tonga',
                 'native_name' => 'Tonga',
@@ -3449,11 +3219,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "TOP", "name": "Tongan paʻanga", "symbol": "T$"}]',
             'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Tonga (Tonga Islands)", "iso639_1": "to", "iso639_2": "ton", "nativeName": "faka Tonga"}]',
                 'flag' => 'https://restcountries.eu/data/ton.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            229 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            229 => [
                 'id' => 230,
                 'name' => 'Trinidad and Tobago',
                 'native_name' => 'Trinidad and Tobago',
@@ -3464,11 +3233,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "TTD", "name": "Trinidad and Tobago dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/tto.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            230 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            230 => [
                 'id' => 231,
                 'name' => 'Tunisia',
                 'native_name' => 'تونس',
@@ -3479,11 +3247,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "TND", "name": "Tunisian dinar", "symbol": "د.ت"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/tun.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            231 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            231 => [
                 'id' => 232,
                 'name' => 'Turkey',
                 'native_name' => 'Türkiye',
@@ -3494,11 +3261,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "TRY", "name": "Turkish lira", "symbol": null}]',
                 'languages' => '[{"name": "Turkish", "iso639_1": "tr", "iso639_2": "tur", "nativeName": "Türkçe"}]',
                 'flag' => 'https://restcountries.eu/data/tur.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            232 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            232 => [
                 'id' => 233,
                 'name' => 'Turkmenistan',
                 'native_name' => 'Türkmenistan',
@@ -3509,11 +3275,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "TMT", "name": "Turkmenistan manat", "symbol": "m"}]',
                 'languages' => '[{"name": "Turkmen", "iso639_1": "tk", "iso639_2": "tuk", "nativeName": "Türkmen"}, {"name": "Russian", "iso639_1": "ru", "iso639_2": "rus", "nativeName": "Русский"}]',
                 'flag' => 'https://restcountries.eu/data/tkm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            233 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            233 => [
                 'id' => 234,
                 'name' => 'Turks and Caicos Islands',
                 'native_name' => 'Turks and Caicos Islands',
@@ -3524,11 +3289,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/tca.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            234 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            234 => [
                 'id' => 235,
                 'name' => 'Tuvalu',
                 'native_name' => 'Tuvalu',
@@ -3539,11 +3303,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AUD", "name": "Australian dollar", "symbol": "$"}, {"code": "TVD[G]", "name": "Tuvaluan dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/tuv.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            235 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            235 => [
                 'id' => 236,
                 'name' => 'Uganda',
                 'native_name' => 'Uganda',
@@ -3554,11 +3317,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "UGX", "name": "Ugandan shilling", "symbol": "Sh"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Swahili", "iso639_1": "sw", "iso639_2": "swa", "nativeName": "Kiswahili"}]',
                 'flag' => 'https://restcountries.eu/data/uga.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            236 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            236 => [
                 'id' => 237,
                 'name' => 'Ukraine',
                 'native_name' => 'Україна',
@@ -3569,11 +3331,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "UAH", "name": "Ukrainian hryvnia", "symbol": "₴"}]',
                 'languages' => '[{"name": "Ukrainian", "iso639_1": "uk", "iso639_2": "ukr", "nativeName": "Українська"}]',
                 'flag' => 'https://restcountries.eu/data/ukr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            237 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            237 => [
                 'id' => 238,
                 'name' => 'United Arab Emirates',
                 'native_name' => 'دولة الإمارات العربية المتحدة',
@@ -3584,11 +3345,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "AED", "name": "United Arab Emirates dirham", "symbol": "د.إ"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/are.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            238 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            238 => [
                 'id' => 239,
                 'name' => 'United Kingdom of Great Britain and Northern Ireland',
                 'native_name' => 'United Kingdom',
@@ -3599,11 +3359,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "GBP", "name": "British pound", "symbol": "£"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/gbr.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            239 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            239 => [
                 'id' => 240,
                 'name' => 'United States of America',
                 'native_name' => 'United States',
@@ -3614,11 +3373,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "USD", "name": "United States dollar", "symbol": "$"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/usa.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            240 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            240 => [
                 'id' => 241,
                 'name' => 'Uruguay',
                 'native_name' => 'Uruguay',
@@ -3629,11 +3387,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "UYU", "name": "Uruguayan peso", "symbol": "$"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/ury.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            241 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            241 => [
                 'id' => 242,
                 'name' => 'Uzbekistan',
                 'native_name' => 'O‘zbekiston',
@@ -3644,11 +3401,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "UZS", "name": "Uzbekistani so\'m", "symbol": null}]',
                 'languages' => '[{"name": "Uzbek", "iso639_1": "uz", "iso639_2": "uzb", "nativeName": "Oʻzbek"}, {"name": "Russian", "iso639_1": "ru", "iso639_2": "rus", "nativeName": "Русский"}]',
                 'flag' => 'https://restcountries.eu/data/uzb.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            242 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            242 => [
                 'id' => 243,
                 'name' => 'Vanuatu',
                 'native_name' => 'Vanuatu',
@@ -3659,11 +3415,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "VUV", "name": "Vanuatu vatu", "symbol": "Vt"}]',
                 'languages' => '[{"name": "Bislama", "iso639_1": "bi", "iso639_2": "bis", "nativeName": "Bislama"}, {"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/vut.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            243 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            243 => [
                 'id' => 244,
             'name' => 'Venezuela (Bolivarian Republic of)',
                 'native_name' => 'Venezuela',
@@ -3674,11 +3429,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "VEF", "name": "Venezuelan bolívar", "symbol": "Bs F"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/ven.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            244 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            244 => [
                 'id' => 245,
                 'name' => 'Viet Nam',
                 'native_name' => 'Việt Nam',
@@ -3689,11 +3443,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "VND", "name": "Vietnamese đồng", "symbol": "₫"}]',
                 'languages' => '[{"name": "Vietnamese", "iso639_1": "vi", "iso639_2": "vie", "nativeName": "Tiếng Việt"}]',
                 'flag' => 'https://restcountries.eu/data/vnm.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            245 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            245 => [
                 'id' => 246,
                 'name' => 'Wallis and Futuna',
                 'native_name' => 'Wallis et Futuna',
@@ -3704,11 +3457,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "XPF", "name": "CFP franc", "symbol": "Fr"}]',
                 'languages' => '[{"name": "French", "iso639_1": "fr", "iso639_2": "fra", "nativeName": "français"}]',
                 'flag' => 'https://restcountries.eu/data/wlf.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            246 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            246 => [
                 'id' => 247,
                 'name' => 'Western Sahara',
                 'native_name' => 'الصحراء الغربية',
@@ -3719,11 +3471,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "MAD", "name": "Moroccan dirham", "symbol": "د.م."}, {"code": "DZD", "name": "Algerian dinar", "symbol": "د.ج"}]',
                 'languages' => '[{"name": "Spanish", "iso639_1": "es", "iso639_2": "spa", "nativeName": "Español"}]',
                 'flag' => 'https://restcountries.eu/data/esh.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            247 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            247 => [
                 'id' => 248,
                 'name' => 'Yemen',
                 'native_name' => 'اليَمَن',
@@ -3734,11 +3485,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "YER", "name": "Yemeni rial", "symbol": "﷼"}]',
                 'languages' => '[{"name": "Arabic", "iso639_1": "ar", "iso639_2": "ara", "nativeName": "العربية"}]',
                 'flag' => 'https://restcountries.eu/data/yem.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            248 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            248 => [
                 'id' => 249,
                 'name' => 'Zambia',
                 'native_name' => 'Zambia',
@@ -3749,11 +3499,10 @@ class CountriesTableSeeder extends Seeder
                 'currencies' => '[{"code": "ZMW", "name": "Zambian kwacha", "symbol": "ZK"}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}]',
                 'flag' => 'https://restcountries.eu/data/zmb.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            249 => 
-            array (
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            249 => [
                 'id' => 250,
                 'name' => 'Zimbabwe',
                 'native_name' => 'Zimbabwe',
@@ -3764,11 +3513,9 @@ class CountriesTableSeeder extends Seeder
             'currencies' => '[{"code": "BWP", "name": "Botswana pula", "symbol": "P"}, {"code": "GBP", "name": "British pound", "symbol": "£"}, {"code": "CNY", "name": "Chinese yuan", "symbol": "¥"}, {"code": "EUR", "name": "Euro", "symbol": "€"}, {"code": "INR", "name": "Indian rupee", "symbol": "₹"}, {"code": "JPY", "name": "Japanese yen", "symbol": "¥"}, {"code": "ZAR", "name": "South African rand", "symbol": "Rs"}, {"code": "USD", "name": "United States dollar", "symbol": "$"}, {"code": "(none)", "name": null, "symbol": null}]',
                 'languages' => '[{"name": "English", "iso639_1": "en", "iso639_2": "eng", "nativeName": "English"}, {"name": "Shona", "iso639_1": "sn", "iso639_2": "sna", "nativeName": "chiShona"}, {"name": "Northern Ndebele", "iso639_1": "nd", "iso639_2": "nde", "nativeName": "isiNdebele"}]',
                 'flag' => 'https://restcountries.eu/data/zwe.svg',
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-        ));
-        
-        
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+        ]);
     }
 }

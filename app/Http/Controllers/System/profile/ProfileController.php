@@ -12,14 +12,16 @@ class ProfileController extends ResourceController
         parent::__construct($profileService);
     }
 
-    public function storeValidationRequest(){
+    public function storeValidationRequest()
+    {
         return  'App\Http\Requests\system\profileRequest';
     }
-    
+
     public function moduleName()
     {
         return 'profile';
     }
+
     public function viewFolder()
     {
         return 'system.profile';

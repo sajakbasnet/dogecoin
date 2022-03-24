@@ -21,8 +21,8 @@ class LoginLogService extends Service
             $query->select($selectedColumns);
         }
         if (isset($data->from) && isset($data->to)) {
-            $from = Carbon::createFromFormat('Y-m-d H:i:s', $data->from . ' 00:00:00');
-            $to = Carbon::createFromFormat('Y-m-d H:i:s', $data->to . ' 23:59:00');
+            $from = Carbon::createFromFormat('Y-m-d H:i:s', $data->from.' 00:00:00');
+            $to = Carbon::createFromFormat('Y-m-d H:i:s', $data->to.' 23:59:00');
             $query->whereBetween('created_at', [$from, $to]);
         }
         if ($pagination) {
@@ -35,7 +35,7 @@ class LoginLogService extends Service
     public function indexPageData($data)
     {
         return [
-            'items' => $this->getAllData($data)
+            'items' => $this->getAllData($data),
         ];
     }
 }

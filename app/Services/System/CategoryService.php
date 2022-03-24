@@ -18,7 +18,6 @@ class CategoryService extends Service
     //     ];
     // }
 
-    
     // public function singleData($id)
     // {
     //     return $this->itemByIdentifier($id);

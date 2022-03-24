@@ -16,10 +16,11 @@ class SocialService
         $existingUser = $this->user->where([
             ['email', $userData['email']],
             ['provider', $userData['provider']],
-            ['provider_user_id', $userData['sub'] ?? $userData['id']]
+            ['provider_user_id', $userData['sub'] ?? $userData['id']],
         ])->first();
         if (empty($existingUser)) {
             $parsedUserData = $this->parsedUserData($userData);
+
             return $this->user->create($parsedUserData);
         } else {
             return $existingUser;
@@ -34,7 +35,7 @@ class SocialService
             'email' => $data['email'] ?? $data->getEmail() ?? null,
             'name' => $data['name'] ?? null,
             'provider' => $data['provider'] ?? null,
-            'provider_user_id' => $data['sub'] ?? $data['id'] ?? $data->getId() ?? null
+            'provider_user_id' => $data['sub'] ?? $data['id'] ?? $data->getId() ?? null,
         ];
     }
 }

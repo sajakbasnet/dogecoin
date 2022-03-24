@@ -1,10 +1,11 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\User;
+use Config;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Config;
 
 class UserSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = User::where('id', 1)->first();
-        if(!isset($user)){
+        if (! isset($user)) {
             User::create([
                 'name' => 'Admin',
                 'email'=> Config::get('constants.ADMIN_DEFAULT_EMAIL'),

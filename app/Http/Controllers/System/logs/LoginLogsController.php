@@ -7,7 +7,8 @@ use App\Services\System\LoginLogService;
 
 class LoginLogsController extends ResourceController
 {
-    public function __construct(LoginLogService $loginService){
+    public function __construct(LoginLogService $loginService)
+    {
         parent::__construct($loginService);
     }
 

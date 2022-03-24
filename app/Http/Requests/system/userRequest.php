@@ -26,16 +26,16 @@ class userRequest extends FormRequest
     {
         $validate = [
             'name' => 'required',
-            'role_id' => 'required'
+            'role_id' => 'required',
         ];
 
-        if ($request->method() == "POST") {
+        if ($request->method() == 'POST') {
             $validate = array_merge($validate, [
                 'username' => 'required|unique:users,username',
                 'email' => 'required|email|unique:users,email',
             ]);
         }
-        if ($request->method() == "PUT") {
+        if ($request->method() == 'PUT') {
             $validate = array_merge($validate, [
                 'username' => 'required|unique:users,username,'.$request->user,
                 'email' => 'required|email|unique:users,email,'.$request->user,
@@ -45,7 +45,7 @@ class userRequest extends FormRequest
         if ($request->set_password_status == 1) {
             $validate = array_merge($validate, [
                 'password' => 'required|confirmed|min:6',
-                'password_confirmation' => 'required'
+                'password_confirmation' => 'required',
             ]);
         }
 
