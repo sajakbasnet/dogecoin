@@ -154,5 +154,5 @@ $finder = Finder::create()
     ->ignoreVCS(true);
 
 return Config::create()
-    ->setRules([$rules∂∂∂])
+    ->setRules([$rules])
     ->setFinder($finder);
