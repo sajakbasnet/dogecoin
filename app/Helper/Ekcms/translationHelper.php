@@ -1,7 +1,6 @@
 <?php
 
 use App\Model\Language;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Spatie\TranslationLoader\LanguageLine;
 
@@ -58,7 +57,7 @@ function translateValidationErrorsOfApi($content, $data = [], $group = 'frontend
 
 //frontend tranalation function
 
-function frontTrans($content, $data = [], $group = 'frontend')
+function frontTrans($details, $data = [], $group = 'frontend')
 {
-    return translate($content, $data, $group);
+    return translate($details, $data, $group);
 }
