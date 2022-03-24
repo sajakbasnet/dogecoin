@@ -5,7 +5,7 @@ namespace App\Http\Controllers\System\category;
 use App\Http\Controllers\System\ResourceController;
 use App\Services\System\CategoryService;
 
-class CategoryController extends ResourceController
+class categoryController extends ResourceController
 {
     public function __construct(CategoryService $categoryService)
     {

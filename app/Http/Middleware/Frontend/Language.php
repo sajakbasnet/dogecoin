@@ -17,6 +17,7 @@ class Language
     {
         $locale = $request->header('locale') ?? 'en';
         app()->setlocale($locale);
+
         return $next($request);
     }
 }

@@ -3,11 +3,11 @@
 namespace App\Mail\system;
 
 use App\Traits\Mail;
+use Cookie;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Cookie;
 
 class TwoFAEmail extends Mailable
 {
@@ -22,7 +22,6 @@ class TwoFAEmail extends Mailable
     {
         $this->user = $data;
         $this->locale = Cookie::get('lang');
-
     }
 
     /**
@@ -34,8 +33,9 @@ class TwoFAEmail extends Mailable
     {
         $content = $this->parseEmailTemplate([
             '%user_name%' => $this->user->name,
-            '%verification_code%' => session()->get('verification_code')
+            '%verification_code%' => session()->get('verification_code'),
         ], 'TwoFAEmail', $this->locale);
+
         return $this->view('system.mail.index', compact('content'));
     }
 }

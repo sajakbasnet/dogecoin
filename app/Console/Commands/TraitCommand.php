@@ -1,22 +1,25 @@
 <?php
 
 namespace App\Console\Commands;
+
 use Illuminate\Console\GeneratorCommand;
 
 class TraitCommand extends GeneratorCommand
 {
-  /**
+    /**
      * The name and signature of the console command.
      *
      * @var string
      */
     protected $name = 'make:trait';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new trait';
+
     /**
      * Get the stub file for the generator.
      *
@@ -26,6 +29,7 @@ class TraitCommand extends GeneratorCommand
     {
         return __DIR__.'/stubs/trait.stub';
     }
+
     /**
      * Get the default namespace for the class.
      *

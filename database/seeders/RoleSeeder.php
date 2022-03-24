@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\Model\Role;
@@ -14,10 +15,10 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $superUser = Role::where('id', 1)->first();
-        if(!isset($superUser)){
+        if (! isset($superUser)) {
             Role::create([
                 'id' => 1,
-                'name' => 'superuser'
+                'name' => 'superuser',
             ]);
         }
     }

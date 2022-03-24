@@ -27,11 +27,12 @@ class languageRequest extends FormRequest
         return [
             'country_id' => ['required', new checkCountryExist],
             'language_code' => 'required|unique:languages,language_code',
-            'group' => 'required|in:backend,frontend'
+            'group' => 'required|in:backend,frontend',
         ];
     }
 
-    public function messages(){
+    public function messages()
+    {
         return [
             'country_id.required' => 'The country field is required.',
             'language_code.required' => 'The language field is required.',

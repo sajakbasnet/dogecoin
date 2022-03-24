@@ -12,12 +12,14 @@ function authUser()
 
 function setRoleCache($user)
 {
-    return \Cache::put('role-' . $user->id, $user->role);
+    return \Cache::put('role-'.$user->id, $user->role);
 }
-function getRoleCache($user){
+function getRoleCache($user)
+{
     return \Cache::get('role-'.$user->id);
 }
-function clearRoleCache($user){
+function clearRoleCache($user)
+{
     return \Cache::forget('role-'.$user->id);
 }
 function frontendUser()
@@ -26,14 +28,14 @@ function frontendUser()
 }
 function getCmsConfig($label)
 {
-    $value = "";
-    if ($label == "cms title") {
+    $value = '';
+    if ($label == 'cms title') {
         $con = 'title';
-    } elseif ($label == "cms logo") {
+    } elseif ($label == 'cms logo') {
         $con = 'logo';
-    } elseif ($label == "cms theme color") {
+    } elseif ($label == 'cms theme color') {
         $con = 'color';
-    } 
+    }
     $data = Cookie::get($con);
     if (isset($data) || $data !== null) {
         $value = $data;
@@ -41,6 +43,7 @@ function getCmsConfig($label)
         $data = conf::where('label', $label)->first()->value;
         $value = $data;
     }
+
     return $value;
 }
 function generateToken($length)
@@ -56,7 +59,6 @@ function showInSideBar($check)
 function modules()
 {
     return Config::get('cmsConfig.modules');
-    
 }
 
 function configTypes()
@@ -67,7 +69,6 @@ function configTypes()
 function globalLanguages()
 {
     return Language::where('group', 'backend')->get();
-    
 }
 
 function setConfigCookie()
@@ -92,24 +93,28 @@ function storeLog($performedOn, $msg)
     $now = Carbon::now()->format('Y-m-d H:i:s');
     activity()
         ->performedOn($performedOn)
-        ->log($msg . ' at ' . $now);
+        ->log($msg.' at '.$now);
 }
 
 function logMessage($modelName, $modelId, $eventName)
 {
     $user = authUser()->name ?? '--';
     $now = Carbon::now()->format('Y-m-d H:i:s');
+
     return "$modelName of id {$modelId} was <strong>{$eventName}</strong> by {$user} at {$now}.";
 }
 
-function pageIndex($items){
+function pageIndex($items)
+{
     $sn = 0;
-    if(method_exists($items, 'perPage') && method_exists($items, 'currentPage')){
-        $sn =$items->perPage() * ($items->currentPage()-1);
+    if (method_exists($items, 'perPage') && method_exists($items, 'currentPage')) {
+        $sn = $items->perPage() * ($items->currentPage() - 1);
     }
+
     return $sn;
 }
 
-function SN($sn, $key){
-    return $sn+=$key+1;
+function SN($sn, $key)
+{
+    return $sn += $key + 1;
 }

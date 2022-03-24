@@ -37,22 +37,25 @@ class TranslationController extends ResourceController
     {
         $request = app()->make($this->storeValidationRequest());
         $this->service->update($request, $id);
-        return response()->json(["status" => "OK"], 200);
+
+        return response()->json(['status' => 'OK'], 200);
     }
 
     public function downloadSample()
     {
         $file_path = public_path('sampleTranslation/sample.xls');
+
         return response()->download($file_path);
     }
 
     public function downloadExcel(Request $request, $group)
     {
-        if ($group == "frontend") {
-            $filename = "frontend.xls";
+        if ($group == 'frontend') {
+            $filename = 'frontend.xls';
         } else {
-            $filename = "backend.xls";
+            $filename = 'backend.xls';
         }
+
         return \Excel::download(new TranslationExport($group), $filename);
     }
 
@@ -60,10 +63,10 @@ class TranslationController extends ResourceController
     {
         $file = $request->excel_file;
         $fileExtension = $file->getClientOriginalExtension();
-        if (!in_array($fileExtension, ['xlsx', 'xls'])) {
+        if (! in_array($fileExtension, ['xlsx', 'xls'])) {
             return back()->withErrors(['alert-danger' => 'The file type must be xls or xlsx!']);
         }
-        if (!in_array($group, ['frontend', 'backend'])) {
+        if (! in_array($group, ['frontend', 'backend'])) {
             return back()->withErrors(['alert-danger' => 'Please select the valid group.']);
         }
         try {
@@ -95,43 +98,46 @@ class TranslationController extends ResourceController
 
     public function removeSpacesHeading($heading)
     {
-        $removed = array();
+        $removed = [];
         foreach ($heading as $key => $value) {
             $removed[$key] = strtolower(trim($value));
         }
+
         return $removed;
     }
 
     public function parseAndUploadData($data, $heading, $group)
     {
-        $arrayT = array();
+        $arrayT = [];
 
         foreach ($data[0] as $key => $value) {
-            $word = strtolower(trim(str_replace(".", "", $value[0])));
+            $word = strtolower(trim(str_replace('.', '', $value[0])));
             $lang = LanguageLine::where('group', $group)->where('key', $word)->first();
             $updated = $this->formatText($value, $heading);
             if (isset($lang) || $lang !== null) {
                 $lang->update([
-                    'text' => $updated
+                    'text' => $updated,
                 ]);
             } else {
                 LanguageLine::create([
                     'key' => $word,
                     'group' => $group,
-                    'text' => $updated
+                    'text' => $updated,
                 ]);
             }
         }
+
         return $arrayT;
     }
 
     public function formatText($data, $heading)
     {
         unset($data[0]); // removing key field
-        $arrayT = array();
+        $arrayT = [];
         foreach ($data as $key => $value) {
             $arrayT[$heading[$key]] = $value;
         }
+
         return $arrayT;
     }
 }

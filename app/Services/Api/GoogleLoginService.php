@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services\Api;
 
 use App\Exceptions\Api\EmailIdNotFound;
@@ -6,9 +7,10 @@ use GuzzleHttp\Client;
 
 class GoogleLoginService
 {
-    public function googleUserData($accessToken){
+    public function googleUserData($accessToken)
+    {
         $http = new Client();
-        $url = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=" . $accessToken;
+        $url = 'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='.$accessToken;
         $response = $http->get(
             $url
         );
@@ -17,6 +19,7 @@ class GoogleLoginService
         if (empty($data['email'])) {
             throw new EmailIdNotFound();
         }
+
         return $data;
     }
 }

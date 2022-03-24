@@ -12,12 +12,12 @@ class LanguageController extends ResourceController
     {
         parent::__construct($languageService);
     }
-    
+
     public function storeValidationRequest()
     {
         return 'App\Http\Requests\system\languageRequest';
     }
-    
+
     public function moduleName()
     {
         return 'languages';
@@ -32,6 +32,7 @@ class LanguageController extends ResourceController
     {
         Cookie::queue('lang', $lang, 20000);
         session()->put('lang', $lang);
+
         return back();
     }
 }

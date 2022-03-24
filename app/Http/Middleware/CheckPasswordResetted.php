@@ -15,9 +15,10 @@ class CheckPasswordResetted
      */
     public function handle($request, Closure $next)
     {
-        if(authUser()->password_resetted == 0){
+        if (authUser()->password_resetted == 0) {
             return redirect(route('change.password'));
         }
+
         return $next($request);
     }
 }

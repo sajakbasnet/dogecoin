@@ -5,18 +5,20 @@ namespace App\Http\Controllers\System\systemConfig;
 use App\Http\Controllers\System\ResourceController;
 use App\Services\System\EmailTemplateService;
 
-class EmailTemplateController extends ResourceController
+class emailTemplateController extends ResourceController
 {
-    public function __construct(EmailTemplateService $emailtemplateService){
-       parent::__construct($emailtemplateService);
+    public function __construct(EmailTemplateService $emailtemplateService)
+    {
+        parent::__construct($emailtemplateService);
     }
 
     public function storeValidationRequest()
     {
         return 'App\Http\Requests\system\emailTemplateRequest';
     }
-    
-    public function moduleName(){
+
+    public function moduleName()
+    {
         return 'email-templates';
     }
 

@@ -25,7 +25,7 @@ class UserService extends Service
     {
         $query = $this->query();
         if (isset($data->keyword) && $data->keyword !== null) {
-            $query->where('name', 'LIKE', '%' . $data->keyword . '%');
+            $query->where('name', 'LIKE', '%'.$data->keyword.'%');
         }
         if (isset($data->role) && $data->role !== null) {
             $query->where('role_id', $data->role);
@@ -36,15 +36,18 @@ class UserService extends Service
         if ($pagination) {
             return $query->orderBy('id', 'DESC')->with('role')->paginate(PAGINATE);
         }
+
         return $query->orderBy('id', 'DESC')->with('role')->get();
     }
+
     public function getRoles()
     {
-        $mapped = array();
+        $mapped = [];
         $roles = $this->role->orderBy('name', 'ASC')->get();
         foreach ($roles as $role) {
             $mapped[$role->id] = $role->name;
         }
+
         return $mapped;
     }
 
@@ -52,14 +55,14 @@ class UserService extends Service
     {
         return [
             'items' => $this->getAllData($request),
-            'roles' => $this->getRoles()
+            'roles' => $this->getRoles(),
         ];
     }
 
     public function createPageData($request)
     {
         return [
-            'roles' => $this->getRoles()
+            'roles' => $this->getRoles(),
         ];
     }
 
@@ -77,6 +80,7 @@ class UserService extends Service
             $user = $this->model->create($data);
             try {
                 event(new UserCreated($user, $token));
+
                 return $user;
             } catch (\Exception $e) {
             }
@@ -86,9 +90,10 @@ class UserService extends Service
     public function editPageData($request, $id)
     {
         $user = $this->itemByIdentifier($id);
+
         return [
             'item' => $user,
-            'roles' => $this->getRoles()
+            'roles' => $this->getRoles(),
         ];
     }
 
@@ -100,6 +105,7 @@ class UserService extends Service
             if (isset($request->role_id) && ($user->id == 1 && $request->role_id != 1)) {
                 throw new RoleNotChangeableException('The role of the specific user cannot be changed.');
             }
+
             return $user->update($data);
         } catch (\Exception $e) {
             throw new CustomGenericException($e->getMessage());
@@ -112,6 +118,7 @@ class UserService extends Service
             throw new NotDeletableException();
         }
         $user = $this->itemByIdentifier($id);
+
         return $user->delete();
     }
 
@@ -122,6 +129,7 @@ class UserService extends Service
         if ($check) {
             $token = generateToken($length);
         }
+
         return $token;
     }
 
@@ -133,25 +141,29 @@ class UserService extends Service
             throw new EncryptedPayloadException('Invalid encrypted data');
         }
         $user = $this->model->where('email', $email)->where('token', $decryptedToken)->first();
-        if (!isset($user)) {
+        if (! isset($user)) {
             throw new ResourceNotFoundException("User doesn't exist in our system.");
         }
+
         return $user;
     }
+
     public function findByEmail($email)
     {
         $user = $this->model->where('email', $email)->first();
-        if (!isset($user)) {
+        if (! isset($user)) {
             throw new ResourceNotFoundException("User doesn't exist in our system.");
         }
+
         return $user;
     }
 
     public function resetPassword($request)
     {
         $user = $this->itemByIdentifier($request->id);
+
         return $user->update([
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
         ]);
     }
 }

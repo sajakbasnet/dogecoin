@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services\System;
+
 use App\Mail\system\TestMail;
 use App\MailTest;
 use App\Services\Service;
@@ -13,8 +14,8 @@ class MailService extends Service
         parent::__construct($mailTest);
     }
 
-    public function sendMail($request){
-        
+    public function sendMail($request)
+    {
         return Mail::to($request->toemail)->send(new TestMail($request->all()));
     }
 }

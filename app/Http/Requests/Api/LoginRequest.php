@@ -27,11 +27,11 @@ class LoginRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            "clientId" => ['required', new checkClienttId],
-            "clientSecret" => ['required', new checkClientSecret($request->clientId)],
-            "grantType" => 'required|in:password',
-            "email" => ['requiredIf:grantType,password', new checkUserExists($request->password)],
-            "password" => 'required'
+            'clientId' => ['required', new checkClienttId],
+            'clientSecret' => ['required', new checkClientSecret($request->clientId)],
+            'grantType' => 'required|in:password',
+            'email' => ['requiredIf:grantType,password', new checkUserExists($request->password)],
+            'password' => 'required',
         ];
     }
 }

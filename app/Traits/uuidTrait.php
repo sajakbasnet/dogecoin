@@ -18,6 +18,7 @@ trait uuidTrait
             }
         });
     }
+
     /**
      * Get the value indicating whether the IDs are incrementing.
      *
@@ -27,6 +28,7 @@ trait uuidTrait
     {
         return false;
     }
+
     /**
      * Get the auto-incrementing key type.
      *

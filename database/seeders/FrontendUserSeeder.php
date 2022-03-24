@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\Model\FrontendUser;
@@ -19,7 +20,7 @@ class FrontendUserSeeder extends Seeder
             'name' => 'pramesh',
             'username' => 'pramesh',
             'email' => 'prmshzk+2@gmail.com',
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
         ]);
     }
 }

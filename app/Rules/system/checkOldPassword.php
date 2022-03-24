@@ -27,11 +27,11 @@ class checkOldPassword implements Rule
     public function passes($attribute, $value)
     {
         $profile = User::find(authUser()->id);
-        if (!isset($profile)) {
+        if (! isset($profile)) {
             return false;
         }
 
-        if (!Hash::check($value, $profile->password)) {
+        if (! Hash::check($value, $profile->password)) {
             return false;
         }
 

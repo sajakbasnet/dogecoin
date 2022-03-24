@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests\Api;
+
 class CategoryRequest extends FormRequest
 {
     /**
@@ -24,7 +25,7 @@ class CategoryRequest extends FormRequest
             'name' => 'required',
             'attributes' => 'required',
             'description' => 'required',
-            'status' => 'required'
+            'status' => 'required',
         ];
     }
 }

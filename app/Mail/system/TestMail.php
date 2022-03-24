@@ -29,7 +29,7 @@ class TestMail extends Mailable
     public function build()
     {
         return $this->subject($this->data['subject'])
-        ->from($this->data['fromemail'], $this->data['fromname'])    
+        ->from($this->data['fromemail'], $this->data['fromname'])
         ->view('system.mailtest.mail')->with('detail', $this->data);
     }
 }

@@ -30,8 +30,9 @@ class SocialGrant extends AbstractGrant
         $this->setRefreshTokenRepository($refreshTokenRepository);
         $this->refreshTokenTTL = new \DateInterval('P1M');
     }
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function respondToAccessTokenRequest(
         ServerRequestInterface $request,
@@ -54,6 +55,7 @@ class SocialGrant extends AbstractGrant
 
         return $responseType;
     }
+
     /**
      * @param ServerRequestInterface $request
      * @param ClientEntityInterface  $client
@@ -77,22 +79,30 @@ class SocialGrant extends AbstractGrant
             $this->getEmitter()->emit(new RequestEvent(RequestEvent::USER_AUTHENTICATION_FAILED, $request));
             throw OAuthServerException::invalidCredentials();
         }
+
         return $user;
     }
+
     private function getUserFromSocialNetwork(Request $request)
     {
         $provider = config('auth.guards.api.provider');
-        if (is_null($model = config('auth.providers.' . $provider . '.model'))) {
+        if (is_null($model = config('auth.providers.'.$provider.'.model'))) {
             throw new RuntimeException('Unable to determine authentication model from configuration.');
         }
         $socialAccount = FrontendUser::where('provider', $request->provider)->where('provider_user_id', $request->provider_user_id)->first();
-        if (!$socialAccount) {return false;}
+        if (! $socialAccount) {
+            return false;
+        }
         $user = $socialAccount;
-        if (!$user) {return false;}
+        if (! $user) {
+            return false;
+        }
+
         return new User($user->getAuthIdentifier());
     }
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getIdentifier()
     {

@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\System;
+
 use Illuminate\Http\Request;
 
-class IndexController extends ResourceController
+class indexController extends ResourceController
 {
     public function __construct()
     {
@@ -14,9 +15,10 @@ class IndexController extends ResourceController
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request, $id = "")
+    public function index(Request $request, $id = '')
     {
         $data['breadcrumbs'] = $this->breadcrumbForIndex();
+
         return $this->renderView('index', $data);
     }
 

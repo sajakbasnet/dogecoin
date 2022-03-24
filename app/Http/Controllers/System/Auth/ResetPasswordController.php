@@ -6,9 +6,9 @@ use App\Exceptions\CustomGenericException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\system\setResetRequest;
 use App\Services\System\UserService;
+use Config;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
-use Config;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -26,6 +26,7 @@ class ResetPasswordController extends Controller
     */
 
     use ResetsPasswords;
+
     public function __construct(UserService $user)
     {
         $this->service = $user;
@@ -35,12 +36,13 @@ class ResetPasswordController extends Controller
     {
         try {
             $data['title'] = 'Set Password';
-            if ($request->route()->getName() == "reset.password") {
+            if ($request->route()->getName() == 'reset.password') {
                 $data['title'] = 'Reset Password';
             }
             $this->service->findByEmailAndToken($request->email, $request->token);
             $data['email'] = $request->email;
             $data['token'] = $request->token;
+
             return view('system.auth.setPassword', $data);
         } catch (\Exception $e) {
             throw new NotFoundHttpException();
@@ -50,12 +52,13 @@ class ResetPasswordController extends Controller
     public function handleSetResetPassword(setResetRequest $request)
     {
         if ($this->setResetPassword($request)) {
-            $redirect = redirect(PREFIX . '/login');
+            $redirect = redirect(PREFIX.'/login');
             $msg = ['alert-success' => 'Password has been successfully set.'];
         } else {
             $redirect = back();
             $msg = ['alert-danger' => 'Please provide the new password.'];
         }
+
         return $redirect->withErrors($msg);
     }
 
@@ -73,7 +76,7 @@ class ResetPasswordController extends Controller
                 $user->update([
                     'password' => $password,
                     'password_resetted' => 1,
-                    'token' => $this->service->generateToken(24)
+                    'token' => $this->service->generateToken(24),
                 ]);
 
                 return true;
@@ -95,6 +98,7 @@ class ResetPasswordController extends Controller
                 break;
             }
         }
+
         return $check;
     }
 }

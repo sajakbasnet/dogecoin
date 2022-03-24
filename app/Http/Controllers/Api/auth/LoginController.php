@@ -8,9 +8,8 @@ use App\Http\Requests\Api\RefreshTokenRequest;
 use App\Http\Requests\Api\SocialLoginRequest;
 use App\Services\Api\LoginService;
 use App\Transformers\TokenTransformer;
-use League\Fractal\Manager;
 use GuzzleHttp\Exception\ClientException;
-
+use League\Fractal\Manager;
 
 class LoginController extends ApiController
 {
@@ -19,6 +18,7 @@ class LoginController extends ApiController
         parent::__construct(new Manager());
         $this->service = $service;
     }
+
     public function login(LoginRequest $request)
     {
         try {
@@ -38,15 +38,16 @@ class LoginController extends ApiController
     public function socialLogin(SocialLoginRequest $request)
     {
         try {
-            if ($request->provider == "google") {
+            if ($request->provider == 'google') {
                 $tokenData = $this->service->loginWithgoogle($request);
-            } elseif ($request->provider == "facebook") {
+            } elseif ($request->provider == 'facebook') {
                 $tokenData = $this->service->loginWithFacebook($request);
-            } elseif ($request->provider == "apple") {
+            } elseif ($request->provider == 'apple') {
                 $tokenData = $this->service->loginWithApple($request);
             } else {
                 return $this->errorInternalError('Social-login setup needs to be done.');
             }
+
             return $this->respondWithItem($tokenData, new TokenTransformer, 'social-login');
         } catch (ClientException $e) {
             return $this->errorInternalError('Expired Token.');
@@ -58,7 +59,6 @@ class LoginController extends ApiController
     public function refreshToken(RefreshTokenRequest $request)
     {
         try {
-
             $data = $request->all();
             $data = $this->service->parseFormat($data);
             $data['refresh_token'] = $data['refreshToken'];

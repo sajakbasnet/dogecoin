@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 use App\Services\System\LanguageService;
 use Closure;
-use Illuminate\Support\Facades\View;
 use Config;
 use Cookie;
+use Illuminate\Support\Facades\View;
 
 class Language
 {
@@ -17,11 +17,11 @@ class Language
      * @param  \Closure  $next
      * @return mixed
      */
-
     public function __construct(LanguageService $languageService)
     {
         $this->languageService = $languageService;
     }
+
     public function handle($request, Closure $next)
     {
         if (Cookie::get('lang') !== null) {
@@ -34,7 +34,6 @@ class Language
         app()->setlocale($locale);
         View::share('globalLocale', $locale);
 
-     
         return $next($request);
     }
 }

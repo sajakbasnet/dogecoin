@@ -30,9 +30,11 @@ class ForgotPasswordController extends Controller
     {
         $this->user = $user;
     }
+
     public function showRequestForm()
     {
         $title = 'Forgot-password';
+
         return view('system.auth.forgotPassword', compact('title'));
     }
 
@@ -53,7 +55,7 @@ class ForgotPasswordController extends Controller
 
             $this->sendPasswordResetLink($request->email);
 
-            return back()->withErrors(['alert-success' => "Password reset link has been sent to your email."]);
+            return back()->withErrors(['alert-success' => 'Password reset link has been sent to your email.']);
         } catch (\Exception $e) {
             throw new CustomGenericException($e->getMessage());
         }
@@ -65,7 +67,7 @@ class ForgotPasswordController extends Controller
         $token = $this->user->generateToken(24);
         $encryptedToken = encrypt($token);
         $user->update([
-            'token' => $token
+            'token' => $token,
         ]);
         Mail::to($user->email)->send(new PasswordResetEmail($user, $encryptedToken));
     }

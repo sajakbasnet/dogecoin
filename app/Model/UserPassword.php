@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserPassword extends Model
 {
     protected $fillable = [
-        'user_id', 'password'
+        'user_id', 'password',
     ];
 
     public function users()

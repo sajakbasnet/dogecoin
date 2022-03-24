@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Mail;
 class VerificationController extends Controller
 {
     use CustomThrottleRequest;
+
     public function showVerifyPage()
     {
         return view('system.auth.verify');
@@ -36,6 +37,7 @@ class VerificationController extends Controller
             session()->forget('verification_code');
             session()->put('verification_code', $verification_code);
             Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
+
             return back()->withErrors(['alert-success' => 'Verification code sent to your email.']);
         } catch (\Exception $e) {
             throw new CustomGenericException($e->getMessage());
@@ -59,7 +61,8 @@ class VerificationController extends Controller
             $code = $request->code;
             if (session()->get('verification_code') == $code) {
                 session()->put('request_verification_code', $code);
-                return redirect('/' . PREFIX . '/home');
+
+                return redirect('/'.PREFIX.'/home');
             } else {
                 return back()->withErrors(['alert-danger' => 'Incorrect Verification Code.']);
             }

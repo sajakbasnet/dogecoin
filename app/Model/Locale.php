@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Model;
-use Spatie\TranslationLoader\LanguageLine;
+
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\TranslationLoader\LanguageLine;
 
 class Locale extends LanguageLine
 {
@@ -27,6 +28,6 @@ class Locale extends LanguageLine
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        return logMessage('Locale',$this->id,$eventName);
+        return logMessage('Locale', $this->id, $eventName);
     }
 }

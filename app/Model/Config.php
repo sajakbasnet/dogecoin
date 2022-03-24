@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model;
+
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -9,7 +10,7 @@ class Config extends Model
     use LogsActivity;
 
     protected $fillable = [
-        'label', 'type', 'value'
+        'label', 'type', 'value',
     ];
 
     protected static $logAttributes = ['label', 'type', 'value'];
@@ -22,6 +23,7 @@ class Config extends Model
     {
         return logMessage('Config', $this->id, $eventName);
     }
+
     public function isFile($type)
     {
         if (strtolower($type) == 'file') {
@@ -30,6 +32,7 @@ class Config extends Model
             return false;
         }
     }
+
     public function isText($type)
     {
         if (strtolower($type) == 'text') {
@@ -38,6 +41,7 @@ class Config extends Model
             return false;
         }
     }
+
     public function isTextArea($type)
     {
         if (strtolower($type) == 'textarea') {
@@ -46,6 +50,7 @@ class Config extends Model
             return false;
         }
     }
+
     public function isNumber($type)
     {
         if (strtolower($type) == 'number') {
@@ -54,6 +59,7 @@ class Config extends Model
             return false;
         }
     }
+
     public function isColorPicker($id)
     {
         if ($id == '3') {
@@ -62,6 +68,7 @@ class Config extends Model
             return false;
         }
     }
+
     public function isDefault($id)
     {
         if (in_array($id, [1, 2, 3])) {

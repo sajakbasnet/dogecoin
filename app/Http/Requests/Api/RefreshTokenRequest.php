@@ -26,10 +26,10 @@ class RefreshTokenRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            "clientId" => ['required', new checkClienttId],
-            "clientSecret" => ['required', new checkClientSecret($request->clientId)],
-            "grantType" => 'required|in:refresh_token',
-            'refreshToken' => 'required'
+            'clientId' => ['required', new checkClienttId],
+            'clientSecret' => ['required', new checkClientSecret($request->clientId)],
+            'grantType' => 'required|in:refresh_token',
+            'refreshToken' => 'required',
         ];
     }
 }

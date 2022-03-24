@@ -20,6 +20,7 @@ class SocialAuthServiceProvider extends ServiceProvider
     {
         //
     }
+
     /**
      * Register the application services.
      *
@@ -32,6 +33,7 @@ class SocialAuthServiceProvider extends ServiceProvider
             $server->enableGrantType($grant, Passport::tokensExpireIn());
         });
     }
+
     private function makeGrant()
     {
         $grant = new SocialGrant(
@@ -39,6 +41,7 @@ class SocialAuthServiceProvider extends ServiceProvider
             $this->app->make(RefreshTokenRepository::class)
         );
         $grant->setRefreshTokenTTL(Passport::refreshTokensExpireIn());
+
         return $grant;
     }
 }

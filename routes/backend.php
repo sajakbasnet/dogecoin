@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use Spatie\TranslationLoader\LanguageLine;
 
@@ -11,7 +12,6 @@ Route::get(PREFIX, function () {
 });
 
 Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['language']], function () {
-
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login.form');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::get('forgot-password', 'Auth\ForgotPasswordController@showRequestForm')->name('forgot.password');
@@ -46,7 +46,7 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
 
         Route::get('/login-logs', 'logs\LoginLogsController@index');
         Route::get('/activity-logs', 'logs\LogsController@index');
-        
+
         Route::resource('/languages', 'language\LanguageController', ['except' => ['show', 'edit', 'update']]);
         Route::get('/languages/set-language/{lang}', 'language\LanguageController@setLanguage')->name('set.lang');
         Route::get('/country-language/{country_id}', 'countryLanguage\CountryLanguageController@getLanguages');
@@ -57,18 +57,16 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::post('/translations/upload/{group}', 'language\TranslationController@uploadExcel');
 
         Route::resource('/email-templates', 'systemConfig\EmailTemplateController', ['except' => ['show', 'create', 'store']]);
-        
+
         Route::resource('/configs', 'systemConfig\ConfigController');
-        
+
         Route::resource('/categories', 'category\CategoryController', ['except' => ['show']]);
         Route::resource('categories/{id}/sub-category', 'category\SubCategoryController');
-        Route::get('/clear-lang', function(){
+        Route::get('/clear-lang', function () {
             LanguageLine::truncate();
         });
 
         Route::get('/mail-test/create', 'MailTestController@create');
         Route::post('/mail-test', 'MailTestController@sendEmail');
-
     });
 });
-

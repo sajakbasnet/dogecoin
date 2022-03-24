@@ -11,5 +11,4 @@ class CategoryService extends Service
     {
         parent::__construct($category);
     }
-   
 }

@@ -1,22 +1,26 @@
 <?php
 
 namespace App\Console\Commands;
+
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
+
 class BladeCommand extends GeneratorCommand
 {
-  /**
+    /**
      * The name and signature of the console command.
      *
      * @var string
      */
     protected $name = 'make:blade';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Create a new blade';
+
     /**
      * Get the stub file for the generator.
      *
@@ -26,6 +30,7 @@ class BladeCommand extends GeneratorCommand
     {
         return __DIR__.'/stubs/blades.stub';
     }
+
     /**
      * Get the default namespace for the class.
      *
@@ -35,11 +40,12 @@ class BladeCommand extends GeneratorCommand
     protected function getPath($name)
     {
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
+
         return base_path().'/'.str_replace('\\', '/', $name).'.blade.php';
     }
+
     protected function qualifyClass($name)
     {
-      
         $name = ltrim($name, '\\/');
 
         $name = str_replace('/', '\\', $name);
@@ -57,8 +63,6 @@ class BladeCommand extends GeneratorCommand
 
     protected function getDefaultNamespace($rootNamespace)
     {
- 
         return $rootNamespace.'\views';
     }
 }
-
