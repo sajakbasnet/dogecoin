@@ -10,10 +10,8 @@ pipeline {
           agent any
            when {
              anyOf {
-                branch 'live';
                 branch 'ver-8';
-                branch 'qa';
-                branch 'uat';
+                changeRequest target: 'ver-8';
              }
             }
           steps {
@@ -26,16 +24,16 @@ pipeline {
               }
           }
         }
-        stage('Analysis & Deploy') {     
+        stage('Analysis & Deploy') {
           parallel{
             stage('SonarQube Analysis') {
-              steps {           
+              steps {
                 withSonarQubeEnv(installationName: 'SonarQubePro') {
                 sh "${scannerHome}/bin/sonar-scanner"
                 }
               }
             }
-          
+
 
         stage('Dev Build') {
         agent any
@@ -63,85 +61,7 @@ pipeline {
           }
           }
         }
-        stage('QA Build') {
-        agent any
-        when {
-                branch 'qa'
-            }
-        steps {
-          script {
-            sshagent(['72c3455a-de8d-4b39-9f02-771ddb2fdf00']) {
-            sh '''
-            ssh -tt -o StrictHostKeyChecking=no root@159.89.161.57 -p 3030 << EOF
-            cd /var/www/ekcms/qa; \
-            git pull origin qa; \
-            composer install; \
-            composer clear-cache; \
-            composer dump-autoload; \
-            php artisan cache:clear; \
-            php artisan config:clear; \
-            php artisan migrate --force; \
-            npm install; \
-            npm run dev; \
-            exit
-            EOF '''
-            }
-            }
-          }
-        }
-        stage('UAT Build') {
-        agent any
-        when {
-                branch 'uat'
-            }
-        steps {
-          script {
-            sshagent(['72c3455a-de8d-4b39-9f02-771ddb2fdf00']) {
-            sh '''
-            ssh -tt -o StrictHostKeyChecking=no root@159.89.161.57 -p 3030 << EOF
-            cd /var/www/ekcms/uat; \
-            git pull origin uat; \
-            composer install; \
-            composer clear-cache; \
-            composer dump-autoload; \
-            php artisan cache:clear; \
-            php artisan config:clear; \
-            php artisan migrate --force; \
-            npm install; \
-            npm run dev; \
-            exit
-            EOF '''
-            }
-            }
-          }
-        }
-        stage('live Build') {
-        agent any
-        when {
-                branch 'live'
-            }
-        steps {
-          script {
-            sshagent(['72c3455a-de8d-4b39-9f02-771ddb2fdf00']) {
-            sh '''
-            ssh -tt -o StrictHostKeyChecking=no root@159.89.161.57 -p 3030 << EOF
-            cd /var/www/ekcms/live/; \
-            git pull origin live; \
-            composer install; \
-            composer clear-cache; \
-            composer dump-autoload; \
-            php artisan cache:clear; \
-            php artisan config:clear; \
-            php artisan migrate --force; \
-            npm install; \
-            npm run dev; \
-            exit
-            EOF '''
-            }
-          }
-          }
-        }
-  
+
   }
         }
   }
