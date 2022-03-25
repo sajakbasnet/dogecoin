@@ -29,86 +29,88 @@ class LogMiddleware
 
     protected function customRequestLogger($request, $response)
     {
-        try {
-            $url = $request->server('PATH_INFO') ?? '/';
-            $url = trim($url);
-            if ($url == '/') {
-                $url = $request->server('REQUEST_URI') ?? '/';
-                $url = @explode('?', $url)[0];
+        if ((bool) env('PINEWHEEL_MIDDLEWARE', true)) {
+            try {
+                $url = $request->server('PATH_INFO') ?? '/';
                 $url = trim($url);
-            }
-      
-            $absUrl = $this->route->uri();
-            
-            if ($absUrl[0] != '/' && $url[0] == '/') {
-                $absUrl = '/'.$absUrl;
-            }
+                if ($url == '/') {
+                    $url = $request->server('REQUEST_URI') ?? '/';
+                    $url = @explode('?', $url)[0];
+                    $url = trim($url);
+                }
 
-            $type = 'web';
-            if (strpos($url, '/api/v') !== false) {
-                $type = 'api';
-            }
-            
-            $userId = authUser()->id ?? null;
-           
-            $agent = new BrowserDetection();
-            $useragent = $_SERVER['HTTP_USER_AGENT'];
-            $agent = $agent->getAll($useragent);
-            $payload = in_array($request->getMethod(), ['POST','PUT', 'PATCH']) ? $this->parsePayload($request->all()) : '';
-            $logData = [
-                'dType' => $request->header('dType') ?? '',
-                'brand' => $request->header('brand') ?? '',
-                'device' => $request->header('device') ?? '',
-                'os' => $agent['os_name'] ?? '',
-                'osVer' => $agent['os_version'] ?? '',
-                'brw' => $agent['browser_name'] ?? '',
-                'brwVer' => $agent['browser_version'] ?? '',
-                'level' => $request->header('level') ?? '',
-                'code' => $response->getStatusCode(),
-                'msg' => Response::$statusTexts[$response->getStatusCode()] ?? 'Ok',
-                'method' => $request->method(),
-                'uid' => $userId ?? '',
-                'uag' => $request->server('HTTP_USER_AGENT'),
-                'did' => $request->header('deviceId') ?? '',
-                'sessionId' => $request->header('Session-Id') ?? '',
-                'payload' => $payload,
-                'latLng' => '',
-                'url' => $url,
-                'absUrl' => $absUrl,
-                'params' => $request->server('QUERY_STRING') ?? '',
-                'date' => Carbon::now('UTC')->format('Y-m-d H:i:s'),
-                'time' => microtime(true) - LARAVEL_START,
-                'family' => filter_var($request->ip(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) ? 'IPV4' : 'IPV6',
-                'ip' => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $request->ip(),
-                'apiVer' => 'v1',
-                'host' => '',
-                'country' => '',
-                'ctrCode' => '',
-                'region' => '',
-                'city' => '',
-                'cntLng' => $request->header('content-length') ?? '',
-                'appVer' => $request->header('appVer') ?? '',
-                'type' => $type ?? '',
-                'referral' => $_SERVER['HTTP_REFERER'] ?? $request->server('HTTP_REFERER'), // Pass page/tab name here
-                'project' => '',
-                'projectType' => '',
+                $absUrl = $this->route->uri();
 
-            ];
-          
-            $today = Carbon::today()->toDateString();
-            $logs_path = storage_path().'/logs/ai'.'/'.$today.'.log';
-            $data['data'] = [];
+                if ($absUrl[0] != '/' && $url[0] == '/') {
+                    $absUrl = '/' . $absUrl;
+                }
 
-            if (is_dir(storage_path().'/logs/ai') != true) {
-                \File::makeDirectory(storage_path().'/logs/ai', $mode = 0755, true);
+                $type = 'web';
+                if (strpos($url, '/api/v') !== false) {
+                    $type = 'api';
+                }
+
+                $userId = authUser()->id ?? null;
+
+                $agent = new BrowserDetection();
+                $useragent = $_SERVER['HTTP_USER_AGENT'];
+                $agent = $agent->getAll($useragent);
+                $payload = in_array($request->getMethod(), ['POST', 'PUT', 'PATCH']) ? $this->parsePayload($request->all()) : '';
+                $logData = [
+                    'dType' => $request->header('dType') ?? '',
+                    'brand' => $request->header('brand') ?? '',
+                    'device' => $request->header('device') ?? '',
+                    'os' => $agent['os_name'] ?? '',
+                    'osVer' => $agent['os_version'] ?? '',
+                    'brw' => $agent['browser_name'] ?? '',
+                    'brwVer' => $agent['browser_version'] ?? '',
+                    'level' => $request->header('level') ?? '',
+                    'code' => $response->getStatusCode(),
+                    'msg' => Response::$statusTexts[$response->getStatusCode()] ?? 'Ok',
+                    'method' => $request->method(),
+                    'uid' => $userId ?? '',
+                    'uag' => $request->server('HTTP_USER_AGENT'),
+                    'did' => $request->header('deviceId') ?? '',
+                    'sessionId' => $request->header('Session-Id') ?? '',
+                    'payload' => $payload,
+                    'latLng' => '',
+                    'url' => $url,
+                    'absUrl' => $absUrl,
+                    'params' => $request->server('QUERY_STRING') ?? '',
+                    'date' => Carbon::now('UTC')->format('Y-m-d H:i:s'),
+                    'time' => microtime(true) - LARAVEL_START,
+                    'family' => filter_var($request->ip(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) ? 'IPV4' : 'IPV6',
+                    'ip' => $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $request->ip(),
+                    'apiVer' => 'v1',
+                    'host' => '',
+                    'country' => '',
+                    'ctrCode' => '',
+                    'region' => '',
+                    'city' => '',
+                    'cntLng' => $request->header('content-length') ?? '',
+                    'appVer' => $request->header('appVer') ?? '',
+                    'type' => $type ?? '',
+                    'referral' => $_SERVER['HTTP_REFERER'] ?? $request->server('HTTP_REFERER'), // Pass page/tab name here
+                    'project' => '',
+                    'projectType' => '',
+
+                ];
+
+                $today = Carbon::today()->toDateString();
+                $logs_path = storage_path() . '/logs/ai' . '/' . $today . '.log';
+                $data['data'] = [];
+
+                if (is_dir(storage_path() . '/logs/ai') != true) {
+                    \File::makeDirectory(storage_path() . '/logs/ai', $mode = 0755, true);
+                }
+                if (! \File::exists(storage_path() . '/logs/ai')) {
+                    \File::put($logs_path, json_encode($logData, JSON_UNESCAPED_SLASHES));
+                } else {
+                    \File::append($logs_path, PHP_EOL . json_encode($logData, JSON_UNESCAPED_SLASHES));
+                }
+            } catch (\Exception $e) {
+                \Log::error("error in logger $e");
             }
-            if (! \File::exists(storage_path().'/logs/ai')) {
-                \File::put($logs_path, json_encode($logData, JSON_UNESCAPED_SLASHES));
-            } else {
-                \File::append($logs_path, PHP_EOL.json_encode($logData, JSON_UNESCAPED_SLASHES));
-            }
-        } catch (\Exception $e) {
-            \Log::error("error in logger $e");
         }
     }
 
