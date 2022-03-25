@@ -66,8 +66,9 @@ class Kernel extends HttpKernel
         'permission' => \App\Http\Middleware\Permission::class,
         'twofa' => \App\Http\Middleware\TWOFA::class,
         'antitwofa' => \App\Http\Middleware\antiTwoFA::class,
-        'language' =>  \App\Http\Middleware\Language::class,
+        'language' => \App\Http\Middleware\Language::class,
         'reset.password' => \App\Http\Middleware\CheckPasswordResetted::class,
+        'pinewheel-log' => \App\Http\Middleware\LogMiddleware::class,
 
         //api middlewares
         'auth-frontend' => \App\Http\Middleware\Frontend\frontendAuth::class,
