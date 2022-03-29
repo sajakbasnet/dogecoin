@@ -16,7 +16,7 @@ class ConfigSeeder extends Seeder
     {
         $settings = Config::where('id', 1)->first();
         if (! isset($settings)) {
-            $directory = public_path().'/uploads/config';
+            $directory = public_path() . '/uploads/config';
             if (is_dir($directory) != true) {
                 \File::makeDirectory($directory, $mode = 0755, true);
             }
