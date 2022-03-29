@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\system\Auth;
 
-use App\Exceptions\CustomGenericException;
-use App\Http\Controllers\Controller;
-use App\Mail\system\TwoFAEmail;
-use App\Model\Loginlogs;
-use App\Traits\CustomThrottleRequest;
 use Auth;
 use Config;
 use GuzzleHttp;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Model\Loginlogs;
 use Illuminate\Http\Request;
+use App\Mail\system\TwoFAEmail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Traits\CustomThrottleRequest;
+use App\Exceptions\CustomGenericException;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -55,7 +55,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         if (Auth::check()) {
-            return redirect('/' . PREFIX . '/home');
+            return redirect('/'.PREFIX.'/home');
         } else {
             return view('system.auth.login');
         }
@@ -105,6 +105,7 @@ class LoginController extends Controller
         $request->merge([
             $login_type => $request->input('email'),
         ]);
+
         return [
             $login_type => $request->get($login_type),
             'password' => $request->get('password'),
@@ -114,7 +115,7 @@ class LoginController extends Controller
     public function createLoginLog($request)
     {
         $client = new GuzzleHttp\Client(['base_uri' => 'http://ip-api.com']);
-        $res = $client->request('GET', '/json/' . $request->ip());
+        $res = $client->request('GET', '/json/'.$request->ip());
         $ipResponse = json_decode($res->getBody());
 
         if ($ipResponse->status == 'fail') {
@@ -123,14 +124,14 @@ class LoginController extends Controller
 
         return Loginlogs::create([
             'user_id' => authUser()->id,
-            'ip' => !empty($ipResponse) ? $ipResponse->query : '110.44.123.47',
-            'city' => !empty($ipResponse) ? $ipResponse->city : 'Kathmandu',
-            'country' => !empty($ipResponse) ? $ipResponse->country : 'Nepal',
-            'isp' => !empty($ipResponse) ? $ipResponse->isp : 'Vianet Communications Pvt.',
-            'lat' => !empty($ipResponse) ? $ipResponse->lat : '27.7167',
-            'lon' => !empty($ipResponse) ? $ipResponse->lon : '85.3167',
-            'timezone' => !empty($ipResponse) ? $ipResponse->timezone : 'Asia/Kathmandu',
-            'region_name' => !empty($ipResponse) ? $ipResponse->regionName : 'Central Region',
+            'ip' => ! empty($ipResponse) ? $ipResponse->query : '110.44.123.47',
+            'city' => ! empty($ipResponse) ? $ipResponse->city : 'Kathmandu',
+            'country' => ! empty($ipResponse) ? $ipResponse->country : 'Nepal',
+            'isp' => ! empty($ipResponse) ? $ipResponse->isp : 'Vianet Communications Pvt.',
+            'lat' => ! empty($ipResponse) ? $ipResponse->lat : '27.7167',
+            'lon' => ! empty($ipResponse) ? $ipResponse->lon : '85.3167',
+            'timezone' => ! empty($ipResponse) ? $ipResponse->timezone : 'Asia/Kathmandu',
+            'region_name' => ! empty($ipResponse) ? $ipResponse->regionName : 'Central Region',
         ]);
     }
 
@@ -160,7 +161,7 @@ class LoginController extends Controller
             }
         }
 
-        return redirect('/' . PREFIX . '/home');
+        return redirect('/'.PREFIX.'/home');
     }
 
     public function logout(Request $request)
@@ -171,6 +172,6 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->invalidate();
 
-        return redirect(PREFIX . '/login')->withErrors(['alert-success' => 'Successfully logged out!']);
+        return redirect(PREFIX.'/login')->withErrors(['alert-success' => 'Successfully logged out!']);
     }
 }

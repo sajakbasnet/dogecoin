@@ -33,28 +33,51 @@ namespace App\Http;
 class BrowserDetection
 {
     public $useragent;
+
     private $get_mode;
+
     private $touch_support_mode;
+
     private $real_os_name;
+
     private $result_ios;
+
     private $result_mobile;
+
     private $result_os_type;
+
     private $result_os_family;
+
     private $result_os_name;
+
     private $result_os_version;
+
     private $result_os_title;
+
     private $result_device_type;
+
     private $result_browser_name;
+
     private $result_browser_version;
+
     private $result_browser_title;
+
     private $result_browser_chromium_version;
+
     private $result_browser_gecko_version;
+
     private $result_browser_webkit_version;
+
     private $result_browser_chrome_original;
+
     private $result_browser_firefox_original;
+
     private $result_browser_safari_original;
+
     private $result_browser_android_webview;
+
     private $result_browser_ios_webview;
+
     private $result_browser_desktop_mode;
 
     /**
