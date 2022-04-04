@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\system\Auth;
+namespace App\Http\Controllers\System\Auth;
 
-use App\Exceptions\CustomGenericException;
-use App\Http\Controllers\Controller;
-use App\Mail\system\PasswordResetEmail;
-use App\Services\System\UserService;
-use App\Traits\CustomThrottleRequest;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\System\UserService;
 use Illuminate\Support\Facades\Mail;
+use App\Traits\CustomThrottleRequest;
+use App\Mail\system\PasswordResetEmail;
+use App\Exceptions\CustomGenericException;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
 {

@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\system\Auth;
+namespace App\Http\Controllers\System\Auth;
 
-use App\Exceptions\CustomGenericException;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\system\setResetRequest;
-use App\Services\System\UserService;
-use Config;
-use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\System\UserService;
 use Illuminate\Support\Facades\Hash;
+use App\Exceptions\CustomGenericException;
+use App\Http\Requests\system\setResetRequest;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ResetPasswordController extends Controller

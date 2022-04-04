@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\system\Auth;
+namespace App\Http\Controllers\System\Auth;
 
-use App\Exceptions\CustomGenericException;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\system\verifyLoginRequest;
-use App\Mail\system\TwoFAEmail;
-use App\Traits\CustomThrottleRequest;
 use Illuminate\Http\Request;
+use App\Mail\system\TwoFAEmail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Traits\CustomThrottleRequest;
+use App\Exceptions\CustomGenericException;
+use App\Http\Requests\system\verifyLoginRequest;
 
 class VerificationController extends Controller
 {
