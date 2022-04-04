@@ -153,7 +153,7 @@ class LoginController extends Controller
 
         if (Config::get('constants.TWOFA') == 1) {
             session()->forget('verification_code');
-            $verification_code = mt_rand(100000, 999999);
+            $verification_code = random_int(100000, 999999);
             session()->put('verification_code', $verification_code);
             try {
                 Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
