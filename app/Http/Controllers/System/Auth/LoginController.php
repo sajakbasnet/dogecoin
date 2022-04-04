@@ -114,7 +114,7 @@ class LoginController extends Controller
 
     public function createLoginLog($request)
     {
-        $client = new GuzzleHttp\Client(['base_uri' => 'http://ip-api.com']);
+        $client = new GuzzleHttp\Client(['base_uri' => env('API_URL')]);
         $res = $client->request('GET', '/json/'.$request->ip());
         $ipResponse = json_decode($res->getBody());
 
@@ -124,7 +124,7 @@ class LoginController extends Controller
 
         return Loginlogs::create([
             'user_id' => authUser()->id,
-            'ip' => ! empty($ipResponse) ? $ipResponse->query : '110.44.123.47',
+            'ip' => ! empty($ipResponse) ? $ipResponse->query : env('IP_ADDRESS'),
             'city' => ! empty($ipResponse) ? $ipResponse->city : 'Kathmandu',
             'country' => ! empty($ipResponse) ? $ipResponse->country : 'Nepal',
             'isp' => ! empty($ipResponse) ? $ipResponse->isp : 'Vianet Communications Pvt.',
