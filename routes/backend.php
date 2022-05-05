@@ -34,7 +34,7 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
     });
 
     Route::group(['middleware' => ['auth', 'permission', 'twofa', 'reset.password']], function () {
-        Route::get('/home', 'IndexController@index')->name('home');
+        Route::get('/home', 'indexController@index')->name('home');
         Route::resource('/roles', 'user\RoleController', ['except' => ['show']]);
 
         Route::resource('/users', 'user\UserController', ['except' => ['show']]);
@@ -49,16 +49,16 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
 
         Route::resource('/languages', 'language\LanguageController', ['except' => ['show', 'edit', 'update']]);
         Route::get('/languages/set-language/{lang}', 'language\LanguageController@setLanguage')->name('set.lang');
-        Route::get('/country-language/{country_id}', 'countryLanguage\CountryLanguageController@getLanguages');
+        Route::get('/country-language/{country_id}', 'countryLanguage\countryLanguageController@getLanguages');
 
         Route::resource('/translations', 'language\TranslationController', ['except' => ['show', 'edit', 'create']]);
         Route::get('/translations/download-sample', 'language\TranslationController@downloadSample');
         Route::get('/translations/download/{group}', 'language\TranslationController@downloadExcel');
         Route::post('/translations/upload/{group}', 'language\TranslationController@uploadExcel');
 
-        Route::resource('/email-templates', 'systemConfig\EmailTemplateController', ['except' => ['show', 'create', 'store']]);
+        Route::resource('/email-templates', 'systemConfig\emailTemplateController', ['except' => ['show', 'create', 'store']]);
 
-        Route::resource('/configs', 'systemConfig\ConfigController');
+        Route::resource('/configs', 'systemConfig\configController');
 
         Route::resource('/categories', 'category\CategoryController', ['except' => ['show']]);
         Route::resource('categories/{id}/sub-category', 'category\SubCategoryController');
