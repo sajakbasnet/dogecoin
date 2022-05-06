@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Cookie;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,5 +25,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+        if (env('FORCE_HTTPS') === true) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
     }
 }
