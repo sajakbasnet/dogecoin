@@ -284,10 +284,8 @@ class ResourceController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        dd($request->all());
         $this->service->delete($request, $id);
         $this->setModuleId($id);
-
         return redirect($this->getUrl())->withErrors(['success' => 'Successfully deleted.']);
     }
 }

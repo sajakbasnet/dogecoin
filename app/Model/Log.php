@@ -48,7 +48,7 @@ class Log extends Activity
     public function newValues($rawValues)
     {
         // if(!isset($rawValues['old'])) return 'N/A';
-        $value = trim(json_encode($rawValues['attributes']), '{}');
+        $value = trim(json_encode($rawValues['attributes'] ?? ''), '{}');
         $string = str_replace(',', "\n", $value);
 
         return nl2br($string);
