@@ -3,6 +3,9 @@
   @if(isset($inputs))
   {{$inputs}}
   @else
-  <x-system.form.input-normal :input="$input"/>
+   <div class="mb-3">
+        <div class="mb-3">
+            <x-system.form.input-normal :input="$input"/>
+        </div>
   @endif
 </div>

@@ -1,43 +1,44 @@
 @extends('system.layouts.masterGuest')
 @section('content')
-<div class="login-wrapper">
-  <div class="login-inner-wrapper">
-    <div class="login-sec">
-      <h1 style="color:{{ getCmsConfig('cms theme color')}}">{{translate('Login')}}</h1>
-      @include('system.partials.message')
-      <div class="login-form">
-        <form method="post" action="{{route('login')}}">
-          @csrf
-          <div class="form-group login-group  @error('email') has-error @enderror">
-            <div class="input-group">
-              <input type="text" name="email" class="form-control" placeholder="Email" autocomplete="off">
-              <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
 
-            </div>
-            @error('email')
-            <p class="invalid-text text-danger">{{translate($message)}}</p>
-            @enderror
-          </div>
-          <div class="form-group login-group @error('password') has-error @enderror">
-            <div class="input-group">
-              <input type="Password" name="password" class="form-control" placeholder="Password">
-              <div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></div>
 
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="login-card">
+
+                    <form class="theme-form login-form" method="post" action="{{ route('login') }}">
+                        @include('system.partials.message')
+                        <h4>Login</h4>
+                        <h6>Welcome back! Log in to your account.</h6>
+                        @csrf
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+                                <input class="form-control" name="email" placeholder="Email" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
+                                <input class="form-control" type="password" name="password" required=""
+                                    placeholder="*********">
+                            </div>
+                        </div>
+                        <h6>{{ translate('You are current using IP') }} - <strong>{{ Request::ip() }}</strong></h6>
+
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label for="checkbox1">Remember password</label>
+                            </div><a class="link" href="{{ route('forgot.password') }}">Forgot password?</a>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            @error('password')
-            <p class="invalid-text text-danger">{{translate($message)}}</p>
-            @enderror
-          </div>
-          <h2>{{translate('You are current using IP')}} - <strong>{{Request::ip()}}</strong></h2>
-          <div class="form-group">
-            <button type="submit" class="btn login-btn btn-block" style="background-color:{{getCmsConfig('cms theme color')}}">{{translate('Login')}}</button>
-          </div>
-          <div class="form-group text-center">
-            <a href="{{route('forgot.password')}}">{{translate('Forgot Password ?')}}</a>
-          </div>
-        </form>
-      </div><!-- ends login-form -->
-    </div><!-- ends login-sec -->
-  </div>
-</div><!-- login-wrapper -->
+        </div>
+    </div>
 @endsection

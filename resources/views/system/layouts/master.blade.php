@@ -1,61 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 @include('system.layouts.layoutHeader')
 
 <body>
-  @include('system.partials.header')
-  <div class="page-wrapper">
-    @include('system.partials.sidebar')
-    <div class="page-contents clearfix">
-      <div class="inner-content-fluid">
-        <div class="custom-container-fluid">
-          @include('system.partials.breadcrumb')
-          <div class="page-head clearfix">
-            <div class="row">
-              <div class="col-6">
-                <div class="head-title" style="margin-left: -5px;">
-                  <h4>{{ translate($title) }}</h4>
-                </div><!-- ends head-title -->
-              </div>
-              @yield('heading-contents')
+    <!-- Loader starts-->
+    @include('system.partials.loader')
+    <!-- Loader ends-->
+    <!-- tap on top starts-->
+    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+    <!-- tap on tap ends-->
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        <!-- Page Header Start-->
+        @include('system.partials.header')
+        <!-- Page Header Ends -->
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+            <!-- Page Sidebar Start-->
+            @include('system.partials.sidebar')
+            <div class="page-body">
+                <div class="container-fluid">
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <h3>{{$title ?? ''}}</h3>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"> <a class="home-item" href="index.html"><i
+                                                data-feather="home"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item"> Dashboard</li>
+                                    <li class="breadcrumb-item active"> {{ $title ?? ''}}</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @yield('contents')
             </div>
-          </div><!-- ends page-head -->
-          @yield('content')
-        </div>
-      </div>
-    </div><!-- ends page-contents -->
-  </div><!-- page-wrapper -->
+            <!-- Page Sidebar Ends-->
 
-  <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <form method="post">
-        <div class="modal-content">
-          @csrf
-          <div class="modal-header">
-            <h4 class="modal-title">{{translate('Confirm Delete')}}</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            {{translate('Are you sure you want to delete?')}}
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-              <em class="glyph-icon icon-close"></em> {{translate('Cancel')}}
-            </button>
-            <button type="submit" class="btn btn-sm btn-danger" id="confirmDelete">
-              <em class="glyph-icon icon-trash"></em> {{translate('Delete')}}
-            </button>
-          </div>
+            <!-- footer start-->
+            @include('system.layouts.layoutFooter')
+            @yield('scripts')
         </div>
-      </form>
     </div>
-  </div>
-
-  @include('system.layouts.layoutFooter')
-  @yield('scripts')
 </body>
 
 </html>

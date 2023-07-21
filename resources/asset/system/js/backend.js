@@ -32,10 +32,10 @@ const sidebar = (function () {
 })()
 
 const confirmDelete = (function () {
+
   const $modal = $('#confirmDeleteModal')
   const $deleteBtn = $('.btn-delete')
   const $deleteForm = $modal.find('form')
-
   const init = () => {
     attachEventListeners()
   }
@@ -51,10 +51,12 @@ const confirmDelete = (function () {
   }
 
   const handleModalHidden = function () {
+
     setDeleteUrl('')
   }
 
   const setDeleteUrl = url => {
+
     $deleteForm.attr('action', url)
   }
 
