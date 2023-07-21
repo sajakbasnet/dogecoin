@@ -13,7 +13,7 @@ const sidebar = (function () {
     const prefix = $('input[name="prefix"]').val();
     const $navSidebar = $('.nav-sidebar')
 
-    var path = window.location.pathname.split('/'+prefix+"/");
+    var path = window.location.pathname.split('/'+prefix+"/");       
     if(path[1].includes("/")){
       path = path[1].split("/")[0];
     }else{
