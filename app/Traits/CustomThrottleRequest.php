@@ -12,10 +12,10 @@ trait CustomThrottleRequest
     /**
      * Determine if the user has too many failed login attempts.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return bool
      */
-    protected function hasTooManyAttempts(Request $request, $attempt = 5)
+    protected function hasTooManyAttempts(Request $request, $attempt)
     {
         return $this->customlimiter()->tooManyAttempts(
             $this->customThrottleKey($request),
@@ -26,10 +26,10 @@ trait CustomThrottleRequest
     /**
      * Increment the login attempts for the user.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return void
      */
-    protected function incrementAttempts(Request $request, $minutes = 1)
+    protected function incrementAttempts(Request $request, $minutes)
     {
         $this->customlimiter()->hit(
             $this->customThrottleKey($request),
@@ -40,7 +40,7 @@ trait CustomThrottleRequest
     /**
      * Redirect the user after determining they are locked out.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return void
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -51,13 +51,16 @@ trait CustomThrottleRequest
             $this->customThrottleKey($request)
         );
 
-        return back()->withErrors(['alert-throttle' => translate('To many attempts. Please try again after seconds', ['seconds' => $seconds])]);
+        //   return back()->withErrors(['alert-throttle' => translate('To many attempts. Please try again after seconds', ['seconds' => $seconds])]);
+        return back()->withErrors(['alert-throttle' => translate('Too many attempts. Please try again after :seconds seconds', ['seconds' => $seconds])])
+            ->with('seconds', $seconds);
+
     }
 
     /**
      * Clear the login locks for the given user credentials.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return void
      */
     protected function clearAttempts(Request $request)
@@ -68,7 +71,7 @@ trait CustomThrottleRequest
     /**
      * Fire an event when a lockout occurs.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return void
      */
     protected function customFireLockoutEvent(Request $request)
@@ -79,14 +82,14 @@ trait CustomThrottleRequest
     /**
      * Get the throttle key for the given request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return string
      */
     protected function customThrottleKey(Request $request)
     {
-        $key = $request->getRequestUri().$request->getMethod();
+        $key = $request->getRequestUri() . $request->getMethod();
 
-        return Str::lower($key).'|'.$request->ip();
+        return Str::lower($key) . '|' . $request->ip();
     }
 
     /**

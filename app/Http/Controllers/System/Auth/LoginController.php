@@ -47,7 +47,7 @@ class LoginController extends Controller
     /**
      * Handle a login request to the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -55,7 +55,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         if (Auth::check()) {
-            return redirect('/'.PREFIX.'/home');
+            return redirect('/' . PREFIX . '/home');
         } else {
             return view('system.auth.login');
         }
@@ -68,15 +68,19 @@ class LoginController extends Controller
         try {
             if (
                 method_exists($this, 'hasTooManyAttempts') &&
-                $this->hasTooManyAttempts($request, $attempt = 3) // maximum attempts
+                $this->hasTooManyAttempts($request, 4) // maximum attempts
             ) {
                 $this->customFireLockoutEvent($request);
 
                 return $this->customLockoutResponse($request);
             }
+
             $user = $this->loginType($request);
 
-            if (Auth::attempt($user)) {
+            // Check if "Remember me" checkbox is checked (default to false if not provided).
+            $remember = $request->has('remember') ? true : false;
+
+            if (Auth::attempt($user, $remember)) {
                 setRoleCache(authUser());
                 setConfigCookie();
                 $this->createLoginLog($request);
@@ -84,7 +88,7 @@ class LoginController extends Controller
                 return $this->sendLoginResponse($request);
             }
 
-            $this->incrementAttempts($request, $decay = 1); // decay minutes
+            $this->incrementAttempts($request, 2); // decay minutes
 
             return $this->sendFailedLoginResponse($request);
         } catch (\Exception $e) {
@@ -115,7 +119,7 @@ class LoginController extends Controller
     public function createLoginLog($request)
     {
         $client = new GuzzleHttp\Client(['base_uri' => env('API_URL')]);
-        $res = $client->request('GET', '/json/'.$request->ip());
+        $res = $client->request('GET', '/json/' . $request->ip());
         $ipResponse = json_decode($res->getBody());
 
         if ($ipResponse->status == 'fail') {
@@ -124,21 +128,21 @@ class LoginController extends Controller
 
         return Loginlogs::create([
             'user_id' => authUser()->id,
-            'ip' => ! empty($ipResponse) ? $ipResponse->query : env('IP_ADDRESS'),
-            'city' => ! empty($ipResponse) ? $ipResponse->city : 'Kathmandu',
-            'country' => ! empty($ipResponse) ? $ipResponse->country : 'Nepal',
-            'isp' => ! empty($ipResponse) ? $ipResponse->isp : 'Vianet Communications Pvt.',
-            'lat' => ! empty($ipResponse) ? $ipResponse->lat : '27.7167',
-            'lon' => ! empty($ipResponse) ? $ipResponse->lon : '85.3167',
-            'timezone' => ! empty($ipResponse) ? $ipResponse->timezone : 'Asia/Kathmandu',
-            'region_name' => ! empty($ipResponse) ? $ipResponse->regionName : 'Central Region',
+            'ip' => !empty($ipResponse) ? $ipResponse->query : env('IP_ADDRESS'),
+            'city' => !empty($ipResponse) ? $ipResponse->city : 'Kathmandu',
+            'country' => !empty($ipResponse) ? $ipResponse->country : 'Nepal',
+            'isp' => !empty($ipResponse) ? $ipResponse->isp : 'Vianet Communications Pvt.',
+            'lat' => !empty($ipResponse) ? $ipResponse->lat : '27.7167',
+            'lon' => !empty($ipResponse) ? $ipResponse->lon : '85.3167',
+            'timezone' => !empty($ipResponse) ? $ipResponse->timezone : 'Asia/Kathmandu',
+            'region_name' => !empty($ipResponse) ? $ipResponse->regionName : 'Central Region',
         ]);
     }
 
     /**
      * Send the response after the user was authenticated.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     protected function sendLoginResponse(Request $request)
@@ -161,7 +165,7 @@ class LoginController extends Controller
             }
         }
 
-        return redirect('/'.PREFIX.'/home');
+        return redirect('/' . PREFIX . '/home');
     }
 
     public function logout(Request $request)
@@ -172,6 +176,6 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->invalidate();
 
-        return redirect(PREFIX.'/login')->withErrors(['alert-success' => 'Successfully logged out!']);
+        return redirect(PREFIX . '/login')->withErrors(['alert-success' => 'Successfully logged out!']);
     }
 }
