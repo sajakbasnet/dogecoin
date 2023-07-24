@@ -356,8 +356,7 @@ if($('#sidebar-menu .simplebar-content-wrapper').hasClass('a.sidebar-link.sideba
 }
 
 
-$('.custom-scrollbar').animate({
-        scrollTop: $('a.sidebar-link.sidebar-title.active').offset().top - 500
-}, 1000);
-
+// $('.custom-scrollbar').animate({
+//     scrollTop: $('a.sidebar-link.sidebar-title.active').offset().top - 500
+// }, 1000);
 

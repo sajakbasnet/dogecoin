@@ -14,7 +14,7 @@ function translate($content, $data = [], $group = 'backend')
         if (! in_array($key, $translations)) {
             $check = LanguageLine::where('key', $key)->where('group', $group)->exists();
             if ($check) {
-                return trans($group.'.'.$key, $data);
+                return trans($key, $data);
             } else {
                 if ($key !== '') {
                     LanguageLine::create([

@@ -2,7 +2,7 @@
 <html lang="en">
 @include('system.layouts.layoutHeader')
 
-<body>
+<body class="rtl">
     <!-- Loader starts-->
     @include('system.partials.loader')
     <!-- Loader ends-->
@@ -40,14 +40,13 @@
 
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="card">
-                            <br />
+                        <div class="card">               
                             @section('create')
-                                <div class="col-12 ">
+                                <div class="col-12 mt-2">
                                     @if (hasPermission($indexUrl . '/create'))
                                         <a class="btn btn-primary pull-right btn-sm" id="addNew"
                                             href="{{ url($indexUrl . '/create') }}">
-                                            <em class="fa fa-plus"></em> {{ translate('Add New') }}
+                                            <em class="fa fa-plus"></em>  {{ translate('Add New') }}
                                         </a>
                                     @endif
                                 </div>
