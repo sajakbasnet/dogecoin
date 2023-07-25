@@ -26,13 +26,8 @@
                                 <h3>{{ $title ?? '' }}</h3>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"> <a class="home-item" href="index.html"><i
-                                                data-feather="home"></i></a>
-                                    </li>
-                                    <li class="breadcrumb-item"> Dashboard</li>
-                                    <li class="breadcrumb-item active"> {{ $title ?? '' }}</li>
-                                </ol>
+                                          @include('system.partials.breadcrumb')
+
                             </div>
                         </div>
                     </div>
@@ -40,7 +35,7 @@
 
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="card">               
+                        <div class="card">
                             @section('create')
                                 <div class="col-12 mt-2">
                                     @if (hasPermission($indexUrl . '/create'))

@@ -25,7 +25,7 @@ class UserService extends Service
     {
         $query = $this->query();
         if (isset($data->keyword) && $data->keyword !== null) {
-            $query->where('name', 'LIKE', '%'.$data->keyword.'%');
+            $query->where('name', 'LIKE', '%' . $data->keyword . '%');
         }
         if (isset($data->role) && $data->role !== null) {
             $query->where('role_id', $data->role);
@@ -141,7 +141,7 @@ class UserService extends Service
             throw new EncryptedPayloadException('Invalid encrypted data');
         }
         $user = $this->model->where('email', $email)->where('token', $decryptedToken)->first();
-        if (! isset($user)) {
+        if (!isset($user)) {
             throw new ResourceNotFoundException("User doesn't exist in our system.");
         }
 
@@ -151,7 +151,7 @@ class UserService extends Service
     public function findByEmail($email)
     {
         $user = $this->model->where('email', $email)->first();
-        if (! isset($user)) {
+        if (!isset($user)) {
             throw new ResourceNotFoundException("User doesn't exist in our system.");
         }
 
@@ -165,5 +165,24 @@ class UserService extends Service
         return $user->update([
             'password' => Hash::make($request->password),
         ]);
+    }
+
+    public function generateOtp()
+    {
+        $code = substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyz"), 0, 6);
+        if ($this->model::where('otp_code', $code)->exists()) {
+            $this->generateOtp();
+        }
+        return $code;
+    }
+
+    public function findByEmailAndOtp($email, $otp)
+    {
+        $user = $this->model->where('email', $email)->where('otp_code', $otp)->first();
+        if (!isset($user)) {
+            throw new ResourceNotFoundException("User doesn't exist in our system.");
+        }
+
+        return $user;
     }
 }

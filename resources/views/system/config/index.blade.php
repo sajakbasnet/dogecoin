@@ -1,5 +1,9 @@
 @extends('system.layouts.master')
-@section('content')
+@section('contents')
+<div class="container-fluid">
+    <div class="row">
+        <div class="card ">
+<br>
 <div class="content-display clearfix">
     <div class="panel panel-default">
         <div class="panel-heading no-bdr">
@@ -114,5 +118,8 @@
         </div>
     </div>
     @endif
+</div>
+        </div>
+    </div>
 </div>
 @endsection

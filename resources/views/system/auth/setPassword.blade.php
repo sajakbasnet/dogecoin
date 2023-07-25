@@ -27,6 +27,18 @@
                         @enderror
                     </div>
                     @endif
+                    @if($title=='OTP Code')
+                        <div class="form-group login-group @error('otp_code') has-error @enderror">
+                            <div class="input-group">
+                                <input name="otp_code" class="form-control" placeholder="{{translate('Otp Code')}}">
+                                <div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></div>
+                            </div>
+                            @error('otp_code')
+                            <p class="invalid-text text-danger">{{translate($message)}}</p>
+                            @enderror
+                        </div>
+                    @endif
+
                     <div class="form-group login-group @error('password') has-error @enderror">
                         <div class="input-group">
                             <input type="Password" name="password" class="form-control" placeholder="{{translate('Password')}}">

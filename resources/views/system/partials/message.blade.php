@@ -20,7 +20,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    const error = {{isset($errors) && $errors->first('alert-throttle') ?? ''}};
+    const error = "{{isset($errors) && $errors->first('alert-throttle') ?? null}}";
 
     if (error !== '') {
         var seconds = {{session('seconds') ?? 0}}; // Default value 0 if $seconds is not set

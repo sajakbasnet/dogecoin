@@ -49,6 +49,7 @@ const confirmDelete = (function() {
   }
 
   const handleDeleteBtnClick = function() {
+
       const url = $(this).data('href')
       setDeleteUrl(`${url}?_method=DELETE`)
   }

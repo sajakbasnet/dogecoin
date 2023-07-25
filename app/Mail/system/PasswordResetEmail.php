@@ -18,10 +18,12 @@ class PasswordResetEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($data, $encryptedToken)
+    public function __construct($data, $encryptedToken, $otpCode, $resetPasswordStatus = 0)
     {
         $this->user = $data;
         $this->token = $encryptedToken;
+        $this->resetPasswordStatus = $resetPasswordStatus;
+        $this->otpCode = $otpCode;
         $this->locale = Cookie::get('lang');
     }
 
@@ -32,10 +34,17 @@ class PasswordResetEmail extends Mailable
      */
     public function build()
     {
+        if ($this->resetPasswordStatus == 1) { // when user select opt as reset password
+            $emailCode = 'OTPEmail';
+        } else {
+            $emailCode = 'PasswordResetLinkEmail';
+        }
+
         $content = $this->parseEmailTemplate([
             '%user_name%' => $this->user->name,
+            '%otp_code%' => $this->otpCode ?? null,
             '%password_reset_link%' => $this->user->getPasswordSetResetLink(false, $this->token),
-        ], 'PasswordResetLinkEmail', $this->locale);
+        ], $emailCode, $this->locale);
 
         return $this->view('system.mail.index', compact('content'));
     }

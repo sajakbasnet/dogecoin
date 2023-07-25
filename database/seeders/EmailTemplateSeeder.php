@@ -172,8 +172,37 @@ class EmailTemplateSeeder extends Seeder
                 ],
 
             ],
+            [
+                'title' => 'Password Reset OTP Code',
+                'code' => 'OTPEmail',
+                'from' => $fromEmail,
+                'translations' => [
+                    [
+                        'language_code' => 'en',
+                        'subject' => 'OTP Code Email',
+                        'template' => $templateHeader . '
+
+                                        <p>As per your request we have generated your OTP code.</p>
+                                        <p>OTP Code : %otp_code%</p>
+                                        <p>Code Expires in 30 minutes</p>
+
+                                            ' . $templateFooter
+                    ],
+                    [
+                        'language_code' => 'ja',
+                        'subject' => 'OTP Code Email',
+                        'template' => $templateHeader . '
+
+                                        <p>As per your request we have generated your OTP code.</p>
+                                        <p>OTP Code : %otp_code%</p>
+                                        <p>Code Expires in 30 minutes</p>
+                                            ' . $templateFooter
+                    ],
+                ]
+
+            ],
         ];
-        // \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+         \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         EmailTemplate::truncate();
         EmailTemplateTranslation::truncate();
         foreach ($templates as $template) {
@@ -186,6 +215,6 @@ class EmailTemplateSeeder extends Seeder
             $email = EmailTemplate::create($data);
             $email->emailTranslations()->createMany($template['translations']);
         }
-        // \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+         \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

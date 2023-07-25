@@ -87,7 +87,9 @@
     $(function() {
         $("body").css("background-color", hex2rgb("{{getCmsConfig('cms theme color')}}", 0.09));
     })
+
 </script>
+  @yield('scripts')
 </body>
 
 </html>

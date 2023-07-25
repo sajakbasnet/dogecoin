@@ -38,20 +38,21 @@ class ResetPasswordController extends Controller
             if ($request->route()->getName() == 'reset.password') {
                 $data['title'] = 'Reset Password';
             }
+
             $this->service->findByEmailAndToken($request->email, $request->token);
             $data['email'] = $request->email;
             $data['token'] = $request->token;
 
             return view('system.auth.setPassword', $data);
         } catch (\Exception $e) {
-            throw new NotFoundHttpException();
+            throw new CustomGenericException('The provided link has already expired.');
         }
     }
 
     public function handleSetResetPassword(setResetRequest $request)
     {
         if ($this->setResetPassword($request)) {
-            $redirect = redirect(PREFIX.'/login');
+            $redirect = redirect(PREFIX . '/login');
             $msg = ['alert-success' => 'Password has been successfully set.'];
         } else {
             $redirect = back();
@@ -64,7 +65,12 @@ class ResetPasswordController extends Controller
     public function setResetPassword($request)
     {
         try {
-            $user = $this->service->findByEmailAndToken($request->email, $request->token);
+
+            if ($request->token) {
+                $user = $this->service->findByEmailAndToken($request->email, $request->token);
+            } else {
+                $user = $this->service->findByEmailAndOtp($request->email, $request->otp_code);
+            }
 
             $check = $this->checkOldPasswords($user, $request);
             if ($check) {
@@ -97,7 +103,13 @@ class ResetPasswordController extends Controller
                 break;
             }
         }
-
         return $check;
+    }
+
+    public function showOtpForm(Request $request)
+    {
+        $title = 'Set Password';
+
+        return view('system.auth.forgotPasswordOtpCode', compact('title'));
     }
 }
