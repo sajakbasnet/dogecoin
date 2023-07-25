@@ -78,7 +78,7 @@ class LoginController extends Controller
             $user = $this->loginType($request);
 
             // Check if "Remember me" checkbox is checked (default to false if not provided).
-            $remember = $request->has('remember') ? true : false;
+            $remember = (bool)$request->has('remember');
 
             if (Auth::attempt($user, $remember)) {
                 setRoleCache(authUser());
@@ -88,7 +88,7 @@ class LoginController extends Controller
                 return $this->sendLoginResponse($request);
             }
 
-            $this->incrementAttempts($request, 2); // decay minutes
+            $this->incrementAttempts($request, getCmsConfig('cms login throttle minutes')); // decay minutes
 
             return $this->sendFailedLoginResponse($request);
         } catch (\Exception $e) {
