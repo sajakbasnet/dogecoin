@@ -22,7 +22,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
         $this->role = $role;
     }
 
-    public function getAllData($data = null, $selectedColumns = [], $pagination = true)
+    public function getAllData($data, $selectedColumns = [], $pagination = true)
     {
         $query = $this->query();
 

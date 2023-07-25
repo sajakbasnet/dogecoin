@@ -3,10 +3,11 @@
 namespace App\Repositories;
 
 use App\Exceptions\ResourceNotFoundException;
+use App\Interfaces\OpenInterface;
 use Config;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class Repository
+class Repository implements OpenInterface
 {
     /**
      * Stores the model used for service.
@@ -28,7 +29,7 @@ class Repository
             $query->select($selectedColumns);
         }
         if (isset($data->keyword) && $data->keyword !== null) {
-            $query->where('name', 'LIKE', '%'.$data->keyword.'%');
+            $query->where('name', 'LIKE', '%' . $data->keyword . '%');
         }
         if ($pagination) {
             return $query->orderBy('id', 'DESC')->paginate(Config::get('constants.PAGINATION'));
@@ -47,7 +48,7 @@ class Repository
     public function findByEmail($email)
     {
         $data = $this->model->where('email', $email)->first();
-        if (! isset($data)) {
+        if (!isset($data)) {
             throw new ModelNotFoundException;
         }
 
@@ -56,7 +57,7 @@ class Repository
 
     //store single record
 
-    public function store($request)
+    public function create($request)
     {
         return $this->model->create($request->except('_token'));
     }
@@ -82,7 +83,7 @@ class Repository
 
     //delete a record
 
-    public function delete($request, $id)
+    public function delete($id)
     {
         $item = $this->itemByIdentifier($id);
 
