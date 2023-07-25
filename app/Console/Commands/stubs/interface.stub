@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Interfaces;
+namespace DummyNamespace;
 
-interface OpenInterface
+interface DummyClass
 {
     public function getAllData($data, $selectedColumns = [], $pagination = true);
-
-    public function create($userData);  
+    
+    public function create($userData);    
 
     public function update($id, $userData);
 

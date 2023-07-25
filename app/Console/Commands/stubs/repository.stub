@@ -1,0 +1,28 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Interfaces\OpenInterface;
+
+class DummyClass extends Repository implements OpenInterface
+{
+    public function __construct()
+  {
+  }
+
+  public function getAllData($data, $selectedColumns = [], $pagination = true)
+  {
+  }
+  public function create($request)
+  {
+  }
+
+  public function update($request, $id)
+  {
+  }
+
+  public function delete($id)
+  {
+  }
+
+}

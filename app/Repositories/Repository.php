@@ -63,7 +63,6 @@ class Repository implements OpenInterface
     }
 
     // store bulk records
-
     public function storeBulk($data)
     {
         return $this->model->createMany($data);
