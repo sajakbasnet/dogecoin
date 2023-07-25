@@ -11,7 +11,7 @@ class ResourceController extends Controller
 
     public function __construct($service)
     {
-        $this->service = $service;
+        $this->service = $service;     
     }
 
     public function storeValidationRequest()
