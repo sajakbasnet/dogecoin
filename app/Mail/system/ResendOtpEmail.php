@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class PasswordResetEmail extends Mailable
+class ResendOtpEmail extends Mailable
 {
     use Queueable, SerializesModels, Mail;
 
@@ -18,10 +18,9 @@ class PasswordResetEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($data, $encryptedToken, $otpCode)
+    public function __construct($data, $otpCode)
     {
         $this->user = $data;
-        $this->token = $encryptedToken;
         $this->otpCode = $otpCode;
         $this->locale = Cookie::get('lang');
     }
@@ -36,8 +35,7 @@ class PasswordResetEmail extends Mailable
         $content = $this->parseEmailTemplate([
             '%user_name%' => $this->user->name,
             '%otp_code%' => $this->otpCode,
-            '%password_reset_link%' => $this->user->getPasswordSetResetLink(false, $this->token),
-        ], 'PasswordResetLinkEmail', $this->locale);
+        ], 'ResendOtpCodeEmail', $this->locale);
 
         return $this->view('system.mail.index', compact('content'));
     }

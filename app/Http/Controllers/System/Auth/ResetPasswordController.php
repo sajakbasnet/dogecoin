@@ -40,6 +40,7 @@ class ResetPasswordController extends Controller
             }
 
             $this->service->findByEmailAndToken($request->email, $request->token);
+
             $data['email'] = $request->email;
             $data['token'] = $request->token;
 
@@ -65,14 +66,10 @@ class ResetPasswordController extends Controller
     public function setResetPassword($request)
     {
         try {
-
-            if ($request->token) {
-                $user = $this->service->findByEmailAndToken($request->email, $request->token);
-            } else {
-                $user = $this->service->findByEmailAndOtp($request->email, $request->otp_code);
-            }
+            $user = $this->service->findByEmailAndToken($request->email, $request->token);
 
             $check = $this->checkOldPasswords($user, $request);
+
             if ($check) {
                 $password = Hash::make($request->password);
                 if ($user->userPasswords->count() < 3) {
@@ -82,6 +79,7 @@ class ResetPasswordController extends Controller
                     'password' => $password,
                     'password_resetted' => 1,
                     'token' => $this->service->generateToken(24),
+                    'expiry_datetime' => null
                 ]);
 
                 return true;
@@ -106,7 +104,7 @@ class ResetPasswordController extends Controller
         return $check;
     }
 
-    public function showOtpForm(Request $request)
+    public function showOtpForm()
     {
         $title = 'Set Password';
 

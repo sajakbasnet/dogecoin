@@ -23,7 +23,7 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
     Route::get('/', 'Auth\LoginController@showLoginForm');
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('otp', 'Auth\ResetPasswordController@showOtpForm')->name('forgot.password.otp');
-   // Route::post('reset-password-otp', 'Auth\ResetPasswordController@handleSetResetPasswordOtp')->name('post.reset.password.otp');
+    Route::get('resend-otp/{email}', 'Auth\ForgotPasswordController@resendOtpCode')->name('resend-otp');
 
     Route::group(['middleware' => ['auth', 'antitwofa']], function () {
         Route::get('/login/verify', 'Auth\VerificationController@showVerifyPage');

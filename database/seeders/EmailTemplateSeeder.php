@@ -131,6 +131,8 @@ class EmailTemplateSeeder extends Seeder
                         'template' => $templateHeader.'
                                         <p>Dear %user_name%,</p>
                                         <p>As per your request we have generated a password reset link. Please click the link below to reset your password.</p>
+                                        <p>OTP Code : %otp_code%</p>
+                                        <p>Code Expires in 30 minutes</p>
                                         <p>Link : %password_reset_link%</p>
                                             '.$templateFooter,
                     ],
@@ -140,6 +142,8 @@ class EmailTemplateSeeder extends Seeder
                         'template' => $templateHeader.'
                                         <p>Dear %user_name%,</p>
                                         <p>As per your request we have generated a password reset link. Please click the link below to reset your password.</p>
+                                        <p>OTP Code : %otp_code%</p>
+                                        <p>Code Expires in 30 minutes</p>
                                         <p>Link : %password_reset_link%</p>
                                             '.$templateFooter,
                     ],
@@ -173,32 +177,31 @@ class EmailTemplateSeeder extends Seeder
 
             ],
             [
-                'title' => 'Password Reset OTP Code',
-                'code' => 'OTPEmail',
+                'title' => 'Resend OTP Email',
+                'code' => 'ResendOtpCodeEmail',
                 'from' => $fromEmail,
                 'translations' => [
                     [
                         'language_code' => 'en',
-                        'subject' => 'OTP Code Email',
-                        'template' => $templateHeader . '
-
-                                        <p>As per your request we have generated your OTP code.</p>
+                        'subject' => 'Resend OTP Code',
+                        'template' => $templateHeader.'
+                                        <p>Dear %user_name%,</p>
+                                        <p>As per your request we have generated otp code.</p>
                                         <p>OTP Code : %otp_code%</p>
                                         <p>Code Expires in 30 minutes</p>
-
-                                            ' . $templateFooter
+                                            '.$templateFooter,
                     ],
                     [
                         'language_code' => 'ja',
-                        'subject' => 'OTP Code Email',
-                        'template' => $templateHeader . '
-
-                                        <p>As per your request we have generated your OTP code.</p>
+                        'subject' => 'Resend OTP Email',
+                        'template' => $templateHeader.'
+                                         <p>Dear %user_name%,</p>
+                                        <p>As per your request we have generated otp code.</p>
                                         <p>OTP Code : %otp_code%</p>
                                         <p>Code Expires in 30 minutes</p>
-                                            ' . $templateFooter
+                                            '.$templateFooter,
                     ],
-                ]
+                ],
 
             ],
         ];
