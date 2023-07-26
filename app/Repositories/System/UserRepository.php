@@ -4,6 +4,10 @@ namespace App\Repositories\System;
 
 use App\Events\UserCreated;
 use App\Exceptions\CustomGenericException;
+use App\Exceptions\EncryptedPayloadException;
+use App\Exceptions\NotDeletableException;
+use App\Exceptions\ResourceNotFoundException;
+use App\Exceptions\RoleNotChangeableException;
 use App\Interfaces\System\UserRepositoryInterface;
 use App\Model\Role;
 use App\Repositories\Repository;
