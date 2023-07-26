@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'role_id', 'token', 'password_resetted','expiry_datetime','is_2fa_enabled'
+        'name', 'email', 'password', 'username', 'role_id', 'token', 'password_resetted','expiry_datetime','is_2fa_enabled','two_fa_expiry_time'
     ];
 
     protected $guarded = [

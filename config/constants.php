@@ -19,6 +19,8 @@ return [
     'DEFAULT_LOCALE' => env('DEFAULT_LOCALE', 'en'),
     'ADMIN_DEFAULT_EMAIL' => env('ADMIN_DEFAULT_EMAIL', 'info@ekbana.com'),
     'DEFAULT_LINK_EXPIRATION' => env('DEFAULT_LINK_EXPIRATION' ?? 30),
+    'DEFAULT_TWO_FA_EXPIRATION' => env('DEFAULT_TWO_FA_EXPIRATION' ?? 10),
+    'DEFAULT_TWO_FA_THROTTLE_LIMIT' => env('DEFAULT_TWO_FA_THROTTLE_LIMIT', 2),
     'API_URL' => env('API_URL', 'http://ip-api.com'),
     'IP_ADDRESS' => env('IP_ADDRESS', '110.44.123.47'),
 

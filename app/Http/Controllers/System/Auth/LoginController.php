@@ -7,8 +7,10 @@ use App\Exceptions\CustomGenericException;
 use App\Http\Controllers\Controller;
 use App\Mail\system\TwoFAEmail;
 use App\Model\Loginlogs;
+use App\Services\System\UserService;
 use App\Traits\CustomThrottleRequest;
 use Auth;
+use Carbon\Carbon;
 use GuzzleHttp;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -153,14 +155,7 @@ class LoginController extends Controller
         }
 
         if (authUser()->is_2fa_enabled) {
-            session()->forget('verification_code');
-            $verification_code = random_int(100000, 999999);
-            session()->put('verification_code', $verification_code);
-            try {
-                Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
-            } catch (\Exception $e) {
-                throw new CustomGenericException($e->getMessage());
-            }
+            $this->twoFa();
             return redirect('/' . getSystemPrefix() . '/login/verify');
         }
 
@@ -176,5 +171,26 @@ class LoginController extends Controller
         $request->session()->invalidate();
 
         return redirect(getSystemPrefix() . '/login')->withErrors(['alert-success' => 'Successfully logged out!']);
+    }
+
+    public function twoFa()
+    {
+        session()->forget('verification_code');
+        $verificationCode = random_int(100000, 999999);
+
+        session()->put('verification_code', $verificationCode);
+        try {
+            $user = authUser();
+            $twoFactorExpireTime = Carbon::now()->addMinutes(Config::get('constants.DEFAULT_TWO_FA_EXPIRATION'))
+                ->format('Y-m-d H:i:s');
+
+            $user->update([
+                'two_fa_expiry_time' => $twoFactorExpireTime
+            ]);
+
+            Mail::to($user->email)->send(new TwoFAEmail(authUser()));
+        } catch (\Exception $e) {
+            throw new CustomGenericException($e->getMessage());
+        }
     }
 }
