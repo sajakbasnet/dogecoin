@@ -14,7 +14,7 @@ class Add2faEnabledToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_2fa_enabled')->default(true);
+            $table->boolean('is_2fa_enabled')->default(false);
         });
     }
 

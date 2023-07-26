@@ -22,14 +22,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'role_id', 'token', 'password_resetted','otp_code','expiry_datetime'
+        'name', 'email', 'password', 'username', 'role_id', 'token', 'password_resetted','expiry_datetime','is_2fa_enabled'
     ];
 
     protected $guarded = [
         'id',
     ];
 
-    protected static $logAttributes = ['name', 'email', 'username', 'role_id','otp_code'];
+    protected static $logAttributes = ['name', 'email', 'username', 'role_id','is_2fa_enabled'];
 
     protected static $ignoreChangedAttributes = ['password', 'password_resetted', 'token', 'remember_token', 'updated_at'];
 
