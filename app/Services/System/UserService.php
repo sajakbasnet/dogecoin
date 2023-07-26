@@ -174,30 +174,4 @@ class UserService extends Service
             'password' => Hash::make($request->password),
         ]);
     }
-
-    public function generateOtp()
-    {
-        $code = substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyz"), 0, 6);
-        if ($this->model::where('otp_code', $code)->exists()) {
-            $this->generateOtp();
-        }
-        return $code;
-    }
-
-    public function findByEmailAndOtp($email, $otp)
-    {
-        $user = $this->model->where('email', $email)->where('otp_code', $otp)->first();
-
-        if (!isset($user)) {
-            throw new ResourceNotFoundException("User doesn't exist in our system.");
-        }
-
-        $checkExpiryDate = now()->format('Y-m-d H:i:s') <= $user->expiry_datetime;
-
-        if (!$checkExpiryDate) {
-            throw new ResourceNotFoundException("The provided link has expired.");
-        }
-
-        return $user;
-    }
 }
