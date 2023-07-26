@@ -28,17 +28,6 @@
                                 @enderror
                             </div>
                         @endif
-                        <div class="form-group login-group @error('otp_code') has-error @enderror">
-                            <label>OTP Code</label>
-                            <div class="input-group"><span class="input-group-text"><i
-                                        class="fa fa-key"></i></span>
-                                <input type="text" name="otp_code" class="form-control" placeholder="OTP Code"
-                                       value="{{ old('otp_code') }}">
-                            </div>
-                            @error('otp_code')
-                            <div class="d-block invalid-feedback">{{$errors->first('otp_code')}}</div>
-                            @enderror
-                        </div>
 
                         <div class="form-group login-group @error('password') has-error @enderror">
                             <div class="input-group">
@@ -63,7 +52,6 @@
                         <div class="form-group">
                             <button type="submit" class="btn login-btn btn-block"
                                     style="background-color: {{getCmsConfig('cms theme color')}}">{{ isset($buttonText) ? translate($buttonText) : translate($title) }}</button>
-                            <a class="link" href="{{ route('resend-otp',['email'=>$email]) }}">Resend OTP Code ?</a>
                         </div>
                         @if($routename == "change.password")
                             <div class="form-group">

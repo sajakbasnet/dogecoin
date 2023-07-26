@@ -18,11 +18,10 @@ class PasswordResetEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($data, $encryptedToken, $otpCode)
+    public function __construct($data, $encryptedToken)
     {
         $this->user = $data;
         $this->token = $encryptedToken;
-        $this->otpCode = $otpCode;
         $this->locale = Cookie::get('lang');
     }
 
@@ -35,7 +34,6 @@ class PasswordResetEmail extends Mailable
     {
         $content = $this->parseEmailTemplate([
             '%user_name%' => $this->user->name,
-            '%otp_code%' => $this->otpCode,
             '%password_reset_link%' => $this->user->getPasswordSetResetLink(false, $this->token),
         ], 'PasswordResetLinkEmail', $this->locale);
 

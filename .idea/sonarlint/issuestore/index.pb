@@ -3,8 +3,6 @@
 	readme.md,2/7/275d783e298228506068436512433d343feb52aa
 S
 #app/Services/System/RoleService.php,d/8/d8fa0485f7efb657b55b8acbe2c976f35d2d408a
-C
-app/Http/Kernel.php,4/0/405f423e61f666bcedb754ae8befdce9e746176e
 T
 $app/Traits/CustomThrottleRequest.php,6/6/6641a9ceb234fad6d378e3abd31855ff6570414e
 B

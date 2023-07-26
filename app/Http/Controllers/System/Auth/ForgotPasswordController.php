@@ -69,50 +69,14 @@ class ForgotPasswordController extends Controller
     {
         $user = $this->user->findByEmail($email);
         $token = $this->user->generateToken(24);
-        $otpCode = $this->user->generateOtp();
         $encryptedToken = encrypt($token);
         $defaultLinkExpiration = Config::get('constants.DEFAULT_LINK_EXPIRATION');
 
         $user->update([
             'token' => $token,
-            'otp_code' => $otpCode,
             'expiry_datetime' => now()->addMinutes($defaultLinkExpiration)->format('Y-m-d H:i:s')
         ]);
 
-        Mail::to($user->email)->send(new PasswordResetEmail($user, $encryptedToken, $otpCode));
-    }
-
-    public function resendOtpCode(Request $request, $email)
-    {
-        try {
-            if (
-                method_exists($this, 'hasTooManyAttempts') &&
-                $this->hasTooManyAttempts($request, 4) // maximum attempts can be set by passing parameter $attempts=
-            ) {
-                $this->customFireLockoutEvent($request);
-
-                return $this->customLockoutResponse($request);
-            }
-
-            $this->incrementAttempts($request, 5); // maximum decay minute can be set by passing parameter $minutes=
-
-            $otpCode = $this->user->generateOtp();
-            $user = $this->user->findByEmail($email);
-
-//        if ($user->expiry_datetime >= now()->format('Y-m-d H:i:s')) {
-//            throw new CustomGenericException("The OTP code which has been sent to your email is still valid.");
-//        }
-
-            $user->update([
-                'otp_code' => $otpCode,
-            ]);
-
-            Mail::to($user->email)->send(new ResendOtpEmail($user, $otpCode));
-
-            return redirect()->back()->withErrors(['alert-success' => 'OTP code has been sent to your email.']);
-        } catch (\Exception $e) {
-            throw new CustomGenericException($e->getMessage());
-        }
-
+        Mail::to($user->email)->send(new PasswordResetEmail($user, $encryptedToken));
     }
 }

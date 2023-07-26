@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use App\Exceptions\Api\ApiGenericException;
 use App\Traits\Api\ResponseTrait;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
@@ -82,6 +83,9 @@ class Handler extends ExceptionHandler
         }
         if ($exception instanceof ApiGenericException) {
             $return = $this->setStatusCode($exception->statusCode)->respondWithError($exception->message);
+        }
+        if ($exception instanceof TokenMismatchException) {
+            $return = redirect('/system/login')->withErrors(['alert-danger' => 'Session has been expired. Please Login again to continue.']);
         }
         if (isset($return)) {
             return $return;
