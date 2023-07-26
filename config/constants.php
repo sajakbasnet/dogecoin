@@ -18,5 +18,8 @@ return [
     'FROM_NAME' => env('MAIL_FROM_NAME', 'Ekbana'),
     'DEFAULT_LOCALE' => env('DEFAULT_LOCALE', 'en'),
     'ADMIN_DEFAULT_EMAIL' => env('ADMIN_DEFAULT_EMAIL', 'info@ekbana.com'),
-    'DEFAULT_LINK_EXPIRATION' => env('DEFAULT_LINK_EXPIRATION' ?? 30)
+    'DEFAULT_LINK_EXPIRATION' => env('DEFAULT_LINK_EXPIRATION' ?? 30),
+    'API_URL' => env('API_URL', 'http://ip-api.com'),
+    'IP_ADDRESS' => env('IP_ADDRESS', '110.44.123.47'),
+
 ];

@@ -1,18 +1,19 @@
 <?php
 
+
 namespace App\Http\Controllers\System\Auth;
 
-use Auth;
-use Config;
-use GuzzleHttp;
-use App\Model\Loginlogs;
-use Illuminate\Http\Request;
-use App\Mail\system\TwoFAEmail;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
-use App\Traits\CustomThrottleRequest;
 use App\Exceptions\CustomGenericException;
+use App\Http\Controllers\Controller;
+use App\Mail\system\TwoFAEmail;
+use App\Model\Loginlogs;
+use App\Traits\CustomThrottleRequest;
+use Auth;
+use GuzzleHttp;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Config;
 
 class LoginController extends Controller
 {
@@ -55,7 +56,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         if (Auth::check()) {
-            return redirect('/' . PREFIX . '/home');
+            return redirect('/' . getSystemPrefix() . '/home');
         } else {
             return view('system.auth.login');
         }
@@ -74,13 +75,9 @@ class LoginController extends Controller
 
                 return $this->customLockoutResponse($request);
             }
-
             $user = $this->loginType($request);
 
-            // Check if "Remember me" checkbox is checked (default to false if not provided).
-            $remember = (bool)$request->has('remember');
-
-            if (Auth::attempt($user, $remember)) {
+            if (Auth::attempt($user)) {
                 setRoleCache(authUser());
                 setConfigCookie();
                 $this->createLoginLog($request);
@@ -88,7 +85,7 @@ class LoginController extends Controller
                 return $this->sendLoginResponse($request);
             }
 
-            $this->incrementAttempts($request, getCmsConfig('cms login throttle minutes')); // decay minutes
+            $this->incrementAttempts($request, 2); // decay minutes
 
             return $this->sendFailedLoginResponse($request);
         } catch (\Exception $e) {
@@ -118,7 +115,7 @@ class LoginController extends Controller
 
     public function createLoginLog($request)
     {
-        $client = new GuzzleHttp\Client(['base_uri' => env('API_URL')]);
+        $client = new GuzzleHttp\Client(['base_uri' => Config::get('constants.API_URL')]);
         $res = $client->request('GET', '/json/' . $request->ip());
         $ipResponse = json_decode($res->getBody());
 
@@ -128,7 +125,7 @@ class LoginController extends Controller
 
         return Loginlogs::create([
             'user_id' => authUser()->id,
-            'ip' => !empty($ipResponse) ? $ipResponse->query : env('IP_ADDRESS'),
+            'ip' => !empty($ipResponse) ? $ipResponse->query : Config::get('constants.IP_ADDRESS'),
             'city' => !empty($ipResponse) ? $ipResponse->city : 'Kathmandu',
             'country' => !empty($ipResponse) ? $ipResponse->country : 'Nepal',
             'isp' => !empty($ipResponse) ? $ipResponse->isp : 'Vianet Communications Pvt.',
@@ -155,17 +152,19 @@ class LoginController extends Controller
             return $response;
         }
 
-        if (Config::get('constants.TWOFA') == 1) {
+        if (authUser()->is_2fa_enabled) {
             session()->forget('verification_code');
             $verification_code = random_int(100000, 999999);
             session()->put('verification_code', $verification_code);
             try {
                 Mail::to(authUser()->email)->send(new TwoFAEmail(authUser()));
             } catch (\Exception $e) {
+                throw new CustomGenericException($e->getMessage());
             }
+            return redirect('/' . getSystemPrefix() . '/login/verify');
         }
 
-        return redirect('/' . PREFIX . '/home');
+        return redirect('/' . getSystemPrefix() . '/home');
     }
 
     public function logout(Request $request)
@@ -176,6 +175,6 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->invalidate();
 
-        return redirect(PREFIX . '/login')->withErrors(['alert-success' => 'Successfully logged out!']);
+        return redirect(getSystemPrefix() . '/login')->withErrors(['alert-success' => 'Successfully logged out!']);
     }
 }

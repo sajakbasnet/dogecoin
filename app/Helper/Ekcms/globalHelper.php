@@ -122,3 +122,8 @@ function SN($sn, $key)
     return $sn += $key + 1;
 }
 
+function getSystemPrefix()
+{
+    return  config('constants.PREFIX');
+}
+
