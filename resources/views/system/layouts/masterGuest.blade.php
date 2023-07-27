@@ -127,7 +127,30 @@
     $(function() {
         $("body").css("background-color", hex2rgb("{{getCmsConfig('cms theme color')}}", 0.09));
     })
+
 </script>
+  <script>
+      const error = "{{isset($errors) && $errors->first('alert-throttle') ?? null}}";
+
+      if (error !== '') {
+          var seconds = {{session('seconds') ?? 0}}; // Default value 0 if $seconds is not set
+
+          function updateCountdown() {
+              $('#alert-throttle').text('Too many attempts. Please try again after ' + seconds + ' seconds');
+
+              if (seconds === 0) {
+                  clearInterval(countdownInterval); // Clear the interval when seconds reach 0
+                  $('#alert-throttle').hide();
+              } else {
+                  seconds--;
+              }
+          }
+
+          updateCountdown(); // Call the function initially
+
+          var countdownInterval = setInterval(updateCountdown, 1000); // Run the countdown every 1000 milliseconds (1 second)
+      }
+  </script>
 </body>
 
 </html>

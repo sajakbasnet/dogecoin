@@ -16,14 +16,14 @@ class antiTwoFA
      */
     public function handle($request, Closure $next)
     {
-        if (Config::get('constants.TWOFA') == 1) {
-            if (session()->get('verification_code') == session()->get('request_verification_code')) {
-                return redirect('/'.PREFIX.'/home');
+        if (authUser()->is_2fa_enabled) {
+            if (session()->get('verification_code', 'verifcation_code') == session()->get('request_verification_code')) {
+                return redirect('/'.getSystemPrefix().'/home');
             } else {
                 return $next($request);
             }
         } else {
-            return redirect('/'.PREFIX.'/home');
+            return $next($request);
         }
     }
 }

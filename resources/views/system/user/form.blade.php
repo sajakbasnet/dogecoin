@@ -9,10 +9,17 @@
   </x-slot>
 </x-system.form.form-group>
 
+<x-system.form.form-group :input="[ 'name' => 'is_2fa_enabled', 'label'=> 'Two Factor Authentication', 'required' => true]">
+    <x-slot name="inputs">
+        <x-system.form.input-radio :input="[ 'name' => 'is_2fa_enabled', 'label'=> 'Two Factor Authentication', 'required' => true,
+    'default' => old('is_2fa_enabled') ?? 0, 'options' => [[ 'value' => '1', 'label' => 'Active'], ['value' => '0', 'label'=>'In-Active']]]" />
+    </x-slot>
+</x-system.form.form-group>
+
 @if(!isset($item))
 <x-system.form.form-group :input="[ 'name' => 'set_password_status', 'label'=> 'Set Password ?', 'required' => true]">
   <x-slot name="inputs">
-    <x-system.form.input-radio :input="[ 'name' => 'set_password_status', 'label'=> 'Set Password', 'required' => true, 
+    <x-system.form.input-radio :input="[ 'name' => 'set_password_status', 'label'=> 'Set Password', 'required' => true,
     'default' => old('set_password_status') ?? 0, 'options' => [[ 'value' => '0', 'label' => 'Send Activation Link'], ['value' => '1', 'label'=>'Set Password']]]" />
   </x-slot>
 </x-system.form.form-group>

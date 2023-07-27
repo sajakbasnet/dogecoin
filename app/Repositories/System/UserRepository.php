@@ -127,10 +127,19 @@ class UserRepository extends Repository implements UserRepositoryInterface
         } catch (\Exception $e) {
             throw new EncryptedPayloadException('Invalid encrypted data');
         }
+
         $user = $this->model->where('email', $email)->where('token', $decryptedToken)->first();
+
         if (!isset($user)) {
             throw new ResourceNotFoundException("User doesn't exist in our system.");
         }
+
+        $checkExpiryDate = now()->format('Y-m-d H:i:s') <= $user->expiry_datetime;
+
+        if (!$checkExpiryDate) {
+            throw new ResourceNotFoundException("The provided link has expired.");
+        }
+
 
         return $user;
     }
