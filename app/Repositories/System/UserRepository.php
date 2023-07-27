@@ -2,12 +2,9 @@
 
 namespace App\Repositories\System;
 
-use App\Events\UserCreated;
-use App\Exceptions\CustomGenericException;
+
 use App\Exceptions\EncryptedPayloadException;
-use App\Exceptions\NotDeletableException;
 use App\Exceptions\ResourceNotFoundException;
-use App\Exceptions\RoleNotChangeableException;
 use App\Interfaces\System\UserRepositoryInterface;
 use App\Model\Role;
 use App\Repositories\Repository;
@@ -57,49 +54,18 @@ class UserRepository extends Repository implements UserRepositoryInterface
     }
 
 
-    public function createUser($request)
+    public function create($data)
     {
-        \DB::transaction(function () use ($request) {
-            $data = $request->except('_token');
-            if ($request->set_password_status == '1') {
-                $data['password'] = Hash::make($data['password']);
-            } else {
-                unset($data['password']);
-            }
-            $token = $this->generateToken(24);
-            $data['token'] = $token;
-            $user = $this->model->create($data);
-            try {
-                event(new UserCreated($user, $token));
-
-                return $user;
-            } catch (\Exception $e) {
-                \Log::error('User creation failed: ' . $e->getMessage());
-                \DB::rollBack();
-                return throw new CustomGenericException('User creation failed. Please try again.');
-            }
-        });
+        return $this->model->create($data);
     }
 
-    public function updateUser($id, $request)
+    public function update($user, $data)
     {
-        try {
-            $data = $request->except('_token');
-            $user = $this->itemByIdentifier($id);
-            if (isset($request->role_id) && ($user->id == 1 && $request->role_id != 1)) {
-                throw new RoleNotChangeableException('The role of the specific user cannot be changed.');
-            }
-            return $user->update($data);
-        } catch (\Exception $e) {
-            throw new CustomGenericException($e->getMessage());
-        }
+        return $user->update($data);
     }
 
-    public function deleteUser($id)
+    public function delete($request, $id)
     {
-        if ($id == 1) {
-            throw new NotDeletableException();
-        }
         $user = $this->itemByIdentifier($id);
         return $user->delete();
     }

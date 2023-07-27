@@ -6,11 +6,11 @@ use App\Exceptions\NotDeletableException;
 use App\Model\Language;
 use App\Services\Service;
 
-class LanguageService extends Service
+class LanguageService 
 {
     public function __construct(Language $language, CountryService $countryService)
     {
-        parent::__construct($language);
+        // parent::__construct($language);
         $this->countryService = $countryService;
     }
 
