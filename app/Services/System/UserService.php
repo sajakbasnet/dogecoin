@@ -93,7 +93,7 @@ class UserService extends Service
         if ($id == 1) {
             throw new NotDeletableException();
         }
-        return $this->userRepository->delete($id);
+        return $this->userRepository->delete($request,$id);
     }
     public function findByEmailAndToken($email, $token)
     {

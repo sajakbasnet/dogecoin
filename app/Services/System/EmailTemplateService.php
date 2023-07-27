@@ -42,4 +42,8 @@ class EmailTemplateService extends Service
     {       
         return $this->emailRepository->update($request, $id);
     }
+    public function delete($request, $id)
+    {       
+        return $this->emailRepository->delete($request,$id);
+    }
 }

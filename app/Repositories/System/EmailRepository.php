@@ -12,7 +12,6 @@ class EmailRepository extends Repository implements EmailInterface
   public function __construct(EmailTemplate $emailTemplate)
   {
     parent::__construct($emailTemplate);
-   
   }
 
   public function getAllData($data, $selectedColumns = [], $pagination = true)
@@ -41,11 +40,15 @@ class EmailRepository extends Repository implements EmailInterface
   public function update($request, $data)
   {
     $emailTemplate = $this->itemByIdentifier($request->email_template);
-    $emailTemplate->emailTranslations()->delete();   
+    $emailTemplate->emailTranslations()->delete();
     $emailTemplate = $emailTemplate->update($request->only('title', 'from'));
     $emailTemplate = $this->itemByIdentifier($request->email_template);
     $emailTemplate->emailTranslations()->createMany($request->get('multilingual'));
     return $emailTemplate;
-  } 
-  
+  }
+  public function delete($request, $id)
+  {
+    $emailTemplate = $this->itemByIdentifier($id);
+    return $emailTemplate->delete();
+  }
 }
