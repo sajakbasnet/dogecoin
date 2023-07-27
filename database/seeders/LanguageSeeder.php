@@ -16,8 +16,7 @@ class LanguageSeeder extends Seeder
     {
         $englishBackend = Language::where('id', 1)->first();
         if (! $englishBackend) {
-            Language::create([
-                'id' => 1,
+            Language::create([                
                 'name' => 'English',
                 'language_code' => 'en',
                 'group' => 'backend',
@@ -25,8 +24,7 @@ class LanguageSeeder extends Seeder
         }
         $englishFrontend = Language::where('id', 2)->first();
         if (! $englishFrontend) {
-            Language::create([
-                'id' => 2,
+            Language::create([                
                 'name' => 'English',
                 'language_code' => 'en',
                 'group' => 'frontend',
@@ -34,8 +32,7 @@ class LanguageSeeder extends Seeder
         }
         $japaneseBackend = Language::where('id', 3)->first();
         if (! $japaneseBackend) {
-            Language::create([
-                'id' => 3,
+            Language::create([              
                 'name' => 'Japanese',
                 'language_code' => 'ja',
                 'group' => 'backend',
@@ -43,8 +40,7 @@ class LanguageSeeder extends Seeder
         }
         $japaneseFrontend = Language::where('id', 4)->first();
         if (! $japaneseFrontend) {
-            Language::create([
-                'id' => 4,
+            Language::create([              
                 'name' => 'Japanese',
                 'language_code' => 'ja',
                 'group' => 'frontend',

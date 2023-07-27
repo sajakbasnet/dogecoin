@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\system;
 
+use App\Rules\system\CheckOtpRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class setResetRequest extends FormRequest
 {
@@ -21,12 +23,23 @@ class setResetRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
-        return [
+        $data = $request->only('email','otp_code','password','password_confirmation');
+
+        $validate = [
             'email' => 'required|email',
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
         ];
+
+        if (array_key_exists('otp_code', $data)) {
+            $otpRule = [
+                'otp_code' => ['required', new CheckOtpRule($data['email'])],
+            ];
+            $validate = array_merge($validate, $otpRule);
+        }
+
+        return $validate;
     }
 }

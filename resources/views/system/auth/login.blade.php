@@ -29,8 +29,8 @@
 
                         <div class="form-group">
                             <div class="checkbox">
-                                <input id="checkbox1" type="checkbox">
-                                <label for="checkbox1">Remember password</label>
+                                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                <label for="remember">Remember password</label>
                             </div><a class="link" href="{{ route('forgot.password') }}">Forgot password?</a>
                         </div>
                         <div class="form-group">

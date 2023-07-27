@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\System\Auth;
 
+use App\Exceptions\ResourceNotFoundException;
+use App\Mail\system\ResendOtpEmail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\System\UserService;
@@ -10,6 +13,7 @@ use App\Traits\CustomThrottleRequest;
 use App\Mail\system\PasswordResetEmail;
 use App\Exceptions\CustomGenericException;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Config;
 
 class ForgotPasswordController extends Controller
 {
@@ -34,7 +38,6 @@ class ForgotPasswordController extends Controller
     public function showRequestForm()
     {
         $title = 'Forgot-password';
-
         return view('system.auth.forgotPassword', compact('title'));
     }
 
@@ -44,18 +47,19 @@ class ForgotPasswordController extends Controller
         try {
             if (
                 method_exists($this, 'hasTooManyAttempts') &&
-                $this->hasTooManyAttempts($request, 5) // maximum attempts can be set by passing parameter $attempts=
+                $this->hasTooManyAttempts($request, Config::get('constants.DEFAULT_FORGOT_PASSWORD_LIMIT')) // maximum attempts can be set by passing parameter $attempts=
             ) {
                 $this->customFireLockoutEvent($request);
 
                 return $this->customLockoutResponse($request);
             }
 
-            $this->incrementAttempts($request, 1); // maximum decay minute can be set by passing parameter $minutes=
+            $this->incrementAttempts($request, Config::get('constants.DEFAULT_FORGOT_PASSWORD_EXPIRATION')); // maximum decay minute can be set by passing parameter $minutes=
 
             $this->sendPasswordResetLink($request->email);
 
             return back()->withErrors(['alert-success' => 'Password reset link has been sent to your email.']);
+
         } catch (\Exception $e) {
             throw new CustomGenericException($e->getMessage());
         }
@@ -66,9 +70,13 @@ class ForgotPasswordController extends Controller
         $user = $this->user->findByEmail($email);
         $token = $this->user->generateToken(24);
         $encryptedToken = encrypt($token);
+        $defaultLinkExpiration = Config::get('constants.DEFAULT_LINK_EXPIRATION'); //default link expiration in minutes
+
         $user->update([
             'token' => $token,
+            'expiry_datetime' => now()->addMinutes($defaultLinkExpiration)->format('Y-m-d H:i:s')
         ]);
+
         Mail::to($user->email)->send(new PasswordResetEmail($user, $encryptedToken));
     }
 }

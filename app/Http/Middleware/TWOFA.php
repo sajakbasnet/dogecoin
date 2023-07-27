@@ -16,11 +16,11 @@ class TWOFA
      */
     public function handle($request, Closure $next)
     {
-        if (Config::get('constants.TWOFA') == 1) {
+        if (authUser()->is_2fa_enabled) {
             if (session()->get('verification_code', 'verifcation_code') == session()->get('request_verification_code')) {
                 return $next($request);
             } else {
-                return redirect('/'.PREFIX.'/login/verify');
+                return redirect('/'.getSystemPrefix().'/login/verify');
             }
         } else {
             return $next($request);

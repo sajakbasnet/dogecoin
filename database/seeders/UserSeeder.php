@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         if (! isset($user)) {
             User::create([
                 'name' => 'Admin',
-                'email'=> Config::get('constants.ADMIN_DEFAULT_EMAIL'),
+                'email'=> Config::get('constants.ADMIN_DEFAULT_EMAIL') ?? 'admin@ekcms.com',
                 'username' => 'admin',
                 'password' => Hash::make('123admin@'),
                 'password_resetted' => 1,
