@@ -56,11 +56,7 @@ class LanguageRepository extends Repository implements LanguageInterface
       'language_code' => $language_code,
       'group' => $request->get('group'),
     ]);
-  }
-
-  public function update($request, $data)
-  {
-  }
+  }  
 
   public function delete($request, $id)
   {
