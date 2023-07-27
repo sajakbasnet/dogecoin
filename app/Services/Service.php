@@ -7,7 +7,7 @@ use App\Repositories\Repository;
 use Config;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class Service 
+class Service
 {
     /**
      * Stores the model used for service.
@@ -20,7 +20,7 @@ class Service
         $this->repository = $repository;
     }
 
-    
+
 
     // Data for index page
     public function indexPageData($request)
@@ -45,9 +45,9 @@ class Service
             'item' => $this->repository->itemByIdentifier($id),
             'status' => $this->status(),
         ];
-    }  
+    }
 
-    
+
     public function status()
     {
         return [

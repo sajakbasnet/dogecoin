@@ -42,17 +42,6 @@ class UserRepository extends Repository implements UserRepositoryInterface
 
         return $query->orderBy('id', 'DESC')->with('role')->get();
     }
-    public function getRoles()
-    {
-        $mapped = [];
-        $roles = $this->role->orderBy('name', 'ASC')->get();
-        foreach ($roles as $role) {
-            $mapped[$role->id] = $role->name;
-        }
-
-        return $mapped;
-    }
-
 
     public function create($data)
     {
@@ -69,6 +58,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
         $user = $this->itemByIdentifier($id);
         return $user->delete();
     }
+
     public function generateToken($length)
     {
         $token = generateToken($length);
@@ -79,6 +69,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
 
         return $token;
     }
+
     public function resetPassword($request)
     {
         $user = $this->itemByIdentifier($request->id);
@@ -86,6 +77,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
             'password' => Hash::make($request->password),
         ]);
     }
+
     public function findByEmailAndToken($email, $token)
     {
         try {
@@ -109,9 +101,19 @@ class UserRepository extends Repository implements UserRepositoryInterface
 
         return $user;
     }
+
     public function findByEmail($email)
     {
         $user = $this->model->where('email', $email)->first();
+        if (!isset($user)) {
+            throw new ResourceNotFoundException("User doesn't exist in our system.");
+        }
+        return $user;
+    }
+
+    public function getByRole($roleId)
+    {
+        $user = $this->model->where('role_id', $roleId)->get();
         if (!isset($user)) {
             throw new ResourceNotFoundException("User doesn't exist in our system.");
         }
