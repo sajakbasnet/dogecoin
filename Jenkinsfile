@@ -1,9 +1,5 @@
 pipeline {
   agent any
-  tools {nodejs "nodejs-16"}
-  environment {
-    scannerHome = tool 'SonarQubeScan';
-  }
   stages {
         stage('get_commit_msg') {
           agent any
@@ -23,15 +19,7 @@ pipeline {
               }
           }
         }
-        stage('Analysis & Deploy') {
-          parallel{
-            stage('SonarQube Analysis') {
-              steps {
-                withSonarQubeEnv(installationName: 'SonarQubePro') {
-                sh "${scannerHome}/bin/sonar-scanner"
-                }
-              }
-            }
+
 
         stage('Dev Build') {
         agent any
@@ -106,8 +94,8 @@ pipeline {
           }
         }
 
-  }
-        }
+  
+        
   }
 
 
