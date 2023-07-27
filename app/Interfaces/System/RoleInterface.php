@@ -10,5 +10,8 @@ interface RoleInterface
 
     public function update($id, $data);
 
-    public function delete($id);
+    public function delete($request, $id);
+    public function mapPermission($permissions);
+
+    public function getRoles();
 }
