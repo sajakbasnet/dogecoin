@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Interfaces\System;
+
 interface UserRepositoryInterface
 {
     public function getAllData($data, $selectedColumns = [], $pagination = true);
 
-    public function createUser($userData);
+    public function create($userData);
 
-    public function updateUser($id, $userData);
- 
-    public function deleteUser($id);
+    public function update($id, $userData);
+
+    public function delete($request, $id);
 
     public function getRoles();
 
