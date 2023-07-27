@@ -22,7 +22,7 @@ class DummyClass extends Repository implements OpenInterface
   {
   }
 
-  public function delete($id)
+  public function delete($request,$id)
   {
   }
 
