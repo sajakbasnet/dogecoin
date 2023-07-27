@@ -23,7 +23,6 @@
                 'name' => 'image',
                 'label' => 'Image',
                 'accept' => 'image/*',
-                'helpText' => 'File must be image of less than 2048 KB.',
                 'default' => $item->image ?? '',
                 'type' => 'file',
                 'id' => 'img-icon',
@@ -50,7 +49,7 @@
                 'label' => 'Description',
                 'editor' => true,
                 'default' => $item->description ?? '',
-                                'error' => $errors->first('description'),
+                'error' => $errors->first('description'),
 
             ]" />
         </x-slot>
