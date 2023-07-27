@@ -111,7 +111,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
         return $user;
     }
 
-    public function getByRole($roleId)
+    public function getByUserRole($roleId)
     {
         $user = $this->model->where('role_id', $roleId)->get();
         if (!isset($user)) {

@@ -1,8 +1,8 @@
 <?php
 
-namespace DummyNamespace;
+namespace App\Interfaces\System;
 
-interface DummyClass
+interface TranslationInterface
 {
     public function getAllData($data, $selectedColumns = [], $pagination = true);
     
