@@ -4,7 +4,9 @@ namespace App\Services\System;
 
 use App\Events\UserCreated;
 use App\Exceptions\CustomGenericException;
+use App\Exceptions\EncryptedPayloadException;
 use App\Exceptions\NotDeletableException;
+use App\Exceptions\ResourceNotFoundException;
 use App\Exceptions\RoleNotChangeableException;
 use App\Repositories\System\RoleRepository;
 use App\Repositories\System\UserRepository;
@@ -13,7 +15,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserService extends Service
 {
-    public function __construct(UserRepository $userRepository,RoleRepository $roleRepository)
+    public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
     {
         $this->userRepository = $userRepository;
         $this->roleRepository = $roleRepository;
@@ -90,11 +92,29 @@ class UserService extends Service
         if ($id == 1) {
             throw new NotDeletableException();
         }
-        return $this->userRepository->delete($request,$id);
+        return $this->userRepository->delete($request, $id);
     }
     public function findByEmailAndToken($email, $token)
     {
-        return $this->userRepository->findByEmailAndToken($email, $token);
+
+        try {
+            $decryptedToken = decrypt($token);
+        } catch (\Exception $e) {
+            throw new EncryptedPayloadException('Invalid encrypted data');
+        }
+        $user = $this->userRepository->findByEmailAndToken($email, $decryptedToken);
+
+
+        if (!isset($user)) {
+            throw new ResourceNotFoundException("User doesn't exist in our system.");
+        }
+
+        $checkExpiryDate = now()->format('Y-m-d H:i:s') <= $user->expiry_datetime;
+
+        if (!$checkExpiryDate) {
+            throw new ResourceNotFoundException("The provided link has expired.");
+        }
+        return $user;
     }
 
     public function findByEmail($email)

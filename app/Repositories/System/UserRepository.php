@@ -78,28 +78,9 @@ class UserRepository extends Repository implements UserRepositoryInterface
         ]);
     }
 
-    public function findByEmailAndToken($email, $token)
+    public function findByEmailAndToken($email, $decryptedToken)
     {
-        try {
-            $decryptedToken = decrypt($token);
-        } catch (\Exception $e) {
-            throw new EncryptedPayloadException('Invalid encrypted data');
-        }
-
-        $user = $this->model->where('email', $email)->where('token', $decryptedToken)->first();
-
-        if (!isset($user)) {
-            throw new ResourceNotFoundException("User doesn't exist in our system.");
-        }
-
-        $checkExpiryDate = now()->format('Y-m-d H:i:s') <= $user->expiry_datetime;
-
-        if (!$checkExpiryDate) {
-            throw new ResourceNotFoundException("The provided link has expired.");
-        }
-
-
-        return $user;
+        return  $this->model->where('email', $email)->where('token', $decryptedToken)->first();
     }
 
     public function findByEmail($email)
