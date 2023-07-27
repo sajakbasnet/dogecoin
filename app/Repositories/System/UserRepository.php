@@ -49,7 +49,6 @@ class UserRepository extends Repository implements UserRepositoryInterface
         foreach ($roles as $role) {
             $mapped[$role->id] = $role->name;
         }
-
         return $mapped;
     }
 

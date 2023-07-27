@@ -2,7 +2,7 @@
 
 namespace App\Services\System;
 
-use App\Model\EmailTemplate;
+
 use App\Repositories\System\EmailRepository;
 use App\Services\Service;
 
