@@ -70,7 +70,7 @@ class ForgotPasswordController extends Controller
         $user = $this->user->findByEmail($email);
         $token = $this->user->generateToken(24);
         $encryptedToken = encrypt($token);
-        $defaultLinkExpiration = Config::get('constants.DEFAULT_LINK_EXPIRATION');
+        $defaultLinkExpiration = Config::get('constants.DEFAULT_LINK_EXPIRATION'); //default link expiration in minutes
 
         $user->update([
             'token' => $token,

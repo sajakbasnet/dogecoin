@@ -23,8 +23,6 @@ V
 &app/Mail/system/PasswordResetEmail.php,5/2/523aa9944b6cf15a8074b6ac021160e6bdd62e05
 Q
 !app/Helper/Ekcms/globalHelper.php,2/c/2c8ea60b95b552485f43da37af7941c5b1b77def
-X
-(database/seeders/EmailTemplateSeeder.php,2/d/2de3a7c9393840cefb5846d1e6f292523c3e05b2
 a
 1resources/views/system/auth/setPassword.blade.php,8/3/83484fc9b3b4d777957d47873971186678d5584c
 d
@@ -45,5 +43,3 @@ M
 app/Http/Middleware/TWOFA.php,7/6/76c589d1b660f5ca26e640baadf71c5620283932
 Z
 *resources/views/system/user/form.blade.php,a/4/a4bd974d39f5836547eac662f33d949b1cf47c57
-T
-$app/Traits/CustomThrottleRequest.php,6/6/6641a9ceb234fad6d378e3abd31855ff6570414e

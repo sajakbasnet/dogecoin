@@ -49,7 +49,7 @@ class VerificationController extends Controller
 
             session()->put('verification_code', $verificationCode);
             try {
-                $twoFactorExpireTime = Carbon::now()->addMinutes(Config::get('constants.DEFAULT_TWO_FA_REQUEST_EXPIRATION'))
+                $twoFactorExpireTime = Carbon::now()->addMinutes(Config::get('constants.DEFAULT_TWO_FA_REQUEST_EXPIRATION')) // in minutes
                     ->format('Y-m-d H:i:s');
 
                 $user->update([

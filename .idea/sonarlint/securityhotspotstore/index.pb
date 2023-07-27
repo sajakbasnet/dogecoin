@@ -33,8 +33,6 @@ B
 routes/backend.php,e/2/e2e681ec50a0cf7c5bab5ceb2bb45db0b74c117d
 Q
 !app/Http/Middleware/antiTwoFA.php,4/2/4227e499ca9584c0af0d3e6cddc2250f1b769af2
-X
-(database/seeders/EmailTemplateSeeder.php,2/d/2de3a7c9393840cefb5846d1e6f292523c3e05b2
 a
 1resources/views/system/auth/setPassword.blade.php,8/3/83484fc9b3b4d777957d47873971186678d5584c
 a
@@ -49,5 +47,3 @@ N
 app/Mail/system/TwoFAEmail.php,7/9/7954439ef81024824a0880ef7ade285b026363be
 M
 app/Http/Middleware/TWOFA.php,7/6/76c589d1b660f5ca26e640baadf71c5620283932
-T
-$app/Traits/CustomThrottleRequest.php,6/6/6641a9ceb234fad6d378e3abd31855ff6570414e
