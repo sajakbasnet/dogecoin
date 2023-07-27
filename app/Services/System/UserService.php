@@ -6,15 +6,17 @@ use App\Events\UserCreated;
 use App\Exceptions\CustomGenericException;
 use App\Exceptions\NotDeletableException;
 use App\Exceptions\RoleNotChangeableException;
+use App\Repositories\System\RoleRepository;
 use App\Repositories\System\UserRepository;
 use App\Services\Service;
 use Illuminate\Support\Facades\Hash;
 
 class UserService extends Service
 {
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository,RoleRepository $roleRepository)
     {
         $this->userRepository = $userRepository;
+        $this->roleRepository = $roleRepository;
     }
 
     public function getAllData($data, $selectedColumns = [], $pagination = true)
@@ -22,23 +24,18 @@ class UserService extends Service
         return $this->userRepository->getAllData($data);
     }
 
-    public function getRoles()
-    {
-        return $this->userRepository->getRoles();
-    }
-
     public function indexPageData($request)
     {
         return [
             'items' => $this->getAllData($request),
-            'roles' => $this->getRoles(),
+            'roles' => $this->roleRepository->getRoles(),
         ];
     }
 
     public function createPageData($request)
     {
         return [
-            'roles' => $this->getRoles(),
+            'roles' => $this->roleRepository->getRoles(),
         ];
     }
 
@@ -70,7 +67,7 @@ class UserService extends Service
         $user = $this->userRepository->itemByIdentifier($id);
         return [
             'item' => $user,
-            'roles' => $this->getRoles(),
+            'roles' => $this->roleRepository->getRoles(),
         ];
     }
 

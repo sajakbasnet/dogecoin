@@ -12,8 +12,6 @@ interface UserRepositoryInterface
 
     public function delete($request, $id);
 
-    public function getRoles();
-
     public function generateToken($length);
 
     public function resetPassword($data);
@@ -21,4 +19,5 @@ interface UserRepositoryInterface
     public function findByEmailAndToken($email, $token);
 
     public function findByEmail($email);
+
 }
