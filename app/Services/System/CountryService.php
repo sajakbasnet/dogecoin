@@ -2,7 +2,6 @@
 
 namespace App\Services\System;
 
-use App\Model\Country;
 use App\Repositories\System\CountryRepository;
 use App\Services\Service;
 

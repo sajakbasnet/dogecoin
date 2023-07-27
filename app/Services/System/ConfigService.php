@@ -3,7 +3,6 @@
 namespace App\Services\System;
 
 use App\Exceptions\NotDeletableException;
-use App\Model\Config;
 use App\Repositories\System\ConfigRepository;
 use App\Services\Service;
 use App\Traits\ImageTrait;
