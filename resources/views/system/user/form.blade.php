@@ -10,10 +10,10 @@
 </x-system.form.form-group>
 
 <x-system.form.form-group :input="[ 'name' => 'is_2fa_enabled', 'label'=> 'Two Factor Authentication', 'required' => true]">
-    <x-slot name="inputs">
-        <x-system.form.input-radio :input="[ 'name' => 'is_2fa_enabled', 'label'=> 'Two Factor Authentication', 'required' => true,
+  <x-slot name="inputs">
+    <x-system.form.input-radio :input="[ 'name' => 'is_2fa_enabled', 'label'=> 'Two Factor Authentication', 'required' => true,
     'default' => old('is_2fa_enabled') ?? 0, 'options' => [[ 'value' => '1', 'label' => 'Active'], ['value' => '0', 'label'=>'In-Active']]]" />
-    </x-slot>
+  </x-slot>
 </x-system.form.form-group>
 
 @if(!isset($item))
