@@ -14,7 +14,7 @@
       rel="stylesheet"
     />
     <script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
-    {{-- <link href="{{ asset('compiledCssAndJs/css/system.css')}}" rel="stylesheet" media="screen"> --}}
+    <link href="{{ asset('compiledCssAndJs/css/system.css')}}" rel="stylesheet" media="screen"> 
     <link href="{{ asset('toast/jquery.toast.min.css') }}" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
