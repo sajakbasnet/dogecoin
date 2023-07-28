@@ -8,6 +8,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" integrity="sha256-mFeNnkKbr+LtvZ0AJx6IqF+kV+rUwQZIXRV/2VW18t4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+
 <script src="{{ asset('compiledCssAndJs/js/system.js')}}"></script>
 <script src="{{ asset('toast/jquery.toast.min.js')}}"></script>
 <!-- latest jquery-->
@@ -37,7 +39,6 @@
     <!-- Plugin used-->
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-
 
 <script>
   $(function() {

@@ -35,3 +35,30 @@ N
 app/Mail/system/TwoFAEmail.php,7/9/7954439ef81024824a0880ef7ade285b026363be
 M
 app/Http/Middleware/TWOFA.php,7/6/76c589d1b660f5ca26e640baadf71c5620283932
+Z
+*resources/views/system/user/form.blade.php,a/4/a4bd974d39f5836547eac662f33d949b1cf47c57
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+c
+3app/Http/Controllers/System/user/UserController.php,0/b/0bf78f7b52c3c5b51115280ca6c5ddda9d4560ba
+Y
+)app/Console/Commands/stubs/interface.stub,3/3/337cef5636634f9011e5577a18ff789b8006be1f
+Z
+*app/Console/Commands/stubs/repository.stub,9/6/96fdf6531244c4c97bff9361df94034f80752b04
+a
+1app/Interfaces/System/UserRepositoryInterface.php,f/6/f6c8af3f1a20d422ed6c6c24beabed1949c5bdf2
+H
+app/Services/Service.php,f/2/f227a0aadc255f75549324fd543836c26864c020
+c
+3app/Http/Controllers/System/user/RoleController.php,3/2/324996371a4017d4b8df8c111ccd16a76085d1e2
+X
+(app/Http/Requests/system/roleRequest.php,a/2/a214d36dab48be1a5cf24baf3c4ba0950290f22d
+O
+app/Repositories/Repository.php,6/2/6290a2b670fd384a5473a2d8aa4df4e14bd0bba9
+B
+routes/backend.php,e/2/e2e681ec50a0cf7c5bab5ceb2bb45db0b74c117d
+f
+6resources/views/system/partials/deleteButton.blade.php,c/b/cbf8135b8892df78754279360da5855990f9ea83
+J
+app/Events/UserCreated.php,e/9/e921084e23f60f269fbff4f6e9efd828c3aa9f22
