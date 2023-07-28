@@ -32,6 +32,10 @@
     <!-- Plugins css start-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/scrollbar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/date-picker.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/daterange-picker.css')}}">
+
+
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/bootstrap.css') }}">
