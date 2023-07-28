@@ -56,12 +56,6 @@ class RoleRepository extends Repository implements RoleInterface
 
     public function getRoles()
     {
-        $mapped = [];
-        $roles = $this->model->orderBy('name', 'ASC')->get();
-        foreach ($roles as $role) {
-            $mapped[$role->id] = $role->name;
-        }
-
-        return $mapped;
+        return $this->model->orderBy('name', 'ASC')->pluck('name', 'id')->toArray();
     }
 }

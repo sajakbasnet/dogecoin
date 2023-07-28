@@ -80,7 +80,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
 
     public function findByEmailAndToken($email, $decryptedToken)
     {
-        return  $this->model->where('email', $email)->where('token', $decryptedToken)->first();
+        return $this->model->where('email', $email)->where('token', $decryptedToken)->first();
     }
 
     public function findByEmail($email)
@@ -99,5 +99,10 @@ class UserRepository extends Repository implements UserRepositoryInterface
             throw new ResourceNotFoundException("User doesn't exist in our system.");
         }
         return $user;
+    }
+
+    public function bulkUpdateUserByRole($roleId, $requestRole)
+    {
+        return $this->model->where('role_id', $roleId)->update(['role_id' => $requestRole]);
     }
 }
