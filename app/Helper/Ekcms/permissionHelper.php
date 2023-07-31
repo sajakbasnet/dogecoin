@@ -9,7 +9,7 @@ function hasPermission($url, $method = 'get')
     }
 
     $method = strtolower($method);
-    $splittedUrl = explode('/'.PREFIX, $url);
+    $splittedUrl = explode('/'.getSystemPrefix(), $url);
     if (count($splittedUrl) > 1) {
         $url = $splittedUrl[1];
     } else {

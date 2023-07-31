@@ -6,7 +6,7 @@
             <div class="col-12 p-0">
                 <div class="login-card">
                     <div class="login-main">
-                        <form class="theme-form login-form" method="post" action="{{ url(PREFIX . '/set-password') }}">
+                        <form class="theme-form login-form" method="post" action="{{ url(getSystemPrefix() . '/set-password') }}">
                             @csrf
                             @include('system.partials.message')
                             <h4 class="mb-3">{{ translate($title) }}</h4>

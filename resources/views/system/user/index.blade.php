@@ -28,7 +28,7 @@
     <td>{{SN($pageIndex, $key)}}</td>
     <td>{{ $item->name }}</td>
     <td>
-        <a href="/{{PREFIX}}/roles?keyword={{$item->role->name}}" class="badge badge-secondary">
+        <a href="/{{getSystemPrefix()}}/roles?keyword={{$item->role->name}}" class="badge badge-secondary">
             {{ $item->role->name }}
         </a>
     </td>
