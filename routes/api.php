@@ -25,11 +25,11 @@ Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
     // Route::put('categories/{id}', 'Categories\CategoriesController@update');
     // Route::delete('categories/{id}', 'Categories\CategoriesController@delete');
 
-    Route::get('pages', 'Page\PageController@index');
-    Route::get('pages/{id}', 'Page\PageController@detailInfo');
-    Route::post('create-page', 'Page\PageController@createPage');
-    Route::put('update-pages/{id}', 'Page\PageController@update');
-    Route::delete('delete-page/{id}', 'Page\PageController@delete');
+    // Route::get('pages', 'Page\PageController@index');
+    // Route::post('create-page', 'Page\PageController@createPage');
+    // Route::put('update-pages/{id}', 'Page\PageController@update');
+    // Route::delete('delete-page/{id}', 'Page\PageController@delete');
 
-    // Route::resource('pages', 'Page\PageController');
+    Route::resource('pages', 'Page\PageController');
+    // Route::get('pages/{id}', 'Page\PageController@detailInfo');
 });
