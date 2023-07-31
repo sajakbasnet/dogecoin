@@ -51,55 +51,56 @@ class PageController extends ApiController
         return $this->respondWithCollection(PageResource::collection($pages));
     }
 
-    /**
-     * @OA\Get(
-     *      path="/api/v1/pages/{id}",
-     *      tags={"Pages"},
-     *      summary="Get pages information",
-     *      description="Returns pages data",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="page id",
-     *          required=true,
-     *          in="path",
-     *          @OA\Schema(
-     *              type="integer"
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *       ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad Request"
-     *      ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     * )
-     */
+    // /**
+    //  * @OA\Get(
+    //  *      path="/api/v1/pages/{id}",
+    //  *      tags={"Pages"},
+    //  *      summary="Get pages information",
+    //  *      description="Returns pages data",
+    //  *      @OA\Parameter(
+    //  *          name="id",
+    //  *          description="page id",
+    //  *          required=true,
+    //  *          in="path",
+    //  *          @OA\Schema(
+    //  *              type="integer"
+    //  *          )
+    //  *      ),
+    //  *      @OA\Response(
+    //  *          response=200,
+    //  *          description="Successful operation",
+    //  *       ),
+    //  *      @OA\Response(
+    //  *          response=400,
+    //  *          description="Bad Request"
+    //  *      ),
+    //  *      @OA\Response(
+    //  *          response=401,
+    //  *          description="Unauthenticated",
+    //  *      ),
+    //  *      @OA\Response(
+    //  *          response=403,
+    //  *          description="Forbidden"
+    //  *      )
+    //  * )
+    //  */
 
 
 
-    public function detailInfo($id)
-    {
-        $page = $this->repository->checkById($id);
-        if ($page == null) {
-            return $this->errorNotFound();
-        }
-        return $this->respondWithItem(new PageResource($page));
-    }
+    // public function detailInfo($id)
+    // {
+    //     $page = $this->repository->checkById($id);
+    //     if ($page == null) {
+    //         return $this->errorNotFound();
+    //     }
+    //     return $this->respondWithItem(new PageResource($page));
+    // }
 
 
     /**
      * @OA\Post(
-     *     path="/api/v1/create-page",
+     *     path="/api/v1/pages",
+     *     operationId="create",
      *      tags={"Pages"},
      *     summary="Create Page",
      *     @OA\RequestBody(
@@ -173,7 +174,7 @@ class PageController extends ApiController
      * )
      */
 
-    public function createPage(request $request)
+    public function store(request $request)
     {
         $page = $this->service->store($request);
         return  $this->respondWithItem(new PageResource($page));
@@ -181,8 +182,8 @@ class PageController extends ApiController
 
     /**
      * @OA\Put(
-     *      path="/api/v1/update-pages/{id}",
-     *      operationId="updateProject",
+     *      path="/api/v1/pages/{id}",
+     *      operationId="updatePage",
      *      tags={"Pages"},
      *      summary="Update existing page",
      *     @OA\Parameter(
@@ -248,7 +249,7 @@ class PageController extends ApiController
 
     /**
      * @OA\Delete(
-     *      path="/api/v1/delete-page/{id}",
+     *      path="/api/v1/pages/{id}",
      *      operationId="deletePage",
      *      tags={"Pages"},
      *      summary="Delete existing page",
