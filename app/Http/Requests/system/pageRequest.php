@@ -27,26 +27,22 @@ class pageRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        if ($request->method() == "POST") {
-            $validate = [
-                'title' => 'required|string|max:255',
-                'slug' => ['required','string','max:255',Rule::unique('pages', 'slug')],
-                'description' => 'required|max:60000',
-                'meta_title' => 'required',
-                'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg',
 
-            ];
+        $validate = [
+            'title' => 'required|string|max:255',
+            'description' => 'required|max:60000',
+            'meta_title' => 'required',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg',
+        ];
+        if ($request->method() == "POST") {
+            $validate = array_merge($validate, [
+                'slug' => ['required', 'string', 'max:255', Rule::unique('pages', 'slug')],
+            ]);
         }
         if ($request->method() == "PUT") {
-
-            $validate = [
-                'title' => 'required|string|max:255',
-                'slug' => ['required','string','max:255',Rule::unique('pages', 'slug')->ignore($request->id)],
-                'description' => 'required|max:60000',
-                'meta_title' => 'required',
-                'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg',
-
-            ];
+            $validate = array_merge($validate, [
+                'slug' => ['required', 'string', 'max:255', Rule::unique('pages', 'slug')->ignore($request->id)],
+            ]);
         }
         return $validate;
     }
