@@ -6,20 +6,19 @@
         :input="[ 'name' => 'username', 'label'=> 'Username', 'required' => true, 'default' => old('username') ?? $item->username ?? '', 'error' => $errors->first('username')]"/>
     <x-system.form.form-group
         :input="[ 'name' => 'email', 'label'=> 'Email', 'required' => true, 'default' => old('email') ?? $item->email ?? '', 'error' => $errors->first('email')]"/>
-
     <x-system.form.form-group
         :input="[ 'name' => 'role_id', 'label'=> 'Role', 'required'=>'true']">
         <x-slot name="inputs">
             <select class="form-control select2" id="roleId" name="role_id[]" multiple="multiple"
                     data-placeholder="{{ translate('Select Roles') }}">
-                @foreach ($roles as $key => $role)
-                    <option
-                        value="{{ $key }}"
-                        @if(!isset($item) && is_array(old('role_id'))  && in_array($key,(old('role_id')))) selected
+                @foreach($roles as $key => $role)
+                    <option value="{{ $key }}"
+                            @if(is_array(old('role_id')) && in_array($key, old('role_id')))
+                                selected
+                            @elseif(isset($roleUsers) && in_array($key, $roleUsers))
+                                selected
                         @endif
-                        @if(isset($item) && is_array($item->role_id)  && in_array($key,($item->role_id))) selected @endif
-                    >{{ $role }}
-                    </option>
+                    >{{ $role }}</option>
                 @endforeach
             </select>
 
