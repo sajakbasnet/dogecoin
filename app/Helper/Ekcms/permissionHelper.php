@@ -44,9 +44,7 @@ function hasPermission($url, $method = 'get')
             return true;
         }
 
-        $singlePermissions = $role->permissions;
-
-        $permissions = array_merge($permissions, $singlePermissions);
+        $permissions = array_merge($permissions, $role->permissions);
     }
 
     if ($permissions == null) {
