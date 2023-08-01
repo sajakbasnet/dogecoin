@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = User::where('username', 'admin')->first();
-        $superUserRole = Role::where('role', 'superuser')->first();
+        $superUserRole = Role::where('name', 'superuser')->first();
         if (!isset($user)) {
             $data = [
                 'name' => 'Admin',
@@ -28,9 +28,9 @@ class UserSeeder extends Seeder
                 'password_resetted' => 1,
             ];
 
-            $createduser = User::create($data);
+            $createdUser = User::create($data);
 
-            $createduser->roles()->attach($superUserRole->id);
+            $createdUser->roles()->attach($superUserRole->id);
 
         }
 
