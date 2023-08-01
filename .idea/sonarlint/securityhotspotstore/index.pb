@@ -15,8 +15,6 @@ R
 "app/Mail/system/ResendOtpEmail.php,f/8/f81d51c635102287054333aaad02a6091fd3f4d9
 C
 app/Traits/Mail.php,e/b/eb7f5d1932ec90c558a7e74a5f592fa52b33f52e
->
-routes/web.php,6/b/6b9a783d9b43fee50fd28f56dbd1856d2608f305
 J
 public/js/jquery.ui.min.js,e/7/e78812c3b596270807e9617441f27215ea543bed
 C
