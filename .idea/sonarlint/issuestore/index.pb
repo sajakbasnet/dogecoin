@@ -19,10 +19,6 @@ C
 app/Http/Kernel.php,4/0/405f423e61f666bcedb754ae8befdce9e746176e
 V
 &app/Mail/system/PasswordResetEmail.php,5/2/523aa9944b6cf15a8074b6ac021160e6bdd62e05
-Q
-!app/Helper/Ekcms/globalHelper.php,2/c/2c8ea60b95b552485f43da37af7941c5b1b77def
-a
-1resources/views/system/auth/setPassword.blade.php,8/3/83484fc9b3b4d777957d47873971186678d5584c
 d
 4resources/views/system/layouts/masterGuest.blade.php,a/4/a451f39ea310fb7820d3e836b7dd67e3e37ba0d9
 a
@@ -54,8 +50,6 @@ X
 (app/Http/Requests/system/roleRequest.php,a/2/a214d36dab48be1a5cf24baf3c4ba0950290f22d
 O
 app/Repositories/Repository.php,6/2/6290a2b670fd384a5473a2d8aa4df4e14bd0bba9
-B
-routes/backend.php,e/2/e2e681ec50a0cf7c5bab5ceb2bb45db0b74c117d
 f
 6resources/views/system/partials/deleteButton.blade.php,c/b/cbf8135b8892df78754279360da5855990f9ea83
 J

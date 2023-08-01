@@ -24,11 +24,7 @@ C
 V
 &app/Mail/system/PasswordResetEmail.php,5/2/523aa9944b6cf15a8074b6ac021160e6bdd62e05
 Q
-!app/Helper/Ekcms/globalHelper.php,2/c/2c8ea60b95b552485f43da37af7941c5b1b77def
-Q
 !app/Http/Middleware/antiTwoFA.php,4/2/4227e499ca9584c0af0d3e6cddc2250f1b769af2
-a
-1resources/views/system/auth/setPassword.blade.php,8/3/83484fc9b3b4d777957d47873971186678d5584c
 a
 1resources/views/system/partials/message.blade.php,6/f/6f1386824c42b0c0d2d0f1b1b00dc3635997b89d
 d
@@ -58,8 +54,6 @@ c
 3app/Http/Controllers/System/user/RoleController.php,3/2/324996371a4017d4b8df8c111ccd16a76085d1e2
 O
 app/Repositories/Repository.php,6/2/6290a2b670fd384a5473a2d8aa4df4e14bd0bba9
-B
-routes/backend.php,e/2/e2e681ec50a0cf7c5bab5ceb2bb45db0b74c117d
 f
 6resources/views/system/partials/deleteButton.blade.php,c/b/cbf8135b8892df78754279360da5855990f9ea83
 J

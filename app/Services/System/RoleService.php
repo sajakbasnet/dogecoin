@@ -46,7 +46,7 @@ class RoleService extends Service
     {
         $data = $request->except('_token');
         $data['permissions'] = $this->roleRepository->mapPermission($data['permissions']);
-        $checkRoleUsers = $this->userRepository->getByUserPivotRoleUser($id);
+        $checkRoleUsers = $this->userRepository->getByRolePivotRoleUser($id);
 
         $this->roleRepository->update($data, $id);
         $role = $this->roleRepository->itemByIdentifier($id);
