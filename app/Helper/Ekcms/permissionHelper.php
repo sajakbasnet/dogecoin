@@ -2,13 +2,12 @@
 
 function hasPermission($url, $method = 'get')
 {
-    //$role = getRoleCache(authUser());
+    $roles = getRoleCache(authUser());
     $permissions = [];
-    $user = authUser()->load('roles');
 
-//    if (!isset($role) || $role == null) {
-//        $role = authUser()->role;
-//    }
+    if (!count($roles) < 0) {
+        $roles = authUser()->role;
+    }
 
     $method = strtolower($method);
     $splittedUrl = explode('/' . PREFIX, $url);
@@ -18,7 +17,7 @@ function hasPermission($url, $method = 'get')
         $url = $splittedUrl[0];
     }
 
-    foreach ($user->roles as $role) {
+    foreach ($roles as $role) {
         if ($role->id == 1) {
             $permissionDeniedToSuperUserRoutes = Config::get('cmsConfig.permissionDeniedToSuperUserRoutes');
             $checkDeniedRoute = true;
