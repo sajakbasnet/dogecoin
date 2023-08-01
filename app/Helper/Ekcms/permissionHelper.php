@@ -17,7 +17,7 @@ function hasPermission($url, $method = 'get')
         $url = $splittedUrl[0];
     }
 
-    foreach ($roles as $role) {
+    foreach ($roles as $role) {       
         if ($role->id == 1) {
             $permissionDeniedToSuperUserRoutes = Config::get('cmsConfig.permissionDeniedToSuperUserRoutes');
             $checkDeniedRoute = true;
