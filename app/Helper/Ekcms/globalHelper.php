@@ -12,7 +12,7 @@ function authUser()
 
 function setRoleCache($user)
 {
-    return \Cache::put('role-'.$user->id, $user->role);
+    return \Cache::put('role-'.$user->id, $user->roles);
 }
 function getRoleCache($user)
 {

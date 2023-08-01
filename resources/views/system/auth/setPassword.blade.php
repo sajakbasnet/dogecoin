@@ -10,7 +10,9 @@
                             @csrf
                             @include('system.partials.message')
                             <h4 class="mb-3">{{ translate($title) }}</h4>
-                            @if ($routename == 'change.password')
+                            <input type="hidden" name="token" value="{{$token}}">
+                        @if ($routename == 'change.password')
+                                <input type="hidden" name="email" value="{{$email}}">
                                 <div class="form-group">
                                     <input class="form-control" type="hidden" name="email" value="{{ $email }}">
                                 </div>
