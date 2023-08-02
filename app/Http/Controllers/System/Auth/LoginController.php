@@ -78,12 +78,13 @@ class LoginController extends Controller
                 return $this->customLockoutResponse($request);
             }
             $user = $this->loginType($request);
+          
+            if (Auth::attempt($user)) {   
+                         
+                setRoleCache(authUser()->load('roles'));             
 
-            if (Auth::attempt($user)) {              
-                setRoleCache(authUser()->load('roles'));
-                setConfigCookie();
                 // $this->createLoginLog($request);
-
+               
                 return $this->sendLoginResponse($request);
             }
 
