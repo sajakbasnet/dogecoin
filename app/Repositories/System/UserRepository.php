@@ -67,7 +67,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
     }
 
     public function resetPassword($request)
-    {
+    {      
         $user = $this->itemByIdentifier($request->id);
         return $user->update([
             'password' => Hash::make($request->password),

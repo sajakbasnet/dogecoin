@@ -35,7 +35,7 @@ Route::group(['namespace' => 'System', 'prefix' => getSystemPrefix(), 'middlewar
         Route::get('change-password', 'user\UserController@changePassword')->name('change.password');
     });
 
-    Route::group(['middleware' => ['auth', 'permission', 'twofa', 'reset.password','2fa']], function () {
+    Route::group(['middleware' => ['auth', 'permission', 'twofa', 'reset.password', '2fa']], function () {
         Route::post('/2fa', function () {
             return redirect(route('home'));
         })->name('2fa');
@@ -43,6 +43,14 @@ Route::group(['namespace' => 'System', 'prefix' => getSystemPrefix(), 'middlewar
         Route::resource('/roles', 'user\RoleController', ['except' => ['show']]);
 
         Route::resource('/users', 'user\UserController', ['except' => ['show']]);
+
+        Route::resource('/ticket', 'ticket\TicketController');
+        Route::resource('ticket', 'ticket\TicketController')->except('show');
+        Route::middleware(['check.ticket.ownership'])->group(function () {
+            Route::get('ticket/{ticket}/edit', 'ticket\TicketController@edit')->name('tickets.edit');
+            Route::put('ticket/{ticket}', 'ticket\TicketController@update')->name('tickets.update');
+        });
+        Route::resource('/ticket/{id}/consult', 'ticketConsult\TicketConsultController')->middleware('check.ticket.authorization');;
 
         Route::get('/profile', 'profile\ProfileController@index')->name('profile');
         Route::put('/profile/{id}', 'profile\ProfileController@update');
@@ -65,16 +73,13 @@ Route::group(['namespace' => 'System', 'prefix' => getSystemPrefix(), 'middlewar
 
         Route::resource('/configs', 'systemConfig\configController');
 
-        Route::resource('/categories', 'category\CategoryController', ['except' => ['show']]);
-        Route::resource('/pages', 'page\PageController', ['except' => ['show']]);
-        Route::get('pages/change-page-status', 'page\PageController@changePageStatus')->name('changePageStatus');
 
-        Route::resource('categories/{id}/sub-category', 'category\SubCategoryController');
+
+
+
+
         Route::get('/clear-lang', function () {
             LanguageLine::truncate();
         });
-
-        Route::get('/mail-test/create', 'MailTestController@create');
-        Route::post('/mail-test', 'MailTestController@sendEmail');
     });
 });

@@ -44,6 +44,7 @@ class UserService extends Service
 
     public function store($request)
     {
+
         \DB::transaction(function () use ($request) {
             $data = $request->except('_token');
             if ($request->set_password_status == '1') {
@@ -53,17 +54,18 @@ class UserService extends Service
             }
             $token = $this->userRepository->generateToken(24);
             $data['token'] = $token;
+            $data['google2fa_enabled'] = $request->is_2fa_enabled;
             $user = $this->userRepository->create($data);
             $user->roles()->attach($request->role_id);
 
-            try {
-                event(new UserCreated($user, $token));
-                return $user;
-            } catch (\Exception $e) {               
-                \Log::error('User creation failed: ' . $e->getMessage());
-                \DB::rollBack();
-                return throw new CustomGenericException('User creation failed. Please try again.');
-            }
+            // try {
+            //     event(new UserCreated($user, $token));
+            //     return $user;
+            // } catch (\Exception $e) {               
+            //     \Log::error('User creation failed: ' . $e->getMessage());
+            //     \DB::rollBack();
+            //     return throw new CustomGenericException('User creation failed. Please try again.');
+            // }
         });
     }
 
@@ -87,6 +89,8 @@ class UserService extends Service
                 throw new RoleNotChangeableException('The role of the specific user cannot be changed.');
             }
             unset($data['role_id']);
+            $data['google2fa_enabled'] = $request->is_2fa_enabled == 1 ? true : false;
+          
             $this->userRepository->update($user, $data);
             $user->roles()->sync($request->role_id);
             DB::commit();

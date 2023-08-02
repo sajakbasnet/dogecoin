@@ -38,7 +38,7 @@ class ResetPasswordController extends Controller
             if ($request->route()->getName() == 'reset.password') {
                 $data['title'] = 'Reset Password';
             }
-
+         
             $this->service->findByEmailAndToken($request->email, $request->token);
 
             $data['email'] = $request->email;

@@ -74,5 +74,7 @@ class Kernel extends HttpKernel
         'auth-frontend' => \App\Http\Middleware\Frontend\frontendAuth::class,
         'lang' => \App\Http\Middleware\Frontend\Language::class,
         '2fa' => \PragmaRX\Google2FALaravel\Middleware::class,
+        'check.ticket.authorization' => \App\Http\Middleware\CheckTicketAuthorization::class,
+        'check.ticket.ownership' => \App\Http\Middleware\TicketAuthorization::class,       
         ];
 }

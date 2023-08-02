@@ -77,18 +77,18 @@ class EmailTemplateSeeder extends Seeder
                 'translations' => [
                     [
                         'language_code' => 'en',
-                        'subject' => 'Account has been created in ekcms',
+                        'subject' => 'Account has been created in dogecoin',
                         'template' => $templateHeader.'
                     <p>Dear %user_name%,</p>
-                    <p>Your account has been created in ekcms. Please contact admin to get your credential.</p>
+                    <p>Your account has been created in dogecoin. Welcome to dogecoin family.</p>
                     '.$templateFooter,
                     ],
                     [
                         'language_code' => 'ja',
-                        'subject' => 'Account has been created in ekcms',
+                        'subject' => 'Account has been created in dogecoin',
                         'template' => $templateHeader.'
                         <p>Dear %user_name%,</p>
-                        <p>Your account has been created in ekcms. Please contact admin to get your credential.</p>
+                        <p>Your account has been created in dogecoin. Welcome to dogecoin family.</p>
                         '.$templateFooter,
                     ],
                 ],
@@ -104,7 +104,7 @@ class EmailTemplateSeeder extends Seeder
                         'subject' => 'Password set link',
                         'template' => $templateHeader.'
                         <p>Dear %user_name%,</p>
-                        <p>Your account has been created in ekcms. Please click the link below to set your password.</p>
+                        <p>Your account has been created in dogecoin. Please click the link below to set your password.</p>
                         <p>Link : %password_set_link%</p>
                             '.$templateFooter,
                     ],
@@ -113,7 +113,7 @@ class EmailTemplateSeeder extends Seeder
                         'subject' => 'Password set link',
                         'template' => $templateHeader.'
                         <p>Dear %user_name%,</p>
-                        <p>Your account has been created in ekcms. Please click the link below to set your password.</p>
+                        <p>Your account has been created in dogecoin. Please click the link below to set your password.</p>
                         <p>Link : %password_set_link%</p>
                             '.$templateFooter,
                     ],

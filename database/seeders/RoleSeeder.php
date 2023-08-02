@@ -17,8 +17,8 @@ class RoleSeeder extends Seeder
         $superUser = Role::where('id', 1)->first();
         if (! isset($superUser)) {
             Role::create([             
-                'name' => 'superuser',
+                'name' => 'admin',
             ]);
-        }
+        }        
     }
 }

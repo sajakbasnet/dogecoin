@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = User::where('username', 'admin')->first();
-        $superUserRole = Role::where('name', 'superuser')->first();
+        $superUserRole = Role::where('name', 'admin')->first();
         if (!isset($user)) {
             $data = [
                 'name' => 'Admin',

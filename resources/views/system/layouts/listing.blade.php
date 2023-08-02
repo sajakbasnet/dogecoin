@@ -36,7 +36,7 @@
                                     </div><!-- ends head-title -->
                                 </div>
 
-
+                                @if(hasPermission($indexUrl.'/create', 'get'))
                                 @section('create')
                                 <div class="col-6">
                                     <a class="btn btn-primary btn-sm" style="float:right;" id="addNew" href="{{url($indexUrl.'/create')}}">
@@ -44,6 +44,7 @@
                                     </a>
                                 </div>
                                 @show
+                                @endif
                             </div>
 
                             @show

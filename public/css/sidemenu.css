@@ -494,9 +494,7 @@
     text-decoration: none
 }
 
-.slide.is-expanded .side-menu__item {
-    background: hsla(0, 0%, 100%, .09)
-}
+
 
 .sub-side-menu__item:before {
     content: "";
@@ -781,14 +779,14 @@
 .side-menu h3 {
     color: hsla(0, 0%, 100%, .4);
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 500;
-    letter-spacing: .5px;
+    letter-spacing: 1.5px;
     padding: 7px 38px;
     border-radius: 1px;
-    margin-top: 1.1rem;
+    margin-top: 0.1rem;
     position: relative;
-    margin-bottom: .6rem
+    margin-bottom: -0.4rem
 }
 
 .side-menu h3:after {

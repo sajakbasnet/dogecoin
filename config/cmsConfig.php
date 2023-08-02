@@ -15,7 +15,7 @@ $activityLogsBaseUrl = '/activity-logs';
 // $emailTemplateBaseUrl = '/email-templates';
 // $configBaseUrl = '/configs';
 $profileBaseUrl = '/profile';
-// $pagesBaseUrl = '/pages';
+$ticketBaseUrl = '/ticket';
 
 return  [
     // routes entered in this array are accessible by any user no matter what role is given
@@ -47,6 +47,10 @@ return  [
         [
             'url' => '/change-password',
             'method' => $getMethod,
+        ],
+        [
+            'url' => '/2fa',
+            'method' => $postMethod,
         ],
     ],
 
@@ -171,42 +175,116 @@ return  [
                 ],
             ],
         ],
+        // [
+        //     'name' => 'Log Management',
+        //     'icon' => "<i class='fa fa-history'></i>",
+        //     'hasSubmodules' => true,
+        //     'submodules' => [
+        //         [
+        //             'name' => 'Login Logs',
+        //             'icon' => "<i class='fas fa-sign-in-alt'></i>",
+        //             'hasSubmodules' => false,
+        //             'route' => $loginLogsBaseUrl,
+        //             'permissions' => [
+        //                 [
+        //                     'name' => 'View Login logs',
+        //                     'route' => [
+        //                         'url' => $loginLogsBaseUrl,
+        //                         'method' => $getMethod,
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //         [
+        //             'name' => 'Activity logs',
+        //             'icon' => "<i class='fas fa-chart-line'></i>",
+        //             'hasSubmodules' => false,
+        //             'route' => $activityLogsBaseUrl,
+        //             'permissions' => [
+        //                 [
+        //                     'name' => 'View Activity logs',
+        //                     'route' => [
+        //                         'url' => $activityLogsBaseUrl,
+        //                         'method' => $getMethod,
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //     ],
+        // ],
         [
-            'name' => 'Log Management',
-            'icon' => "<i class='fa fa-history'></i>",
-            'hasSubmodules' => true,
-            'submodules' => [
+            'name' => 'Tickets',
+            'icon' => "<i class='fa fa-ticket'></i>",
+            'hasSubmodules' => false,
+            'route' => $ticketBaseUrl,
+            'permissions' => [
                 [
-                    'name' => 'Login Logs',
-                    'icon' => "<i class='fas fa-sign-in-alt'></i>",
-                    'hasSubmodules' => false,
-                    'route' => $loginLogsBaseUrl,
-                    'permissions' => [
+                    'name' => 'View Ticket',
+                    'route' => [
+                        'url' => $ticketBaseUrl,
+                        'method' => $getMethod,
+                    ],
+                ],
+                [
+                    'name' => 'Create Ticket',
+                    'route' => [
                         [
-                            'name' => 'View Login logs',
-                            'route' => [
-                                'url' => $loginLogsBaseUrl,
-                                'method' => $getMethod,
-                            ],
+                            'url' => $ticketBaseUrl . '/create',
+                            'method' => $getMethod,
+                        ],
+                        [
+                            'url' => $ticketBaseUrl,
+                            'method' => $postMethod,
+                        ],
+
+                    ],
+                ],
+                [
+                    'name' => 'Edit Ticket',
+                    'route' => [
+                        [
+                            'url' => $ticketBaseUrl . '/*/edit',
+                            'method' => $getMethod,
+                        ],
+                        [
+                            'url' => $ticketBaseUrl . '/*',
+                            'method' => $putMethod,
                         ],
                     ],
                 ],
                 [
-                    'name' => 'Activity logs',
-                    'icon' => "<i class='fas fa-chart-line'></i>",
-                    'hasSubmodules' => false,
-                    'route' => $activityLogsBaseUrl,
-                    'permissions' => [
+                    'name' => 'Delete Ticket',
+                    'route' => [
+                        'url' => $ticketBaseUrl . '/*',
+                        'method' => $deleteMethod,
+                    ],
+                ],
+                
+               
                         [
-                            'name' => 'View Activity logs',
+                            'name' => 'View Ticket Consult',
                             'route' => [
-                                'url' => $activityLogsBaseUrl,
+                                'url' => $ticketBaseUrl . '/*/consult',
                                 'method' => $getMethod,
                             ],
                         ],
-                    ],
-                ],
+                        [
+                            'name' => 'Send Consult Message',
+                            'route' => [
+                                [
+                                    'url' => $ticketBaseUrl . '/*/consult/create',
+                                    'method' => $getMethod,
+                                ],
+                                [
+                                    'url' => $ticketBaseUrl . '/*/consult',
+                                    'method' => $postMethod,
+                                ],
+
+                            ],
+                        ],
+                   
             ],
-        ],      
+        ],
+
     ],
 ];
