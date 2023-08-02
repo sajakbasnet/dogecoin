@@ -37,7 +37,7 @@
     <td>
         @include('system.partials.editButton')
         @include('system.partials.deleteButton')
-        @if(hasPermission($indexUrl.'/reset-password/'.$item->id, 'post'))
+        <!-- @if(hasPermission($indexUrl.'/reset-password/'.$item->id, 'post'))
         <x-system.general-modal :url="url($indexUrl.'/reset-password/'.$item->id)" :modalTitle="'Password Reset'" :modalId="'passwordReset'.$item->id" :modalTriggerButton="'Reset-Password'" :buttonClass="'btn-success'" :buttonIconClass="' fa fa-refresh'" :submitButtonTitle="'Reset'">
             <x-slot name="body">
                 <input type="hidden" name="id" value="{{$item->id}}">
@@ -62,7 +62,7 @@
                 </div>
             </x-slot>
         </x-system.general-modal>
-        @endif
+        @endif -->
     </td>
 </tr>
 @endforeach
