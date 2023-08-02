@@ -64,7 +64,7 @@ class RoleService extends Service
 
     public function delete($request, $id)
     {
-        try {
+        try {         
             if ($request->role_id == $id) {
                 throw new CustomGenericException('The role that currently exist and the ones that have been modified must not be identical.');
             }

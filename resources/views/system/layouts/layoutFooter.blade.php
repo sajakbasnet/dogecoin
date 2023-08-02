@@ -1,55 +1,91 @@
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="{{ asset('jscolor/jscolor.js')}}"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" integrity="sha256-mFeNnkKbr+LtvZ0AJx6IqF+kV+rUwQZIXRV/2VW18t4=" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" integrity="sha256-mFeNnkKbr+LtvZ0AJx6IqF+kV+rUwQZIXRV/2VW18t4=" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <!-- Footer opened -->
+  <a href="#top" id="back-to-top"><i class="la la-chevron-up"></i></a>
 
-<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+  <script src="{{asset('js/jquery.min.js')}}"></script>
 
-<script src="{{ asset('compiledCssAndJs/js/system.js')}}"></script>
-<script src="{{ asset('toast/jquery.toast.min.js')}}"></script>
-<!-- latest jquery-->
-    {{-- <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script> --}}
-    <!-- Bootstrap js-->
-    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-    <!-- scrollbar js-->
-    <script src="{{ asset('js/scrollbar/simplebar.js') }}"></script>
-    <script src="{{ asset('js/scrollbar/custom.js') }}"></script>
-    <!-- Sidebar jquery-->
-    <script src="{{ asset('js/config.js') }}"></script>
-    <!-- Plugins JS start-->
-    <script src="{{ asset('js/sidebar-menu.js') }}"></script>
-    <script src="{{ asset('js/notify/bootstrap-notify.min.js') }}"></script>
-    {{-- this is for alert message --}}
-    {{-- <script src="{{ asset('js/notify/index.js') }}"></script> --}}
-    <script src="{{ asset('js/datepicker/date-picker/datepicker.js') }}"></script>
-    <script src="{{ asset('js/datepicker/date-picker/datepicker.en.js') }}"></script>
-    <script src="{{ asset('js/datepicker/date-picker/datepicker.custom.js') }}"></script>
+  <!-- Bootstrap js-->
+  <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
-<script src="{{ asset('js/datepicker/daterange-picker/moment.min.js')}}"></script>
-    <script src="{{ asset('js/datepicker/daterange-picker/daterangepicker.js')}}"></script>
-    <script src="{{ asset('js/datepicker/daterange-picker/daterange-picker.custom.js')}}"></script>
+  <!-- Ionicons js-->
+  <script src="{{asset('js/ionicons.js')}}"></script>
+
+  <!-- Moment js -->
+  <script src="{{asset('js/moment.js')}}"></script>
+
+  <!-- P-scroll js -->
+  <script src="{{asset('js/perfect-scrollbar.min.js')}}"></script>
+  <script src="{{asset('js/p-scroll.js')}}"></script>
+
+  <!-- Rating js-->
+  <script src="{{asset('js/jquery.rating-stars.js')}}"></script>
+  <script src="{{asset('js/jquery.barrating.js')}}"></script>
+
+  <!-- Custom Scroll bar Js-->
+  <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+
+  <!-- eva-icons js -->
+  <script src="{{asset('js/eva-icons.min.js')}}"></script>
+
+  <!-- Sidebar js -->
+  <script src="{{asset('js/sidemenu.js')}}"></script>
+
+  <!-- Right-sidebar js -->
+  <script src="{{asset('js/sidebar.js')}}"></script>
+  <script src="{{asset('js/sidebar-custom.js')}}"></script>
+
+  <!-- Sticky js-->
+  <script src="{{asset('js/sticky.js')}}"></script>
 
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <!-- Datepicker js -->
+  <script src="{{asset('js/datepicker.js')}}"></script>
 
-    <script src="{{ asset('js/typeahead/handlebars.js') }}"></script>
-    <script src="{{ asset('js/height-equal.js') }}"></script>
-    <!-- Plugins JS Ends-->
-    <!-- Theme js-->
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/theme-customizer/customizer.js') }}"></script>
-    <!-- login js-->
-    <!-- Plugin used-->
+  <!--Chart bundle min js -->
+  <script src="{{asset('js/Chart.bundle.min.js')}}"></script>
+  <script src="{{asset('js/raphael.min.js')}}"></script>
+  <script src="{{asset('js/jquery.peity.min.js')}}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <!-- JQuery sparkline js -->
+  <script src="{{asset('js/jquery.sparkline.min.js')}}"></script>
 
-<script>
+  <!-- Sampledata js -->
+  <script src="{{asset('js/chart.flot.sampledata.js')}}"></script>
+
+  <!-- Perfect-scrollbar js -->
+  <script src="{{asset('js/perfect-scrollbar.min.js')}}"></script>
+  <script src="{{asset('js/p-scroll.js')}}"></script>
+
+  <!-- Internal  Flot js-->
+  <script src="{{asset('js/jquery.flot.js')}}"></script>
+  <script src="{{asset('js/jquery.flot.pie.js')}}"></script>
+  <script src="{{asset('js/jquery.flot.categories.js')}}"></script>
+  <script src="{{asset('js/dashboard.sampledata.js')}}"></script>
+  <script src="{{asset('js/chart.flot.sampledata.js')}}"></script>
+
+  <!-- Internal Newsticker js-->
+  <script src="{{asset('js/jquery.jConveyorTicker.js')}}"></script>
+  <script src="{{asset('js/newsticker.js')}}"></script>
+
+  <!-- Internal Nice-select js-->
+  <script src="{{asset('js/jquery.nice-select.js')}}"></script>
+  <script src="{{asset('js/nice-select.js')}}"></script>
+
+  <!-- index js -->
+  <script src="{{asset('js/dashboard.js')}}"></script>
+
+
+  <!-- Custom js-->
+  <script src="{{asset('js/custom.js')}}"></script>
+
+  <!-- Switcher js -->
+  <script src="{{asset('js/switcher.js')}}"></script>
+
+  <!-- Script Principal -->
+  <script src="{{asset('js/main-script.js')}}"></script>
+  <script src="{{ asset('compiledCssAndJs/js/system.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <script src="{{ asset('toast/jquery.toast.min.js')}}"></script>
+  <script>
   $(function() {
     var check = `{{$errors->first('success')}}`;
     if (check !== "") {
@@ -75,25 +111,4 @@
     $(".page-wrapper").toggleClass("toggle-page")
   })
 
-  $('.datepicker-here').daterangepicker({
-    autoUpdateInput: false,
-    locale: {
-      cancelLabel: 'Clear'
-    }
-  });
-
-  $('.datepicker-here').on('apply.daterangepicker', function(ev, picker) {
-    $('#from-date').val(picker.startDate.format('YYYY-MM-DD'));
-    $('#to-date').val(picker.endDate.format('YYYY-MM-DD'));
-    $(this).val(picker.startDate.format('YYYY-MM-DD') + ' to ' + picker.endDate.format('YYYY-MM-DD'));
-  });
-
-  $('.datepicker-here').daterangepicker({
-    singleDatePicker: true,
-    showDropdowns: true,
-    autoUpdateInput: false,
-    locale: {
-      format: 'YYYY-MM-DD'
-    }
-  }, function(start, end, label) {});
 </script>

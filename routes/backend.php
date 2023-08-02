@@ -35,7 +35,10 @@ Route::group(['namespace' => 'System', 'prefix' => getSystemPrefix(), 'middlewar
         Route::get('change-password', 'user\UserController@changePassword')->name('change.password');
     });
 
-    Route::group(['middleware' => ['auth', 'permission', 'twofa', 'reset.password']], function () {
+    Route::group(['middleware' => ['auth', 'permission', 'twofa', 'reset.password','2fa']], function () {
+        Route::post('/2fa', function () {
+            return redirect(route('home'));
+        })->name('2fa');
         Route::get('/home', 'indexController@index')->name('home');
         Route::resource('/roles', 'user\RoleController', ['except' => ['show']]);
 

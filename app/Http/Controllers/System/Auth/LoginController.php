@@ -14,7 +14,7 @@ use Carbon\Carbon;
 use GuzzleHttp;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use ParagonIE\ConstantTime\Base32;
 use Config;
 
 class LoginController extends Controller
@@ -79,10 +79,10 @@ class LoginController extends Controller
             }
             $user = $this->loginType($request);
 
-            if (Auth::attempt($user)) {
+            if (Auth::attempt($user)) {              
                 setRoleCache(authUser()->load('roles'));
                 setConfigCookie();
-                $this->createLoginLog($request);
+                // $this->createLoginLog($request);
 
                 return $this->sendLoginResponse($request);
             }
@@ -154,9 +154,9 @@ class LoginController extends Controller
             return $response;
         }
 
-        if (authUser()->is_2fa_enabled) {
-            $this->twoFa();
-            return redirect('/' . getSystemPrefix() . '/login/verify');
+        if (authUser()->google2fa_enabled) {
+            $data = $this->twoFa(authUser());
+            return view('system.auth.2fa-setup', $data);
         }
 
         return redirect('/' . getSystemPrefix() . '/home');
@@ -173,24 +173,33 @@ class LoginController extends Controller
         return redirect(getSystemPrefix() . '/login')->withErrors(['alert-success' => 'Successfully logged out!']);
     }
 
-    public function twoFa()
+    public function twoFa($user)
     {
-        session()->forget('verification_code');
-        $verificationCode = random_int(100000, 999999);
+        $data['secret'] = $this->generateSecret();
 
-        session()->put('verification_code', $verificationCode);
-        try {
-            $user = authUser();
-            $twoFactorExpireTime = Carbon::now()->addMinutes(Config::get('constants.DEFAULT_TWO_FA_EXPIRATION'))
-                ->format('Y-m-d H:i:s');
-
-            $user->update([
-                'two_fa_expiry_time' => $twoFactorExpireTime
-            ]);
-
-            Mail::to($user->email)->send(new TwoFAEmail(authUser()));
-        } catch (\Exception $e) {
-            throw new CustomGenericException($e->getMessage());
+        //encrypt and then save secret.
+        $google2fa = app('pragmarx.google2fa');
+       
+        if (!$user->google2fa_secret) {
+            $user->google2fa_secret = $google2fa->generateSecretKey();
+            $user->save();
         }
+        //generate image for QR barcode
+        if ($user->google2fa_secret) {
+            $data['imageDataUri'] = $google2fa->getQRCodeInline(
+                config('app.name'),
+                $user->email,
+                $user->google2fa_secret
+            );
+        }
+        $data['user'] = $user;       
+
+       return $data;
+    }
+    private function generateSecret()
+    {
+        $randomBytes = random_bytes(10);
+
+        return Base32::encodeUpper($randomBytes);
     }
 }

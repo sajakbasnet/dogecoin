@@ -15,7 +15,7 @@ class EmailTemplateSeeder extends Seeder
      */
     public function run()
     {
-        $fromEmail = env('MAIL_FROM_ADDRESS') ?? 'info@ekbana.com';
+        $fromEmail = env('MAIL_FROM_ADDRESS') ?? 'admin@gmail.com';
         /**
          * Template for table header.
          */
@@ -40,7 +40,7 @@ class EmailTemplateSeeder extends Seeder
         $templateFooter = '<p>Thank you!</p>
                                             <br>
                                             <p class="pull-right">Yours Sincerely,<br>
-                                                Team EKbana</p>
+                                                Team Dogecoin</p>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -54,10 +54,10 @@ class EmailTemplateSeeder extends Seeder
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tbody>
                             <tr>
-                                <td class="content-block"><span class="apple-link">Ekbana</span></td>
+                                <td class="content-block"><span class="apple-link">Dogecoin</span></td>
                             </tr>
                             <tr>
-                                <td class="content-block powered-by">Powered by Ekbana</td>
+                                <td class="content-block powered-by">Powered by Dogecoin</td>
                             </tr>
                             </tbody>
                         </table>

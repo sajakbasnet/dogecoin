@@ -1,45 +1,38 @@
-<div class="sidebar-wrapper">
-        <div class="logo-wrapper d-flex"><a href="{{route('home')}}"><img class="img-fluid for-light"
-                    src="{{asset('uploads/config/')}}/{{ getCmsConfig('cms logo')}}" alt=""><img class="img-fluid for-dark"
-                    src="{{asset('uploads/config/')}}/{{ getCmsConfig('cms logo')}}" alt=""><h3>{{getCmsConfig('cms title')}}</h3></a>
-            <div class="back-btn"><i class="fa fa-angle-left"></i></div>
-        </div>
-        <div class="logo-icon-wrapper"><a href="{{route('home')}}"><img class="img-fluid"
-                    src="{{ asset('images/logo-icon.png') }}" alt=""></a></div>
-        <nav class="sidebar-main">
-            <div id="sidebar-menu">
-                <ul class="sidebar-links" id="simple-bar">
-                    <li class="back-btn"><a href="{{route('home')}}"><img class="img-fluid"
-                                src="{{ asset('images/logo-icon.png') }}" alt=""></a>
-                        <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
-                                aria-hidden="true"> </i></div>
-                    </li>
-                    @foreach ($modules as $module)
-                        @if (hasPermissionOnModule($module) && showInSideBar($module['showInSideBar'] ?? true))
-                            @if ($module['hasSubmodules'])
-                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#sidenav{{$loop->index}}">
-                                        {!! $module['icon'] ?? '' !!} <span>{{translate($module['name'])}}</span></a>
-                                    <ul class="sidebar-submenu">
-                                        @foreach ($module['submodules'] as $subModule)
-                                            @if (hasPermission($subModule['route'], 'get'))
-                                                <li><a href="{{url(getSystemPrefix().$subModule['route'])}}">{{translate($subModule['name'])}}</a></li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @else
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="{{url(getSystemPrefix().$module['route'])}}">
-                                        @if (hasPermission($module['route'], 'get'))
-                                             {!! $module['icon'] ?? '' !!} <span>{{translate($module['name'])}} </span>
-                                        @endif
-                                    </a>
-                                </li>
-                            @endif
-                        @endif
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar sidebar-scroll ">
+    <div class="main-sidebar-header">
+        <a class="desktop-logo logo-dark" href="#">
+            <img src="{{ asset('https://dogecaramelo.com.br/wp-content/uploads/2023/05/logo-transparente.fw_.png')}}" alt="dogecaramelo">
+        </a>
+    </div>
+    <div class="main-sidebar-body circle-animation ">
+        <ul class="side-menu circle">           
+            @foreach ($modules as $module)
+            @if (hasPermissionOnModule($module) && showInSideBar($module['showInSideBar'] ?? true))
+            @if ($module['hasSubmodules'])
+            <li class="slide"><a class="side-menu__item" href="#sidenav{{$loop->index}}">
+            <h3 class> {!! $module['icon'] ?? '' !!} <span>{{translate($module['name'])}}</span></h3></a>
+               <ul class="side-menu circle">     
+                    @foreach ($module['submodules'] as $subModule)
+                    @if (hasPermission($subModule['route'], 'get'))
+                 <li class="slide"><a href="{{url(getSystemPrefix().$subModule['route'])}}" class="side-menu__item">
+                 <h3 class>{{translate($subModule['name'])}}</h3>
+                </a></li>
+                    @endif
                     @endforeach
                 </ul>
-
-            </div>
-        </nav>
-</div>
+            </li>
+            @else
+            <li class="slide">
+                <a class="side-menu__item" href="{{url(getSystemPrefix().$module['route'])}}">
+                    @if (hasPermission($module['route'], 'get'))
+                    <h3 class> {!! $module['icon'] ?? '' !!} <span>{{translate($module['name'])}} </span></h3>
+                    @endif
+                </a>
+            </li>
+            @endif
+            @endif
+            @endforeach
+        </ul>
+    </div>
+</aside>

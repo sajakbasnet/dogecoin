@@ -73,5 +73,6 @@ class Kernel extends HttpKernel
         //api middlewares
         'auth-frontend' => \App\Http\Middleware\Frontend\frontendAuth::class,
         'lang' => \App\Http\Middleware\Frontend\Language::class,
-    ];
+        '2fa' => \PragmaRX\Google2FALaravel\Middleware::class,
+        ];
 }

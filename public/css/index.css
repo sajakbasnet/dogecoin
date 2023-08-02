@@ -1,0 +1,120 @@
+:root {
+    --primary-color: #151843 !important;
+    --secondary-color: white !important;
+    --color-icon: #fff !important;
+}
+
+.main-header {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+.main-footer {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+.main-footer a {
+    color: white !important;
+}
+
+.open-toggle, .close-toggle svg {
+    fill: white !important;
+}
+
+.navbar-collapse {
+    background-color: var(--primary-color) !important;
+}
+
+.ti-search {
+    color: white !important;
+}
+.main-sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-sidebar-header a {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-align: center;
+    line-height: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.app-sidebar {
+    background-color: var(--primary-color);
+}
+
+.btn-main-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+button[data-target="#navbarSupportedContent-4"] {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+@media min-width(767px) {
+    .main-sidebar {
+        background-color: var(--primary-color);
+    }
+
+    .mobile-hide {
+        display: none;
+    }
+}
+
+@media (max-width: 350px) {
+
+    .container-recaptcha {
+        width: 108%;
+        justify-content: center !important;
+    }
+
+    .g-recaptcha {
+        transform:scale(0.66) !important;
+        -webkit-transform:scale(0.66) !important;
+        transform-origin:0 0 !important;
+        -webkit-transform-origin:0 0 !important;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .container-recaptcha {
+        width: 108%;
+        justify-content: start !important;
+    }
+
+    .g-recaptcha {
+        transform:scale(0.88) !important;
+        -webkit-transform:scale(0.88) !important;
+        transform-origin:0 0 !important;
+        -webkit-transform-origin:0 0 !important;
+    }
+}
+
+
+@media (max-width: 767px) {
+    #btn-submit {
+        width: 100%;
+    }
+
+}

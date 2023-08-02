@@ -19,7 +19,7 @@ class VerificationController extends Controller
 
     public function showVerifyPage()
     {
-        return view('system.auth.verify');
+        return view('system.auth.2fa-setup');
     }
 
     public function sendAgain(Request $request)

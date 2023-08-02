@@ -21,7 +21,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'token', 'password_resetted', 'expiry_datetime', 'is_2fa_enabled', 'two_fa_expiry_time'
+        'name', 'email', 'password', 'username', 'token', 'password_resetted', 'expiry_datetime','google2fa_secret',
+        'google2fa_enabled',
     ];
 
     protected $guarded = [

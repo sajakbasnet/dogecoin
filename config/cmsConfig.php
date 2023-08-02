@@ -10,12 +10,12 @@ $userBaseUrl = '/users';
 $roleBaseUrl = '/roles';
 $loginLogsBaseUrl = '/login-logs';
 $activityLogsBaseUrl = '/activity-logs';
-$languagesBaseUrl = '/languages';
-$translationBaseUrl = '/translations';
-$emailTemplateBaseUrl = '/email-templates';
-$configBaseUrl = '/configs';
+// $languagesBaseUrl = '/languages';
+// $translationBaseUrl = '/translations';
+// $emailTemplateBaseUrl = '/email-templates';
+// $configBaseUrl = '/configs';
 $profileBaseUrl = '/profile';
-$pagesBaseUrl = '/pages';
+// $pagesBaseUrl = '/pages';
 
 return  [
     // routes entered in this array are accessible by any user no matter what role is given
@@ -41,7 +41,7 @@ return  [
             'method' => $getMethod,
         ],
         [
-            'url' => $profileBaseUrl.'/*',
+            'url' => $profileBaseUrl . '/*',
             'method' => $putMethod,
         ],
         [
@@ -83,7 +83,7 @@ return  [
                             'name' => 'Create Users',
                             'route' => [
                                 [
-                                    'url' => $userBaseUrl.'/create',
+                                    'url' => $userBaseUrl . '/create',
                                     'method' => $getMethod,
                                 ],
                                 [
@@ -96,11 +96,11 @@ return  [
                             'name' => 'Edit Users',
                             'route' => [
                                 [
-                                    'url' => $userBaseUrl.'/*/edit',
+                                    'url' => $userBaseUrl . '/*/edit',
                                     'method' => $getMethod,
                                 ],
                                 [
-                                    'url' => $userBaseUrl.'/*',
+                                    'url' => $userBaseUrl . '/*',
                                     'method' => $putMethod,
                                 ],
                             ],
@@ -108,14 +108,14 @@ return  [
                         [
                             'name' => 'Delete Users',
                             'route' => [
-                                'url' => $userBaseUrl.'/*',
+                                'url' => $userBaseUrl . '/*',
                                 'method' => $deleteMethod,
                             ],
                         ],
                         [
                             'name' => 'Reset Password',
                             'route' => [
-                                'url' => $userBaseUrl.'/reset-password/*',
+                                'url' => $userBaseUrl . '/reset-password/*',
                                 'method' => $postMethod,
                             ],
                         ],
@@ -138,7 +138,7 @@ return  [
                             'name' => 'Create Roles',
                             'route' => [
                                 [
-                                    'url' => $roleBaseUrl.'/create',
+                                    'url' => $roleBaseUrl . '/create',
                                     'method' => $getMethod,
                                 ],
                                 [
@@ -151,11 +151,11 @@ return  [
                             'name' => 'Edit Roles',
                             'route' => [
                                 [
-                                    'url' => $roleBaseUrl.'/*/edit',
+                                    'url' => $roleBaseUrl . '/*/edit',
                                     'method' => $getMethod,
                                 ],
                                 [
-                                    'url' => $roleBaseUrl.'/*',
+                                    'url' => $roleBaseUrl . '/*',
                                     'method' => $putMethod,
                                 ],
                             ],
@@ -163,7 +163,7 @@ return  [
                         [
                             'name' => 'Delete Roles',
                             'route' => [
-                                'url' => $roleBaseUrl.'/*',
+                                'url' => $roleBaseUrl . '/*',
                                 'method' => $deleteMethod,
                             ],
                         ],
@@ -207,233 +207,6 @@ return  [
                     ],
                 ],
             ],
-        ],
-        [
-            'name' => 'Language Management',
-            'hasSubmodules' => true,
-            'icon' => "<i class='fa fa-language' aria-hidden='true'></i>",
-            'submodules' => [
-                [
-                    'name' => 'Languages',
-                    'icon' => "<i class='fa fa-language' aria-hidden='true'></i>",
-                    'hasSubmodules' => false,
-                    'route' => $languagesBaseUrl,
-                    'permissions' => [
-                        [
-                            'name' => 'View Languages',
-                            'route' => [
-                                'url' => $languagesBaseUrl,
-                                'method' => $getMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Create Languages',
-                            'route' => [
-                                [
-                                    'url' => $languagesBaseUrl.'/create',
-                                    'method' => $getMethod,
-                                ],
-                                [
-                                    'url' => $languagesBaseUrl,
-                                    'method' => $postMethod,
-                                ],
-                            ],
-                        ],
-                        [
-                            'name' => 'Delete Languages',
-                            'route' => [
-                                'url' => $languagesBaseUrl.'/*',
-                                'method' => $deleteMethod,
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'name' => 'Translations',
-                    'icon' => "<i class='fa fa-globe' aria-hidden='true'></i>",
-                    'hasSubmodules' => false,
-                    'route' => $translationBaseUrl,
-                    'permissions' => [
-                        [
-                            'name' => 'View Translations',
-                            'route' => [
-                                'url' => $translationBaseUrl,
-                                'method' => $getMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Create Translations',
-                            'route' => [
-                                'url' => $translationBaseUrl,
-                                'method' => $postMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Edit Translations',
-                            'route' => [
-                                'url' => $translationBaseUrl.'/*',
-                                'method' => $putMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Delete Translations',
-                            'route' => [
-                                'url' => $translationBaseUrl.'/*',
-                                'method' => $deleteMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Download Sample',
-                            'route' => [
-                                'url' => $translationBaseUrl.'/download-sample',
-                                'method' => $getMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Download Excel',
-                            'route' => [
-                                'url' => $translationBaseUrl.'/download/*',
-                                'method' => $getMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Upload Excel',
-                            'route' => [
-                                'url' => $translationBaseUrl.'/upload/*',
-                                'method' => $postMethod,
-                            ],
-                        ],
-                    ],
-                ],
-
-            ],
-        ],
-        [
-            'name' => 'System configs',
-            'icon' => "<i class='fa fa-cogs' aria-hidden='true'></i>",
-            'hasSubmodules' => true,
-            'submodules' => [
-                [
-                    'name' => 'Email Templates',
-                    'icon' => "<i class='fa fa-envelope' aria-hidden='true'></i>",
-                    'route' => $emailTemplateBaseUrl,
-                    'hasSubmodules' => false,
-                    'permissions' => [
-                        [
-                            'name' => 'View Email Templates',
-                            'route' => [
-                                'url' => $emailTemplateBaseUrl,
-                                'method' => $getMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Edit Email Templates',
-                            'route' => [
-                                [
-                                    'url' => $emailTemplateBaseUrl.'/*/edit',
-                                    'method' => $getMethod,
-                                ],
-                                [
-                                    'url' => $emailTemplateBaseUrl.'/*',
-                                    'method' => $putMethod,
-                                ],
-                            ],
-                        ],
-                        [
-                            'name' => 'Delete Email Templates',
-                            'route' => [
-                                'url' => $emailTemplateBaseUrl.'/*',
-                                'method' => $deleteMethod,
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'name' => 'Configs',
-                    'icon' => '<i class="fa fa-cog" aria-hidden="true"></i>',
-                    'route' => $configBaseUrl,
-                    'hasSubmodules' => false,
-                    'permissions' => [
-                        [
-                            'name' => 'View Configs',
-                            'route' => [
-                                'url' => $configBaseUrl,
-                                'method' => $getMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Create Config',
-                            'route' => [
-                                'url' => $configBaseUrl,
-                                'method' => $postMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Edit Config',
-                            'route' => [
-                                'url' => $configBaseUrl.'/*',
-                                'method' => $putMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Delete Config',
-                            'route' => [
-                                'url' => $configBaseUrl.'/*',
-                                'method' => $deleteMethod,
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-        ],
-      [
-            'name' => 'Page Management',
-            'icon' => "<i class='fa fa-list'></i>",
-            'hasSubmodules' => false,
-            'route' => $pagesBaseUrl,
-            'permissions' => [
-                [
-                    'name' => 'View Page',
-                    'route' => [
-                        'url' => $pagesBaseUrl,
-                        'method' => $getMethod,
-                    ],
-                ],
-                [
-                    'name' => 'Create Page',
-                    'route' => [
-                        [
-                            'url' => $pagesBaseUrl.'/create',
-                            'method' => $getMethod,
-                        ],
-                        [
-                            'url' => $pagesBaseUrl,
-                            'method' => $postMethod,
-                        ],
-
-                    ],
-                ],
-                [
-                    'name' => 'Edit Page',
-                    'route' => [
-                        [
-                            'url' => $pagesBaseUrl.'/*/edit',
-                            'method' => $getMethod,
-                        ],
-                        [
-                            'url' => $pagesBaseUrl.'/*',
-                            'method' => $putMethod,
-                        ],
-                    ],
-                ],
-                [
-                    'name' => 'Delete Page',
-                    'route' => [
-                        'url' => $pagesBaseUrl.'/*',
-                        'method' => $deleteMethod,
-                    ],
-                ],
-            ],
-        ],
+        ],      
     ],
 ];
