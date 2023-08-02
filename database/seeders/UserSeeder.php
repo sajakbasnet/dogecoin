@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         if (!isset($user)) {
             $data = [
                 'name' => 'Admin',
-                'email' => Config::get('constants.ADMIN_DEFAULT_EMAIL') ?? 'admin@ekcms.com',
+                'email' => Config::get('constants.ADMIN_DEFAULT_EMAIL') ?? 'admin@gamil.com',
                 'username' => 'admin',
                 'password' => Hash::make('123admin@'),
                 'password_resetted' => 1,

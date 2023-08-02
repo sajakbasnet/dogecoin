@@ -34,7 +34,7 @@ class ConfigSeeder extends Seeder
             Config::create([
                 'label' => 'cms title',
                 'type' => 'text',
-                'value' => 'EkCms',
+                'value' => 'dogecoin',
 
             ]);
         }

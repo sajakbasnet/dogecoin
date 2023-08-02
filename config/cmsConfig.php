@@ -259,7 +259,13 @@ return  [
                         'method' => $deleteMethod,
                     ],
                 ],
-                
+                [
+                    'name' => 'Edit ticket status',
+                    'route' => [
+                        'url' => $ticketBaseUrl . '/updateStatus/*',
+                        'method' => $postMethod,
+                    ],
+                ],
                
                         [
                             'name' => 'View Ticket Consult',
