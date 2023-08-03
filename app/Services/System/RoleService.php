@@ -19,6 +19,7 @@ class RoleService extends Service
 
     public function indexPageData($request)
     {
+       
         return [
             'items' => $this->repository->getAllData($request),
             'roles' => $this->roleRepository->getRoles()
@@ -28,13 +29,14 @@ class RoleService extends Service
     public function store($request)
     {
         $data = $request->except('_token');
+        
         $data['permissions'] = $this->roleRepository->mapPermission($request->permissions);
-
+        
         return $this->roleRepository->create($data);
     }
 
     public function editPageData($request, $id)
-    {
+    {        
         $role = $this->roleRepository->itemByIdentifier($id);
 
         return [
@@ -44,8 +46,9 @@ class RoleService extends Service
 
     public function update($request, $id)
     {
+       
         $data = $request->except('_token');
-        $data['permissions'] = $this->roleRepository->mapPermission($data['permissions']);
+        $data['permissions'] = $this->roleRepository->mapPermission($data['permissions']);      
         $checkRoleUsers = $this->userRepository->getByRolePivotRoleUser($id);
 
         $this->roleRepository->update($data, $id);
