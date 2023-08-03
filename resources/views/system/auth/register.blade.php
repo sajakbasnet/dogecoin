@@ -14,8 +14,8 @@
             <div class="p-5 wd-100p">
                 <div class="main-signin-header">
                     <h2>Seja Bem Vindo!</h2>
-                    <h4>Por favor, insira seus dados para entrar.</h4>
-                    <form id="" method="post" action="{{ route('login') }}">
+                    <h4>Por favor, insira seus dados.</h4>
+                    <form id="" method="post" action="{{ route('register') }}">
                         @if(!$errors->isEmpty())
                         <div class="alert alert-danger" role="alert">
                             {{$errors->first()}}
@@ -26,13 +26,24 @@
                         @endif
                         @csrf
                         <div class="form-group">
+                            <label>Name</label>
+                            <input id="login-user-dog" name="name" value="{{old('name')}}" class="form-control" placeholder="Enter your name" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input id="login-user-dog" name="username" value="{{old('username')}}" class="form-control" placeholder="Enter your Username" type="text" required>
+                        </div>
+                        <div class="form-group">
                             <label>Email</label>
-                            <input id="login-user-dog" name="email" class="form-control" placeholder="Enter your email" type="email">
-
+                            <input id="login-user-dog" name="email"  value="{{old('email')}}"class="form-control" placeholder="Enter your email" type="email" required>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input autocomplete="current-password" name="password" id="senha-user-dog" class="form-control" placeholder="Enter your password" type="password">
+                            <input  autocomplete="current-password" id="senha-user-dog"  name="password" class="form-control" placeholder="Enter your password" type="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Re-Password</label>
+                            <input autocomplete="current-password" name="password_confirmation" id="senha-user-dog" class="form-control" placeholder="Re-Enter your password" type="password" required>
                         </div>
                         <!-- @if(auth()->user() && auth()->user()->google2fa_enabled)
                         <p>Two-factor authentication is enabled for your account.</p>
@@ -40,11 +51,10 @@
                         <input type="text" class="form-control" name="token" required>
                         @endif -->
                         <div class="actions__container">
-                            <button class="btn btn-primary btn-block" type="submit">Login</button>
+                            <button class="btn btn-primary btn-block" type="submit">Register</button>
                             <div id="buttonDiv"></div>
                         </div>
-                    </form>
-                    <p class="mt-2">Dont have an account?<a href="{{ route('register.form') }}"> Register here.</a></p>
+                    </form>                    
                 </div>
             </div>
         </div>

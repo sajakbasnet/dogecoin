@@ -5,12 +5,9 @@ namespace App\Http\Controllers\System\Auth;
 
 use App\Exceptions\CustomGenericException;
 use App\Http\Controllers\Controller;
-use App\Mail\system\TwoFAEmail;
 use App\Model\Loginlogs;
-use App\Services\System\UserService;
 use App\Traits\CustomThrottleRequest;
 use Auth;
-use Carbon\Carbon;
 use GuzzleHttp;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;

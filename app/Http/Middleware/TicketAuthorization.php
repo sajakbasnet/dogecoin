@@ -20,8 +20,11 @@ class TicketAuthorization
         $ticketId = $request->route('ticket');  
         $ticket = Ticket::findOrFail($ticketId);
 
-        // Check if the authenticated user is an operator and the ticket is owned by the operator
-        if (strtolower(authUser()->roles->first()->name) == 'operator' && $ticket->user_id !== $request->user()->id) {
+     
+        if (strtolower(authUser()->roles->first()->name) == 'operator' &&  (int) $ticket->assigned_id !== $request->user()->id) {
+            abort(403, 'Unauthorized to edit this ticket.');
+        }
+        if (strtolower(authUser()->roles->first()->name) == 'user' &&  (int) $ticket->user_id !== $request->user()->id) {
             abort(403, 'Unauthorized to edit this ticket.');
         }
 

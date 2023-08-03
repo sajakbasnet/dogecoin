@@ -17,7 +17,8 @@ class Ticket extends Model
         'createdDate',
         'user_id',
         'ticket_id',
-        'priority'
+        'priority',
+        'assigned_id'
     ];
 
     public function user()

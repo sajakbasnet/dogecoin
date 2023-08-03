@@ -21,10 +21,9 @@ class UserCreated
      */
     public $user;
 
-    public function __construct($data, $token)
+    public function __construct($data)
     {
-        $this->user = $data;
-        $this->token = $token;
+        $this->user = $data;  
     }
 
     /**

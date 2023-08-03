@@ -57,6 +57,8 @@ class TicketService extends Service
     {
         \DB::transaction(function () use ($request) {
             $data = $request->except('_token');
+            $data['assigned_id'] = $data['user_id'];
+            $data['user_id']= authUser()->id;
             $data['ticket_id'] = $this->ticketRepository->generateCode();
             return $this->ticketRepository->create($data);
         });

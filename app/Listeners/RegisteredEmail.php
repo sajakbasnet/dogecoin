@@ -28,19 +28,7 @@ class RegisteredEmail
     public function handle(UserCreated $event)
     {
         $user = $event->user;
-
-        $defaultLinkExpiration = Config::get('constants.DEFAULT_LINK_EXPIRATION'); //default link expiration in minutes
-
-        $user->update([
-            'expiry_datetime' => now()->addMinutes($defaultLinkExpiration)->format('Y-m-d H:i:s')
-        ]);
-
-        if (!isset($user->password)) {
-            $encryptedToken = encrypt($event->token);
-            Mail::to($user->email)->send(new PasswordSetEmail($user, $encryptedToken));
-        } else {
-            $user->userPasswords()->create(['password' => $user->password]);
-            Mail::to($user->email)->send(new AccountCreatedEmail($user));
-        }
+        $user->userPasswords()->create(['password' => $user->password]);
+        Mail::to($user->email)->send(new AccountCreatedEmail($user));
     }
 }

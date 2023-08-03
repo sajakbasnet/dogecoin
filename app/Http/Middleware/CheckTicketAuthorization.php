@@ -22,8 +22,11 @@ class CheckTicketAuthorization
         $ticketId = $request->route('id');   
         $ticket = ModelTicket::findOrFail($ticketId);        
         // Check if the authenticated user is the owner of the ticket or an authorized operator
-       
-        if (strtolower(authUser()->roles->first()->name) == 'operator' && authUser()->id !== $ticket->user_id) {
+   
+        if (strtolower(authUser()->roles->first()->name) == 'operator' && authUser()->id !== (int) $ticket->assigned_id) {
+            abort(403, 'Unauthorized to access this ticket.');
+        }
+        if (strtolower(authUser()->roles->first()->name) == 'user' && authUser()->id !==  (int) $ticket->user_id) {
             abort(403, 'Unauthorized to access this ticket.');
         }
 

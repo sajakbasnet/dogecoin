@@ -14,6 +14,10 @@ Route::get(getSystemPrefix(), function () {
 Route::group(['namespace' => 'System', 'prefix' => getSystemPrefix(), 'middleware' => ['language']], function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login.form');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
+
+    Route::get('/register', 'Auth\RegisterController@showRegisterForm')->name('register.form');
+    Route::post('/register', 'Auth\RegisterController@register')->name('register');
+
     Route::get('forgot-password', 'Auth\ForgotPasswordController@showRequestForm')->name('forgot.password');
     Route::post('forgot-password', 'Auth\ForgotPasswordController@handleForgotPassword')->name('post.forgot.password');
     Route::get('/reset-password/{email}/{token}', 'Auth\ResetPasswordController@showSetResetForm')->name('reset.password');

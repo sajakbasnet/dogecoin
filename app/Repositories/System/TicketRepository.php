@@ -24,7 +24,10 @@ class TicketRepository extends Repository implements TicketInterface
 
     $query = $this->query();
 
-    if (in_array(strtolower(authUser()->roles->first()->name), ['operator', 'user'])) {
+    if (strtolower(authUser()->roles->first()->name) == 'operator') {
+      $query->where('assigned_id', authUser()->id);
+    }
+    if (strtolower(authUser()->roles->first()->name) == 'user') {
       $query->where('user_id', authUser()->id);
     }
     if (isset($data->keyword) && $data->keyword !== null) {
@@ -46,7 +49,7 @@ class TicketRepository extends Repository implements TicketInterface
   public function getUser()
   {
     return $this->user->with('roles')->whereHas('roles', function ($query) {
-      $query->whereRaw('LOWER(name) = ?', ['operator']); 
+      $query->whereRaw('LOWER(name) = ?', ['operator']);
     })->pluck('name', 'id')->toArray();
   }
   public function create($data)
