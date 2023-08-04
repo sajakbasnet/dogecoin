@@ -27,7 +27,7 @@
 <tr>
     <td>{{SN($pageIndex, $key)}}</td>
     <td>{{ $item->name }}</td>
-    <td>
+    <td style="list-style-type: none;">
         @foreach($item->roles as $role)
         <li><a href="/{{PREFIX}}/roles?keyword={{$role->name ?? 'N/A'}}" class="badge badge-secondary">
                 {{ $role->name ?? 'N/A' }}

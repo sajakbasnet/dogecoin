@@ -22,7 +22,7 @@
         <select class="form-control" name="user_id" id="Assigne" required>
             <option value="">Select Asignee</option>
             @foreach($users as $key=>$user)
-            <option value="{{$key}}" @if(isset($item) && $item->user_id == $key) selected @endif {{ old('user_id') == $key ? 'selected': ''}}>{{$user}}</option>
+            <option value="{{$key}}" @if(isset($item) && $item->assigned_id == $key) selected @endif {{ old('user_id') == $key ? 'selected': ''}}>{{$user}}</option>
             @endforeach
         </select>
         @if($errors->first('user_id') != null)

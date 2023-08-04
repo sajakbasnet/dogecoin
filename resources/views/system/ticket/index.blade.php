@@ -59,6 +59,7 @@
     </td>
     <td>
         @include('system.partials.editButton')
+        @include('system.partials.deleteButton')
     </td>
 </tr>
 @endforeach

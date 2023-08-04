@@ -81,12 +81,12 @@ class TicketService extends Service
     {
         try {
             $data = $request->except('_token');
-            $ticket = $this->ticketRepository->itemByIdentifier($id);
+            $ticket = $this->ticketRepository->itemByIdentifier($id);           
             if ($ticket->ticket_id == null) {
                 $data['ticket_id'] = $this->ticketRepository->generateCode();
             }
             
-            return $ticket->ticketRepository->update($ticket,$data);
+            return $this->ticketRepository->update($ticket,$data);
         } catch (\Exception $e) {            
             throw new CustomGenericException($e->getMessage());
         }
@@ -95,6 +95,6 @@ class TicketService extends Service
     public function delete($request, $id)
     {
         $user = $this->ticketRepository->itemByIdentifier($id);
-        return $user->ticketRepository->delete($request,$id);
+        return $this->ticketRepository->delete($request,$id);
     }
 }

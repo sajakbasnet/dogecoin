@@ -52,6 +52,7 @@
                         @endif -->
                         <div class="actions__container">
                             <button class="btn btn-primary btn-block" type="submit">Register</button>
+                            <p class="mt-2 text-center">Go back to <a href="{{ route('login.form') }}"> Login</a> page.</p>
                             <div id="buttonDiv"></div>
                         </div>
                     </form>                    
