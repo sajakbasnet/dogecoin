@@ -25,17 +25,9 @@
 </x-system.form.form-group>
 
 @if(!isset($item))
-<x-system.form.form-group :input="[ 'name' => 'set_password_status', 'label'=> 'Set Password ?', 'required' => true]">
-    <x-slot name="inputs">
-        <x-system.form.input-radio :input="[ 'name' => 'set_password_status', 'label'=> 'Set Password', 'required' => true,
-    'default' => old('set_password_status') ?? 0, 'options' => [[ 'value' => '0', 'label' => 'Send Activation Link'], ['value' => '1', 'label'=>'Set Password']]]" />
-    </x-slot>
-</x-system.form.form-group>
-
-<div class="d-none" id="password-inputs">
     <x-system.form.form-group :input="[ 'name' => 'password', 'label'=> 'Password','label-required'=>true, 'type' => 'password', 'default' => old('password'), 'error' => $errors->first('password')]" />
     <x-system.form.form-group :input="[ 'name' => 'password_confirmation', 'label'=> 'Confirm Password','label-required'=>true, 'type' => 'password', 'default' => old('password_confirmation'), 'error' => $errors->first('password_confirmation')]" />
-</div>
+
 @endif
 @endsection
 

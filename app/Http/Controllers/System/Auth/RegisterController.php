@@ -113,9 +113,10 @@ class RegisterController extends Controller
             }
              try {
                 event(new UserCreated($user));              
-            } catch (\Exception $e) {               
+            } catch (\Exception $e) {    
                 \Log::error('User creation failed: ' . $e->getMessage());
-                \DB::rollBack();               
+                \DB::rollBack();              
+                dd($e); 
                 return throw new CustomGenericException('User creation failed. Please try again.');
             }
         });
