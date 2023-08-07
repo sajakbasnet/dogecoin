@@ -32,18 +32,8 @@
         @endif
     </div>
 </div>
-<div class="col-md-6 col-sm-12">
-    <div class="form-group">
-        <label class="form-label" for="createdDate">Created Date: <span class="tx-danger">*</span></label>
-        <input class="form-control" id="createdDate" value="{{  isset($item) ? \Carbon\Carbon::parse($item->createdDate)->format('Y-m-d') : old('createdDate')}}"  name="createdDate" placeholder="Created Date" required="" type="date" aria-describedby="created-date">
-        @if($errors->first('createdDate') != null)
-        <ul class="parsley-errors-list filled" id="valid-createdDate">
-            <li class="parsley-required">{{ $errors->first('createdDate') }}</li>
-        </ul>
-        @endif
-    </div>
-</div>
-<div class="col-md-6 col-sm-12">
+
+<!-- <div class="col-md-6 col-sm-12">
     <div class="form-group">
         <label class="form-label" for="status">Status: <span class="tx-danger">*</span></label>
         <select class="form-control" name="status" id="status" required>
@@ -58,21 +48,9 @@
         </ul>
         @endif
     </div>
-</div>
+</div> -->
 
-<div class="col-md-6 col-sm-12">
-    <div class="form-group">
-        <label class="form-label">Description:</label>
-        <textarea class="form-control" name="description" id="description" placeholder="Write description of the ticket" required="">
-        {{$item->description ?? old('description')}}
-        </textarea>
-        @if($errors->first('description') != null)
-        <ul class="parsley-errors-list filled" id="valid-description">
-            <li class="parsley-required">{{ $errors->first('description') }}</li>
-        </ul>
-        @endif
-    </div>
-</div>
+
 <div class="col-md-6 col-sm-12">
     <div class="form-group">
         <label class="form-label" for="priority">Priority: <span class="tx-danger">*</span></label>
@@ -89,7 +67,19 @@
         @endif
     </div>
 </div>
-
+<div class="col-md-6 col-sm-12">
+    <div class="form-group">
+        <label class="form-label">Description:</label>
+        <textarea class="form-control" name="description" id="description" placeholder="Write description of the ticket" required="">
+        {{$item->description ?? old('description')}}
+        </textarea>
+        @if($errors->first('description') != null)
+        <ul class="parsley-errors-list filled" id="valid-description">
+            <li class="parsley-required">{{ $errors->first('description') }}</li>
+        </ul>
+        @endif
+    </div>
+</div>
 
 
 

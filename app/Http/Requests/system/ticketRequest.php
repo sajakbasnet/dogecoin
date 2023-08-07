@@ -25,9 +25,7 @@ class ticketRequest extends FormRequest
     {
         return [
             'subject' => 'required',
-            'user_id' => 'required',
-            'createdDate' => 'required',
-            'status' => 'required',
+            'user_id' => 'required',      
             'description'=>'required'
         ];
     }

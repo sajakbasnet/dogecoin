@@ -7,6 +7,7 @@ use App\Models\Ticket;
 use App\Models\User;
 use App\Repositories\System\TicketRepository;
 use App\Services\Service;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class TicketService extends Service
@@ -59,6 +60,8 @@ class TicketService extends Service
             $data = $request->except('_token');
             $data['assigned_id'] = $data['user_id'];
             $data['user_id']= authUser()->id;
+            $data['createdDate'] = Carbon::now();
+            $data['status'] = 'awaiting-services';
             $data['ticket_id'] = $this->ticketRepository->generateCode();
             return $this->ticketRepository->create($data);
         });
