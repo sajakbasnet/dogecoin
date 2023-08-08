@@ -82,7 +82,7 @@
 
   <!-- Script Principal -->
   <script src="{{asset('js/main-script.js')}}"></script>
-  <script src="{{ asset('compiledCssAndJs/js/system.js')}}"></script>
+  <script src="{{ asset('js/delete.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <script src="{{ asset('toast/jquery.toast.min.js')}}"></script>
   <script>

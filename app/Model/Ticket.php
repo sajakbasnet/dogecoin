@@ -26,7 +26,7 @@ class Ticket extends Model
     protected static $logAttributes = ['subject', 'description', 'priority'];
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class,'assigned_id','id');
     }
     public function getDescriptionForEvent(string $eventName): string
     {

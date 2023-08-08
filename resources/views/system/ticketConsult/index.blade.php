@@ -47,7 +47,9 @@
                                 <div class="avatar lg  rounded-1 no-thumbnail bg-lightgreen color-defult"><img src="{{asset('images/price.svg')}}"></div>
                                 <div class="flex-fill ms-4 text-truncate">
                                     <div class="text-truncate">Priority</div>
-                                    <span class="badge bg-danger">High</span>
+                                    <span class="badge  @if($items->priority == 'low') badge-success @elseif($items->priority == 'medium') badge-warning @else badge-danger @endif">
+                                        {{ strtoupper($items->priority) }}
+                                    </span>
                                 </div>
 
                             </div>
@@ -66,6 +68,30 @@
                     </div>
                 </div>
             </div>
+            <ul class="list-unstyled res-set">
+                <li class="card mb-2">
+                    <div class="card-body">                     
+                        <div class="mb-2 mt-4">
+                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fas fa-comment"></i> Message ({{count($messages)}})</a>
+                        </div>
+
+                        @foreach($messages as $message)
+                        <div class="d-flex mt-3 pt-3 border-top">
+                            <img class="avatar rounded-circle" src="{{asset('images/user.svg')}}" style="background-color: white;">
+                            <div class="flex-fill ms-3 text-truncate">
+                                <p class="mb-0"><span>{{$message->users->name ?? ''}}</span> <small class="msg-time"> {{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}</small></p>
+                                <span class="text-muted">{{$message->message ?? ''}}</span>
+                            </div>
+                        </div>
+                        @endforeach
+
+
+                        <!-- <div class="mt-4">
+                                            <textarea class="form-control" placeholder="Replay"></textarea>
+                                        </div> -->
+                    </div>
+                </li>
+            </ul>
         </div>
 
         <!-- Second Column (Leave empty if you don't need any content here) -->
@@ -93,41 +119,7 @@
                                 </div>
                             </form>
                             <!-- .Card End -->
-                            <ul class="list-unstyled res-set">
-                                <li class="card mb-2">
-                                    <div class="card-body">
-                                        <!-- <div class="d-flex mb-3 pb-3 border-bottom">
-                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
-                                            <div class="flex-fill ms-3 text-truncate">
-                                                <h6 class="mb-0"><span>Nellie Maxwell</span> <span class="text-muted small">posted a status</span></h6>
-                                                <span class="text-muted">3 hours ago</span>
-                                            </div>
-                                        </div> -->
 
-                                        <!-- <h6>Internet Not Working for Last 2 Days</h6>
-                                            <p>On the other hand, if the Internet doesn't work on other devices too, then the problem is most likely with the router or the Internet connection itself</p>
-                                           -->
-                                        <div class="mb-2 mt-4">
-                                            <a class="me-lg-4 me-2 text-primary" href="#"><i class="fas fa-comment"></i> Comment ({{count($messages)}})</a>
-                                        </div>
-
-                                        @foreach($messages as $message)
-                                        <div class="d-flex mt-3 pt-3 border-top">                                           
-                                            <img class="avatar rounded-circle"  src="{{asset('images/user.svg')}}" style="background-color: white;">
-                                            <div class="flex-fill ms-3 text-truncate">
-                                                <p class="mb-0"><span>{{$message->users->name ?? ''}}</span> <small class="msg-time"> {{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}</small></p>
-                                                <span class="text-muted">{{$message->message ?? ''}}</span>
-                                            </div>
-                                        </div>
-                                        @endforeach
-
-
-                                        <!-- <div class="mt-4">
-                                            <textarea class="form-control" placeholder="Replay"></textarea>
-                                        </div> -->
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
