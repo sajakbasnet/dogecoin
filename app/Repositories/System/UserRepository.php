@@ -28,6 +28,12 @@ class UserRepository extends Repository implements UserRepositoryInterface
         if (isset($data->keyword) && $data->keyword !== null) {
             $query->where('name', 'LIKE', '%' . $data->keyword . '%');
         }
+        if (isset($data->role) && $data->role !== null) {
+            $query->whereHas('roles', function ($query) use ($data) {
+                $query->where('roles.id', $data->role);
+            });
+        }
+
 
         if (count($selectedColumns) > 0) {
             $query->select($selectedColumns);
@@ -36,7 +42,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
             return $query->orderBy('id', 'DESC')->with('roles')->paginate(PAGINATE);
         }
 
-        return $query->orderBy('id', 'DESC')->with('role')->get();
+        return $query->orderBy('id', 'DESC')->with('roles')->get();
     }
 
     public function create($data)
@@ -67,7 +73,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
     }
 
     public function resetPassword($request)
-    {      
+    {
         $user = $this->itemByIdentifier($request->id);
         return $user->update([
             'password' => Hash::make($request->password),
@@ -88,7 +94,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
         return $user;
     }
     public function bulkUpdateUserByRole($roleId, $requestRole)
-    {       
+    {
         return $this->model->where('role_id', $roleId)->update(['role_id' => $requestRole]);
     }
 
