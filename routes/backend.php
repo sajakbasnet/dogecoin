@@ -54,6 +54,7 @@ Route::group(['namespace' => 'System', 'prefix' => getSystemPrefix(), 'middlewar
             Route::put('ticket/{ticket}', 'ticket\TicketController@update')->name('tickets.update');
         });
         Route::post('ticket/updateStatus/{id}', 'ticket\TicketController@updateStatus')->name('updateStatus');
+        Route::post('ticket/updatePriority/{id}', 'ticket\TicketController@updatePriority')->name('updatePriority');
         Route::resource('/ticket/{id}/consult', 'ticketConsult\TicketConsultController')->middleware('check.ticket.authorization');;
 
         Route::get('/profile', 'profile\ProfileController@index')->name('profile');

@@ -54,4 +54,28 @@ class TicketController extends ResourceController
                 return 'btn-warning';
         }
     }
+
+    public function updatePriority(Request $request, $id)
+    {
+        $item = Ticket::find($id);
+        $item->priority = $request->input('priority');
+        $item->save();
+        $response = [
+            'priority' => strtoupper(str_replace('-', ' ', $item->priority)),
+            'badgeClass' => $this->getPriorityBadgeClass($item->priority) // Helper function to get the badge class based on status
+        ];
+        return response()->json($response);
+    }
+
+    private function getPriorityBadgeClass($status)
+    {
+        switch ($status) {
+            case 'low':
+                return 'btn-success';
+            case 'medium':
+                return 'btn-warning';
+            default:
+                return 'btn-danger';          
+        }
+    }
 }

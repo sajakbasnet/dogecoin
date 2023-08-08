@@ -50,7 +50,7 @@
     </div>
 </div> -->
 
-
+@if(authUser()->roles->first()->name != 'user')
 <div class="col-md-6 col-sm-12">
     <div class="form-group">
         <label class="form-label" for="priority">Priority: <span class="tx-danger">*</span></label>
@@ -67,6 +67,7 @@
         @endif
     </div>
 </div>
+@endif
 <div class="col-md-6 col-sm-12">
     <div class="form-group">
         <label class="form-label">Description:</label>

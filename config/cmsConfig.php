@@ -266,29 +266,36 @@ return  [
                         'method' => $postMethod,
                     ],
                 ],
-               
-                        [
-                            'name' => 'View Ticket Consult',
-                            'route' => [
-                                'url' => $ticketBaseUrl . '/*/consult',
-                                'method' => $getMethod,
-                            ],
-                        ],
-                        [
-                            'name' => 'Send Consult Message',
-                            'route' => [
-                                [
-                                    'url' => $ticketBaseUrl . '/*/consult/create',
-                                    'method' => $getMethod,
-                                ],
-                                [
-                                    'url' => $ticketBaseUrl . '/*/consult',
-                                    'method' => $postMethod,
-                                ],
+                [
+                    'name' => 'Edit ticket priority',
+                    'route' => [
+                        'url' => $ticketBaseUrl . '/updatePriority/*',
+                        'method' => $postMethod,
+                    ],
+                ],
 
-                            ],
+                [
+                    'name' => 'View Ticket Consult',
+                    'route' => [
+                        'url' => $ticketBaseUrl . '/*/consult',
+                        'method' => $getMethod,
+                    ],
+                ],
+                [
+                    'name' => 'Send Consult Message',
+                    'route' => [
+                        [
+                            'url' => $ticketBaseUrl . '/*/consult/create',
+                            'method' => $getMethod,
                         ],
-                   
+                        [
+                            'url' => $ticketBaseUrl . '/*/consult',
+                            'method' => $postMethod,
+                        ],
+
+                    ],
+                ],
+
             ],
         ],
 
