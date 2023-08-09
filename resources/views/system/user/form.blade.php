@@ -16,6 +16,19 @@
         @enderror
     </x-slot>
 </x-system.form.form-group>
+<x-system.form.form-group :input="[ 'name' => 'class', 'label'=> 'Class', 'required'=>'true']">
+    <x-slot name="inputs">
+        <select class="form-control" name="class" id="Assigne" required>
+            @foreach($class as $key=>$cl)
+            <option value="{{$key}}" @if(isset($item) && $item->class == $key) selected @endif {{ old('class') == $key ? 'selected': ''}}>{{$cl}}</option>
+            @endforeach
+        </select>
+
+        @if($errors->first('class') != null)
+        <div class="invalid-feedback">{{ $errors->first('class') }}</div>
+        @enderror
+    </x-slot>
+</x-system.form.form-group>
 
 <x-system.form.form-group :input="[ 'name' => 'is_2fa_enabled', 'label'=> 'Two Factor Authentication', 'required' => true]">
     <x-slot name="inputs">
@@ -25,8 +38,8 @@
 </x-system.form.form-group>
 
 @if(!isset($item))
-    <x-system.form.form-group :input="[ 'name' => 'password', 'label'=> 'Password','label-required'=>true, 'type' => 'password', 'default' => old('password'), 'error' => $errors->first('password')]" />
-    <x-system.form.form-group :input="[ 'name' => 'password_confirmation', 'label'=> 'Confirm Password','label-required'=>true, 'type' => 'password', 'default' => old('password_confirmation'), 'error' => $errors->first('password_confirmation')]" />
+<x-system.form.form-group :input="[ 'name' => 'password', 'label'=> 'Password','label-required'=>true, 'type' => 'password', 'default' => old('password'), 'error' => $errors->first('password')]" />
+<x-system.form.form-group :input="[ 'name' => 'password_confirmation', 'label'=> 'Confirm Password','label-required'=>true, 'type' => 'password', 'default' => old('password_confirmation'), 'error' => $errors->first('password_confirmation')]" />
 
 @endif
 @endsection

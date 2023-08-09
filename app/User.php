@@ -22,7 +22,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'username', 'token', 'password_resetted', 'expiry_datetime','google2fa_secret',
-        'google2fa_enabled'
+        'google2fa_enabled','class'
     ];
 
     protected $guarded = [

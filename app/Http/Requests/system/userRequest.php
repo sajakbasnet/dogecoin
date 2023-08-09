@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\system;
 
+use App\Rules\UniqueClassRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
@@ -23,10 +24,11 @@ class userRequest extends FormRequest
      * @return array
      */
     public function rules(Request $request)
-    {
+    {       
         $validate = [
             'name' => 'required',
             'role_id' => 'required',
+            'class' => ['required',new UniqueClassRule($request->user)],
         ];
 
         if ($request->method() == 'POST') {
@@ -37,8 +39,8 @@ class userRequest extends FormRequest
         }
         if ($request->method() == 'PUT') {
             $validate = array_merge($validate, [
-                'username' => 'required|unique:users,username,'.$request->user,
-                'email' => 'required|email|unique:users,email,'.$request->user,
+                'username' => 'required|unique:users,username,' . $request->user,
+                'email' => 'required|email|unique:users,email,' . $request->user,
             ]);
         }
 

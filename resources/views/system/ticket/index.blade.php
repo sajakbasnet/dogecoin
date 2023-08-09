@@ -17,6 +17,7 @@
     <th scope="col">S.N</th>
     <th scope="col">Ticket No</th>
     <th scope="col">Subject</th>
+    <th scope="col">Class</th>
     <th scope="col">Assigned</th>
     <th scope="col">Created Date</th>
     <th scope="col">Status</th>
@@ -34,6 +35,7 @@
         <a href="{{$indexUrl}}/{{$item->id}}/consult">{{$item->ticket_id ?? ''}}</a>
     </td>
     <td>{{ $item->subject }}</td>
+    <td>{{ strtoupper(str_replace('-', ' ', $item->class)) }}</td>
     <td>{{$item->user->name ?? ''}}</td>
     <td>{{ \Carbon\Carbon::parse($item->createdDate)->format('Y-m-d') ?? '' }}</td>
     <td>

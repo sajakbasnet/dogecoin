@@ -17,17 +17,17 @@
 <div class="col-md-6 col-sm-12">
     <div class="form-group">
         <label class="form-label">
-            Asignee <span class="tx-danger">*</span>
+            Class <span class="tx-danger">*</span>
         </label>
-        <select class="form-control" name="user_id" id="Assigne" required>
-            <option value="">Select Asignee</option>
-            @foreach($users as $key=>$user)
-            <option value="{{$key}}" @if(isset($item) && $item->assigned_id == $key) selected @endif {{ old('user_id') == $key ? 'selected': ''}}>{{$user}}</option>
+        <select class="form-control" name="class" id="Assigne" required>
+            <option value="">Select class</option>
+            @foreach($class as $key=>$cl)
+            <option value="{{$key}}" @if(isset($item) && $item->class == $key) selected @endif {{ old('class') == $key ? 'selected': ''}}>{{$cl}}</option>
             @endforeach
         </select>
-        @if($errors->first('user_id') != null)
+        @if($errors->first('class') != null)
         <ul class="parsley-errors-list filled" id="valid-assigne">
-            <li class="parsley-required">{{ $errors->first('user_id') }}</li>
+            <li class="parsley-required">{{ $errors->first('class') }}</li>
         </ul>
         @endif
     </div>

@@ -11,21 +11,19 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class TicketService extends Service
-{   
+{
     public function __construct(TicketRepository $ticketRepository)
     {
         $this->ticketRepository = $ticketRepository;
-     
     }
 
     public function getAllData($data, $selectedColumns = [], $pagination = true)
     {
         return $this->ticketRepository->getAllData($data);
     }
-    public function getUser()
+    public function getClass()
     {
-        return $this->ticketRepository->getUser();
-        
+        return config('class');
     }
     public function status()
     {
@@ -47,7 +45,7 @@ class TicketService extends Service
     function createPageData($request)
     {
         return [
-            'users' => $this->getUser(),
+            'class' => $this->getClass(),
             'status' => $this->status(),
             'priority' => $this->priority(),
         ];
@@ -58,15 +56,19 @@ class TicketService extends Service
     {
         \DB::transaction(function () use ($request) {
             $data = $request->except('_token');
-            $data['assigned_id'] = $data['user_id'];
-            $data['user_id']= authUser()->id;
+            $user = $this->ticketRepository->getUser($data['class']);
+            if (!$user) {
+                return throw new CustomGenericException('There is no operator for this class ticket.');
+            }
+            $data['assigned_id'] = $user;
+            $data['user_id'] = authUser()->id;
             $data['createdDate'] = Carbon::now();
             $data['status'] = 'awaiting-services';
             $data['ticket_id'] = $this->ticketRepository->generateCode();
             return $this->ticketRepository->create($data);
         });
     }
-  
+
 
     public function editPageData($request, $id)
     {
@@ -74,7 +76,7 @@ class TicketService extends Service
 
         return [
             'item' => $ticket,
-            'users' => $this->getUser(),
+            'class' => $this->getClass(),
             'status' => $this->status(),
             'priority' => $this->priority(),
         ];
@@ -84,13 +86,20 @@ class TicketService extends Service
     {
         try {
             $data = $request->except('_token');
-            $ticket = $this->ticketRepository->itemByIdentifier($id);           
+            $ticket = $this->ticketRepository->itemByIdentifier($id);
             if ($ticket->ticket_id == null) {
                 $data['ticket_id'] = $this->ticketRepository->generateCode();
             }
-            
-            return $this->ticketRepository->update($ticket,$data);
-        } catch (\Exception $e) {            
+
+            $user = $this->ticketRepository->getUser($data['class']);
+
+            if (!$user) {
+                return throw new CustomGenericException('There is no operator for this class ticket.');
+            }
+            $data['assigned_id'] = $user;
+
+            return $this->ticketRepository->update($ticket, $data);
+        } catch (\Exception $e) {
             throw new CustomGenericException($e->getMessage());
         }
     }
@@ -98,6 +107,6 @@ class TicketService extends Service
     public function delete($request, $id)
     {
         $user = $this->ticketRepository->itemByIdentifier($id);
-        return $this->ticketRepository->delete($request,$id);
+        return $this->ticketRepository->delete($request, $id);
     }
 }

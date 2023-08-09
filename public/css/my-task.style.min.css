@@ -2547,7 +2547,7 @@ textarea.form-control.is-valid {
  z-index:3
 }
 .invalid-feedback {
- display:none;
+ display:block;
  width:100%;
  margin-top:.25rem;
  font-size:.875em;

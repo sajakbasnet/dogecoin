@@ -44,6 +44,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
 
         return $query->orderBy('id', 'DESC')->with('roles')->get();
     }
+   
 
     public function create($data)
     {

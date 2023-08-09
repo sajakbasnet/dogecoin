@@ -12,6 +12,7 @@
     <th scope="col">{{translate("S.N")}}</th>
     <th scope="col">{{translate('Name')}}</th>
     <th scope="col">{{translate('Role')}}</th>
+    <th scope="col">{{translate('Class')}}</th>
     <th scope="col">{{translate('Action')}}</th>
 </tr>
 @endsection
@@ -29,6 +30,7 @@
             </a></li>
         @endforeach
     </td>
+    <td>{{ $item->class ?? '' }}</td>
     <td>
         @include('system.partials.editButton')
         @include('system.partials.deleteButton')   

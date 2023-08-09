@@ -20,7 +20,8 @@ class Ticket extends Model
         'user_id',
         'ticket_id',
         'priority',
-        'assigned_id'
+        'assigned_id',
+        'class'
     ];
     protected static $logName = 'Ticket';
     protected static $logAttributes = ['subject', 'description', 'priority'];

@@ -26,6 +26,10 @@ class UserService extends Service
     {
         return $this->userRepository->getAllData($data);
     }
+    public function getClass()
+    {
+        return config('class');
+    }
 
     public function indexPageData($request)
     {
@@ -39,6 +43,7 @@ class UserService extends Service
     {
         return [
             'roles' => $this->roleRepository->getRoles(),
+            'class' => $this->getClass(),
         ];
     }
 
@@ -57,6 +62,7 @@ class UserService extends Service
             $data['google2fa_enabled'] = $request->is_2fa_enabled;
             $user = $this->userRepository->create($data);
             $user->roles()->attach($request->role_id);
+            
 
             // try {
             //     event(new UserCreated($user, $token));
@@ -76,6 +82,7 @@ class UserService extends Service
             'item' => $user,
             'roles' => $this->roleRepository->getRoles(),
             'roleUsers' => $this->roleRepository->getByRolePivotRoleUser($id),
+            'class' => $this->getClass(),
         ];
     }
 
@@ -90,7 +97,7 @@ class UserService extends Service
             }
             unset($data['role_id']);
             $data['google2fa_enabled'] = $request->is_2fa_enabled == 1 ? true : false;
-          
+
             $this->userRepository->update($user, $data);
             $user->roles()->sync($request->role_id);
             DB::commit();
@@ -110,7 +117,6 @@ class UserService extends Service
 
         $this->userRepository->delete($request, $id);
         return $user;
-
     }
 
     public function findByEmailAndToken($email, $token)

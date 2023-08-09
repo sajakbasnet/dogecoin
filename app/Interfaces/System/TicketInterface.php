@@ -12,7 +12,7 @@ interface TicketInterface
 
     public function delete($request,$id);
 
-    public function getUser();
+    public function getUser($class);
 
     public function generateCode();
 }

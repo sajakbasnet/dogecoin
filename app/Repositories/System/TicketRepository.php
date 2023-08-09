@@ -46,11 +46,14 @@ class TicketRepository extends Repository implements TicketInterface
 
     return $query->orderBy('id', 'DESC')->with('user')->get();
   }
-  public function getUser()
+  public function getUser($class)
   {
+    // $this->user->with('roles')->whereHas('roles', function ($query) {
+    //   $query->whereRaw('LOWER(name) = ?', ['operator']);
+    // })->pluck('name', 'id')->toArray();
     return $this->user->with('roles')->whereHas('roles', function ($query) {
       $query->whereRaw('LOWER(name) = ?', ['operator']);
-    })->pluck('name', 'id')->toArray();
+    })->where('class', $class)->pluck('id')->first();
   }
   public function create($data)
   {
